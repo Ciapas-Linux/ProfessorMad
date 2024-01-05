@@ -1,0 +1,95 @@
+[gd_scene load_steps=16 format=3 uid="uid://b53uyaf3owxsq"]
+
+[ext_resource type="Script" path="res://Scenes/Bullet/Bullet.gd" id="1_pyyso"]
+[ext_resource type="Texture2D" uid="uid://dofk3o4qwlc1b" path="res://Assets/Objects/missile.png" id="2_0y286"]
+[ext_resource type="Texture2D" uid="uid://pf08ykot5ffm" path="res://Assets/Explosions/explosion2-smal/E0000.png" id="3_2xnk8"]
+[ext_resource type="Texture2D" uid="uid://sy6b6l52vg2f" path="res://Assets/Explosions/explosion2-smal/E0001.png" id="4_qijve"]
+[ext_resource type="Texture2D" uid="uid://c5y8gcxb622nx" path="res://Assets/Explosions/explosion2-smal/E0002.png" id="5_tlg8d"]
+[ext_resource type="Texture2D" uid="uid://chc6r348jkk23" path="res://Assets/Explosions/explosion2-smal/E0003.png" id="6_48uiu"]
+[ext_resource type="Texture2D" uid="uid://d35i35rnn2ksr" path="res://Assets/Explosions/explosion2-smal/E0004.png" id="7_hyrnk"]
+[ext_resource type="Texture2D" uid="uid://c0btkymcw1st1" path="res://Assets/Explosions/explosion2-smal/E0005.png" id="8_qag8i"]
+[ext_resource type="Texture2D" uid="uid://dekw3bcss3p0q" path="res://Assets/Explosions/explosion2-smal/E0006.png" id="9_41uhn"]
+[ext_resource type="Texture2D" uid="uid://vnvvlcw0eqtq" path="res://Assets/Explosions/explosion2-smal/E0007.png" id="10_1kjqc"]
+[ext_resource type="Texture2D" uid="uid://drtn6v701q3w5" path="res://Assets/Explosions/explosion2-smal/E0008.png" id="11_tt16f"]
+[ext_resource type="Texture2D" uid="uid://c83puy6sijkg0" path="res://Assets/Explosions/explosion2-smal/E0009.png" id="12_rhq57"]
+[ext_resource type="AudioStream" uid="uid://cpg8ih2g5mw61" path="res://Assets/Sounds/Sfx/bullet1.wav" id="13_63bao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tnex"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uavgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2xnk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qijve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tlg8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_48uiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hyrnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qag8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_41uhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1kjqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tt16f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rhq57")
+}],
+"loop": false,
+"name": &"hit_anim",
+"speed": 20.0
+}]
+
+[node name="Bullet" type="Area2D"]
+z_index = 2
+collision_layer = 16
+collision_mask = 47
+input_pickable = false
+priority = 1
+script = ExtResource("1_pyyso")
+
+[node name="BulletSprite" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(4.48792, 4.48792)
+texture = ExtResource("2_0y286")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 0)
+scale = Vector2(6, 2.5)
+shape = SubResource("RectangleShape2D_6tnex")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(8, 4)
+
+[node name="BulletCrash" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(9, 14)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_uavgp")
+animation = &"hit_anim"
+frame = 4
+frame_progress = 0.058924
+
+[node name="snd_bullet_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_63bao")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="animation_finished" from="BulletCrash" to="." method="_on_bullet_crash_animation_finished"]

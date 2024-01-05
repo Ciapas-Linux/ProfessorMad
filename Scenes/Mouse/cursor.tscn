@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ir6gqsp2b02a"]
+
+[ext_resource type="Texture2D" uid="uid://bij0nkh3meg01" path="res://Assets/Objects/reticle96.png" id="1_7y2vj"]
+[ext_resource type="Script" path="res://Scenes/Mouse/Mouse.gd" id="2_reihk"]
+
+[node name="Cursor" type="CanvasLayer"]
+layer = 7
+visible = false
+
+[node name="Mouse" type="Sprite2D" parent="."]
+process_mode = 3
+z_index = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7y2vj")
+script = ExtResource("2_reihk")

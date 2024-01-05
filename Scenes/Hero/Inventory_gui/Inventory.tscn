@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://vmpgkebwqh7u"]
+
+[ext_resource type="Texture2D" uid="uid://c3cof36mln523" path="res://Assets/Objects/FT800.png" id="1_l1w4x"]
+
+[node name="Inventory" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+offset_left = 192.0
+offset_top = 118.0
+offset_right = 1692.0
+offset_bottom = 976.0
+texture = ExtResource("1_l1w4x")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://badr6htseljpo"]
+
+[ext_resource type="Shader" path="res://Scenes/Fx/fire.gdshader" id="1_uos7h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbgbm"]
+resource_local_to_scene = true
+shader = ExtResource("1_uos7h")
+shader_parameter/fireMovement = Vector2(-0.01, -0.5)
+shader_parameter/distortionMovement = Vector2(-0.01, -0.3)
+shader_parameter/normalStrength = 40.0
+shader_parameter/distortionStrength = 0.1
+
+[node name="Fire" type="ColorRect"]
+material = SubResource("ShaderMaterial_kbgbm")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9.45983, 9.42385)
+color = Color(1, 0, 0, 1)

@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://chf1nu07b05ko"]
+
+[ext_resource type="Script" path="res://Scenes/Cars/maluch_red/maluch_red.gd" id="1_yh5px"]
+[ext_resource type="Texture2D" uid="uid://bx033dfc6pesf" path="res://Assets/Objects/cars/maluch2/maluch3_body.png" id="2_t3olp"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Bullet/Bullet_holes.tscn" id="2_vmxq5"]
+[ext_resource type="PackedScene" uid="uid://b12u0a3ef46xt" path="res://Scenes/Explosives/Explosion_fx_1.tscn" id="4_g2vk3"]
+[ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="5_448uy"]
+[ext_resource type="Texture2D" uid="uid://b5o3at7s67uyi" path="res://Assets/Objects/cars/maluch2/maluch2_kolo.png" id="6_2i7b2"]
+
+[node name="maluch_red" type="Area2D"]
+z_index = 1
+scale = Vector2(1.1, 1.1)
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("1_yh5px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(42.5, -80, 102.5, -24.1667, 176.667, -16.6667, 202.5, -2.5, 210.833, 48.3333, 199.167, 71.6667, 182.5, 72.5, 175, 110.606, 134.091, 128.03, 96.9697, 116.667, 86.3636, 88.6364, -90.1515, 87.1212, -110.606, 112.879, -134.848, 120.455, -163.636, 106.818, -173.485, 77.2727, -203.788, 71.2121, -212.879, 14.3939, -134.167, -73.3333, -95.8333, -80)
+
+[node name="object_spr" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_t3olp")
+
+[node name="Bullet_holes" parent="." instance=ExtResource("2_vmxq5")]
+min_size = 0.3
+max_size = 1.5
+
+[node name="ExplosionFx1" parent="." instance=ExtResource("4_g2vk3")]
+position = Vector2(-3.63636, 15.4545)
+
+[node name="snd_explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_448uy")
+volume_db = 9.0
+pitch_scale = 0.5
+
+[node name="Kolo_l" type="Sprite2D" parent="."]
+position = Vector2(-161, 96)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_2i7b2")
+
+[node name="Kolo_p" type="Sprite2D" parent="."]
+position = Vector2(161, 90)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_2i7b2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="ExplosionFx1" to="." method="_on_explosion_fx_1_animation_finished"]

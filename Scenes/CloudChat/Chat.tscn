@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxn8lfohi362g"]
+
+[ext_resource type="Texture2D" uid="uid://cpwxucu8mg3t0" path="res://Assets/Objects/say.png" id="1_p3xby"]
+[ext_resource type="Script" path="res://Scenes/CloudChat/EnemyChat.gd" id="2_4gf5i"]
+[ext_resource type="FontFile" uid="uid://bmonncwiob81c" path="res://Assets/Fonts/Kalam-Regular.ttf" id="3_bgudr"]
+[ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/tada.mp3" id="4_way1d"]
+
+[sub_resource type="Animation" id="Animation_2i1ce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bo2t5"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_beka0"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aa42q"]
+_data = {
+"RESET": SubResource("Animation_2i1ce"),
+"fade_in": SubResource("Animation_bo2t5"),
+"fade_out": SubResource("Animation_beka0")
+}
+
+[node name="ChatSprite" type="Sprite2D"]
+top_level = true
+z_index = 3
+position = Vector2(12, 86)
+scale = Vector2(2, 2)
+texture = ExtResource("1_p3xby")
+offset = Vector2(-12, -86)
+script = ExtResource("2_4gf5i")
+
+[node name="ChatText" type="Label" parent="."]
+offset_left = -78.0
+offset_top = -155.0
+offset_right = -38.0
+offset_bottom = -132.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bgudr")
+theme_override_font_sizes/font_size = 20
+
+[node name="Fade" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aa42q")
+}
+
+[node name="snd_say" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_way1d")
+
+[connection signal="animation_finished" from="Fade" to="." method="_on_fade_animation_finished"]

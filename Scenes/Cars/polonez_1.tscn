@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://drddobovkd13n"]
+
+[ext_resource type="Script" path="res://Scenes/Cars/polonez1/polonez_1.gd" id="1_5f680"]
+[ext_resource type="Texture2D" uid="uid://dssc8fnnc4mtn" path="res://Assets/Objects/polonez1.png" id="1_ia8tm"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Bullet/Bullet_holes.tscn" id="3_p6sby"]
+[ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="4_8hgn6"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="6_wjsii"]
+
+[node name="Polonez1" type="RigidBody2D"]
+z_index = 3
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_5f680")
+
+[node name="object_spr" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ia8tm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(36.5, -69, 97, -26.5, 197.5, -2.5, 203, 25, 200.5, 36.5, 180, 47, 162, 53.5, 148, 69.5, 128.5, 71.5, 112, 66, 96, 49.5, -76, 46.5, -83, 62, -96.5, 73.5, -118.5, 73, -133, 65.5, -148, 44.5, -169.5, 42, -204, 24.5, -207.5, 0, -203, -15, -191.5, -26, -100.5, -71)
+
+[node name="Bullet_holes" parent="." instance=ExtResource("3_p6sby")]
+scale = Vector2(2, 2)
+min_size = 0.3
+max_size = 0.6
+
+[node name="snd_explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8hgn6")
+volume_db = 9.0
+pitch_scale = 0.5
+
+[node name="BigExplosion" parent="." instance=ExtResource("6_wjsii")]
+visible = false
+scale = Vector2(2, 2)
+
+[connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]

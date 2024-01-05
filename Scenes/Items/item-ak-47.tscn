@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cikdwts4xbonp"]
+
+[ext_resource type="Texture2D" uid="uid://b812sacsb1g8c" path="res://Assets/Items/ak47.png" id="1_06txd"]
+
+[node name="item-Ak-47" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_06txd")

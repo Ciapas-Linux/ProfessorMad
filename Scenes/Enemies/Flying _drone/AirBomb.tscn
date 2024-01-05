@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://brw4phlwbfpmh"]
+
+[ext_resource type="Texture2D" uid="uid://dntpsay1fcbgh" path="res://Assets/Objects/bomb.png" id="1_7x6qj"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/AirBomb.gd" id="1_oeohy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2puid"]
+size = Vector2(58, 89)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0adbh"]
+
+[node name="AirBomb" type="CharacterBody2D"]
+script = ExtResource("1_oeohy")
+
+[node name="BombCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_2puid")
+
+[node name="BombSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_7x6qj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0adbh")

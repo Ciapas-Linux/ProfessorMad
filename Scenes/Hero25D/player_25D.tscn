@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://b52diux3ykntq"]
+
+[ext_resource type="Script" path="res://Scripts/Player25D/Player25D.gd" id="1_80jv7"]
+[ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Hero/BodyParts/korpus2blur.png" id="1_rvklo"]
+[ext_resource type="Texture2D" uid="uid://ukstupt5orp8" path="res://Assets/Hero/BodyParts/głowa3.png" id="2_a0ela"]
+[ext_resource type="Script" path="res://Scripts/player25D-fsm/P25StateMachine.gd" id="4_f25ob"]
+[ext_resource type="Script" path="res://Scripts/Player25D/idle.gd" id="5_rr5pk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6dtpo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b43ak"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_rvklo")
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g5aha"]
+material = SubResource("StandardMaterial3D_b43ak")
+center_offset = Vector3(0, 0, -0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fed0t"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_a0ela")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l53mg"]
+material = SubResource("StandardMaterial3D_fed0t")
+
+[node name="Player25D" type="CharacterBody3D"]
+script = ExtResource("1_80jv7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.342419, 0)
+shape = SubResource("BoxShape3D_6dtpo")
+
+[node name="Torso" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_g5aha")
+
+[node name="Head" type="MeshInstance3D" parent="Torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167965, 0.00999998, -2.43208)
+mesh = SubResource("PlaneMesh_l53mg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="P25StateMachine" type="Node" parent="."]
+script = ExtResource("4_f25ob")
+p25initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="P25StateMachine"]
+script = ExtResource("5_rr5pk")

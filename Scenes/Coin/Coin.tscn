@@ -1,0 +1,241 @@
+[gd_scene load_steps=37 format=3 uid="uid://ch5v8j2pj2388"]
+
+[ext_resource type="Script" path="res://Scenes/Coin/Coin.gd" id="1_0ohtl"]
+[ext_resource type="Texture2D" uid="uid://brai0mmse0q88" path="res://Assets/Objects/5zloty128/fade-in/0001.png" id="2_kn8g6"]
+[ext_resource type="Texture2D" uid="uid://x3156r50esfd" path="res://Assets/Objects/5zloty128/fade-in/0002.png" id="3_sjyde"]
+[ext_resource type="Texture2D" uid="uid://56d3paccklsg" path="res://Assets/Objects/5zloty128/fade-in/0003.png" id="4_ryx7m"]
+[ext_resource type="Texture2D" uid="uid://clqp76noxhypi" path="res://Assets/Objects/5zloty128/fade-in/0004.png" id="5_bclo0"]
+[ext_resource type="Texture2D" uid="uid://d4cn33brc51wn" path="res://Assets/Objects/5zloty128/fade-in/0005.png" id="6_r4ui2"]
+[ext_resource type="Texture2D" uid="uid://bv1xx2grelk7w" path="res://Assets/Objects/5zloty128/fade-in/0006.png" id="7_1u0b0"]
+[ext_resource type="Texture2D" uid="uid://yonnj0ajk8m6" path="res://Assets/Objects/5zloty128/fade-in/0007.png" id="8_u5oyy"]
+[ext_resource type="Texture2D" uid="uid://be4m4twt7tq8x" path="res://Assets/Objects/5zloty128/0001.png" id="9_ogrit"]
+[ext_resource type="Texture2D" uid="uid://c8bxvpniy3a88" path="res://Assets/Objects/5zloty128/0002.png" id="10_olftf"]
+[ext_resource type="Texture2D" uid="uid://bep8oyvo4eor" path="res://Assets/Objects/5zloty128/0003.png" id="11_k3xu8"]
+[ext_resource type="Texture2D" uid="uid://b00ffup1bq561" path="res://Assets/Objects/5zloty128/0004.png" id="12_aeunv"]
+[ext_resource type="Texture2D" uid="uid://bn3ucsub4ov8r" path="res://Assets/Objects/5zloty128/0005.png" id="13_qstoe"]
+[ext_resource type="Texture2D" uid="uid://c5yxpp48lnvt7" path="res://Assets/Objects/5zloty128/0006.png" id="14_fmr12"]
+[ext_resource type="Texture2D" uid="uid://ddkedl8s323s1" path="res://Assets/Objects/5zloty128/0007.png" id="15_beyaf"]
+[ext_resource type="Texture2D" uid="uid://bc14tibb8cdlt" path="res://Assets/Objects/5zloty128/0008.png" id="16_qiipv"]
+[ext_resource type="Texture2D" uid="uid://ceh6sgse3f7k8" path="res://Assets/Objects/5zloty128/0009.png" id="17_1eh77"]
+[ext_resource type="Texture2D" uid="uid://b6e2t5w14r3mk" path="res://Assets/Objects/5zloty128/0010.png" id="18_0yysn"]
+[ext_resource type="Texture2D" uid="uid://t8gmrwc6w7qf" path="res://Assets/Objects/5zloty128/0011.png" id="19_6kwk1"]
+[ext_resource type="Texture2D" uid="uid://csdjdlann3rtv" path="res://Assets/Objects/5zloty128/0012.png" id="20_58rvj"]
+[ext_resource type="Texture2D" uid="uid://l6xh0cxutmev" path="res://Assets/Objects/5zloty128/0013.png" id="21_66eke"]
+[ext_resource type="Texture2D" uid="uid://26mwh88b5c4p" path="res://Assets/Objects/5zloty128/0014.png" id="22_u70yd"]
+[ext_resource type="Texture2D" uid="uid://il7a6ho3ucyg" path="res://Assets/Objects/5zloty128/0015.png" id="23_ehuvt"]
+[ext_resource type="Texture2D" uid="uid://007terk2fpio" path="res://Assets/Objects/5zloty128/fade-out/0001.png" id="24_j4nba"]
+[ext_resource type="Texture2D" uid="uid://drcnu16cv5s31" path="res://Assets/Objects/5zloty128/fade-out/0002.png" id="25_pg7se"]
+[ext_resource type="Texture2D" uid="uid://c3awf8afc7r16" path="res://Assets/Objects/5zloty128/fade-out/0003.png" id="26_7xcs4"]
+[ext_resource type="Texture2D" uid="uid://310ngixprlxd" path="res://Assets/Objects/5zloty128/fade-out/0004.png" id="27_ca5xe"]
+[ext_resource type="Texture2D" uid="uid://bynp6a4pfqno2" path="res://Assets/Objects/5zloty128/fade-out/0005.png" id="28_5c08k"]
+[ext_resource type="Texture2D" uid="uid://e7tyinu3tbg2" path="res://Assets/Objects/5zloty128/fade-out/0006.png" id="29_v17hv"]
+[ext_resource type="Texture2D" uid="uid://cppuscua3hnjo" path="res://Assets/Objects/5zloty128/fade-out/0007.png" id="30_cvfxm"]
+[ext_resource type="AudioStream" uid="uid://c1igma36maexl" path="res://Assets/Sounds/coin.wav" id="31_pyq5d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enbma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kn8g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sjyde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ryx7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bclo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r4ui2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1u0b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u5oyy")
+}],
+"loop": false,
+"name": &"fadein",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ogrit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_olftf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k3xu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_aeunv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qstoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fmr12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_beyaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qiipv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1eh77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0yysn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6kwk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_58rvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_66eke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_u70yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ehuvt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_j4nba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_pg7se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_7xcs4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ca5xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_5c08k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_v17hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_cvfxm")
+}],
+"loop": false,
+"name": &"vanish",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_j3eb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ojw0r"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_outuy"]
+_data = {
+"RESET": SubResource("Animation_j3eb0"),
+"rotate": SubResource("Animation_ojw0r")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k42ap"]
+radius = 27.2947
+
+[node name="Coin" type="Area2D"]
+z_index = 1
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_0ohtl")
+
+[node name="coin_img" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_enbma")
+animation = &"vanish"
+
+[node name="Rotation" type="AnimationPlayer" parent="coin_img"]
+libraries = {
+"": SubResource("AnimationLibrary_outuy")
+}
+
+[node name="collision" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("CircleShape2D_k42ap")
+
+[node name="snd_coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_pyq5d")
+volume_db = 2.713
+
+[node name="amount" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -93.0
+offset_right = -4.0
+offset_bottom = -48.0
+scale = Vector2(1.43031, 1.69401)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="coin_img" to="." method="_on_coin_img_animation_finished"]
+[connection signal="finished" from="snd_coin" to="." method="_on_snd_coin_finished"]

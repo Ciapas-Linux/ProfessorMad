@@ -1,0 +1,179 @@
+extends Node
+
+
+var Game_pause:bool = false
+var current_scene = null
+
+# GLOBAL RESOURCES
+#var Bullet_hit1_texure:CompressedTexture2D = preload("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png")
+
+
+# GLOBAL ASSETS:
+@onready var Bullet_hit_textures:Array[CompressedTexture2D] = [preload("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet_hole_64.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole2-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole3-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole4-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole5-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole6-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole7-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole8-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole9-sm.png")]
+
+# var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
+
+
+# HERO
+@onready var fsm:StateMachine
+var Player:Hero
+var Hero_gold:int = 0
+var Hero_pos_x:int = 0
+var Hero_pos_y:int = 0
+var Hero_local_position:Vector2
+var Hero_global_position:Vector2
+var Hero_state:String = ""
+var Hero_direction:Vector2 = Vector2.RIGHT
+var Hero_is_on_floor:bool = false
+var Hero_is_on_wall:bool = false
+var Hero_is_paused:bool = false
+var Hero_level:int = 1
+var Hero_guns = {"no": 0, "ak_47": 1, "rpg_7": 2}
+var Hero_current_weapon:int = Hero_guns["ak_47"]
+var Hero_weapon:Sprite2D
+
+# 0 no weapon
+# 1 ak_47
+# 2 rpg_7
+# 3 ?
+
+# Hero global signals:
+signal player_bullet_ready
+
+
+
+# ENEMY FIRST BOSS WREDNY RYSIEK
+@onready var enemy_fsm:EnemyStateMachine
+var Enemy_position:Vector2
+var Enemy_global_position:Vector2
+var Enemy_direction:Vector2 = Vector2.RIGHT
+
+
+
+# 2.5D experimentos
+@onready var player25D_fsm:P25StateMachine
+var Player25_position:Vector3
+var Player25_global_position:Vector3
+var Player25_direction:Vector2 = Vector2.RIGHT
+
+# CAMERA
+var Cam1_global_position:Vector2
+var Cam1:Camera2D
+
+
+# system info
+var platform:String
+var SWidth:int = 0
+var SHeight:int = 0
+
+
+
+
+func save_player_data() -> void:
+	var file = FileAccess.open("user://game.dat", FileAccess.WRITE)
+	file.store_32(Hero_level)
+	file.store_32(Hero_current_weapon)
+	file.store_32(Hero_gold)
+	
+	
+
+func load_player_data() -> void:
+	var file = FileAccess.open("user://game.dat", FileAccess.READ)
+	Hero_level = file.get_32()
+	Hero_current_weapon = file.get_32()
+	Hero_gold = file.get_32()
+	#print("Level: " + str(file.get_32()))
+	#print("Weapon: " + str(file.get_32()))
+	#print("Gold: " + str(file.get_32()))
+
+
+
+
+func _ready():
+	var root = get_tree().root
+	current_scene = root.get_child(root.get_child_count() - 1)
+	platform = OS.get_name()
+	#var root2 = get_node("/root")
+	#print(root2.get_rect())		
+	var platform_name:String = "Platform: "
+	match OS.get_name():
+		"Windows", "UWP":
+			print(platform_name + "Windows")
+		"macOS":
+			print(platform_name +"macOS")
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			print(platform_name + "Linux/BSD")
+		"Android":
+			print(platform_name + "Android")
+		"iOS":
+			print(platform_name + "iOS")
+		"Web":
+			print(platform_name + "Web")
+			
+	SWidth = ProjectSettings.get_setting("display/window/size/viewport_width")
+	SHeight = ProjectSettings.get_setting("display/window/size/viewport_height")
+	
+	print("Screen width: " + str(SWidth) + "   " + "Screen height :" + str(SHeight))
+
+	print("Get Cam1 reference ...")		
+	Cam1 = get_node("/root/Stage1/Camera2DPro")
+		
+	print("Stage1 ready ...")	
+
+func goto_scene(path):
+	# This function will usually be called from a signal callback,
+	# or some other function in the current scene.
+	# Deleting the current scene at this point is
+	# a bad idea, because it may still be executing code.
+	# This will result in a crash or unexpected behavior.
+
+	# The solution is to defer the load to a later time, when
+	# we can be sure that no code from the current scene is running:
+
+	call_deferred("_deferred_goto_scene", path)
+
+
+func _deferred_goto_scene(path):
+	# It is now safe to remove the current scene
+	current_scene.free()
+
+	# Load the new scene.
+	var s:Resource = ResourceLoader.load(path)
+
+	# Instance the new scene.
+	current_scene = s.instantiate()
+
+	# Add it to the active scene, as child of root.
+	get_tree().root.add_child(current_scene)
+
+	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
+	get_tree().current_scene = current_scene
+
+
+# func _one_shot_timer_example():
+# 	print("start")
+# 	await get_tree().create_timer(1.0).timeout
+# 	print("end")
+	
+
+
+
+
+#var project_size = Vector2D(
+#		ProjectSettings.get_setting("display/window/size/width"),
+#		ProjectSettings.get_setting("display/window/size/height")
+#	)
+#var current_scale = -1
+
+# Scene switch usage
+#func _on_Button_pressed():
+#	gv.goto_scene("res://Scene2.tscn")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddwl0lraqcnhi"]
+
+[ext_resource type="Shader" path="res://Scenes/Sky/clouds_2.gdshader" id="1_00yl4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgryt"]
+resource_local_to_scene = true
+shader = ExtResource("1_00yl4")
+shader_parameter/cloudscale = 1.1
+shader_parameter/speed = 0.01
+shader_parameter/clouddark = 1.0
+shader_parameter/cloudlight = 0.3
+shader_parameter/cloudcover = 0.2
+shader_parameter/cloudalpha = 8.0
+shader_parameter/skytint = 0.5
+shader_parameter/skycolour1 = Vector3(0.2, 0.4, 0.6)
+shader_parameter/skycolour2 = Vector3(0.4, 0.7, 1)
+shader_parameter/m = Transform2D(1.6, -1.2, 1.2, 1.6, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_a32kj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yfr72"]
+gradient = SubResource("Gradient_a32kj")
+width = 512
+height = 512
+
+[node name="Clouds2" type="TextureRect"]
+material = SubResource("ShaderMaterial_xgryt")
+offset_left = -115.0
+offset_top = -26.0
+offset_right = 397.0
+offset_bottom = 486.0
+scale = Vector2(2.96, 1)
+texture = SubResource("GradientTexture2D_yfr72")

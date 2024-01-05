@@ -1,0 +1,119 @@
+[gd_scene load_steps=20 format=3 uid="uid://e57iaukbwcqe"]
+
+[ext_resource type="Script" path="res://Scenes/GameMaster/GameMaster.gd" id="1_484vt"]
+[ext_resource type="Texture2D" uid="uid://c3cof36mln523" path="res://Assets/Objects/FT800.png" id="2_i8v0d"]
+[ext_resource type="Shader" path="res://Shaders/GameMaster/GameMaster.gdshader" id="3_uahvo"]
+[ext_resource type="Texture2D" uid="uid://c27y0ulcbj8uo" path="res://Assets/Avatars/AI-avatar1/Head_left/0001.png" id="4_18hd2"]
+[ext_resource type="Texture2D" uid="uid://btrjhoop13rxr" path="res://Assets/Avatars/AI-avatar1/Head_left/0002.png" id="5_ol262"]
+[ext_resource type="Shader" path="res://Shaders/GameMaster/Waveform.gdshader" id="5_v7roq"]
+[ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/tada.mp3" id="6_5rn5g"]
+[ext_resource type="Texture2D" uid="uid://clgji6xrltie8" path="res://Assets/Avatars/AI-avatar1/Head_left/0003.png" id="6_7d5jt"]
+[ext_resource type="Texture2D" uid="uid://bmaphn4dtypt1" path="res://Assets/Avatars/AI-avatar1/Head_left/0004.png" id="7_uxfht"]
+[ext_resource type="Texture2D" uid="uid://0v718mbdji32" path="res://Assets/Avatars/AI-avatar1/Head_left/0005.png" id="8_r8lwo"]
+[ext_resource type="Texture2D" uid="uid://ds41dexef2djx" path="res://Assets/Avatars/AI-avatar1/Head_left/0006.png" id="9_ebndk"]
+[ext_resource type="Texture2D" uid="uid://db4kefrin7yxo" path="res://Assets/Avatars/AI-avatar1/Head_left/0007.png" id="10_llvpq"]
+[ext_resource type="Texture2D" uid="uid://bax88gjj4ul50" path="res://Assets/Avatars/AI-avatar1/Head_left/0008.png" id="11_a6arn"]
+[ext_resource type="Texture2D" uid="uid://dw1guj8jhakdb" path="res://Assets/Avatars/AI-avatar1/Head_left/0009.png" id="12_431uk"]
+[ext_resource type="Texture2D" uid="uid://c7e0jgi2p8sv6" path="res://Assets/Avatars/AI-avatar1/Head_left/0010.png" id="13_vutbt"]
+[ext_resource type="Script" path="res://Scenes/GameMaster/gm_text.gd" id="16_mq2uw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7y54y"]
+shader = ExtResource("3_uahvo")
+shader_parameter/lines = 100
+shader_parameter/color1 = Color(0.901961, 0, 0.682353, 1)
+shader_parameter/color2 = Color(0.501961, 0, 0.568627, 1)
+shader_parameter/speed = 0.4
+shader_parameter/alpha = 1.0
+shader_parameter/noise_amount = 0.08
+shader_parameter/effect_factor = 0.11
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hknwm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_18hd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ol262")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7d5jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uxfht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r8lwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ebndk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_llvpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a6arn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_431uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vutbt")
+}],
+"loop": true,
+"name": &"Head_left",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7td23"]
+shader = ExtResource("5_v7roq")
+
+[node name="GameMaster" type="CanvasLayer"]
+layer = 6
+offset = Vector2(235, 100)
+transform = Transform2D(1, 0, 0, 1, 235, 100)
+script = ExtResource("1_484vt")
+
+[node name="ft800" type="Sprite2D" parent="."]
+position = Vector2(589, 396)
+texture = ExtResource("2_i8v0d")
+
+[node name="master_sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_7y54y")
+position = Vector2(79, 206)
+sprite_frames = SubResource("SpriteFrames_hknwm")
+animation = &"Head_left"
+frame = 8
+frame_progress = 0.725051
+
+[node name="Waveform" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_7td23")
+offset_left = 56.0
+offset_top = 443.0
+offset_right = 96.0
+offset_bottom = 483.0
+scale = Vector2(6.40328, 0.79199)
+color = Color(0, 0, 0, 1)
+
+[node name="show_snd" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5rn5g")
+
+[node name="gm_text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 635)
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.226
+anchor_right = 0.64
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0.6, 0, 1)
+theme_override_font_sizes/normal_font_size = 26
+fit_content = true
+autowrap_mode = 2
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("16_mq2uw")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl2kws5sjyad3"]
+
+[ext_resource type="Texture2D" uid="uid://bx033dfc6pesf" path="res://Assets/Objects/cars/maluch2/maluch3_body.png" id="1_yothv"]
+[ext_resource type="Texture2D" uid="uid://b5o3at7s67uyi" path="res://Assets/Objects/cars/maluch2/maluch2_kolo.png" id="2_pcqor"]
+
+[node name="Maluch3" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(45, -80, 107, -25, 163, -18, 191, -9, 201, 4, 202, 29, 207, 52, 198, 67, 161, 76, 109, 81, 68, 84, -72, 83, -193, 75, -205, 62, -202, 48, -208, 37, -211, 15, -203, 6, -132, -72, -99, -80)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="object_spr" type="Sprite2D" parent="."]
+texture = ExtResource("1_yothv")
+
+[node name="Kolo_l" type="Sprite2D" parent="."]
+position = Vector2(-134, 72)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_pcqor")
+
+[node name="Kolo_p" type="Sprite2D" parent="."]
+position = Vector2(133, 69)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_pcqor")
