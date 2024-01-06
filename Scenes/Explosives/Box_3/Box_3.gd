@@ -17,6 +17,7 @@ func _ready():
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	hit_count = randi_range(1,4)
 	$explosion_spr.stop()
+	$explosion_spr.visible = false
 	$Hitpoints.text = str(hit_count)
 	$object_spr.visible = true
 	
@@ -82,6 +83,7 @@ func _tween():
 func rpg_hit():
 	$Bullet_holes.vanish()
 	$object_spr.visible = false
+	$explosion_spr.visible = true
 	$snd_explode.play()
 	$explosion_spr.play("explode")
 	$Hitpoints.visible = false
@@ -100,6 +102,7 @@ func hit():
 			$Bullet_holes.vanish()
 			$object_spr.visible = false
 			$Hitpoints.visible = false
+			$explosion_spr.visible = true
 			$explosion_spr.play("explode")
 			$snd_explode.play()
 			_tween()
@@ -110,6 +113,7 @@ func bomb_explode():
 	$Bullet_holes.vanish()
 	$object_spr.visible = false
 	$Hitpoints.visible = false
+	$explosion_spr.visible = true
 	$explosion_spr.play("explode")
 	$snd_explode.play()
 	_tween()
