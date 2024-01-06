@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=38 format=3 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://Scenes/Moon/Moon.gd" id="33_fhpux"]
 [ext_resource type="AudioStream" uid="uid://cqbdq5gnyhmn8" path="res://Assets/Music/mountain-trials.ogg" id="34_ewt0x"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
+[ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_3/maluch_3.tscn" id="36_hqr6o"]
 [ext_resource type="PackedScene" uid="uid://chf1nu07b05ko" path="res://Scenes/Cars/maluch_red/maluch_red.tscn" id="37_ccyvi"]
 [ext_resource type="PackedScene" uid="uid://dwiyyg4wrha0d" path="res://Scenes/Explosives/Box_3/Box_3.tscn" id="37_y336g"]
 [ext_resource type="PackedScene" uid="uid://cikdwts4xbonp" path="res://Scenes/Items/item-ak-47.tscn" id="38_w2bgm"]
@@ -278,7 +279,7 @@ texture = ExtResource("5_e85i1")
 position = Vector2(4402, 529)
 
 [node name="Polonez1" parent="." instance=ExtResource("9_gev1q")]
-position = Vector2(2145, 526)
+position = Vector2(5733, 526)
 
 [node name="item-Ak-47" parent="." instance=ExtResource("38_w2bgm")]
 visible = false
@@ -287,3 +288,6 @@ position = Vector2(556, 651)
 [node name="Box3" parent="." instance=ExtResource("37_y336g")]
 position = Vector2(1433, 623)
 scale = Vector2(0.5, 0.5)
+
+[node name="Maluch3" parent="." instance=ExtResource("36_hqr6o")]
+position = Vector2(1944, 564)

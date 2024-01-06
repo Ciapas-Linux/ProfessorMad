@@ -47,37 +47,51 @@ func _tween():
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_parallel(true)
-	tween.tween_property($Top, "global_rotation", randf_range(-5.0,5.0), 1.2)
-	tween.tween_property($Top, "global_position", Vector2(global_position.x + randf_range(-205.0,305.0), global_position.y - randf_range(300.0,505.0)), 1.7)
-	tween.tween_property($Top, "self_modulate", Color(1, 1, 1, 0), 1.8)
 	
-	tween.tween_property($Top_2, "global_rotation", randf_range(-5.0,5.0), 0.7)
-	tween.tween_property($Top_2, "global_position", Vector2(global_position.x + randf_range(-275.0,375.0) , global_position.y - randf_range(300.0,575.0)), 1.4)
-	tween.tween_property($Top_2, "self_modulate", Color(1, 1, 1, 0), 1.8)
+	tween.tween_property($Kolo_l, "global_rotation", randf_range(-5.0,5.0), 1.2)
+	tween.tween_property($Kolo_l, "global_position", Vector2(global_position.x + randf_range(-205.0,305.0), global_position.y - randf_range(300.0,505.0)), 1.7)
+	tween.tween_property($Kolo_l, "self_modulate", Color(1, 1, 1, 0), 1.8)
 	
-	tween.tween_property($Left_board_1, "global_rotation", randf_range(-5.0,5.0), 0.5)
-	tween.tween_property($Left_board_1, "global_position", Vector2(global_position.x + randf_range(-275.0,375.0), global_position.y - randf_range(125.0,375.0)), 1.2)
-	tween.tween_property($Left_board_1, "self_modulate", Color(1, 1, 1, 0), 2.5)
+	tween.tween_property($Kolo_p, "global_rotation", randf_range(-5.0,5.0), 0.7)
+	tween.tween_property($Kolo_p, "global_position", Vector2(global_position.x + randf_range(-275.0,375.0) , global_position.y - randf_range(300.0,575.0)), 1.4)
+	tween.tween_property($Kolo_p, "self_modulate", Color(1, 1, 1, 0), 1.8)
 	
-	tween.tween_property($Left_board_2, "global_rotation", randf_range(-5.0,5.0), 1.2)
-	tween.tween_property($Left_board_2, "global_position", Vector2(global_position.x + randf_range(-375.0,375.0), global_position.y - randf_range(75.0,375.0)), 1.8)
-	tween.tween_property($Left_board_2, "self_modulate", Color(1, 1, 1, 0), 2.6)
+	tween.tween_property($buda_tyl, "global_rotation", randf_range(-5.0,5.0), 0.5)
+	tween.tween_property($buda_tyl, "global_position", Vector2(global_position.x + randf_range(-275.0,375.0), global_position.y - randf_range(125.0,375.0)), 1.2)
+	tween.tween_property($buda_tyl, "self_modulate", Color(1, 1, 1, 0), 2.5)
 	
-	tween.tween_property($Right_board_1, "global_rotation", randf_range(-5.0,5.0), 1.1)
-	tween.tween_property($Right_board_1, "global_position", Vector2(global_position.x + randf_range(-375.0,375.0), global_position.y - randf_range(125.0,375.0)), 1.9)
-	tween.tween_property($Right_board_1, "self_modulate", Color(1, 1, 1, 0), 1.9)
+	tween.tween_property($dach, "global_rotation", randf_range(-5.0,5.0), 1.2)
+	tween.tween_property($dach, "global_position", Vector2(global_position.x + randf_range(-375.0,375.0), global_position.y - randf_range(75.0,375.0)), 1.8)
+	tween.tween_property($dach, "self_modulate", Color(1, 1, 1, 0), 2.6)
 	
-	tween.tween_property($Right_board_2, "global_rotation", randf_range(-5.0,5.0), 0.5)
-	tween.tween_property($Right_board_2, "global_position", Vector2(global_position.x + randf_range(-305.0,355.0), global_position.y - randf_range(185.0,205.0)), 1.3)
-	tween.tween_property($Right_board_2, "self_modulate", Color(1, 1, 1, 0), 1.5)
+	tween.tween_property($drzwi, "global_rotation", randf_range(-5.0,5.0), 1.1)
+	tween.tween_property($drzwi, "global_position", Vector2(global_position.x + randf_range(-375.0,375.0), global_position.y - randf_range(125.0,375.0)), 1.9)
+	tween.tween_property($drzwi, "self_modulate", Color(1, 1, 1, 0), 1.9)
 	
-	tween.tween_property($Center_board_1, "global_rotation", randf_range(-5.0,5.0), 1.2)
-	tween.tween_property($Center_board_1, "global_position", Vector2(global_position.x + randf_range(-395.0,295.0), global_position.y - randf_range(105.0,375.0)), 1.2)
-	tween.tween_property($Center_board_1, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	tween.tween_property($lampa_tyl, "global_rotation", randf_range(-5.0,5.0), 0.5)
+	tween.tween_property($lampa_tyl, "global_position", Vector2(global_position.x + randf_range(-305.0,355.0), global_position.y - randf_range(185.0,205.0)), 1.3)
+	tween.tween_property($lampa_tyl, "self_modulate", Color(1, 1, 1, 0), 1.5)
 	
-	tween.tween_property($Bottom_board_1, "global_rotation", randf_range(-5.0,5.0), 0.9)
-	tween.tween_property($Bottom_board_1, "global_position", Vector2(global_position.x + randf_range(-305.0,305.0), global_position.y - randf_range(85.0,335.0)), 1.6)
-	tween.tween_property($Bottom_board_1, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	tween.tween_property($maska_p, "global_rotation", randf_range(-5.0,5.0), 1.2)
+	tween.tween_property($maska_p, "global_position", Vector2(global_position.x + randf_range(-395.0,295.0), global_position.y - randf_range(105.0,375.0)), 1.2)
+	tween.tween_property($maska_p, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	
+	tween.tween_property($podloga, "global_rotation", randf_range(-5.0,5.0), 0.9)
+	tween.tween_property($podloga, "global_position", Vector2(global_position.x + randf_range(-305.0,305.0), global_position.y - randf_range(85.0,335.0)), 1.6)
+	tween.tween_property($podloga, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	
+	tween.tween_property($przod_p, "global_rotation", randf_range(-5.0,5.0), 0.9)
+	tween.tween_property($przod_p, "global_position", Vector2(global_position.x + randf_range(-305.0,305.0), global_position.y - randf_range(85.0,335.0)), 1.6)
+	tween.tween_property($przod_p, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	
+	tween.tween_property($szyba_p, "global_rotation", randf_range(-5.0,5.0), 0.9)
+	tween.tween_property($szyba_p, "global_position", Vector2(global_position.x + randf_range(-305.0,305.0), global_position.y - randf_range(85.0,335.0)), 1.6)
+	tween.tween_property($szyba_p, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	
+	tween.tween_property($szyba_tyl, "global_rotation", randf_range(-5.0,5.0), 0.9)
+	tween.tween_property($szyba_tyl, "global_position", Vector2(global_position.x + randf_range(-305.0,305.0), global_position.y - randf_range(85.0,335.0)), 1.6)
+	tween.tween_property($szyba_tyl, "self_modulate", Color(1, 1, 1, 0), 1.7)
+	
 	
 
 func rpg_hit():
