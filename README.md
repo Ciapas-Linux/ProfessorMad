@@ -13,6 +13,10 @@ Here is the link to the youtube channel
 
 https://www.youtube.com/@gamedevpolska/videos
 
+[![Watch the video](https://img.youtube.com/vi/6M4H_5aWBc0/hqdefault.jpg)](https://www.youtube.com/embed/6M4H_5aWBc0)
+
+[<img src="https://img.youtube.com/vi/6M4H_5aWBc0/hqdefault.jpg" width="600" height="300"
+/>](https://www.youtube.com/embed/6M4H_5aWBc0)
 
 
 
