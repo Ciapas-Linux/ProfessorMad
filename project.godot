@@ -14,8 +14,8 @@ config/name="Prof.ysolek"
 run/main_scene="res://Scenes/Stages/Stage1.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="res://icon1.png"
-config/icon="res://icon1.png"
+boot_splash/image="res://splash.png"
+config/icon="res://icon.png"
 
 [autoload]
 
