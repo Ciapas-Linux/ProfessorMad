@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cpwxucu8mg3t0" path="res://Assets/Objects/say.png" id="1_p3xby"]
 [ext_resource type="Script" path="res://Scenes/CloudChat/EnemyChat.gd" id="2_4gf5i"]
-[ext_resource type="FontFile" uid="uid://bmonncwiob81c" path="res://Assets/Fonts/Kalam-Regular.ttf" id="3_bgudr"]
 [ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/tada.mp3" id="4_way1d"]
 
 [sub_resource type="Animation" id="Animation_2i1ce"]
@@ -72,7 +71,6 @@ offset_top = -155.0
 offset_right = -38.0
 offset_bottom = -132.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_bgudr")
 theme_override_font_sizes/font_size = 20
 
 [node name="Fade" type="AnimationPlayer" parent="."]

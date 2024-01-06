@@ -8,7 +8,6 @@ var destination_point:Vector2
 var start_point:Vector2
 var hit:bool = false
 var continue_move :bool = false
-# var yacceleration:int = 0
 var timer :Timer
 
 
@@ -23,7 +22,6 @@ func _ready():
 	$sprite_flame.visible = true
 	$sprite_flame.play()
 	$hit_sprite.visible = false
-	#$hit_sprite.position = destination_point
 	$CollisionShape2D.disabled = true
 	timer = Timer.new()
 	timer.wait_time = 0.05
@@ -38,28 +36,13 @@ func _ready():
 	$snd_fire1.play()
 	$snd_fire2.play()
 	
-	# print("")
 	print("Player release rpg head: " + self.name)
-	# print("Player release rpg head m viewport: " + str(get_viewport().get_mouse_position()))
-	# print("Player release rpg head m global: " + str(get_global_mouse_position()))
-	# print("Player release rpg head m local: " + str(get_local_mouse_position()))
-	# print("Player release rpg head Start: " + str(start_point))
-	# print("Player release rpg head Distance: " + str(distance))
-	# print("Player release rpg head Destination: " + str(destination_point))
-	# print("Player release rpg head Distance 2: " + str(destination_point - start_point))
-	# print("")
-
-
+	
 
 func _physics_process(delta):
-	# actual_distance = global_position.distance_to(destination_point)
-	# $RayCast2D.target_position = get_local_mouse_position()	
-	# print("rpg dist: " + str(int(actual_distance)))
 	if continue_move == true and hit == false:# rocket miss target just continue fly that direction:
 		position += transform.x * continue_speed * delta
-		#yacceleration += 1
-		#position.y -= yacceleration
-		
+				
 
 # when rocket go to destination point:
 func on_tween_finished():
@@ -104,6 +87,37 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_hit_sprite_animation_finished() -> void:
 	queue_free()
 
+
+
+
+
+
+
+
+
+
+
+	#$hit_sprite.position = destination_point
+
+
+#yacceleration += 1
+		#position.y -= yacceleration
+
+# print("")
+	# print("Player release rpg head: " + self.name)
+	# print("Player release rpg head m viewport: " + str(get_viewport().get_mouse_position()))
+	# print("Player release rpg head m global: " + str(get_global_mouse_position()))
+	# print("Player release rpg head m local: " + str(get_local_mouse_position()))
+	# print("Player release rpg head Start: " + str(start_point))
+	# print("Player release rpg head Distance: " + str(distance))
+	# print("Player release rpg head Destination: " + str(destination_point))
+	# print("Player release rpg head Distance 2: " + str(destination_point - start_point))
+	# print("")
+
+
+# actual_distance = global_position.distance_to(destination_point)
+	# $RayCast2D.target_position = get_local_mouse_position()	
+	# print("rpg dist: " + str(int(actual_distance)))
 
 
 

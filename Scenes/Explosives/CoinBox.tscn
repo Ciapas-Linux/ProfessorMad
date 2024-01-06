@@ -9,9 +9,8 @@ script = ExtResource("1_g6smj")
 
 [node name="Coin" parent="." instance=ExtResource("2_wvn0k")]
 position = Vector2(0, 6)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(2, 2)
 
 [node name="box2" parent="." instance=ExtResource("3_icvo6")]
-scale = Vector2(0.150619, 0.150619)
 
 [connection signal="explode" from="box2" to="." method="_on_box_2_explode"]

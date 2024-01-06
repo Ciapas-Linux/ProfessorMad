@@ -17,6 +17,7 @@ func _ready():
 	hit_count = randi_range(1,4)
 	$Hitpoints.text = str(hit_count)
 	$explosion_spr.stop()
+	$explosion_spr.visible = false
 	$object_spr.visible = true
 	
 func _process(_delta) -> void:
@@ -48,51 +49,61 @@ func hit():
 			if hit_count == 0:
 				$BulletCollision.set_deferred("disabled", true)
 				$Bullet_holes.vanish()
+				$explosion_spr.visible = true
 				$explosion_spr.play("explode")
 				$snd_explode.play()
 				gv.Cam1.ScreenShake(30,0.5)
 				tween = get_tree().create_tween()
+				tween.connect("finished", on_tween_finished)
 				tween.set_ease(Tween.EASE_OUT)
 				tween.set_trans(Tween.TRANS_SINE)
 				tween.set_parallel(true)
-				tween.tween_property($object_spr, "global_rotation", randf_range(-3.0,3.0), 0.7)
-				tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 165), 0.7)
-				tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
+				tween.tween_property($object_spr, "global_rotation", randf_range(-3.0,3.0), 1.2)
+				tween.tween_property($object_spr, "global_position", Vector2(global_position.x + randf_range(-295.0,295.0), global_position.y - randf_range(105.0,275.0)), 1.6)
+				tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.6)
 
 func rpg_hit():
 	$Bullet_holes.vanish()
+	$explosion_spr.visible = true
 	$explosion_spr.play("explode")
 	$snd_explode.play()
 	tween = get_tree().create_tween()
+	tween.connect("finished", on_tween_finished)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_parallel(true)
-	tween.tween_property($object_spr, "global_rotation", randf_range(-3.0,3.0), 0.7)
-	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 225), 0.7)
-	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
+	tween.tween_property($object_spr, "global_rotation", randf_range(-3.0,3.0), 1.3)
+	tween.tween_property($object_spr, "global_position", Vector2(global_position.x + randf_range(-295.0,295.0), global_position.y - randf_range(105.0,275.0)), 1.6)
+	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.6)
 	print(name + ": enemies hit me by rpg!") 
 
 func bomb_explode():
 	$Bullet_holes.vanish()
+	$explosion_spr.visible = true
 	$explosion_spr.play("explode")
 	$snd_explode.play()
 	tween = get_tree().create_tween()
+	tween.connect("finished", on_tween_finished)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_parallel(true)
-	tween.tween_property($object_spr, "global_rotation", randf_range(-3.0,3.0), 0.7)
-	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 165), 0.7)
-	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
+	tween.tween_property($object_spr, "global_rotation", randf_range(-4.0,3.0), 1.3)
+	tween.tween_property($object_spr, "global_position", Vector2(global_position.x + randf_range(-295.0,295.0), global_position.y - randf_range(105.0,275.0)), 1.6)
+	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.6)
 	print(name + ": enemies hit me by drone big bomb!") 
 
 func _on_explosion_spr_animation_finished() -> void:
 	emit_signal("explode")
 	self.queue_free()
+	#$explosion_spr.visible = false
 
 func _on_bodies_collision_hit_me() -> void:
 	print(name + ": on bodies collision!") 
 	
-
+func on_tween_finished():
+	#emit_signal("explode")
+	#self.queue_free()
+	pass
 
 
 
