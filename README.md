@@ -1,5 +1,5 @@
 
-# ProfessorMad
+# ProfessorMad : Adventures of Professor Łysolek
 
 **ProfessorMad** The open source prototype of the game titled the Adventures of Professor Łysolek (eng: Ysolek) made using the godot 2D/3D game engine.
 
