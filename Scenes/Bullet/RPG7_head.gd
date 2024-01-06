@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed:float = 0.0008 # 0.0008
+@export var speed:float = 0.0008 # default: 0.0008
 @export var continue_speed:float = 2500
 var distance:float = 0.0
 var actual_distance:float = 0.0
