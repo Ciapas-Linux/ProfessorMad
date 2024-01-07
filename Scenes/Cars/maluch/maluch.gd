@@ -61,7 +61,7 @@ func _process_on_state_stop() -> void:
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
 	#$object_spr.visible = false
-    
+	
 
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false

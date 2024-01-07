@@ -124,6 +124,7 @@ func on_tween_finished():
 	self.queue_free()
 
 func _on_explosion_spr_animation_finished() -> void:
+	$explosion_spr.visible = false
 	#emit_signal("explode")
 	#self.queue_free()
 	pass

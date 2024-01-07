@@ -12,10 +12,11 @@ signal explode
 var mouse_enter:bool = false
 
 func _ready():
+	randomize() 
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
-	hit_count = randi_range(1,4)
+	hit_count = randi_range(5,15)
 	$explosion_spr.stop()
 	$explosion_spr.visible = false
 	$Hitpoints.text = str(hit_count)
@@ -106,13 +107,13 @@ func rpg_hit():
 
 func hit():
 	if hit_count > 0:
-		print(name + ": dostałem od: " + "hits: " + str(hit_count))
+		print(name + ": player bullet hit me" + " hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		hit_count -= 1
 		$Hitpoints.text = str(hit_count)
 
 		if hit_count == 0:
-			$CollisionShape2D.set_deferred("disabled", true)
+			$CollisionPolygon2D.set_deferred("disabled", true)
 			$Bullet_holes.vanish()
 			$object_spr.visible = false
 			$Hitpoints.visible = false
@@ -138,6 +139,7 @@ func on_tween_finished():
 	self.queue_free()
 
 func _on_explosion_spr_animation_finished() -> void:
+	$explosion_spr.visible = false
 	#emit_signal("explode")
 	#self.queue_free()
 	pass
