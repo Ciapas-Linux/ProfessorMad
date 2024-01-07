@@ -1,9 +1,12 @@
 extends Node2D
 
 
+var particles_res:Resource = preload("res://Scenes/Cars/maluch_3/shrapnel.tscn")
+
 @export var min_size : float = 0.5
 @export var max_size : float = 2.3
 @export var vanish_time := 0.5
+
 
 
 var holes_position: Array[Vector2] = []
@@ -31,6 +34,7 @@ func hit() -> void:
 		return
 
 	holes_tmp_position = holes_position.pop_front()
+
 	var Bullet_Hit_sprite:Sprite2D = Sprite2D.new()
 	Bullet_Hit_sprite.texture = gv.Bullet_hit_textures.pick_random()
 	var Sprite_scale:float = randf_range(min_size,max_size)
@@ -38,6 +42,17 @@ func hit() -> void:
 	Bullet_Hit_sprite.position = holes_tmp_position
 	visible = true
 	add_child(Bullet_Hit_sprite)
+	
+	var shrapnel_particles:GPUParticles2D  = particles_res.instantiate()
+	#blt.transform = global_transform
+	#shrapnel_particles.transform = transform
+	shrapnel_particles.position = holes_tmp_position
+	shrapnel_particles.rotation = global_rotation
+	shrapnel_particles.one_shot = true
+	shrapnel_particles.visible = true
+	shrapnel_particles.emitting = true
+	add_child(shrapnel_particles)
+	
 	$snd_bullet_hit.play()	
 			
 
@@ -57,6 +72,45 @@ func vanish() -> void:
 ##############################################
 ##############################################
 ##############################################
+
+
+
+
+
+
+
+# extends TextureRect
+
+# var imageTexture : ImageTexture = null
+# var dynImage : Image = null
+
+# func _ready():
+# 	imageTexture = ImageTexture.new()
+# 	dynImage = Image.new()
+	
+# 	dynImage.create(rect_size.x,rect_size.y,false,Image.FORMAT_RGB8)
+# 	dynImage.fill(Color(1,1,1,1))
+	
+# 	imageTexture.create_from_image(dynImage)
+# 	self.texture = imageTexture
+	
+# func _process(delta):
+# 	update_image()
+	
+# func update_image() -> void:
+# 	dynImage.lock()
+# 	#do your drawing magic here
+# 	for i in range(rect_size.x):
+# 		for j in range(rect_size.y):
+# 			dynImage.set_pixel(i, j, Color(0, 1, 0, 1))
+# 	dynImage.unlock()
+
+# 	imageTexture.set_data(dynImage)
+# 	self.texture = imageTexture
+
+
+
+
 
 
 # func hit(target_sprite : Sprite2D) -> void:
