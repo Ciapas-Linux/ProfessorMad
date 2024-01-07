@@ -28,6 +28,7 @@ func _on_player_bullet_ready():
 		
 
 ## > (Vector2D),(Vector2D),(Vector2D),(Vector2D) ..........
+# create Sprite2D  and shrapnel at mouse position when bullet enter scene:
 func hit() -> void:
 	if holes_position.is_empty() == true:
 		print(name + ": empty array!") 
@@ -44,8 +45,6 @@ func hit() -> void:
 	add_child(Bullet_Hit_sprite)
 	
 	var shrapnel_particles:GPUParticles2D  = particles_res.instantiate()
-	#blt.transform = global_transform
-	#shrapnel_particles.transform = transform
 	shrapnel_particles.position = holes_tmp_position
 	shrapnel_particles.rotation = global_rotation
 	shrapnel_particles.one_shot = true
@@ -75,7 +74,8 @@ func vanish() -> void:
 
 
 
-
+# blt.transform = global_transform
+# shrapnel_particles.transform = transform
 
 
 
