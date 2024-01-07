@@ -29,7 +29,7 @@ radial_accel_max = -2.23517e-06
 tangential_accel_min = -2.23517e-06
 tangential_accel_max = -2.23517e-06
 scale_min = 0.1
-scale_max = 0.3
+scale_max = 0.4
 anim_speed_max = 20.0
 anim_offset_max = 1.0
 
