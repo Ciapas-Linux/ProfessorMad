@@ -1,31 +1,25 @@
 
 
+##############################################
+# GDscript:									 #
+# Tarpan ENEMIES Truck converted into combat #
+#											 #	
+##############################################
 
-########################################
-# MALUCH fiat 125p ENEMIES CAR #########
-########################################
 
 
 extends CharacterBody2D
 
-
+@export var hit_count:int = 12
 @export var speed:float = 100
 @export var gravity:float = 700.0
-
 @onready var tween: Tween
-
 var local_cursor_position:Vector2
-
 var player_distance:float
-
 const MOVE_RIGHT: int = 0
 const MOVE_LEFT: int = 1
 const STOP: int = 2
-
 var mouse_enter:bool = false
-
-@export var hit_count:int = 12
-
 var current_state : int = MOVE_RIGHT
 
 var particles_res:Resource = preload("res://Scenes/Cars/maluch/smoke_particles.tscn")
@@ -99,7 +93,6 @@ func rpg_hit():
 	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
-	
 	_tween()
 
 
@@ -115,8 +108,7 @@ func bomb_explode():
 	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
-	
-	_tween()	
+	_tween()
 
 func hit()-> void:
 	if hit_count > 0:
@@ -136,11 +128,9 @@ func hit()-> void:
 			current_state = STOP
 			get_node("snd_engine").stop()
 			$snd_player.stop()
-			
 			_tween()
-			
 			gv.Cam1.ScreenShake(30,0.5)
-				
+			#queue_free()	
 		
 @warning_ignore("unused_parameter")		
 func _process_on_state_move_right(delta: float) -> void:
@@ -228,7 +218,7 @@ func _on_timer_timeout() -> void:
 			$snd_player.play()
 	
 func _on_area_2d_area_entered(area:Area2D) -> void:
-	print("Car maluch: area hit me: " + area.name)
+	print("Car maluch, area hit me: " + area.name)
 	#if (area.name.contains("Bullet") == true):
 		#hit()
 	
@@ -248,22 +238,14 @@ func _on_big_explosion_finished() -> void:
 
 
 
-
-################################################################# :)
-
-
-
-
+#$object_spr.visible = false
+			#$explode_spr.play("explode")
+			#$snd_explode.play()
+			#ShakeScreen.shake(20,0.5)
 
 
 
-#var Bullet_hit1_tex:Resource = preload("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png")
 
-
-# $object_spr.visible = false
-# $explode_spr.play("explode")
-# $snd_explode.play()
-# ShakeScreen.shake(20,0.5)
 
 
 	# if (area.name.contains("Bullet") == true):
