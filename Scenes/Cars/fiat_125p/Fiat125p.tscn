@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://8hur7jykmt1v"]
+
+[ext_resource type="Texture2D" uid="uid://cenxci6tto20a" path="res://Assets/Objects/cars/fiat125/fiat_125_body.png" id="1_awviu"]
+[ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p.gd" id="1_j6dho"]
+[ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Objects/cars/fiat125/fiat_125_kolo.png" id="2_5oxaa"]
+[ext_resource type="Texture2D" uid="uid://bu4nb337r8wmh" path="res://Assets/Objects/cars/fiat125/szyba_mala_lewa.png" id="4_3croh"]
+[ext_resource type="Texture2D" uid="uid://cfl0xqpvdlwlb" path="res://Assets/Objects/cars/fiat125/szyba_duza_lewa.png" id="5_nutnc"]
+[ext_resource type="Texture2D" uid="uid://b151dqpd8syuy" path="res://Assets/Objects/cars/fiat125/szyba_duza_p.png" id="6_e82q4"]
+[ext_resource type="Texture2D" uid="uid://ctydqdu0gmjnw" path="res://Assets/Objects/cars/fiat125/szyba_mala_p1.png" id="7_hbqss"]
+[ext_resource type="Texture2D" uid="uid://dmkb0w4fpff74" path="res://Assets/Objects/cars/fiat125/szyba_mala_p2.png" id="8_1utpk"]
+[ext_resource type="Texture2D" uid="uid://bags4nfiay8cp" path="res://Assets/Objects/cars/fiat125/szyba_front_1.png" id="9_7p8yc"]
+[ext_resource type="Texture2D" uid="uid://bhxvqwilo8wa7" path="res://Assets/Objects/cars/fiat125/szyba_front_2.png" id="10_lxi8s"]
+[ext_resource type="Texture2D" uid="uid://40jytaqn3q6t" path="res://Assets/Objects/cars/fiat125/szyba_front_3.png" id="11_g2cra"]
+[ext_resource type="Texture2D" uid="uid://deywov0esurss" path="res://Assets/Objects/cars/fiat125/szyba_front_4.png" id="12_74qwy"]
+
+[node name="Fiat125p" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 31
+script = ExtResource("1_j6dho")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(136, -109, 171, -86, 209, -41, 272, -32, 326, -27, 337, -18, 340, -2, 347, 2, 347, 17, 336, 24, 346, 36, 349, 45, 340, 53, 325, 54, 318, 66, 284, 69, 165, 85, 131, 87, 117, 89, 43, 90, -193, 93, -235, 95, -276, 93, -302, 78, -324, 81, -329, 67, -347, 57, -342, 49, -338, 39, -346, 14, -344, 1, -336, -13, -298, -22, -240, -27, -178, -32, -147, -59, -101, -104, -87, -108, -33, -111, 6, -111)
+
+[node name="object_spr" type="Sprite2D" parent="."]
+texture = ExtResource("1_awviu")
+
+[node name="kolo_l" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-248, 77)
+texture = ExtResource("2_5oxaa")
+
+[node name="kolo_p" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(179, 76)
+texture = ExtResource("2_5oxaa")
+
+[node name="szyba_l_1" type="Sprite2D" parent="."]
+position = Vector2(-99, -62)
+texture = ExtResource("4_3croh")
+
+[node name="szyba_l_2" type="Sprite2D" parent="."]
+position = Vector2(-44, -67)
+texture = ExtResource("5_nutnc")
+
+[node name="szyba_p_1" type="Sprite2D" parent="."]
+position = Vector2(49, -66)
+texture = ExtResource("6_e82q4")
+
+[node name="szyba_p_2" type="Sprite2D" parent="."]
+position = Vector2(93, -65)
+texture = ExtResource("7_hbqss")
+
+[node name="szyba_p_3" type="Sprite2D" parent="."]
+position = Vector2(111, -63)
+texture = ExtResource("8_1utpk")
+
+[node name="szyba_front_1" type="Sprite2D" parent="."]
+position = Vector2(-42, -62)
+texture = ExtResource("9_7p8yc")
+
+[node name="szyba_front_2" type="Sprite2D" parent="."]
+position = Vector2(-101, -58)
+texture = ExtResource("10_lxi8s")
+
+[node name="szyba_front_3" type="Sprite2D" parent="."]
+position = Vector2(53, -64)
+texture = ExtResource("11_g2cra")
+
+[node name="szyba_front_4" type="Sprite2D" parent="."]
+position = Vector2(114, -59)
+texture = ExtResource("12_74qwy")

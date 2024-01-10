@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://drjrhnpsp2cde"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o36nx"]
+
+[node name="HomingMisille" type="Area2D"]
+collision_layer = 16
+collision_mask = 47
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o36nx")
+
+[node name="war_head" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

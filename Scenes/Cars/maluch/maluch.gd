@@ -1,9 +1,9 @@
 
 
-
-########################################
-# MALUCH fiat 125p ENEMIES CAR #########
-########################################
+###################################################
+#################################################
+# MALUCH Polski fiat 126p ENEMIES CAR ########
+##########################################
 
 
 extends CharacterBody2D
@@ -142,8 +142,7 @@ func hit()-> void:
 			gv.Cam1.ScreenShake(30,0.5)
 				
 		
-@warning_ignore("unused_parameter")		
-func _process_on_state_move_right(delta: float) -> void:
+func _process_on_state_move_right(_delta: float) -> void:
 	if $smoke_particles.emitting == false:
 			$smoke_particles.emitting = true
 	
@@ -180,8 +179,7 @@ func _process_on_state_move_right(delta: float) -> void:
 	player_distance = global_position.distance_to(gv.Hero_global_position)
 	move_and_slide()
 	
-@warning_ignore("unused_parameter")	
-func _process_on_state_move_left(delta: float) -> void:
+func _process_on_state_move_left(_delta: float) -> void:
 	if $smoke_particles.emitting == false:
 			$smoke_particles.emitting = true
 	

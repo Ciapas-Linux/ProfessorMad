@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=39 format=3 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
 [ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_3/maluch_3.tscn" id="36_hqr6o"]
 [ext_resource type="PackedScene" uid="uid://chf1nu07b05ko" path="res://Scenes/Cars/maluch_red/maluch_red.tscn" id="37_ccyvi"]
+[ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="37_cq0q3"]
 [ext_resource type="PackedScene" uid="uid://dwiyyg4wrha0d" path="res://Scenes/Explosives/Box_3/Box_3.tscn" id="37_y336g"]
 [ext_resource type="PackedScene" uid="uid://cikdwts4xbonp" path="res://Scenes/Items/item-ak-47.tscn" id="38_w2bgm"]
 
@@ -286,8 +287,11 @@ visible = false
 position = Vector2(556, 651)
 
 [node name="Box3" parent="." instance=ExtResource("37_y336g")]
-position = Vector2(1433, 623)
+position = Vector2(1305, 623)
 scale = Vector2(0.5, 0.5)
 
 [node name="Maluch3" parent="." instance=ExtResource("36_hqr6o")]
-position = Vector2(1944, 548)
+position = Vector2(1845, 548)
+
+[node name="Fiat125p" parent="." instance=ExtResource("37_cq0q3")]
+position = Vector2(6734, 284)
