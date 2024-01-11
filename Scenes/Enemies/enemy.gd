@@ -16,7 +16,7 @@ const max_speed:float = 300.0
 
 var particles_res:Resource = preload("res://Scenes/Enemies/hit_particles.tscn")
 
-var Head_hit1_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/enemy_head1.png")
+var Head_hit1_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/face_3-sm.png")
 var Head_hit2_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/enemy_head2.png")
 var Head_hit3_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/enemy_head3.png")
 var Head_death_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/enemy_head_death.png")
