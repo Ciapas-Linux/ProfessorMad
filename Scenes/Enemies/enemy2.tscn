@@ -1040,7 +1040,7 @@ texture = ExtResource("2_fhb8i")
 z_index = 1
 position = Vector2(31.515, -148.915)
 rotation = 0.191699
-scale = Vector2(1.7, 1.7)
+scale = Vector2(2, 2)
 texture = ExtResource("3_jlsai")
 offset = Vector2(-30, -130)
 

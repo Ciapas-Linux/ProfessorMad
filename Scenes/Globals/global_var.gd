@@ -37,14 +37,16 @@ var Hero_is_on_floor:bool = false
 var Hero_is_on_wall:bool = false
 var Hero_is_paused:bool = false
 var Hero_level:int = 1
-var Hero_guns = {"no": 0, "ak_47": 1, "rpg_7": 2}
+var Hero_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3}
 var Hero_current_weapon:int = Hero_guns["ak_47"]
 var Hero_weapon:Sprite2D
 
 # 0 no weapon
 # 1 ak_47
 # 2 rpg_7
-# 3 ?
+# 3 rocket_4 
+# 4 ?
+
 
 # Hero global signals:
 signal player_bullet_ready

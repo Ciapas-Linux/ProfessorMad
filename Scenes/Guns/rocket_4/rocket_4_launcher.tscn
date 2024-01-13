@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ka4do5pd7dl"]
+
+[ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Objects/rocket_launcher.png" id="1_nowhg"]
+[ext_resource type="Script" path="res://Scenes/Guns/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
+[ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/weapons/reload1.wav" id="3_dg3vb"]
+
+[node name="Rocket_4" type="Sprite2D"]
+texture = ExtResource("1_nowhg")
+script = ExtResource("2_eseiu")
+
+[node name="BulletsSpawn" type="Marker2D" parent="."]
+position = Vector2(259, -6)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+
+[node name="snd_reload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dg3vb")
+volume_db = 5.0
+pitch_scale = 0.4

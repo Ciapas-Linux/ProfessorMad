@@ -56,7 +56,9 @@ func _ready():
 	print("Hero money: " + str(gv.Hero_gold)) 
 	print("")  
 
-		
+	############################ !!!!!!!!!!!!!!!!	
+	gv.Hero_current_weapon = 3
+
 	load_inventory()
 	
 	emit_signal("player_stats_changed", self)
@@ -69,19 +71,27 @@ func load_inventory():
 		0:
 			pass # no weapon
 		1:
-			gv.Hero_weapon = load("res://Scenes/Guns/AK-47.tscn").instantiate()
+			gv.Hero_weapon = load("res://Scenes/Guns/ak_47/AK-47.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
 			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(3.2,3.2)
 		2:
-			gv.Hero_weapon = load("res://Scenes/Guns/rpg_7.tscn").instantiate()
+			gv.Hero_weapon = load("res://Scenes/Guns/rpg_7/rpg_7.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
 			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(5,7)	
+
+		3:
+			gv.Hero_weapon = load("res://Scenes/Guns/rocket_4/rocket_4_launcher.tscn").instantiate()
+			if get_node("Torso/arm_r").get_child_count() > 1:
+				get_node("Torso/arm_r").get_child(1).queue_free()
+			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
+			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
+			gv.Hero_weapon.scale = Vector2(3,3)		
 
 
 func load_next_weapon():

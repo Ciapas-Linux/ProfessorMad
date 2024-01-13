@@ -6,7 +6,7 @@
 extends Sprite2D
 
 var can_fire:bool = true
-var rpg_head:Resource = preload("res://Scenes/Bullet/RPG_head.tscn")
+var rpg_head:Resource = preload("res://Scenes/Guns/rpg_7/rpg_7_head.tscn")
 var recoil:int = 130
 var shoots:int = 0
 const ammo_max:int = 15
