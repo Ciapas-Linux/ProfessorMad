@@ -57,7 +57,7 @@ func _ready():
 	print("")  
 
 	############################ !!!!!!!!!!!!!!!!	
-	gv.Hero_current_weapon = 3
+	# gv.Hero_current_weapon = 3
 
 	load_inventory()
 	
