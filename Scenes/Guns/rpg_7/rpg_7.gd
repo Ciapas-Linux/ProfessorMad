@@ -22,7 +22,7 @@ func _ready():
 		
 func _process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
-	$RayCast2D.target_position = get_local_mouse_position()			
+	#$RayCast2D.target_position = get_local_mouse_position()			
 
 	if Input.is_action_just_pressed("Fire"):
 		if gv.fsm.state.name == "target_up" or gv.fsm.state.name == "target_down":

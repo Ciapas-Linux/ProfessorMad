@@ -48,7 +48,7 @@ func shoot():
 		return	
 		
 	var head:Area2D = rocket_4_misille.instantiate()
-	head.name = "rpg_7" + str(shoots)
+	head.name = "rocket_4_head" + str(shoots)
 	#$war_head.visible = false
 	head.transform = get_node("BulletsSpawn").global_transform
 	get_tree().root.add_child(head)

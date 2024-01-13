@@ -2,17 +2,24 @@ extends Area2D
 
 @export var speed:float = 0.0008 # default: 0.0008
 @export var continue_speed:float = 2500
+
+@export var steering_force = 20.0
+var velocity:Vector2 = Vector2()
+var acceleration = Vector2()
+var target = null
+
 var distance:float = 0.0
 var actual_distance:float = 0.0
 var destination_point:Vector2
 var start_point:Vector2
 var hit:bool = false
 var continue_move :bool = false
-var timer :Timer
+var timer_collision_off :Timer
 
 
 func _enter_tree() -> void:
 	destination_point = get_global_mouse_position()
+	target = destination_point
 	
 	
 
@@ -23,39 +30,65 @@ func _ready():
 	$sprite_flame.play()
 	$hit_sprite.visible = false
 	$CollisionShape2D.disabled = true
-	timer = Timer.new()
-	timer.wait_time = 0.05
-	timer.one_shot = true
-	timer.connect("timeout", _on_timer_timeout)
-	add_child(timer)
-	var tween = create_tween()
-	tween.connect("finished", on_tween_finished)
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property(self, "position", destination_point, distance * speed)
+	timer_collision_off = Timer.new()
+	timer_collision_off.wait_time = 0.05
+	timer_collision_off.one_shot = true
+	timer_collision_off.connect("timeout", _on_timer2_timeout)
+	add_child(timer_collision_off)
+	# var tween = create_tween()
+	# tween.connect("finished", on_tween_finished)
+	# tween.set_trans(Tween.TRANS_LINEAR)
+	# tween.set_ease(Tween.EASE_IN)
+	# tween.tween_property(self, "position", destination_point, distance * speed)
 	$snd_fire1.play()
 	$snd_fire2.play()
+	$war_head.play("rotate")
+	$Timer.start()
 	
 	print("Player release rpg head: " + self.name)
 	
 
 func _physics_process(delta):
-	if continue_move == true and hit == false:# rocket miss target just continue fly that direction:
-		position += transform.x * continue_speed * delta
-				
+	#if continue_move == true and hit == false:# rocket miss target just continue fly that direction:
+		#position += transform.x * continue_speed * delta
+
+	velocity = transform.x * speed
+	# Add: add velocity to steer to acceleration
+	acceleration += steer()
+	# Add: add the velocity plus the acceleration x delta value to the velocity
+	velocity += acceleration * delta
+	# Add: limit the length of the velocity vector so that it does not exceed the speed
+	velocity = velocity.limit_length(speed)
+	position += velocity * delta
+	rotation = velocity.angle()
+
+# steer the missile towards the target:
+func steer():
+	# Define as velocity to steer
+	var steering = Vector2()
+	# Define ideal velocity (direction x speed towards player character from current position)
+	var ideal_velocity = (target.position - position).normalized() * speed
+	# speed to steer = direction vector obtained by ideal_velocity - current_velocity x force to steer
+	steering = (ideal_velocity - velocity).normalized() * steering_force
+  # output velocity to steer
+	return steering
 
 # when rocket go to destination point:
 func on_tween_finished():
 	$CollisionShape2D.disabled = false
 	continue_move = true
 	$snd_continue.play()
-	timer.start()
+	#timer_collision_off.start()
 	print("rpg: continue movement")
 
 # after few frames disable collision detection:		
-func _on_timer_timeout() -> void:
+func _on_timer2_timeout() -> void:
 	$CollisionShape2D.disabled = true
 	
+# destroy node after some time:	
+func _on_timer_timeout() -> void:
+	queue_free()
+
 			
 func _on_area_entered(area):
 	print("Player rpg hit Area2D: " + area.name)
@@ -63,7 +96,7 @@ func _on_area_entered(area):
 		area.rpg_hit()
 	$snd_continue.stop()
 	$snd_fire2.stop()		
-	$RPG_sprite.visible = false
+	$war_head.visible = false
 	$sprite_flame.visible = false
 	$hit_sprite.visible = true
 	$hit_sprite.play("explode")
@@ -75,7 +108,7 @@ func _on_body_entered(body):
 		body.rpg_hit()
 	$snd_continue.stop()
 	$snd_fire2.stop()	
-	$RPG_sprite.visible = false
+	$war_head.visible = false
 	$sprite_flame.visible = false
 	$hit_sprite.visible = true
 	$hit_sprite.play("explode")				

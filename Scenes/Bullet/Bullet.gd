@@ -7,6 +7,8 @@ var destination_point:Vector2
 
 func _enter_tree() -> void:
 	destination_point = get_global_mouse_position()
+	# XXXXXX:
+	# Signal from every bullet when enter to scene tree for bullet holes nodes:
 	gv.emit_signal("player_bullet_ready")
 
 func _ready():

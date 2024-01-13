@@ -5,11 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/weapons/reload1.wav" id="3_dg3vb"]
 
 [node name="Rocket_4" type="Sprite2D"]
+z_index = -1
 texture = ExtResource("1_nowhg")
+offset = Vector2(40, 0)
 script = ExtResource("2_eseiu")
 
 [node name="BulletsSpawn" type="Marker2D" parent="."]
-position = Vector2(259, -6)
+position = Vector2(154, -25)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.35

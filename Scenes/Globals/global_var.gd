@@ -20,6 +20,10 @@ var current_scene = null
 	preload("res://Assets/Particles/bullet-holes/bullet-hole8-sm.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet-hole9-sm.png")]
 
+var cursor_green = preload("res://Assets/Objects/reticle_green.png")
+var cursor_green_2 = preload("res://Assets/Objects/crosshair2.png")
+var cursor_orange = preload("res://Assets/Objects/reticle.png")
+
 # var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
 
 
@@ -78,7 +82,12 @@ var SWidth:int = 0
 var SHeight:int = 0
 
 
-
+func set_cursor_green():
+	Input.set_custom_mouse_cursor(gv.cursor_green_2, Input.CURSOR_ARROW, Vector2(24, 24))
+	
+func set_cursor_orange() -> void:
+	Input.set_custom_mouse_cursor(gv.cursor_orange, Input.CURSOR_ARROW, Vector2(24, 24))
+	
 
 func save_player_data() -> void:
 	var file = FileAccess.open("user://game.dat", FileAccess.WRITE)
