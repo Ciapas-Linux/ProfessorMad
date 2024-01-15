@@ -6,8 +6,8 @@
 
 extends Area2D
 
-@export var max_speed := 700.0
-@export var drag_factor := 0.15 # 0.15
+@export var max_speed := 800.0
+@export var drag_factor := 0.15   #ORG: 0.15
 var _current_velocity:Vector2 = Vector2.ZERO
 var target:Node2D = null
 var hit:bool = false
@@ -29,8 +29,10 @@ func _ready():
 	$Timer.start()
 	_current_velocity = max_speed * 5 * Vector2.RIGHT.rotated(rotation)
 	rotation += randf_range(-0.19, 0.19)
+	set_drag_factor(0.15)
 	print("Player release rocket_4 head: " + self.name)
-	
+
+
 func _physics_process(delta):
 		if hit == true:
 			return
@@ -63,6 +65,7 @@ func _on_area_entered(area):
 	$hit_sprite.visible = true
 	$hit_sprite.play("explode")
 	$CollisionShape2D.set_deferred("disabled", true)
+	gv.set_cursor_green()
 	hit = true
 	
 				
@@ -82,9 +85,10 @@ func _on_body_entered(body):
 	$hit_sprite.visible = true
 	$hit_sprite.play("explode")
 	$CollisionShape2D.set_deferred("disabled", true)
+	gv.set_cursor_green()
 	hit = true
 	
-# destroy node after some time:	
+# if no hit destroy node after some time:	
 func _on_timer_timeout() -> void:
 	queue_free()
 
@@ -105,6 +109,10 @@ func _on_hit_sprite_animation_finished() -> void:
 # SCRAP CODE:
 ####################################################
 ####################################################
+
+#func _input(event):
+#    get_viewport().set_input_as_handled()
+
 
 #var destination_point:Vector2
 #var actual_distance:float = 0.0

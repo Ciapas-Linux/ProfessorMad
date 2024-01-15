@@ -23,6 +23,7 @@ var current_scene = null
 var cursor_green = preload("res://Assets/Objects/reticle_green.png")
 var cursor_green_2 = preload("res://Assets/Objects/crosshair2.png")
 var cursor_orange = preload("res://Assets/Objects/reticle.png")
+var cursor_red = preload("res://Assets/Objects/reticle_red.png")
 
 # var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
 
@@ -55,6 +56,7 @@ var Hero_weapon:Sprite2D
 # Hero global signals:
 signal player_bullet_ready
 
+signal s_mouse_enter_node(node :Node2D)
 
 var mouse_enter_node:Node2D
 
@@ -83,6 +85,15 @@ var platform:String
 var SWidth:int = 0
 var SHeight:int = 0
 
+# func point_cast(point : Vector2, filter : Array = [], mask : int = 0xFFFFFFFF, count : int = 32) -> Array:
+# 	var hits := get_world_2d().direct_space_state.intersect_point(point, count, filter, mask, true, true)
+# 	for i in range(hits.size()): hits[i] = hits[i].collider as CollisionObject2D
+# 	return hits
+
+# func nodes_sorted_by_scene_order(nodes : Array) -> Array:
+# 	nodes = nodes.duplicate()
+# 	nodes.sort_custom(self, "_tree_order_descending")
+# 	return nodes
 
 func get_closest_enemy(node:Node2D):
 	var enemies = get_tree().get_nodes_in_group('Enemies')
@@ -109,11 +120,15 @@ func get_closest_enemy2(node:Node2D):
 	return closest_enemy
 
 func set_cursor_green():
-	Input.set_custom_mouse_cursor(gv.cursor_green_2, Input.CURSOR_ARROW, Vector2(24, 24))
+	Input.set_custom_mouse_cursor(cursor_green_2, Input.CURSOR_ARROW, Vector2(24, 24))
 	
 func set_cursor_orange() -> void:
-	Input.set_custom_mouse_cursor(gv.cursor_orange, Input.CURSOR_ARROW, Vector2(24, 24))
-	
+	Input.set_custom_mouse_cursor(cursor_orange, Input.CURSOR_ARROW, Vector2(24, 24))
+
+func set_cursor_red() -> void:
+	Input.set_custom_mouse_cursor(cursor_red, Input.CURSOR_ARROW, Vector2(24, 24))
+
+
 
 func save_player_data() -> void:
 	var file = FileAccess.open("user://game.dat", FileAccess.WRITE)

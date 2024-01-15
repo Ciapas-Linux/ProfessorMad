@@ -17,8 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://ch4uhns5vjkao" path="res://Assets/Explosions/explosion2.png" id="13_iwjkc"]
 [ext_resource type="AudioStream" uid="uid://4sa4i7xi3oxu" path="res://Assets/Sounds/weapons/rpg_7.wav" id="14_3dygs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o36nx"]
-size = Vector2(200, 45)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1avpn"]
+radius = 30.0
+height = 210.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgx5h"]
 atlas = ExtResource("2_aufsi")
@@ -742,7 +743,8 @@ script = ExtResource("1_i65hl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-40, 0)
-shape = SubResource("RectangleShape2D_o36nx")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1avpn")
 
 [node name="war_head" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -765,7 +767,7 @@ sprite_frames = SubResource("SpriteFrames_1bea0")
 
 [node name="hit_sprite" type="AnimatedSprite2D" parent="."]
 z_index = 2
-position = Vector2(260, 0)
+position = Vector2(485, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bobgo")
 animation = &"explode"

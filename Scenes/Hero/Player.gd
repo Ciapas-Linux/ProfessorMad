@@ -75,6 +75,7 @@ func load_inventory():
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
 			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
+			gv.set_cursor_orange()
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(3.2,3.2)
 		2:
@@ -82,6 +83,7 @@ func load_inventory():
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
 			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
+			gv.set_cursor_orange()
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(5,7)	
 
@@ -90,6 +92,7 @@ func load_inventory():
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
 			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
+			gv.set_cursor_green()
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(3,3)		
 

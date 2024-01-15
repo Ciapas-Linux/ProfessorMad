@@ -37,12 +37,12 @@ var enemy2:Enemy
 var bomb:Resource = preload("res://Scenes/Enemies/Flying _drone/Bomb2.tscn")
 var boom:Area2D
 
-
+var mouse_enter:bool = false
 
 func _ready():
 	# self.input_pickable = true
-	# $Drone.connect("mouse_entered", _on_Area2D_mouse_entered)
-	# $Drone.connect("mouse_exited", _on_Area2D_mouse_exited)
+	self.connect("mouse_entered", _on_Body2D_mouse_entered)
+	self.connect("mouse_exited", _on_Body2D_mouse_exited)
 	speed = randi_range(400,650)
 	$Explosion.stop()
 	$Explosion.visible = false
@@ -57,7 +57,27 @@ func _ready():
 	#$Health.visible = true
 	print("Flying drone: ready ...") 
 
+func _unhandled_input(event):
+	if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+		# do here whatever should happen when you click on that node:
+		gv.mouse_enter_node = self
+		print(self.name + ": left mouse click me!")
+		$snd_click.play() 
+		get_viewport().set_input_as_handled()
+		gv.set_cursor_red()
+		var space_state = get_world_2d().direct_space_state
+		var params = PhysicsPointQueryParameters2D.new()
+		params.position = get_global_mouse_position()
+		var out = space_state.intersect_point(params)
+		for node in out:
+			print(node.collider.name)
 
+func _on_Body2D_mouse_entered() -> void:
+	mouse_enter = true
+		
+func _on_Body2D_mouse_exited() -> void:
+	mouse_enter = false
+	
 
 func _physics_process(_delta):
 	match current_state:
@@ -193,7 +213,8 @@ func _process_on_state_stop(delta: float) -> void:
 	pass
 
 func rpg_hit():
-	$Drone/DroneSprite.visible = false
+	gv.mouse_enter_node = null
+	$DroneSprite.visible = false
 	$Drone_explosion.visible = true
 	$Drone_explosion.play()
 	$Explosion.visible = true
@@ -201,18 +222,19 @@ func rpg_hit():
 	$snd_explode.play()
 	Drone_destroy = true
 
-func _on_drone_bullet_hit_me() -> void:
+func hit():
 	Drone_health -= 20
 	print("Drone: bullet hit drone ...")
 	if Drone_destroy == false:
 		if Drone_health <= 0:
-			$Drone/DroneSprite.visible = false
+			$DroneSprite.visible = false
 			$Drone_explosion.visible = true
 			$Drone_explosion.play()
 			$Explosion.visible = true
 			$Explosion.play()
 			$snd_explode.play()
 			Drone_destroy = true
+
 
 func _on_explosion_animation_finished() -> void:
 	$drone_snd.stop()
@@ -229,7 +251,7 @@ func _on_bomb_early_hit() -> void:
 	$drone_snd.stop()
 	boom.get_node("snd_fall").stop()
 	print("Drone: bullet hit bomb! and kill drone.")
-	$Drone/DroneSprite.visible = false
+	$DroneSprite.visible = false
 	$Drone_explosion.visible = true
 	$Explosion.visible = true
 	$Drone_explosion.play()

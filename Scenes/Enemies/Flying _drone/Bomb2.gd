@@ -40,22 +40,29 @@ func _physics_process(delta):
 			position += transform.y * speed * delta
 							
 	
+func _unhandled_input(event):
+	if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+		# do here whatever should happen when you click on that node:
+		gv.mouse_enter_node = $BulletHits
+		print(self.name + ": left mouse click me!")
+		$snd_click.play() 
+		get_viewport().set_input_as_handled()
+		gv.set_cursor_red()
+		var space_state = get_world_2d().direct_space_state
+		var params = PhysicsPointQueryParameters2D.new()
+		params.position = get_global_mouse_position()
+		var out = space_state.intersect_point(params)
+		for node in out:
+			print(node.collider.name)
+
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
-		gv.set_cursor_green()
-		gv.mouse_enter_node = $BulletHits
-	#$object_spr.visible = false
-	
-
+		
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
-		gv.set_cursor_orange()
-		#gv.mouse_enter_node = null
-	#$object_spr.visible = true
-
+	
 func explode():
+	gv.mouse_enter_node = null
 	$snd_fall.stop()
 	bomb_hit_target = true
 	$BombSprite.visible = false
@@ -65,7 +72,8 @@ func explode():
 	$snd_explode.play()
 	gv.Cam1.ScreenShake(30,0.5)
 	
-func rpg_hit():	
+func rpg_hit():
+	gv.mouse_enter_node = null	
 	$snd_fall.stop()
 	bomb_hit_target = true
 	$BombSprite.visible = false

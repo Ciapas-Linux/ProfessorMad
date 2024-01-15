@@ -22,21 +22,27 @@ func _ready():
 func _process(_delta) -> void:
 	pass
 
+func _unhandled_input(event):
+	if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+		# do here whatever should happen when you click on that node:
+		gv.mouse_enter_node = self
+		print(self.name + ": left mouse click me!")
+		$snd_click.play() 
+		get_viewport().set_input_as_handled()
+		gv.set_cursor_red()
+		var space_state = get_world_2d().direct_space_state
+		var params = PhysicsPointQueryParameters2D.new()
+		params.position = get_global_mouse_position()
+		var out = space_state.intersect_point(params)
+		for node in out:
+			print(node.collider.name)
+		
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
-		gv.set_cursor_green()
-		gv.mouse_enter_node = self
-	#$object_spr.visible = false
-	
-
+		
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
-		gv.set_cursor_orange()
-		gv.mouse_enter_node = null
-	#$object_spr.visible = true
-
+	
 @warning_ignore("unused_parameter")
 func _on_area_entered(area):
 	pass
@@ -96,9 +102,8 @@ func _tween():
 	tween.tween_property($szyba_tyl, "global_position", Vector2(global_position.x + randf_range(-305.0,305.0), global_position.y - randf_range(85.0,335.0)), 2.6)
 	tween.tween_property($szyba_tyl, "self_modulate", Color(1, 1, 1, 0), 2.5)
 	
-	
-
 func rpg_hit():
+	gv.mouse_enter_node = null
 	$Bullet_holes.vanish()
 	$object_spr.visible = false
 	$explosion_spr.visible = true
@@ -148,6 +153,47 @@ func _on_explosion_spr_animation_finished() -> void:
 
 
 ################################################################
+
+#if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		#gv.set_cursor_orange()
+		#gv.mouse_enter_node = null
+	#$object_spr.visible = true
+
+#if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		#gv.set_cursor_green()
+		# gv.mouse_enter_node = self
+		# gv.emit_signal("s_mouse_enter_node",self)
+	#$object_spr.visible = false
+
+# extends Area2D
+
+# func _input_event(viewport, event, shape_idx):
+#     if event.type == InputEvent.MOUSE_BUTTON \
+#     and event.button_index == BUTTON_LEFT \
+#     and event.pressed:
+#         print("Clicked")
+#         return(self) # returns a reference to this node
+
+
+
+
+
+
+
+# var mouse_entered = false
+
+# func _unhandled_input(event):
+# 	if event.is_action_pressed("mouse_left_click") && \
+# 	mouse_entered:
+# 		# do here whatever should happen when you click on that node
+# 		self.get_tree().set_input_as_handled()
+
+# func _on_Area2D_mouse_entered():
+# 	mouse_entered = true
+
+# func _on_Area2D_mouse_exited():
+# 	mouse_entered = false
+
 
 
 	#if hit_count == 0 and $Sprite.is_playing() == false:

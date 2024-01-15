@@ -1,7 +1,6 @@
 [gd_scene load_steps=65 format=3 uid="uid://chihd8eru52sc"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/Flying_drone_node.gd" id="1_0fbaq"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/Flying_drone.gd" id="2_nxnrk"]
 [ext_resource type="Texture2D" uid="uid://bb3k7f0f6f4co" path="res://Assets/Enemy/Dron2/0001.png" id="3_hqq70"]
 [ext_resource type="Texture2D" uid="uid://dyewapfg8cpcg" path="res://Assets/Enemy/Dron2/0002.png" id="4_14rm5"]
 [ext_resource type="Texture2D" uid="uid://crnc00w7biu02" path="res://Assets/Enemy/Dron2/0003.png" id="5_5u6p8"]
@@ -24,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://blqslmc43jhmu" path="res://Assets/Enemy/Dron2/0020.png" id="22_7mfcc"]
 [ext_resource type="AudioStream" uid="uid://b2v6my4asjc7e" path="res://Assets/Sounds/flying_drone_2.mp3" id="23_4c35e"]
 [ext_resource type="Texture2D" uid="uid://bcrby7a04efk3" path="res://Assets/Explosions/Explosion1.png" id="24_4yyp5"]
+[ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="35_las8x"]
 [ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="40_7x3it"]
 [ext_resource type="Texture2D" uid="uid://g38b66cmwah5" path="res://Assets/Enemy/Dron2/explode/0001.png" id="41_ai4q2"]
 [ext_resource type="Texture2D" uid="uid://dv6m4kuhew0o2" path="res://Assets/Enemy/Dron2/explode/0002.png" id="42_4inxj"]
@@ -37,7 +37,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/HitPoints.gd" id="50_skf5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shara"]
-size = Vector2(180, 60)
+size = Vector2(200, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyknl"]
 animations = [{
@@ -318,16 +318,15 @@ animations = [{
 
 [node name="Flying_drone" type="CharacterBody2D"]
 z_index = 3
+collision_mask = 17
+input_pickable = true
 script = ExtResource("1_0fbaq")
 
-[node name="Drone" type="CharacterBody2D" parent="."]
-script = ExtResource("2_nxnrk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone"]
-position = Vector2(17, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_shara")
 
-[node name="DroneSprite" type="AnimatedSprite2D" parent="Drone"]
+[node name="DroneSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 54)
 sprite_frames = SubResource("SpriteFrames_lyknl")
 frame = 10
@@ -393,7 +392,11 @@ theme_override_font_sizes/font_size = 25
 text = "100"
 script = ExtResource("50_skf5i")
 
-[connection signal="Bullet_hit_me" from="Drone" to="." method="_on_drone_bullet_hit_me"]
+[node name="snd_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_las8x")
+volume_db = 2.0
+pitch_scale = 1.4
+
 [connection signal="timeout" from="TimerRnd_Y" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="LoadBomb" to="." method="_on_load_bomb_timeout"]
 [connection signal="timeout" from="TimerNoBoss" to="." method="_on_timer_no_boss_timeout"]

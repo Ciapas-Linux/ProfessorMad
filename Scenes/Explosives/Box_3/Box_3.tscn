@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://dwiyyg4wrha0d"]
+[gd_scene load_steps=117 format=3 uid="uid://dwiyyg4wrha0d"]
 
 [ext_resource type="Texture2D" uid="uid://bkplbxj415xkc" path="res://Assets/Explosives/Box_3/Top.png" id="1_crycx"]
 [ext_resource type="Script" path="res://Scenes/Explosives/Box_3/Box_3.gd" id="1_kfpyl"]
@@ -112,6 +112,7 @@
 [ext_resource type="Texture2D" uid="uid://dhexvsk2pnlja" path="res://Assets/Explosions/explosion3/explosion00-frame100.png" id="109_elad2"]
 [ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="110_njfkx"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Bullet/Bullet_holes.tscn" id="111_inoe0"]
+[ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="113_ftw57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8hlk"]
 size = Vector2(370, 200)
@@ -511,5 +512,10 @@ collision_mask = 21
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_s3j8h")
+
+[node name="snd_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("113_ftw57")
+volume_db = 2.0
+pitch_scale = 1.33
 
 [connection signal="animation_finished" from="explosion_spr" to="." method="_on_explosion_spr_animation_finished"]

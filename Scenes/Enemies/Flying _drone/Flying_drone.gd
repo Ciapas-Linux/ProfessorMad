@@ -31,7 +31,7 @@ func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
 	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
 		gv.set_cursor_orange()
-		gv.mouse_enter_node = null
+		#gv.mouse_enter_node = null
 	#$object_spr.visible = true
 
 

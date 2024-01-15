@@ -10,7 +10,8 @@ var can_fire:bool = true
 var rocket_4_misille:Resource = preload("res://Scenes/Guns/rocket_4/rocket_4_misille.tscn")
 var recoil:int = 130
 var shoots:int = 0
-const ammo_max:int = 15
+var all_shoots:int = 0
+const ammo_max:int = 12
 var ammo:int = ammo_max
 var ready_to_fire:bool = true
 signal fire
@@ -48,19 +49,25 @@ func shoot():
 	else:
 		return	
 		
+	gv.set_cursor_green()
+
 	$flame_particles.emitting = true
 
 	var head:Area2D = rocket_4_misille.instantiate()
-	head.name = "rocket_4_head" + str(shoots)
+	head.name = "rocket_4_head" + str(all_shoots)
 	head.transform = get_node("BulletsSpawn").global_transform
 	get_tree().root.add_child(head)
 	head.position = $BulletsSpawn.global_position
 	head.rotation = $BulletsSpawn.global_rotation
 	
 	shoots += 1
+	all_shoots += 1
 	fire.emit()
 	gv.Player.get_node("AnimationPlayer").play("rpg_shoot")
-	ready_to_fire = false
+	
+	if shoots == 4:
+		ready_to_fire = false
+		shoots = 0 
 	
 	$Timer.start(0.5)
 	
