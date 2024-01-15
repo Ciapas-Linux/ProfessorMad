@@ -56,6 +56,8 @@ var Hero_weapon:Sprite2D
 signal player_bullet_ready
 
 
+var mouse_enter_node:Node2D
+
 
 # ENEMY FIRST BOSS WREDNY RYSIEK
 @onready var enemy_fsm:EnemyStateMachine
@@ -81,6 +83,30 @@ var platform:String
 var SWidth:int = 0
 var SHeight:int = 0
 
+
+func get_closest_enemy(node:Node2D):
+	var enemies = get_tree().get_nodes_in_group('Enemies')
+	if enemies.empty(): return null
+	var distances = []
+	for enemy in enemies:
+		var distance = node.global_position.distance_squared_to(enemy.global_position)
+		distances.append(distance)
+	var min_distance = distances.min()
+	var min_index = distances.find(min_distance)
+	var closest_enemy = enemies[min_index]
+	return closest_enemy
+
+func get_closest_enemy2(node:Node2D):
+	var enemies = get_tree().get_nodes_in_group('Enemies')
+	var closest_enemy = null
+	var min_distance = INF
+
+	for enemy in enemies:
+		var distance = node.global_position.distance_squared_to(enemy.global_position)
+		if distance < min_distance:
+			min_distance = distance
+			closest_enemy = enemy
+	return closest_enemy
 
 func set_cursor_green():
 	Input.set_custom_mouse_cursor(gv.cursor_green_2, Input.CURSOR_ARROW, Vector2(24, 24))

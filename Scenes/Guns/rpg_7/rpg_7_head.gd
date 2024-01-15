@@ -1,3 +1,7 @@
+# ##########################>
+# # RPG_7  launcher misille .SCRIPT #
+# ##########################>
+
 extends Area2D
 
 @export var speed:float = 0.0008 # default: 0.0008

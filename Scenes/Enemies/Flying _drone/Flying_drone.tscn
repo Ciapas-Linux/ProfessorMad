@@ -37,7 +37,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/HitPoints.gd" id="50_skf5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shara"]
-size = Vector2(148, 42)
+size = Vector2(180, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyknl"]
 animations = [{

@@ -8,7 +8,15 @@ var drone_on_position:bool = false
 
 signal early_hit
 
+var mouse_enter:bool = false
+
 func _ready():
+	#$BulletHits.input_pickable = true
+	self.input_pickable = true
+	self.connect("mouse_entered", _on_Area2D_mouse_entered)
+	self.connect("mouse_exited", _on_Area2D_mouse_exited)
+	$BulletHits.connect("mouse_entered", _on_Area2D_mouse_entered)
+	$BulletHits.connect("mouse_exited", _on_Area2D_mouse_exited)
 	drone = get_parent().get_node("Flying_drone")
 	position.x = drone.global_position.x
 	position.y = drone.global_position.y + 50
@@ -32,6 +40,21 @@ func _physics_process(delta):
 			position += transform.y * speed * delta
 							
 	
+func _on_Area2D_mouse_entered() -> void:
+	mouse_enter = true
+	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		gv.set_cursor_green()
+		gv.mouse_enter_node = $BulletHits
+	#$object_spr.visible = false
+	
+
+func _on_Area2D_mouse_exited() -> void:
+	mouse_enter = false
+	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		gv.set_cursor_orange()
+		#gv.mouse_enter_node = null
+	#$object_spr.visible = true
+
 func explode():
 	$snd_fall.stop()
 	bomb_hit_target = true
@@ -40,8 +63,6 @@ func explode():
 	$AnimationPlayer.stop(true)
 	$Explosion.play("explode")
 	$snd_explode.play()
-	
-	#ShakeScreen.shake(30,0.5)
 	gv.Cam1.ScreenShake(30,0.5)
 	
 func rpg_hit():	
@@ -52,7 +73,6 @@ func rpg_hit():
 	$AnimationPlayer.stop(true)
 	$Explosion.play("explode")
 	$snd_explode.play()
-	#ShakeScreen.shake(30,0.5)
 	gv.Cam1.ScreenShake(30,0.5)
 
 
@@ -64,7 +84,7 @@ func _on_hit_position():
 		$AnimationPlayer.play("fall_off")
 		$snd_fall.play()
 		print("Bomb is on target position")
-	
+
 
 # if bomb hit Area2D
 func _on_area_entered(area):
@@ -74,7 +94,6 @@ func _on_area_entered(area):
 		emit_signal("early_hit")
 	if area.has_method("bomb_explode"):
 		area.bomb_explode()	
-	
 	explode()	
 
 
@@ -92,10 +111,10 @@ func _on_body_entered(body):
 		body.bomb_explode()	
 
 
-# If bullet hit bomb
+# If bullet or rocket hit bomb:
 func _on_bullet_hits_area_entered(area: Area2D) -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
-	if area.name.left(6) == "Bullet":
+	if area.name.left(6) == "Bullet" or area.name.left(6) == "rocket":
 		#$snd_fall.stop()	
 		print("Bomb:" + area.name + " hit me and finish me" )
 		explode()
@@ -139,6 +158,10 @@ func _on_explosion_animation_finished() -> void:
 #						explode()
 						
 		
+
+
+
+
 
 
 

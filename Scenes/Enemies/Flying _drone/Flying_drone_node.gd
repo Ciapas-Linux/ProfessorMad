@@ -32,18 +32,23 @@ signal on_boss_position
 signal on_base_position
 signal on_kill
 
-var screen_size : Vector2
+#var screen_size : Vector2
 var enemy2:Enemy
 var bomb:Resource = preload("res://Scenes/Enemies/Flying _drone/Bomb2.tscn")
 var boom:Area2D
 
+
+
 func _ready():
+	# self.input_pickable = true
+	# $Drone.connect("mouse_entered", _on_Area2D_mouse_entered)
+	# $Drone.connect("mouse_exited", _on_Area2D_mouse_exited)
 	speed = randi_range(400,650)
 	$Explosion.stop()
 	$Explosion.visible = false
 	$Drone_explosion.stop()
 	$Drone_explosion.visible = false
-	screen_size = get_viewport_rect().size
+	#screen_size = get_viewport_rect().size
 	# enemy2 = get_parent().get_node("Enemy")
 	enemy2 = get_tree().root.get_node("Stage1/Enemy")
 	$drone_snd.play()
@@ -51,7 +56,9 @@ func _ready():
 	position.y = enemy2.global_position.y - 200
 	#$Health.visible = true
 	print("Flying drone: ready ...") 
-	
+
+
+
 func _physics_process(_delta):
 	match current_state:
 		STOP:

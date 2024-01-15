@@ -1,8 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://ka4do5pd7dl"]
+[gd_scene load_steps=10 format=3 uid="uid://ka4do5pd7dl"]
 
 [ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Objects/rocket_launcher.png" id="1_nowhg"]
 [ext_resource type="Script" path="res://Scenes/Guns/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
 [ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/weapons/reload1.wav" id="3_dg3vb"]
+[ext_resource type="Shader" path="res://Scenes/Guns/rocket_4/rocket_4_launcher.gdshader" id="4_e0vpj"]
+[ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="5_cx56q"]
+[ext_resource type="Texture2D" uid="uid://k4mycie8tmu4" path="res://Assets/Particles/sparks/spark_1.png" id="6_nbug4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ttcl1"]
+seed = 1
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cj2xk"]
+invert = true
+noise = SubResource("FastNoiseLite_ttcl1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a45iy"]
+shader = ExtResource("4_e0vpj")
+shader_parameter/flame_start_color = Color(0.8, 0.133333, 0, 1)
+shader_parameter/flame_end_color = Color(1, 0.929412, 0.301961, 1)
+shader_parameter/speed = 12.0
+shader_parameter/flame_dir = 0.0
+shader_parameter/flame_size = 0.2
+shader_parameter/hardlight_treshold = 0.9
+shader_parameter/color_treshold = 0.6
+shader_parameter/noise = SubResource("NoiseTexture2D_cj2xk")
 
 [node name="Rocket_4" type="Sprite2D"]
 z_index = -1
@@ -11,7 +33,7 @@ offset = Vector2(40, 0)
 script = ExtResource("2_eseiu")
 
 [node name="BulletsSpawn" type="Marker2D" parent="."]
-position = Vector2(154, -25)
+position = Vector2(110, -25)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.35
@@ -21,3 +43,34 @@ one_shot = true
 stream = ExtResource("3_dg3vb")
 volume_db = 5.0
 pitch_scale = 0.4
+
+[node name="back_flame" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_a45iy")
+scale = Vector2(4, 4)
+texture = ExtResource("5_cx56q")
+
+[node name="flame_particles" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-158, -17)
+emitting = false
+amount = 200
+lifetime = 1.5
+one_shot = true
+speed_scale = 4.0
+explosiveness = 0.21
+texture = ExtResource("6_nbug4")
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector2(-1, 0)
+spread = 2.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+angular_velocity_max = 200.0
+linear_accel_max = 200.0
+scale_amount_min = 0.01
+scale_amount_max = 0.5
+hue_variation_max = 1.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

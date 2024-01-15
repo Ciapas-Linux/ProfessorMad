@@ -1,6 +1,3 @@
-# ##########################
-# # Maluch_3             .SCRIPT #
-# ##########################
 
 extends Area2D
 
@@ -29,6 +26,7 @@ func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
 	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
 		gv.set_cursor_green()
+		gv.mouse_enter_node = self
 	#$object_spr.visible = false
 	
 
@@ -36,6 +34,7 @@ func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
 	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
 		gv.set_cursor_orange()
+		gv.mouse_enter_node = null
 	#$object_spr.visible = true
 
 @warning_ignore("unused_parameter")

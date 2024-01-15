@@ -1,129 +1,91 @@
+
+# ##########################>
+# # Rocket 4 launcher misille .SCRIPT #
+# ##########################>
+
+
 extends Area2D
 
-@export var speed:float = 0.0008 # default: 0.0008
-@export var continue_speed:float = 2500
-
-@export var steering_force = 20.0
-var velocity:Vector2 = Vector2()
-var acceleration = Vector2()
-var target = null
-
-var distance:float = 0.0
-var actual_distance:float = 0.0
-var destination_point:Vector2
-var start_point:Vector2
+@export var max_speed := 700.0
+@export var drag_factor := 0.15 # 0.15
+var _current_velocity:Vector2 = Vector2.ZERO
+var target:Node2D = null
 var hit:bool = false
-var continue_move :bool = false
-var timer_collision_off :Timer
-
+var direction:Vector2 = Vector2.ZERO
 
 func _enter_tree() -> void:
-	destination_point = get_global_mouse_position()
-	target = destination_point
-	
-	
+	target = gv.mouse_enter_node
+
+func set_drag_factor(new_value: float) -> void:
+	drag_factor = clamp(new_value, 0.01, 0.5)
 
 func _ready():
-	start_point =  global_position
-	distance = global_position.distance_to(destination_point)
 	$sprite_flame.visible = true
 	$sprite_flame.play()
 	$hit_sprite.visible = false
-	$CollisionShape2D.disabled = true
-	timer_collision_off = Timer.new()
-	timer_collision_off.wait_time = 0.05
-	timer_collision_off.one_shot = true
-	timer_collision_off.connect("timeout", _on_timer2_timeout)
-	add_child(timer_collision_off)
-	# var tween = create_tween()
-	# tween.connect("finished", on_tween_finished)
-	# tween.set_trans(Tween.TRANS_LINEAR)
-	# tween.set_ease(Tween.EASE_IN)
-	# tween.tween_property(self, "position", destination_point, distance * speed)
 	$snd_fire1.play()
 	$snd_fire2.play()
 	$war_head.play("rotate")
 	$Timer.start()
+	_current_velocity = max_speed * 5 * Vector2.RIGHT.rotated(rotation)
+	rotation += randf_range(-0.19, 0.19)
+	print("Player release rocket_4 head: " + self.name)
 	
-	print("Player release rpg head: " + self.name)
-	
-
 func _physics_process(delta):
-	#if continue_move == true and hit == false:# rocket miss target just continue fly that direction:
-		#position += transform.x * continue_speed * delta
+		if hit == true:
+			return
 
-	velocity = transform.x * speed
-	# Add: add velocity to steer to acceleration
-	acceleration += steer()
-	# Add: add the velocity plus the acceleration x delta value to the velocity
-	velocity += acceleration * delta
-	# Add: limit the length of the velocity vector so that it does not exceed the speed
-	velocity = velocity.limit_length(speed)
-	position += velocity * delta
-	rotation = velocity.angle()
-
-# steer the missile towards the target:
-func steer():
-	# Define as velocity to steer
-	var steering = Vector2()
-	# Define ideal velocity (direction x speed towards player character from current position)
-	var ideal_velocity = (target.position - position).normalized() * speed
-	# speed to steer = direction vector obtained by ideal_velocity - current_velocity x force to steer
-	steering = (ideal_velocity - velocity).normalized() * steering_force
-  # output velocity to steer
-	return steering
-
-# when rocket go to destination point:
-func on_tween_finished():
-	$CollisionShape2D.disabled = false
-	continue_move = true
-	$snd_continue.play()
-	#timer_collision_off.start()
-	print("rpg: continue movement")
-
-# after few frames disable collision detection:		
-func _on_timer2_timeout() -> void:
-	$CollisionShape2D.disabled = true
+		direction = Vector2.RIGHT.rotated(rotation).normalized()
 	
-# destroy node after some time:	
-func _on_timer_timeout() -> void:
-	queue_free()
+		if target:
+			direction = global_position.direction_to(target.global_position)
+			var desired_velocity := direction * max_speed
+			#var previous_velocity = _current_velocity
+			var change = (desired_velocity - _current_velocity) * drag_factor
+			_current_velocity += change
+			position += _current_velocity * delta
+			look_at(global_position + _current_velocity)
+		
 
-			
 func _on_area_entered(area):
-	print("Player rpg hit Area2D: " + area.name)
+	print("Rocket_4 hit Area2D: " + area.name)
+	print("Rocket_4 target node name: " + target.name)
+	if target.name != area.name:
+		return
 	if area.has_method("rpg_hit"):
 		area.rpg_hit()
 	$snd_continue.stop()
-	$snd_fire2.stop()		
+	$war_head.visible = false
+	$snd_fire2.stop()
+	$snd_fire1.play()		
 	$war_head.visible = false
 	$sprite_flame.visible = false
 	$hit_sprite.visible = true
 	$hit_sprite.play("explode")
-	hit = true		
+	$CollisionShape2D.set_deferred("disabled", true)
+	hit = true
+	
 				
 func _on_body_entered(body):
-	print("Player rpg hit Body: " + body.name)
+	print("Rocket_4 hit Body: " + body.name)
+	print("Rocket_4 target node name: " + target.name)
+	if target.name != body.name:
+		return
 	if body.has_method("rpg_hit"):
 		body.rpg_hit()
 	$snd_continue.stop()
-	$snd_fire2.stop()	
+	$war_head.visible = false
+	$snd_fire2.stop()
+	$snd_fire1.play()	
 	$war_head.visible = false
 	$sprite_flame.visible = false
 	$hit_sprite.visible = true
-	$hit_sprite.play("explode")				
-	hit = true		
+	$hit_sprite.play("explode")
+	$CollisionShape2D.set_deferred("disabled", true)
+	hit = true
 	
-
-func _on_area_exited(_area:Area2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_body_exited(_body:Node2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
+# destroy node after some time:	
+func _on_timer_timeout() -> void:
 	queue_free()
 
 func _on_hit_sprite_animation_finished() -> void:
@@ -139,329 +101,47 @@ func _on_hit_sprite_animation_finished() -> void:
 
 
 
-	#$hit_sprite.position = destination_point
-
-
-#yacceleration += 1
-		#position.y -= yacceleration
-
-# print("")
-	# print("Player release rpg head: " + self.name)
-	# print("Player release rpg head m viewport: " + str(get_viewport().get_mouse_position()))
-	# print("Player release rpg head m global: " + str(get_global_mouse_position()))
-	# print("Player release rpg head m local: " + str(get_local_mouse_position()))
-	# print("Player release rpg head Start: " + str(start_point))
-	# print("Player release rpg head Distance: " + str(distance))
-	# print("Player release rpg head Destination: " + str(destination_point))
-	# print("Player release rpg head Distance 2: " + str(destination_point - start_point))
-	# print("")
-
-
-# actual_distance = global_position.distance_to(destination_point)
-	# $RayCast2D.target_position = get_local_mouse_position()	
-	# print("rpg dist: " + str(int(actual_distance)))
-
-
-
-#continue_move = true
-	#monitorable = false
-	#monitoring = false
-	#print("@@@@@@@@@@@@@@@@: timeout")
-	#pass
-
-
-# var mils = Time.get_ticks_msec()
-
-#gv.emit_signal("player_bullet_ready")
-
-#var area_hit:bool = false
-#var body_hit:bool = false
-
-# func _physics_process(_delta: float) -> void:
-#	 pass
-
-
-# func _on_timer_timeout() -> void:
-# 	$CollisionShape2D.disabled = true
-# 	monitorable = false
-# 	monitoring = false
-# 	print("@@@@@@@@@@@@@@@@: timeout")
-
-
-
-
-
-# var local_cursor_position:Vector2
-#var tt: float = 0.0
-#var destination:bool = false
-#var start_point:Vector2
-#var timer :Timer
-
-
-
-
-
-
-#print("DDDD---Distance: " + str(distance))
-
-# $BulletCrash.stop()
-
-
-# global_cursor_position = get_tree().get_root().get_node("/root/Stage1/maluch").get_global_mouse_position()
-	
-	
-	# destination_point = get_global_mouse_position()
-	# gv.emit_signal("player_bullet_ready")
-	
-	# local_cursor_position = get_local_mouse_position()
-	# local_cursor_position = get_tree().get_root().get_node("/root/Stage1/maluch").get_local_mouse_position()
-	# $CollisionShape2D.set_deferred("disabled", true)
-
-
-#timer = Timer.new()
-	#timer.wait_time = 0.05
-	#timer.one_shot = true
-	#timer.connect("timeout", _on_timer_timeout)
-	#add_child(timer)
-	#start_point = global_position
-
-
-
-
-#if area_hit == false and body_hit == false and destination == false:
-		# tt += delta * 1.4			
-		
-		# position += transform.x * speed * delta
-		# print("XXXXXXXXX: " + str(transform.x * speed * delta))
-		
-		
-		# print("DELTA: " + str(delta))
-		# position += Vector2(10.0,10)
-		# position = start_point.lerp(destination_point, tt)
-		# print("XXXXXXXX: " + str(global_position.distance_to(destination_point)))
-		# print("XXXXXXXX: " + str(global_position.distance_squared_to(destination_point)))
-		
-		#distance = global_position.distance_to(destination_point)
-		#print("XXXXXXXXX: " + str(distance))
-		
-		# if distance < 35:   # 35	
-		# 	print("bullet dest. distance: " + str(distance))
-		# 	# $CollisionShape2D.set_deferred("disabled", false)
-		# 	$CollisionShape2D.disabled = false
-		# 	destination =  true	
-		# 	$BulletSprite.visible = false
-		# 	$BulletCrash.visible = true 
-		# 	$BulletCrash.play("hit_anim")
-		# 	$snd_bullet_hit.play()
-			
-
-
-
-#func _process(_delta: float) -> void:
-	#distance = global_position.distance_to(destination_point)
-	#print("XXXXXXXXX: " + str(distance))
-	#pass
-
-
-
-
-
-
-
-#timer.start() 
-			# monitorable = false
-			# monitoring = false
-
-# print("XXXXXXXX: " + str(global_position.distance_to(destination_point)))
-# print("XXXXXXXX: " + str(global_position.distance_squared_to(destination_point)))
-		
-		
-
-# distance = abs(global_position.distance_to(destination_point))
-
-
-#print(cursor_position)
-
-
-
-# $CollisionShape2D.disabled = true
-	# $CollisionShape2D.set_deferred("disabled", true)  
-
-
-
-#if area_hit == false and body_hit == false:	
-		#position += transform.x * speed * delta
-	
-	#if area_hit == true:
-		#pass
-	
-	#if body_hit == true:
-		#pass
-
-	
-	#if global_position.x > cursor_position.x and global_position.y > cursor_position.y:
-		#queue_free()	
-		#hit_target = true
-
-	#velocity = input_dir.normalized() * speed
-	#var collision = move_and_collide(speed * delta)	
-
-
-
-
-# if has_overlapping_areas() == true:
-			# 	print("bullet overlap area !!!!")
-
-			# if has_overlapping_bodies() == true:
-			# 	print("bullet overlap body !!!!")	
-
-			# if hit_target == false:
-			# 	if area_hit == true:
-			# 		hit_target = true
-			# 		if area_node.has_method("hit"):
-			# 			area_node.hit()
-			# 		$BulletSprite.visible = false
-			# 		$BulletCrash.visible = true 
-			# 		$BulletCrash.play("hit_anim")
-			# 		$snd_bullet_hit.play()	
-						
-			# 	if body_hit == true:
-			# 		hit_target = true
-			# 		if body_node.has_method("hit"):
-			# 			body_node.hit()	
-			# 		$BulletSprite.visible = false	
-			# 		$BulletCrash.visible = true 
-			# 		$BulletCrash.play("hit_anim")
-			# 		$snd_bullet_hit.play()	
-
-			#hit_target = true	 	
-	
-
-
-
-	#func _physics_process(delta):
-		#Normal movement
-		#if hit == false:
-			#position += transform.x * speed * delta
-		# else:
-		# 	position += transform.x * speed * delta
-			
-		#if position.x > cursor_position.x and position.y > cursor_position.y:
-		#position += transform.x * speed * delta
-		#print(cursor_position)
-		#if global_position.distance_to(cursor_position) < 200:	
-			#Hit()
-			
-			#proces_penetrate2D()
-
-
-
-	# func Hit():
-	# 	if area_hit == true:
-	# 		if area_node.has_method("hit"):
-	# 			area_node.hit()
-	# 			#$CollisionShape2D.set_deferred("disabled", true) 
-	# 			$BulletSprite.visible = false
-	# 			$BulletCrash.visible = true 
-	# 			$BulletCrash.play("hit_anim")
-	# 			$snd_bullet_hit.play()
-	
-	# 	if body_hit == true:
-	# 		if body_node.has_method("hit"):
-	# 			body_node.hit()
-	# 			#$CollisionShape2D.set_deferred("disabled", true) 
-	# 			$BulletSprite.visible = false
-	# 			$BulletCrash.visible = true 
-	# 			$BulletCrash.play("hit_anim")
-	# 			$snd_bullet_hit.play()	
-
-
-
-
-
-
-
-#$CollisionShape2D.disabled = true
-	
-	#if area.has_method("hit"):
-		#area.hit()
-	
-	#if bulas == "Bullet":
-		#hit = true
-		#queue_free() 
-		#$BulletSprite.visible = false
-		#$BulletCrash.play("hit_anim")		
-	
-	#if bulas != "Bullet":
-	#print("bullet hit Area2D: " + area.name)
-		#hit = true
-		#$BulletSprite.visible = false
-		#$BulletCrash.play("hit_anim")
-	#if area.is_in_group("Explosives"):
-		#area.queue_free()
-	#queue_free()  
-
-
-
-
-#if body.is_in_group("Explosives"):
-		#body.queue_free()
-
-#func _on_bullet_crash_animation_finished():
-	#if $BulletCrash.get_animation() == "hit_anim":
-		#queue_free()
-		#pass
-
-
-# print("bullet hit Area2D: " + area.name)
-	# String substr ( int from, int len=-1 )
-	# String validate_node_name ( )
-	# bullet hit Area2D: @Bullet@4
-	# trim_prefix ( String prefix )
-	# var bulas:String = area.name.substr ( 1,6 )
-	#bulas = area.name
-	#bulas = bulas.substr ( 0,6 )
-
-
-
-#extends Area2D
-#
-#@export var speed = 3000
-#
-#func _ready():
-#	pass 
-#
-#func _process(delta):
-#	position += (Vector2.RIGHT * speed).rotated(rotation)*delta
-#
-#
-#func _physics_process(delta):
-#	await get_tree().create_timer(0.01).timeout	
-#	set_physics_process(false)
-#
-#
-#func _on_visible_on_screen_notifier_2d_screen_exited():
-#	queue_free()
-	
-#func _on_body_entered(body):
-	#queue_free()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#############
+# SCRAP CODE:
+####################################################
+####################################################
+
+#var destination_point:Vector2
+#var actual_distance:float = 0.0
+
+#@export var steer_force = 50.0
+
+#@export var speed:float = 1500 
+#@export var steering_force = 50.0
+#var velocity:Vector2 = Vector2.ZERO
+#var acceleration:Vector2 = Vector2.ZERO
+
+
+# steering_force = randf_range(50.0,100.0)
+
+
+# # steer the missile towards the target:
+# func steer():
+# 	# Define as velocity to steer
+# 	var steering = Vector2()
+# 	# Define ideal velocity (direction x speed towards player character from current position)
+# 	var ideal_velocity = (target.position - position).normalized() * speed
+# 	# speed to steer = direction vector obtained by ideal_velocity - current_velocity x force to steer
+# 	steering = (ideal_velocity - velocity).normalized() * steering_force
+# 	# output velocity to steer
+# 	return steering
+
+
+
+# if target != null:
+	# 	actual_distance = self.global_position.distance_to(target.global_position)
+	# 	#steering_force /=  actual_distance
+	# 	velocity = transform.x * speed
+	# 	# Add: add velocity to steer to acceleration
+	# 	acceleration += steer()
+	# 	# Add: add the velocity plus the acceleration x delta value to the velocity
+	# 	velocity += acceleration * delta
+	# 	# Add: limit the length of the velocity vector so that it does not exceed the speed
+	# 	velocity = velocity.limit_length(speed)
+	# 	position += velocity * delta
+	# 	rotation = velocity.angle()

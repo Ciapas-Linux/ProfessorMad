@@ -16,14 +16,14 @@ var ready_to_fire:bool = true
 signal fire
 
 
-
 func _ready():
-	pass	
-
+	global_rotation = rad_to_deg(-0.003)
+	
 		
 func _process(_delta: float) -> void:
-	look_at(get_global_mouse_position())
-	#$RayCast2D.target_position = get_local_mouse_position()			
+	# look_at(get_global_mouse_position())
+	# $RayCast2D.target_position = get_local_mouse_position()
+	global_rotation = rad_to_deg(-0.003)
 
 	if Input.is_action_just_pressed("Fire"):
 		if gv.fsm.state.name == "target_up" or gv.fsm.state.name == "target_down":
@@ -34,11 +34,12 @@ func reload():
 	if ready_to_fire == true:
 		return
 	$snd_reload.play()
-	#$war_head.visible = true
 	ready_to_fire = true
 				
 func shoot():
-	
+	if gv.mouse_enter_node == null:
+		return
+
 	if ready_to_fire == false:
 		return
 
@@ -47,31 +48,24 @@ func shoot():
 	else:
 		return	
 		
+	$flame_particles.emitting = true
+
 	var head:Area2D = rocket_4_misille.instantiate()
 	head.name = "rocket_4_head" + str(shoots)
-	#$war_head.visible = false
 	head.transform = get_node("BulletsSpawn").global_transform
 	get_tree().root.add_child(head)
+	head.position = $BulletsSpawn.global_position
+	head.rotation = $BulletsSpawn.global_rotation
+	
 	shoots += 1
 	fire.emit()
 	gv.Player.get_node("AnimationPlayer").play("rpg_shoot")
 	ready_to_fire = false
-
-	if gv.fsm.state.name == "Idle":
-		position.y = position.y + recoil
-	else:
-		position.y = position.y + recoil
-		position.x = position.x - recoil
-		$Timer.start(0.5)
+	
+	$Timer.start(0.5)
 	
 
 func _on_timer_timeout() -> void:
-	if gv.fsm.state.name == "Idle":
-		position.y = position.y - recoil
-	else:
-		position.y = position.y - recoil	
-		position.x = position.x + recoil  
-
 	gv.Player.get_node("AnimationPlayer").play("target_up_rpg")
 
 
@@ -81,24 +75,42 @@ func _on_timer_timeout() -> void:
 
 
 
+
+
+
+
+
+
+
+
+# if gv.fsm.state.name == "Idle":
+	# 	position.y = position.y - recoil
+	# else:
+	# 	position.y = position.y - recoil	
+	# 	position.x = position.x + recoil  
+
+
+# if gv.fsm.state.name == "Idle":
+	# 	position.y = position.y + recoil
+	# else:
+	# 	position.y = position.y + recoil
+	# 	position.x = position.x - recoil
+
+
 #$FiringSprite.visible = false
-	#scale = Vector2(2.0,2.0)
-
-
-
+#scale = Vector2(2.0,2.0)
 
 # $BulletsSpawn.call_defered("add_child",blt)
 
 #$FiringSprite.visible = true
-	#$FiringSprite.play("fire")
-
+#$FiringSprite.play("fire")
 
 
 # $Bullet_shell.restart()
-	# $Bullet_shell.emiting(true)
+# $Bullet_shell.emiting(true)
 
 #func _draw():
-	#draw_line($BulletsSpawn.position, get_global_mouse_position(), Color(255, 255, 0), 1)
+#draw_line($BulletsSpawn.position, get_global_mouse_position(), Color(255, 255, 0), 1)
 
 #mouse_pos = get_global_mouse_position()
 #global_rotation = rad_to_deg(global_position.angle_to(get_global_mouse_position()))/2
