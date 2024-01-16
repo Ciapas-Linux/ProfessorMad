@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://08t55cdhhfpt"]
+[gd_scene load_steps=28 format=3 uid="uid://08t55cdhhfpt"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/maluch/maluch.gd" id="1_6uoeo"]
 [ext_resource type="Texture2D" uid="uid://bja5f1kyekcbh" path="res://Assets/Objects/cars/maluch/body.png" id="2_8tf6w"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b1anr1u0mgf2v" path="res://Assets/Avatars/cicias1/kot2_04.png" id="8_thutg"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Bullet/Bullet_holes.tscn" id="12_6iota"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="13_rm1xg"]
+[ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="14_nybt4"]
 
 [sub_resource type="Animation" id="Animation_vv5q0"]
 length = 0.001
@@ -375,6 +376,11 @@ max_size = 0.6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(57, -93, 123.4, -22.9, 235, -2, 239, 56, 217, 79, 201.7, 36.9, 168.2, 28.8, 132, 51, 121, 91, -87, 88.9, -94, 64, -128, 32, -173, 39, -197, 76, -225, 70, -241, 9, -131, -96)
+
+[node name="snd_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_nybt4")
+volume_db = 2.0
+pitch_scale = 1.4
 
 [connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

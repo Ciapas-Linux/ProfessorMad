@@ -57,24 +57,32 @@ func _physics_process(_delta) -> void:
 		MOVE_LEFT:
 			_process_on_state_move_left(_delta)
 
+func _unhandled_input(event):
+	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+			# do here whatever should happen when you click on that node:
+			gv.mouse_enter_node = self
+			print(self.name + ": left mouse click me!")
+			$snd_click.play() 
+			get_viewport().set_input_as_handled()
+			gv.set_cursor_red()
+			var space_state = get_world_2d().direct_space_state
+			var params = PhysicsPointQueryParameters2D.new()
+			params.position = get_global_mouse_position()
+			var out = space_state.intersect_point(params)
+			for node in out:
+				print(node.collider.name)
+
 func _process_on_state_stop() -> void:
 		pass
 	
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
-		gv.set_cursor_green()
-		gv.mouse_enter_node = self
-	#$object_spr.visible = false
 	
 
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
-		gv.set_cursor_orange()
-		gv.mouse_enter_node = null
-	#$object_spr.visible = true
 
 func _tween():
 	tween = get_tree().create_tween()
@@ -94,6 +102,7 @@ func _tween():
 	tween.tween_property($Boss, "self_modulate", Color(1, 1, 1, 0), 1.0)
 
 func rpg_hit():
+	gv.mouse_enter_node = null
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
 	$BigExplosion.visible = true

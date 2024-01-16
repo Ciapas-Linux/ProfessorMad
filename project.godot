@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 [autoload]
 
 gv="*res://Scenes/Globals/global_var.gd"
+Clicker="*res://Scenes/Globals/clicker.gd"
 gmaster="res://Scenes/GameMaster/GameMaster.tscn"
 
 [compression]

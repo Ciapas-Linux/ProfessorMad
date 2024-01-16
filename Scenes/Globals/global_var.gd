@@ -95,6 +95,21 @@ var SHeight:int = 0
 # 	nodes.sort_custom(self, "_tree_order_descending")
 # 	return nodes
 
+func select_top_node(target_node: Area2D) -> Area2D:
+	var top_piece: Area2D
+	var top_z:int = -1
+	var space_state:PhysicsDirectSpaceState2D = target_node.get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = target_node.get_global_mouse_position()
+	var out = space_state.intersect_point(params)
+	for node in out:
+		print(node.collider.name)
+	for node in out:
+		if node.collider.z_index > top_z:
+			top_piece = node.collider
+			top_z = node.collider.z_index
+	return top_piece
+
 func get_closest_enemy(node:Node2D):
 	var enemies = get_tree().get_nodes_in_group('Enemies')
 	if enemies.empty(): return null

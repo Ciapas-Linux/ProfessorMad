@@ -19,6 +19,21 @@ func _enter_tree() -> void:
 func set_drag_factor(new_value: float) -> void:
 	drag_factor = clamp(new_value, 0.01, 0.5)
 
+func select_top_node() -> Area2D:
+	var top_piece: Area2D
+	var top_z:int = -1
+	var space_state:PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = get_global_mouse_position()
+	var out = space_state.intersect_point(params)
+	for node in out:
+		print(node.collider.name)
+	for node in out:
+		if node.collider.z_index > top_z:
+			top_piece = node.collider
+			top_z = node.collider.z_index
+	return top_piece
+
 func _ready():
 	$sprite_flame.visible = true
 	$sprite_flame.play()
@@ -90,6 +105,7 @@ func _on_body_entered(body):
 	
 # if no hit destroy node after some time:	
 func _on_timer_timeout() -> void:
+	gv.mouse_enter_node = null
 	queue_free()
 
 func _on_hit_sprite_animation_finished() -> void:
@@ -109,6 +125,8 @@ func _on_hit_sprite_animation_finished() -> void:
 # SCRAP CODE:
 ####################################################
 ####################################################
+
+
 
 #func _input(event):
 #    get_viewport().set_input_as_handled()

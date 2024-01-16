@@ -25,19 +25,20 @@ func _process(_delta) -> void:
 	pass
 
 func _unhandled_input(event):
-	if event.is_action_pressed("mouse_left_click") && mouse_enter: 
-		# do here whatever should happen when you click on that node:
-		gv.mouse_enter_node = self
-		print(self.name + ": left mouse click me!")
-		$snd_click.play() 
-		get_viewport().set_input_as_handled()
-		gv.set_cursor_red()
-		var space_state = get_world_2d().direct_space_state
-		var params = PhysicsPointQueryParameters2D.new()
-		params.position = get_global_mouse_position()
-		var out = space_state.intersect_point(params)
-		for node in out:
-			print(node.collider.name)
+	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+			# do here whatever should happen when you click on that node:
+			gv.mouse_enter_node = self
+			print(self.name + ": left mouse click me!")
+			$snd_click.play() 
+			get_viewport().set_input_as_handled()
+			gv.set_cursor_red()
+			var space_state = get_world_2d().direct_space_state
+			var params = PhysicsPointQueryParameters2D.new()
+			params.position = get_global_mouse_position()
+			var out = space_state.intersect_point(params)
+			for node in out:
+				print(node.collider.name)
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
