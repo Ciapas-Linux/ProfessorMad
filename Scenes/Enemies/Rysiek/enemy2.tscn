@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b76igam5emt8l"]
+[gd_scene load_steps=52 format=3 uid="uid://b76igam5emt8l"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy.gd" id="1_ea6gb"]
 [ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/Rysiek/enemy_korpus1.png" id="2_5x8kf"]
@@ -37,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="35_bik5d"]
 [ext_resource type="AudioStream" uid="uid://wdc8t8hdn3pc" path="res://Assets/Sounds/pain/ooooo_1.wav" id="36_4u3cp"]
 [ext_resource type="AudioStream" uid="uid://cikub1jx2xtkm" path="res://Assets/Sounds/pain/head_smash5.wav" id="37_fvx3e"]
+[ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="38_8dwaa"]
 
 [sub_resource type="Animation" id="Animation_pvdyw"]
 resource_name = "Hit_bomb"
@@ -1027,9 +1028,6 @@ size = Vector2(1182.61, 336)
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("1_ea6gb")
-speed = null
-gravity = null
-jump_impulse = null
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
@@ -1253,6 +1251,12 @@ volume_db = 3.0
 stream = ExtResource("37_fvx3e")
 volume_db = 2.1
 pitch_scale = 0.5
+
+[node name="snd_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_8dwaa")
+volume_db = 2.0
+pitch_scale = 1.4
+parameters/looping = null
 
 [connection signal="somebody_hitme" from="." to="EnemyStateMachine/idle" method="_on_enemy_somebody_hitme"]
 [connection signal="somebody_hitme" from="." to="EnemyStateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]

@@ -62,11 +62,17 @@ var player_collision_point:Vector2
 
 var drone:CharacterBody2D
 
+var mouse_enter:bool = false
+
+
 @onready var flying_drone:Resource = preload("res://Scenes/Enemies/Flying _drone/Flying_drone.tscn")
 @onready var Chat:Resource = preload("res://Scenes/CloudChat/Chat.tscn")
 var chat_instance:Node2D
 
 func _ready():
+	self.input_pickable = true
+	self.connect("mouse_entered", _on_Area2D_mouse_entered)
+	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	gv.enemy_fsm = $EnemyStateMachine
 	#drone = get_parent().get_node("Flying_drone")
 	screen_size = get_viewport_rect().size
@@ -93,6 +99,29 @@ func _ready():
 	#print("Drone2: ready " + Drone2.name)
 	$CreateDrone.start()
 
+
+func _unhandled_input(event):
+	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+			# do here whatever should happen when you click on that node:
+			gv.mouse_enter_node = self
+			print(self.name + ": left mouse click me!")
+			$snd_click.play() 
+			get_viewport().set_input_as_handled()
+			gv.set_cursor_red()
+			var space_state = get_world_2d().direct_space_state
+			var params = PhysicsPointQueryParameters2D.new()
+			params.position = get_global_mouse_position()
+			var out = space_state.intersect_point(params)
+			for node in out:
+				print(node.collider.name)
+
+
+func _on_Area2D_mouse_entered() -> void:
+	mouse_enter = true
+	
+func _on_Area2D_mouse_exited() -> void:
+	mouse_enter = false
 
 func _on_create_drone_timeout():
 	var Drone2:CharacterBody2D = flying_drone.instantiate()
@@ -147,6 +176,7 @@ func PlayerActivity():
 # gv.enemy_fsm.transition_to("Hit_rpg")
 
 func rpg_hit():
+	gv.mouse_enter_node = null
 	var _particle:Node2D = particles_res.instantiate()
 	_particle.position.x = global_position.x + randi_range(-30,60)
 	_particle.position.y = global_position.y + randi_range(-30,60)
