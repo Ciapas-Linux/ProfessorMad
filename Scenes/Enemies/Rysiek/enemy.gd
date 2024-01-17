@@ -14,7 +14,7 @@ const max_speed:float = 300.0
 # Vertical speed applied when jumping.
 @export var jump_impulse:float = 1200.0
 
-var particles_res:Resource = preload("res://Scenes/Enemies/hit_particles.tscn")
+var particles_res:Resource = preload("res://Scenes/Enemies/Rysiek/hit_particles.tscn")
 
 var Head_hit1_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/face_3-sm.png")
 var Head_hit2_img:CompressedTexture2D = preload("res://Assets/Enemy/monster_1/enemy_head2.png")

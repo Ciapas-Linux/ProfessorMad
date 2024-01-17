@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://flpc13k6p4us"]
 
-[ext_resource type="Script" path="res://Scenes/Bullet/Bullet_holes.gd" id="1_oe7sg"]
+[ext_resource type="Script" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.gd" id="1_oe7sg"]
 [ext_resource type="AudioStream" uid="uid://qdyk3bhaxqk5" path="res://Assets/Sounds/bullet_hit1.wav" id="2_11cva"]
 [ext_resource type="PackedScene" uid="uid://cg6vsg8g1a4ul" path="res://Scenes/Cars/maluch_3/shrapnel.tscn" id="3_euq33"]
 

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bc11w167km4vu" path="res://Assets/Objects/Crate.png" id="2_b12ka"]
 [ext_resource type="Texture2D" uid="uid://bcrby7a04efk3" path="res://Assets/Explosions/Explosion1.png" id="2_dn02g"]
 [ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="14_isa5h"]
-[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Bullet/Bullet_holes.tscn" id="15_seovd"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="15_seovd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7q557"]
 size = Vector2(97, 99)

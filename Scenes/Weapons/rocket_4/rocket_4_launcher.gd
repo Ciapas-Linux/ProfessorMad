@@ -7,7 +7,7 @@
 extends Sprite2D
 
 var can_fire:bool = true
-var rocket_4_misille:Resource = preload("res://Scenes/Guns/rocket_4/rocket_4_misille.tscn")
+var rocket_4_misille:Resource = preload("res://Scenes/Weapons/rocket_4/rocket_4_misille.tscn")
 var recoil:int = 130
 var shoots:int = 0
 var all_shoots:int = 0

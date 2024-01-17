@@ -103,6 +103,7 @@
 [ext_resource type="Texture2D" uid="uid://cwu7dttc1f02r" path="res://Assets/Explosions/explosion3/explosion00-frame091.png" id="100_f6tvs"]
 [ext_resource type="Texture2D" uid="uid://bdna068s2tmar" path="res://Assets/Explosions/explosion3/explosion00-frame092.png" id="101_p01qt"]
 [ext_resource type="Texture2D" uid="uid://yk7uc5adc2ft" path="res://Assets/Explosions/explosion3/explosion00-frame093.png" id="102_nngm1"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="103_mrcar"]
 [ext_resource type="Texture2D" uid="uid://cgxs2jp76tmgx" path="res://Assets/Explosions/explosion3/explosion00-frame094.png" id="103_y8gq1"]
 [ext_resource type="Texture2D" uid="uid://ctown24h4af1x" path="res://Assets/Explosions/explosion3/explosion00-frame095.png" id="104_d4ppt"]
 [ext_resource type="Texture2D" uid="uid://chjekni6nqhqr" path="res://Assets/Explosions/explosion3/explosion00-frame096.png" id="105_818fq"]
@@ -111,7 +112,6 @@
 [ext_resource type="Texture2D" uid="uid://clbrb28cry2pq" path="res://Assets/Explosions/explosion3/explosion00-frame099.png" id="108_ojy0b"]
 [ext_resource type="Texture2D" uid="uid://dhexvsk2pnlja" path="res://Assets/Explosions/explosion3/explosion00-frame100.png" id="109_elad2"]
 [ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="110_njfkx"]
-[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Bullet/Bullet_holes.tscn" id="111_inoe0"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="113_ftw57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8hlk"]
@@ -457,7 +457,7 @@ frame_progress = 0.0166498
 z_index = 2
 texture = ExtResource("2_bwv1a")
 
-[node name="Bullet_holes" parent="." instance=ExtResource("111_inoe0")]
+[node name="Bullet_holes" parent="." instance=ExtResource("103_mrcar")]
 z_index = 2
 max_size = 1.0
 
@@ -517,5 +517,6 @@ shape = SubResource("RectangleShape2D_s3j8h")
 stream = ExtResource("113_ftw57")
 volume_db = 2.0
 pitch_scale = 1.33
+parameters/looping = null
 
 [connection signal="animation_finished" from="explosion_spr" to="." method="_on_explosion_spr_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=3 uid="uid://chihd8eru52sc"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/Flying_drone_node.gd" id="1_0fbaq"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/Flying_drone.gd" id="1_j8n5l"]
 [ext_resource type="Texture2D" uid="uid://bb3k7f0f6f4co" path="res://Assets/Enemy/Dron2/0001.png" id="3_hqq70"]
 [ext_resource type="Texture2D" uid="uid://dyewapfg8cpcg" path="res://Assets/Enemy/Dron2/0002.png" id="4_14rm5"]
 [ext_resource type="Texture2D" uid="uid://crnc00w7biu02" path="res://Assets/Enemy/Dron2/0003.png" id="5_5u6p8"]
@@ -320,7 +320,7 @@ animations = [{
 z_index = 3
 collision_mask = 17
 input_pickable = true
-script = ExtResource("1_0fbaq")
+script = ExtResource("1_j8n5l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
@@ -347,22 +347,23 @@ autostart = true
 stream = ExtResource("23_4c35e")
 volume_db = 2.0
 pitch_scale = 0.5
+parameters/looping = null
 
 [node name="TimerNoBoss" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(7, 5)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_8hx83")
 animation = &"explode"
-frame = 24
-frame_progress = 1.0
 
 [node name="snd_explode" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("40_7x3it")
 volume_db = 7.324
 pitch_scale = 0.84
+parameters/looping = null
 
 [node name="Drone_explosion" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -396,6 +397,7 @@ script = ExtResource("50_skf5i")
 stream = ExtResource("35_las8x")
 volume_db = 2.0
 pitch_scale = 1.4
+parameters/looping = null
 
 [connection signal="timeout" from="TimerRnd_Y" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="LoadBomb" to="." method="_on_load_bomb_timeout"]

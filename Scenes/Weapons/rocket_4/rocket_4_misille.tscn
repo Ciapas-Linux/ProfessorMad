@@ -1,6 +1,6 @@
 [gd_scene load_steps=116 format=3 uid="uid://drjrhnpsp2cde"]
 
-[ext_resource type="Script" path="res://Scenes/Guns/rocket_4/rocket_4_misille.gd" id="1_i65hl"]
+[ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_misille.gd" id="1_i65hl"]
 [ext_resource type="Texture2D" uid="uid://dsm0i1fygesv0" path="res://Assets/Weapons/rocket_4_anim.png" id="2_aufsi"]
 [ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="3_6onys"]
 [ext_resource type="Texture2D" uid="uid://di20genwh5553" path="res://Assets/Particles/flame1/0045.png" id="3_fhxxo"]

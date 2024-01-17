@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://ka4do5pd7dl"]
 
 [ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Objects/rocket_launcher.png" id="1_nowhg"]
-[ext_resource type="Script" path="res://Scenes/Guns/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
+[ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
 [ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/weapons/reload1.wav" id="3_dg3vb"]
-[ext_resource type="Shader" path="res://Scenes/Guns/rocket_4/rocket_4_launcher.gdshader" id="4_e0vpj"]
+[ext_resource type="Shader" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gdshader" id="4_e0vpj"]
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="5_cx56q"]
 [ext_resource type="Texture2D" uid="uid://k4mycie8tmu4" path="res://Assets/Particles/sparks/spark_1.png" id="6_nbug4"]
 

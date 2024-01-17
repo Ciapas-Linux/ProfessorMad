@@ -4,8 +4,8 @@
 extends Sprite2D
 
 var can_fire:bool = true
-var bullet:Resource = preload("res://Scenes/Bullet/Bullet.tscn")
-var bullet_shell:Resource = preload("res://Scenes/Bullet/Bullet_shell.tscn")
+var bullet:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet.tscn")
+var bullet_shell:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet_shell.tscn")
 var recoil:int = 60
 var shoots:int = 0
 const ammo_max:int = 150
