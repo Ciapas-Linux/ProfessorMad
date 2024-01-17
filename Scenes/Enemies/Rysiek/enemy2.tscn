@@ -1,11 +1,11 @@
 [gd_scene load_steps=51 format=3 uid="uid://b76igam5emt8l"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy.gd" id="1_ea6gb"]
-[ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/monster_1/enemy_korpus1.png" id="2_fhb8i"]
-[ext_resource type="Texture2D" uid="uid://bfl7bgmhpeggh" path="res://Assets/Enemy/monster_1/face_3-sm.png" id="3_jlsai"]
-[ext_resource type="Texture2D" uid="uid://cdoj2usu3xuis" path="res://Assets/Enemy/monster_1/enemy_reka_L.png" id="4_ciuj3"]
-[ext_resource type="Texture2D" uid="uid://ctt41alg37wei" path="res://Assets/Enemy/monster_1/enemy_noga_L.png" id="5_dcvjw"]
-[ext_resource type="Texture2D" uid="uid://2t4ekpb73mve" path="res://Assets/Enemy/monster_1/enemy_noga_P.png" id="6_lyiyw"]
+[ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/Rysiek/enemy_korpus1.png" id="2_5x8kf"]
+[ext_resource type="Texture2D" uid="uid://bfl7bgmhpeggh" path="res://Assets/Enemy/Rysiek/face_3-sm.png" id="3_se1m8"]
+[ext_resource type="Texture2D" uid="uid://cdoj2usu3xuis" path="res://Assets/Enemy/Rysiek/enemy_reka_L.png" id="4_60k1i"]
+[ext_resource type="Texture2D" uid="uid://ctt41alg37wei" path="res://Assets/Enemy/Rysiek/enemy_noga_L.png" id="5_xrlal"]
+[ext_resource type="Texture2D" uid="uid://2t4ekpb73mve" path="res://Assets/Enemy/Rysiek/enemy_noga_P.png" id="6_xyrlg"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy-fsm/EnemyStateMachine.gd" id="7_jy4yv"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/idle.gd" id="8_n4uo6"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Walk_Left.gd" id="9_i622y"]
@@ -1027,6 +1027,9 @@ size = Vector2(1182.61, 336)
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("1_ea6gb")
+speed = null
+gravity = null
+jump_impulse = null
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
@@ -1034,14 +1037,14 @@ script = ExtResource("1_ea6gb")
 position = Vector2(-5, 68)
 rotation = -0.0352773
 scale = Vector2(0.328543, 0.328543)
-texture = ExtResource("2_fhb8i")
+texture = ExtResource("2_5x8kf")
 
 [node name="Head" type="Sprite2D" parent="CanvasGroup/Torso"]
 z_index = 1
 position = Vector2(31.515, -148.915)
 rotation = 0.191699
 scale = Vector2(2, 2)
-texture = ExtResource("3_jlsai")
+texture = ExtResource("3_se1m8")
 offset = Vector2(-30, -130)
 
 [node name="Reka_L" type="Sprite2D" parent="CanvasGroup/Torso"]
@@ -1049,7 +1052,7 @@ z_index = 1
 position = Vector2(40.3627, -59.3417)
 rotation = 0.340886
 scale = Vector2(1.34067, 1.34067)
-texture = ExtResource("4_ciuj3")
+texture = ExtResource("4_60k1i")
 offset = Vector2(-93.8579, 44.6102)
 
 [node name="Reka_P" type="Sprite2D" parent="CanvasGroup/Torso"]
@@ -1057,7 +1060,7 @@ z_index = -1
 position = Vector2(42.9351, -60.879)
 rotation = -0.227963
 scale = Vector2(1.26599, 1.26599)
-texture = ExtResource("4_ciuj3")
+texture = ExtResource("4_60k1i")
 offset = Vector2(-95.329, 48.1856)
 
 [node name="Noga_L" type="Sprite2D" parent="CanvasGroup"]
@@ -1065,7 +1068,7 @@ z_index = -1
 position = Vector2(-14, 113)
 rotation = 0.0270725
 scale = Vector2(0.2682, 0.2682)
-texture = ExtResource("5_dcvjw")
+texture = ExtResource("5_xrlal")
 offset = Vector2(-21.2144, 145.47)
 
 [node name="Noga_P" type="Sprite2D" parent="CanvasGroup"]
@@ -1073,7 +1076,7 @@ z_index = -1
 position = Vector2(-1, 106.529)
 rotation = -0.0302793
 scale = Vector2(0.285138, 0.285138)
-texture = ExtResource("6_lyiyw")
+texture = ExtResource("6_xyrlg")
 offset = Vector2(-17.0368, 150.492)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1146,6 +1149,7 @@ max_distance = 3000.0
 stream = ExtResource("21_kvf1g")
 volume_db = 8.0
 pitch_scale = 0.67
+parameters/looping = null
 
 [node name="snd_sit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_c3k80")
@@ -1203,6 +1207,7 @@ texture = ExtResource("29_n0dpc")
 stream = ExtResource("30_ukg66")
 volume_db = 8.0
 pitch_scale = 1.08
+parameters/looping = null
 
 [node name="EyesRange" type="Area2D" parent="."]
 visible = false
@@ -1220,6 +1225,7 @@ shape = SubResource("RectangleShape2D_uohuh")
 stream = ExtResource("31_la8ke")
 volume_db = 8.0
 pitch_scale = 0.78
+parameters/looping = null
 
 [node name="hurt_player" type="AudioStreamPlayer2D" parent="."]
 volume_db = 5.0
