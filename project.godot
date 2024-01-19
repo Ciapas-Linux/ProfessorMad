@@ -55,7 +55,7 @@ movie_writer/disable_vsync=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [filesystem]
 

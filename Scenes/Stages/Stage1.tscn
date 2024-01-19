@@ -65,9 +65,6 @@ script = ExtResource("3_ueebj")
 z_index = 1
 position = Vector2(8842, 441)
 collision_mask = 27
-speed = 300.0
-gravity = 2000.0
-jump_impulse = 1200.0
 
 [node name="Box1" parent="." groups=["Explosives"] instance=ExtResource("8_7yfa0")]
 z_index = 3
