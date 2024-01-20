@@ -5,6 +5,9 @@ extends EnemyState
 # #################
 
 @onready var ray_cast:RayCast2D = get_node("../../PlayerCast2D")
+@onready var But_L_spr:Sprite2D = get_node("../../CanvasGroup/Noga_L/But_L")
+@onready var But_P_spr:Sprite2D = get_node("../../CanvasGroup/Noga_P/But_P")
+
 
 signal first_hero_catch
 
@@ -19,6 +22,11 @@ func enter(_msg := {}) -> void:
  
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:
+	
+	enemy.velocity.y += enemy.gravity * delta
+	
+	
+	
 	if not enemy.is_on_floor():
 		enemy.previous_state = gv.enemy_fsm.estate.name
 		estate_machine.transition_to("Air")
@@ -97,12 +105,30 @@ func physics_update(delta: float) -> void:
 			estate_machine.transition_to("Walk_Left")
 		
 	
+	enemy.move_and_slide()
+	
+	But_L_spr.rotation = enemy.get_floor_angle()
+	But_P_spr.rotation = enemy.get_floor_angle()
+
 	
 func _on_enemy_somebody_hitme() -> void:
 	if gv.enemy_fsm.estate.name != "Hit":
 		enemy.previous_state = gv.enemy_fsm.estate.name
 	estate_machine.transition_to("Hit")
 		
+
+
+	##################### :)
+    # 	   .-"-.
+    #    _/.-.-.\_
+    #   ( ( o o ) )
+    #    |/  "  \|
+    #     \'/^\'/
+    #     /`\ /`\
+    #    /  /|\  \
+    #   ( (/ T \) )
+    #    \__/^\__/
+
 
 #	print("XXXXXXXXX: " + str(int(enemy.global_position.distance_to(gv.Hero_global_position))))
 			# (enemy.player_collision_point))))

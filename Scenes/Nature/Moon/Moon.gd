@@ -1,4 +1,4 @@
-extends Sprite2D
+extends MeshInstance2D
 
 
 func _ready() -> void:

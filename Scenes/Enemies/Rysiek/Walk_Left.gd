@@ -4,6 +4,9 @@ extends EnemyState
 # # WALK LEFT.SCRIPT  #
 # #####################
 
+@onready var But_L_spr:Sprite2D = get_node("../../CanvasGroup/Noga_L/But_L")
+@onready var But_P_spr:Sprite2D = get_node("../../CanvasGroup/Noga_P/But_P")
+
 var player_distance:float
 
 func enter(_msg := {}) -> void:
@@ -52,6 +55,9 @@ func physics_update(delta: float) -> void:
 	
 			
 	enemy.move_and_slide()
+
+	But_L_spr.rotation = enemy.get_floor_angle()
+	But_P_spr.rotation = enemy.get_floor_angle()
 
 	if enemy.is_on_wall():	
 		enemy.previous_state = gv.enemy_fsm.estate.name

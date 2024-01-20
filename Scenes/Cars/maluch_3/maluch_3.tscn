@@ -325,6 +325,5 @@ pitch_scale = 0.78
 stream = ExtResource("16_ap028")
 volume_db = 2.0
 pitch_scale = 1.45
-parameters/looping = null
 
 [connection signal="animation_finished" from="explosion_spr" to="." method="_on_explosion_spr_animation_finished"]

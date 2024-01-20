@@ -26,6 +26,10 @@ var texture_nr:int = 0
 	load("res://Assets/Sounds/Enemy2/Hurt2.wav"),
 	load("res://Assets/Sounds/Enemy2/Hurt3.wav")]
 
+
+
+
+
 var screen_size : Vector2
 var gun_fire:bool = false
 
@@ -178,8 +182,8 @@ func PlayerActivity():
 func rpg_hit():
 	gv.mouse_enter_node = null
 	var _particle:Node2D = particles_res.instantiate()
-	_particle.position.x = global_position.x + randi_range(-30,60)
-	_particle.position.y = global_position.y + randi_range(-30,60)
+	_particle.position.x = global_position.x + randi_range(-40,70)
+	_particle.position.y = global_position.y + randi_range(-40,70)
 	_particle.rotation = global_rotation
 	_particle.emitting = true
 	$snd_rpg_hit.play()

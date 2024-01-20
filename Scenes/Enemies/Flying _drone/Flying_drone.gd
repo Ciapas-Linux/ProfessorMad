@@ -55,6 +55,7 @@ func _ready():
 	position.x = enemy2.global_position.x
 	position.y = enemy2.global_position.y - 200
 	#$Health.visible = true
+	$DroneSprite.play("flying")
 	print("Flying drone: ready ...") 
 
 func _unhandled_input(event):

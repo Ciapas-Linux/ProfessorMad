@@ -103,8 +103,8 @@ animations = [{
 "texture": ExtResource("22_7mfcc")
 }],
 "loop": true,
-"name": &"default",
-"speed": 15.0
+"name": &"flying",
+"speed": 20.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5ig4"]
@@ -329,8 +329,9 @@ shape = SubResource("RectangleShape2D_shara")
 [node name="DroneSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 54)
 sprite_frames = SubResource("SpriteFrames_lyknl")
-frame = 10
-frame_progress = 0.908852
+animation = &"flying"
+frame = 4
+frame_progress = 0.482657
 offset = Vector2(5, -34)
 
 [node name="TimerRnd_Y" type="Timer" parent="."]
@@ -347,7 +348,6 @@ autostart = true
 stream = ExtResource("23_4c35e")
 volume_db = 2.0
 pitch_scale = 0.5
-parameters/looping = null
 
 [node name="TimerNoBoss" type="Timer" parent="."]
 wait_time = 5.0
@@ -363,7 +363,6 @@ animation = &"explode"
 stream = ExtResource("40_7x3it")
 volume_db = 7.324
 pitch_scale = 0.84
-parameters/looping = null
 
 [node name="Drone_explosion" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -397,7 +396,6 @@ script = ExtResource("50_skf5i")
 stream = ExtResource("35_las8x")
 volume_db = 2.0
 pitch_scale = 1.4
-parameters/looping = null
 
 [connection signal="timeout" from="TimerRnd_Y" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="LoadBomb" to="." method="_on_load_bomb_timeout"]

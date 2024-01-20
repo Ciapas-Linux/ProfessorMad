@@ -2,6 +2,8 @@ extends PlayerState
 
 signal turn(value)
 
+@onready var But_L_spr:Sprite2D = get_node("../../leg_l/But_L")
+@onready var But_P_spr:Sprite2D = get_node("../../leg_p/But_P")
 
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
@@ -15,6 +17,9 @@ func enter(_msg := {}) -> void:
 	
 
 func physics_update(delta: float) -> void:
+
+	player.velocity.y += player.gravity * delta
+
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		gv.Hero_is_on_floor = false
@@ -78,8 +83,11 @@ func physics_update(delta: float) -> void:
 		#player.scale.x = player.scale.y * 1
 		#gv.hero_sprite.set_flip_h(false)
 
-	player.velocity.y += player.gravity * delta
-	player.move_and_slide()	 		
+	
+	player.move_and_slide()
+
+	But_L_spr.rotation = player.get_floor_angle() 
+	But_P_spr.rotation = player.get_floor_angle()		 		
 		
 func _on_gun_2_fire() -> void:
 	if gv.fsm.state.name == "Idle":

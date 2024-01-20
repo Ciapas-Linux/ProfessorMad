@@ -7,20 +7,21 @@
 class_name Camera2DPro extends Camera2D
 
 # Lower cap for the `_zoom_level`.
-@export var min_zoom := 0.3
+@export var min_zoom: float = 0.3
 # Upper cap for the `_zoom_level`.
-@export var max_zoom := 2.0
+@export var max_zoom : float = 2.0
 # Controls how much we increase or decrease the `_zoom_level` on every turn of the scroll wheel.
-@export var zoom_factor := 0.1
+@export var zoom_factor : float = 0.1
 # Duration of the zoom's tween animation.
-@export var zoom_duration := 0.6
+@export var zoom_duration : float = 0.6
 
 var target_position : Vector2
-var follow_node
+
+var follow_node:Node2D
 
 var _zoom_level : float = 0.5
 var zoom_step : float = 1.1
-var zoom_speed = 0.05
+var zoom_speed: float = 0.05
 
 var camera_shake_intensity:float = 0.0
 var camera_shake_duration:float = 0.0

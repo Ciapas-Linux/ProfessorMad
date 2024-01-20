@@ -1,11 +1,12 @@
-[gd_scene load_steps=52 format=3 uid="uid://b76igam5emt8l"]
+[gd_scene load_steps=53 format=3 uid="uid://b76igam5emt8l"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy.gd" id="1_ea6gb"]
 [ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/Rysiek/enemy_korpus1.png" id="2_5x8kf"]
 [ext_resource type="Texture2D" uid="uid://bfl7bgmhpeggh" path="res://Assets/Enemy/Rysiek/face_3-sm.png" id="3_se1m8"]
 [ext_resource type="Texture2D" uid="uid://cdoj2usu3xuis" path="res://Assets/Enemy/Rysiek/enemy_reka_L.png" id="4_60k1i"]
-[ext_resource type="Texture2D" uid="uid://ctt41alg37wei" path="res://Assets/Enemy/Rysiek/enemy_noga_L.png" id="5_xrlal"]
-[ext_resource type="Texture2D" uid="uid://2t4ekpb73mve" path="res://Assets/Enemy/Rysiek/enemy_noga_P.png" id="6_xyrlg"]
+[ext_resource type="Texture2D" uid="uid://dald3r8q0a3so" path="res://Assets/Enemy/Rysiek/enemy_noga_L_2.png" id="5_wrhox"]
+[ext_resource type="Texture2D" uid="uid://chmoss01r3yrf" path="res://Assets/Enemy/Rysiek/But_1.png" id="6_06gb8"]
+[ext_resource type="Texture2D" uid="uid://b8kjn7sdrhq8w" path="res://Assets/Enemy/Rysiek/enemy_noga_P_2.png" id="7_3sjdu"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy-fsm/EnemyStateMachine.gd" id="7_jy4yv"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/idle.gd" id="8_n4uo6"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Walk_Left.gd" id="9_i622y"]
@@ -22,7 +23,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Pause.gd" id="19_wtpt7"]
 [ext_resource type="AudioStream" uid="uid://cjfvr0k666q2" path="res://Assets/Sounds/jump-3.wav" id="20_12bei"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Reload_bomb.gd" id="20_ovpjw"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Hit_rpg.gd" id="21_io7a4"]
+[ext_resource type="Script" uid="uid://2o0thcli7xdf" path="res://Scenes/Enemies/Rysiek/Hit_rpg.gd" id="21_io7a4"]
 [ext_resource type="AudioStream" uid="uid://jw6t37kavthv" path="res://Assets/Sounds/Hero/upadek3.ogg" id="21_kvf1g"]
 [ext_resource type="AudioStream" uid="uid://dkyg3pkatql21" path="res://Assets/Sounds/Hero/sit_down1.wav" id="22_c3k80"]
 [ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="23_qit8k"]
@@ -1019,7 +1020,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v0ca"]
 radius = 32.0
-height = 295.99
+height = 320.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uohuh"]
 size = Vector2(1182.61, 336)
@@ -1027,6 +1028,8 @@ size = Vector2(1182.61, 336)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 17
+floor_stop_on_slope = false
+floor_snap_length = 2.0
 script = ExtResource("1_ea6gb")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
@@ -1066,16 +1069,27 @@ z_index = -1
 position = Vector2(-14, 113)
 rotation = 0.0270725
 scale = Vector2(0.2682, 0.2682)
-texture = ExtResource("5_xrlal")
+texture = ExtResource("5_wrhox")
 offset = Vector2(-21.2144, 145.47)
+
+[node name="But_L" type="Sprite2D" parent="CanvasGroup/Noga_L"]
+position = Vector2(6.86318, 253.449)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_06gb8")
+offset = Vector2(-30.0655, -1.18695)
 
 [node name="Noga_P" type="Sprite2D" parent="CanvasGroup"]
 z_index = -1
 position = Vector2(-1, 106.529)
 rotation = -0.0302793
 scale = Vector2(0.285138, 0.285138)
-texture = ExtResource("6_xyrlg")
+texture = ExtResource("7_3sjdu")
 offset = Vector2(-17.0368, 150.492)
+
+[node name="But_P" type="Sprite2D" parent="CanvasGroup/Noga_P"]
+position = Vector2(-53.4781, 259.675)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_06gb8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1147,16 +1161,15 @@ max_distance = 3000.0
 stream = ExtResource("21_kvf1g")
 volume_db = 8.0
 pitch_scale = 0.67
-parameters/looping = null
 
 [node name="snd_sit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_c3k80")
 
 [node name="Health" type="TextureProgressBar" parent="."]
 top_level = true
-offset_top = -79.0
+offset_top = -207.0
 offset_right = 200.0
-offset_bottom = -39.0
+offset_bottom = -167.0
 scale = Vector2(0.594163, 0.594163)
 value = 50.0
 texture_under = ExtResource("23_qit8k")
@@ -1165,9 +1178,9 @@ script = ExtResource("27_tefhc")
 
 [node name="HitPoints" type="Label" parent="."]
 top_level = true
-offset_top = -93.0
+offset_top = -237.0
 offset_right = 40.0
-offset_bottom = -70.0
+offset_bottom = -202.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "0"
@@ -1205,7 +1218,6 @@ texture = ExtResource("29_n0dpc")
 stream = ExtResource("30_ukg66")
 volume_db = 8.0
 pitch_scale = 1.08
-parameters/looping = null
 
 [node name="EyesRange" type="Area2D" parent="."]
 visible = false
@@ -1223,7 +1235,6 @@ shape = SubResource("RectangleShape2D_uohuh")
 stream = ExtResource("31_la8ke")
 volume_db = 8.0
 pitch_scale = 0.78
-parameters/looping = null
 
 [node name="hurt_player" type="AudioStreamPlayer2D" parent="."]
 volume_db = 5.0
@@ -1256,7 +1267,6 @@ pitch_scale = 0.5
 stream = ExtResource("38_8dwaa")
 volume_db = 2.0
 pitch_scale = 1.4
-parameters/looping = null
 
 [connection signal="somebody_hitme" from="." to="EnemyStateMachine/idle" method="_on_enemy_somebody_hitme"]
 [connection signal="somebody_hitme" from="." to="EnemyStateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]
@@ -1265,6 +1275,7 @@ parameters/looping = null
 [connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Hit" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Release_drone" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Reload_bomb" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Hit_rpg" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Recover_Health" to="." method="_on_recover_health_timeout"]
 [connection signal="body_entered" from="EyesRange" to="." method="_on_eyes_range_body_entered"]
 [connection signal="body_exited" from="EyesRange" to="." method="_on_eyes_range_body_exited"]
