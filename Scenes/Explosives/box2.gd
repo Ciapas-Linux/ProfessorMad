@@ -67,6 +67,7 @@ func hit():
 				tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.6)
 
 func rpg_hit():
+	$BodiesCollision/CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$explosion_spr.visible = true
 	$explosion_spr.play("explode")
@@ -82,6 +83,7 @@ func rpg_hit():
 	print(name + ": enemies hit me by rpg!") 
 
 func bomb_explode():
+	$BodiesCollision/CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$explosion_spr.visible = true
 	$explosion_spr.play("explode")

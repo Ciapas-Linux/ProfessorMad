@@ -42,6 +42,16 @@ func _on_Area2D_mouse_exited() -> void:
 		gv.set_cursor_orange()
 	#$object_spr.visible = true
 
+func _tween():
+	tween = get_tree().create_tween()
+	#tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_LINEAR) # or TRANS_LINEAR,TRANS_QUINT,TRANS_CUBIC,TRANS_BACK,TRANS_SINE
+	tween.set_parallel(true)
+	tween.tween_property($object_spr, "rotation", randf_range(-2.5, 2.5), 1.0)
+	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 135), 0.9)
+	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.0)
+
+
 func rpg_hit():
 	print("polonez_1: dostałem od rpg")
 	$CollisionPolygon2D.set_deferred("disabled", true)
@@ -51,13 +61,7 @@ func rpg_hit():
 	$BigExplosion.explode()
 	$BigExplosion.visible = true
 	await get_tree().create_timer(0.3).timeout
-	tween = get_tree().create_tween()
-	#tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_LINEAR) # or TRANS_LINEAR,TRANS_QUINT,TRANS_CUBIC,TRANS_BACK,TRANS_SINE
-	tween.set_parallel(true)
-	tween.tween_property($object_spr, "rotation", randf_range(-2.5, 2.5), 1.0)
-	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 135), 0.9)
-	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.0)
+	_tween()
 	$object_spr.texture = hit_texture
 	gv.Cam1.ScreenShake(50, 0.7)
 
@@ -75,30 +79,19 @@ func hit():
 			$BigExplosion.visible = true
 			await get_tree().create_timer(0.3).timeout
 			$Bullet_holes.vanish()
-			tween = get_tree().create_tween()
-			#tween.set_ease(Tween.EASE_OUT)
-			tween.set_trans(Tween.TRANS_LINEAR) # or TRANS_LINEAR,TRANS_QUINT,TRANS_CUBIC,TRANS_BACK,TRANS_SINE
-			tween.set_parallel(true)
-			tween.tween_property($object_spr, "rotation", randf_range(-2.5, 2.5), 1.0)
-			tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 135), 0.9)
-			tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.0)
+			_tween()
 			$object_spr.texture = hit_texture
 			gv.Cam1.ScreenShake(50, 0.7)
 
 
 func bomb_explode():
+	$CollisionPolygon2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$snd_explode.play()
 	$BigExplosion.explode()
 	$BigExplosion.visible = true
 	#$ExplosionFx1.play("explode")
-	tween = get_tree().create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_LINEAR) # or TRANS_LINEAR,TRANS_QUINT,TRANS_CUBIC,TRANS_BACK,TRANS_SINE
-	tween.set_parallel(true)
-	tween.tween_property($object_spr, "rotation", randf_range(-2.5, 2.5), 0.9)
-	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 65), 0.6)
-	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 0.9)
+	_tween()
 	$object_spr.texture = hit_texture
 	print(name + ": enemies hit me by drone big bomb!")
 
@@ -110,7 +103,6 @@ func _on_body_entered(_body: Node2D) -> void:
 
 func _on_explosion_fx_1_animation_finished() -> void:
 	queue_free()
-
 
 func _on_big_explosion_finished() -> void:
 	queue_free()

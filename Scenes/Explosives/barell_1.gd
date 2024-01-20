@@ -92,6 +92,7 @@ func _on_bodies_collision_hit_me() -> void:
 	print("Barrel_1: some bodies hits me")
 
 func rpg_hit():
+	$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
 	gv.mouse_enter_node = null
 	$Bullet_holes.vanish()
 	$explosion_spr.visible = true
@@ -109,6 +110,7 @@ func rpg_hit():
 	print("Coin Barell: enemies hit me by rpg!")
 
 func bomb_explode():
+	$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$explosion_spr.visible = true
 	$explosion_spr.play("explode")

@@ -54,6 +54,7 @@ func _on_body_entered(body):
 	pass
 
 func rpg_hit():
+	$Box1StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	gv.mouse_enter_node = null
 	$Bullet_holes.vanish()
 	$explode_spr.visible = true
@@ -92,6 +93,8 @@ func hit():
 			print(name + ": enemies kill me by bullets!") 
 
 func bomb_explode():
+	$CollisionShape2D.set_deferred("disabled", true)
+	$Box1StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$explode_spr.visible = true
 	$explode_spr.play("explode")
