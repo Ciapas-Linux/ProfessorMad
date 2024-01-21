@@ -68,10 +68,14 @@ func _ready():
 
 func load_inventory():
 	match gv.Hero_current_weapon:
-		0:
+		0: # Empty weapon = none
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
-		1:
+			gv.Hero_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()	
+			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
+			gv.set_cursor_orange()	
+		
+		1: # AK-47
 			gv.Hero_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
@@ -79,7 +83,8 @@ func load_inventory():
 			gv.set_cursor_orange()
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(3.2,3.2)
-		2:
+		
+		2: # RPG-7 Grenade launcher
 			gv.Hero_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
@@ -88,7 +93,7 @@ func load_inventory():
 			gv.Hero_weapon.transform = get_node("Torso/arm_r/weapon_spawn").transform
 			gv.Hero_weapon.scale = Vector2(5,7)	
 
-		3:
+		3: # Home misille rocket launcher
 			gv.Hero_weapon = load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
