@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=43 format=3 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="21_i66ii"]
 [ext_resource type="Script" path="res://Scenes/HUD/floor.gd" id="22_4oawl"]
 [ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="23_vobvt"]
+[ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="25_a4niq"]
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="27_weviq"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="28_ibdmt"]
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Objects/bullet1.png" id="29_8ah6a"]
@@ -163,10 +164,10 @@ position = Vector2(1012, 463)
 layer = 5
 
 [node name="fps" type="Label" parent="HUD"]
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 72.0
-offset_bottom = 55.0
+offset_left = 37.0
+offset_top = 20.0
+offset_right = 77.0
+offset_bottom = 43.0
 scale = Vector2(1, 0.969)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -174,6 +175,34 @@ theme_override_fonts/font = ExtResource("16_3ay2h")
 theme_override_font_sizes/font_size = 20
 text = "FPS:"
 script = ExtResource("13_lg0wn")
+
+[node name="Health" type="TextureProgressBar" parent="HUD"]
+offset_left = 37.0
+offset_top = 50.0
+offset_right = 237.0
+offset_bottom = 77.0
+scale = Vector2(0.646371, 0.661628)
+texture_under = ExtResource("20_4flmq")
+texture_progress = ExtResource("21_i66ii")
+script = ExtResource("18_8y8ui")
+
+[node name="ammo" type="Label" parent="HUD"]
+offset_left = 36.0
+offset_top = 110.0
+offset_right = 76.0
+offset_bottom = 136.0
+scale = Vector2(1.2226, 1.21801)
+text = "0"
+script = ExtResource("19_nmle6")
+
+[node name="coins" type="Label" parent="HUD"]
+offset_left = 36.0
+offset_top = 75.0
+offset_right = 76.0
+offset_bottom = 101.0
+scale = Vector2(1.23669, 1.23669)
+text = "0"
+script = ExtResource("20_xawl8")
 
 [node name="pos" type="Label" parent="HUD"]
 offset_left = 1776.0
@@ -196,34 +225,6 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "STATE:"
 script = ExtResource("15_rddg4")
-
-[node name="Health" type="TextureProgressBar" parent="HUD"]
-offset_left = 31.0
-offset_top = 59.0
-offset_right = 231.0
-offset_bottom = 86.0
-scale = Vector2(0.646371, 0.661628)
-texture_under = ExtResource("20_4flmq")
-texture_progress = ExtResource("21_i66ii")
-script = ExtResource("18_8y8ui")
-
-[node name="ammo" type="Label" parent="HUD"]
-offset_left = 36.0
-offset_top = 117.0
-offset_right = 76.0
-offset_bottom = 143.0
-scale = Vector2(1.2226, 1.21801)
-text = "0"
-script = ExtResource("19_nmle6")
-
-[node name="coins" type="Label" parent="HUD"]
-offset_left = 36.0
-offset_top = 83.0
-offset_right = 76.0
-offset_bottom = 109.0
-scale = Vector2(1.23669, 1.23669)
-text = "0"
-script = ExtResource("20_xawl8")
 
 [node name="Direction" type="Label" parent="HUD"]
 offset_left = 1775.0
@@ -257,18 +258,19 @@ text = "Wall:"
 script = ExtResource("23_vobvt")
 
 [node name="img_heart" type="Sprite2D" parent="HUD"]
-position = Vector2(19, 67)
+position = Vector2(19, 58)
 scale = Vector2(0.0855846, 0.0776065)
 texture = ExtResource("28_ibdmt")
 
 [node name="img_bullet" type="Sprite2D" parent="HUD"]
-position = Vector2(19, 128)
+position = Vector2(19, 124)
 scale = Vector2(0.184475, 0.184475)
 texture = ExtResource("29_8ah6a")
 
 [node name="img_coin" type="Sprite2D" parent="HUD"]
-position = Vector2(19, 97)
+position = Vector2(19, 90)
 scale = Vector2(0.359971, 0.359971)
+texture = ExtResource("25_a4niq")
 
 [node name="PlayerEnemyRay" type="Node2D" parent="."]
 visible = false

@@ -95,7 +95,7 @@ func _tween():
 	
 
 func rpg_hit():
-	$StaticBody2D/CollisionPolygon2D.set_deferred("disabled", true)
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	gv.mouse_enter_node = null
 	$Bullet_holes.vanish()
 	$object_spr.visible = false
@@ -115,7 +115,7 @@ func hit():
 
 		if hit_count == 0:
 			$CollisionShape2D.set_deferred("disabled", true)
-			$StaticBody2D/CollisionPolygon2D.set_deferred("disabled", true)
+			$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 			$Bullet_holes.vanish()
 			$object_spr.visible = false
 			$Hitpoints.visible = false
@@ -128,7 +128,7 @@ func hit():
 
 func bomb_explode():
 	$CollisionShape2D.set_deferred("disabled", true)
-	$StaticBody2D/CollisionPolygon2D.set_deferred("disabled", true)
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$object_spr.visible = false
 	$Hitpoints.visible = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://45fdp81dh8se"]
 
-[ext_resource type="Script" uid="uid://byw0mndg586in" path="res://Scenes/Weapons/Empty/Empty_gun.gd" id="1_c1v8b"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Empty/Empty_gun.gd" id="1_c1v8b"]
 
 [node name="EmptyGun" type="Sprite2D"]
 visible = false
