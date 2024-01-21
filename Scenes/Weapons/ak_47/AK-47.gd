@@ -102,6 +102,12 @@ func _on_firing_sprite_animation_finished() -> void:
 
 
 
+
+
+
+
+
+
 #func _draw():
 	#draw_line($BulletsSpawn.position, get_global_mouse_position(), Color(255, 255, 0), 1)
 

@@ -69,9 +69,9 @@ func _ready():
 func load_inventory():
 	match gv.Hero_current_weapon:
 		0: # Empty weapon = none
+			gv.Hero_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
 				get_node("Torso/arm_r").get_child(1).queue_free()
-			gv.Hero_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()	
 			get_node("Torso/arm_r").add_child(gv.Hero_weapon)
 			gv.set_cursor_orange()	
 		
