@@ -69,7 +69,8 @@ func _ready():
 func load_inventory():
 	match gv.Hero_current_weapon:
 		0:
-			pass # no weapon
+			if get_node("Torso/arm_r").get_child_count() > 1:
+				get_node("Torso/arm_r").get_child(1).queue_free()
 		1:
 			gv.Hero_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
 			if get_node("Torso/arm_r").get_child_count() > 1:
@@ -104,7 +105,7 @@ func load_next_weapon():
 		load_inventory()
 		# Hero_guns = {"no": 0, "ak_47": 1, "rpg_7": 2}
 	if gv.Hero_guns.size() == gv.Hero_current_weapon:
-		gv.Hero_current_weapon = 1
+		gv.Hero_current_weapon = 0
 		load_inventory()
 
 

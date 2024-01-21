@@ -9,7 +9,8 @@ var current_scene = null
 
 
 # GLOBAL ASSETS:
-@onready var Bullet_hit_textures:Array[CompressedTexture2D] = [preload("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png"),
+@onready var Bullet_hit_textures:Array[CompressedTexture2D] = [
+	preload("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet_hole_64.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet-hole2-sm.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet-hole3-sm.png"),
@@ -18,7 +19,17 @@ var current_scene = null
 	preload("res://Assets/Particles/bullet-holes/bullet-hole6-sm.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet-hole7-sm.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet-hole8-sm.png"),
-	preload("res://Assets/Particles/bullet-holes/bullet-hole9-sm.png")]
+	preload("res://Assets/Particles/bullet-holes/bullet-hole9-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole10-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole11-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole12-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole13-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole14-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole15-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole16-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole17-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole18-sm.png"),
+	preload("res://Assets/Particles/bullet-holes/bullet-hole19-sm.png") ]
 
 var cursor_green = preload("res://Assets/Objects/reticle_green.png")
 var cursor_green_2 = preload("res://Assets/Objects/crosshair2.png")
