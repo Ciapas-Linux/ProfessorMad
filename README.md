@@ -16,8 +16,10 @@ Features (to be continued ... ):
 ☢ Destructable enemy objects
 <BR>
 ☢ During the attack, bullet holes are created in enemy objects
-
-
+<BR>
+☢ Nice guided missiles
+<BR>
+☢ Autonomous drones attacking with bombs
 
 <BR><BR><BR><BR>
 
