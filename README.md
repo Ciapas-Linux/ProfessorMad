@@ -9,8 +9,7 @@ Inspiration and sample very small fragments come from free examples available on
 
 During his exciting adventures, the professor will perform missions, bravely face all obstacles, he will face a lot of secrets and many obstacles to overcome. Of course, all for the good of people and animals.
 
-Here is the link to the youtube channel, click on image to watch videos:
-<BR><BR>
+<BR><BR><BR><BR>
 
 Features (to be continued ... ):
 
@@ -20,8 +19,11 @@ During the attack, bullet holes are created in enemy objects
 
 
 
-<BR><BR><BR>
+<BR><BR><BR><BR><BR>
 
+
+
+Here is the link to the youtube channel, click on image to watch videos:
 
 <div align="center">
  
