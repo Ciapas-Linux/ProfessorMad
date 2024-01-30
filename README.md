@@ -13,14 +13,12 @@ During his exciting adventures, the professor will perform missions, bravely fac
 
 Features (to be continued ... ):
 
-Destructable enemy objects
-
-During the attack, bullet holes are created in enemy objects
-
+☢ Destructable enemy objects
+☢ During the attack, bullet holes are created in enemy objects
 
 
-<BR><BR><BR><BR><BR>
 
+<BR><BR><BR><BR>
 
 
 Here is the link to the youtube channel, click on image to watch videos:
