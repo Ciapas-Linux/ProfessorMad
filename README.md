@@ -29,7 +29,7 @@ Features (to be continued ... ):
 </div>
 
 
-<BR><BR><BR><BR>
+<BR><BR>
 
 Here is the link to the youtube channel, click on image to watch videos:
 
