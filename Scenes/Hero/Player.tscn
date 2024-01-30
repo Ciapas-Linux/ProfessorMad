@@ -1,9 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://c44bp5cutt8em"]
+[gd_scene load_steps=50 format=3 uid="uid://c44bp5cutt8em"]
 
 [ext_resource type="Script" path="res://Scenes/Hero/Player.gd" id="1_qy254"]
 [ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Hero/BodyParts/korpus2blur.png" id="2_81kcy"]
-[ext_resource type="Texture2D" uid="uid://bq0stw2w7hcdl" path="res://Assets/Hero/BodyParts/glowa2.png" id="3_2kelh"]
+[ext_resource type="Texture2D" uid="uid://36ygxfq0j8ph" path="res://Assets/Hero/BodyParts/głowa6.png" id="3_ajxit"]
+[ext_resource type="Texture2D" uid="uid://dx465bshwi4b4" path="res://Assets/Hero/BodyParts/powieka_L.png" id="4_a65uw"]
 [ext_resource type="Texture2D" uid="uid://dyty0tsek64r5" path="res://Assets/Hero/BodyParts/rekaP2.png" id="4_ijoxp"]
+[ext_resource type="Texture2D" uid="uid://cpctrh37v8b5q" path="res://Assets/Hero/BodyParts/powieka_P.png" id="5_hfn3g"]
 [ext_resource type="Texture2D" uid="uid://c8ny1kcfrxnh7" path="res://Assets/Hero/BodyParts/nogaP_2.png" id="6_qo55g"]
 [ext_resource type="Texture2D" uid="uid://cumd2g8cxl4k4" path="res://Assets/Hero/BodyParts/rekaL2.png" id="7_1mgbm"]
 [ext_resource type="Texture2D" uid="uid://bee6mqjl862ix" path="res://Assets/Hero/BodyParts/But_2_P.png" id="7_8e4pt"]
@@ -1573,6 +1575,107 @@ tracks/3/keys = {
 "values": [Vector2(44, -9), Vector2(44, -9)]
 }
 
+[sub_resource type="Animation" id="Animation_g4o86"]
+resource_name = "walk_2"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leg_l:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.45265, -0.00929973, 0.435933, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("leg_l:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("leg_p:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.703223, 0.0, -0.247292, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("leg_p:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torso/arm_l:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.26885, 1.13925, 1.26885]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Torso/arm_l:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16.218, -217), Vector2(-16.218, -217), Vector2(-16.218, -217), Vector2(-16.218, -217)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Torso/Head:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.179409, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Torso/Head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-19, -325), Vector2(-19, -325), Vector2(-19, -325)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wvu4o"]
 _data = {
 "Hit_bomb": SubResource("Animation_75dfj"),
@@ -1587,7 +1690,8 @@ _data = {
 "target_up": SubResource("Animation_vma4h"),
 "target_up_rpg": SubResource("Animation_kqve5"),
 "target_up_walk": SubResource("Animation_idq00"),
-"walk": SubResource("Animation_mb3ee")
+"walk": SubResource("Animation_mb3ee"),
+"walk_2": SubResource("Animation_g4o86")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k13dm"]
@@ -1618,11 +1722,24 @@ offset = Vector2(2, -148)
 
 [node name="Head" type="Sprite2D" parent="Torso"]
 position = Vector2(-19, -325)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("3_2kelh")
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("3_ajxit")
 offset = Vector2(-14, -106)
 
+[node name="powieka_L" type="Sprite2D" parent="Torso/Head"]
+visible = false
+position = Vector2(-32.1739, -110.87)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_a65uw")
+
+[node name="powieka_P" type="Sprite2D" parent="Torso/Head"]
+visible = false
+position = Vector2(65.6522, -115.217)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_hfn3g")
+
 [node name="HeadCollision" type="CollisionPolygon2D" parent="Torso/Head"]
+visible = false
 position = Vector2(-12.5511, -106.576)
 rotation = -0.0175514
 polygon = PackedVector2Array(16, -119.9, 41, -113.9, 62, -102.4, 90, -77.9, 101.047, -60.7877, 104, -36.3, 103.194, -15.2312, 111, -7, 111.3, 9.5, 102, 42.9, 102, 57.7, 95.7902, 75.4671, 77.9172, 94.9236, 47.6239, 124.712, 16.539, 135.835, -23.2299, 126.646, -61.8612, 95.013, -84.7, 49.5, -99.0735, 45.0506, -113, 36.2, -123, 12.1, -120.4, -5.5, -115.022, -13.904, -106.8, -15.5, -101, -14.9, -101, -24.5, -100, -57.5, -91.2, -78.5, -58.2, -107.5, -17, -119.7)
@@ -1774,6 +1891,10 @@ scale_amount_max = 13.0
 color_ramp = SubResource("Gradient_c17xw")
 hue_variation_min = -0.73
 hue_variation_max = 0.8
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(270, 270)
+collision_mask = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Hit_bomb" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_player_area_area_entered"]

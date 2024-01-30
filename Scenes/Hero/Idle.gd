@@ -1,9 +1,17 @@
+#@uid("uid://cx8xk4374qt8n") # Generated automatically, do not modify.
 extends PlayerState
 
 signal turn(value)
 
 @onready var But_L_spr:Sprite2D = get_node("../../leg_l/But_L")
 @onready var But_P_spr:Sprite2D = get_node("../../leg_p/But_P")
+@onready var Ray:RayCast2D = get_node("../../RayCast2D")
+
+var collision:KinematicCollision2D
+var normal:Vector2
+
+const UP = Vector2(0, -1)
+const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
@@ -86,9 +94,58 @@ func physics_update(delta: float) -> void:
 	
 	player.move_and_slide()
 
-	But_L_spr.rotation = player.get_floor_angle() 
-	But_P_spr.rotation = player.get_floor_angle()		 		
-		
+	if Ray.is_colliding():
+		player.draw_line(Ray.position, player.to_local(Ray.get_collision_point()), Color(1, 0, 0), 2,true)
+		var collider = Ray.get_collider()
+		if collider.has_method("do_thing"):
+			collider.do_thing()
+
+	#var laserOrigin = to_local(Ray.global_position)		
+
+	if player.is_on_floor():
+		if player.get_slide_collision_count() > 0:
+			collision = player.get_slide_collision(0)
+			normal = collision.get_normal()
+			var normal2: Vector2 = player.get_floor_normal()
+			
+			# math.acos(normal.dot(b))
+
+			#print("#############: " + str( collision.get_angle(Vector2(-1, 0)) ))
+			#print("#############: " + str(player.get_floor_angle()))
+			#print("#############: " + str(normal2.x))
+			#print("#############: " + str(normal2.aspect())) 
+
+			var slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
+			print("#############: " + str(slope_angle))
+
+			#var angleDelta = normal.angle() - (But_L_spr.rotation - PI)
+			#But_L_spr.rotation = angleDelta + But_L_spr.rotation	
+
+		# normal.angle_to(Vector3(0, 1, 0))	
+
+		# Vector2 slide ( Vector2 n ) const
+
+		# Result angle: 0.78 going Up
+		# 0.78 standing down
+			But_L_spr.rotation = player.get_floor_angle() 
+			But_P_spr.rotation = player.get_floor_angle()
+			#But_L_spr.rotation = atan2(normal.x, -normal.y)
+			#But_P_spr.rotation = atan2(normal.x, -normal.y)  		 		
+
+# This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
+# If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.
+func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
+	if player.is_on_floor():
+		for i in range(player.get_slide_collision_count()):
+			collision = player.get_slide_collision(i)
+			# Is this a "floor" collision?
+			if collision.normal.angle_to(UP) <= max_floor_angle:
+				return false
+		# We didn't find a "floor" collision, but is_on_floor() is true, so there must be a "slope" collision.
+		return true
+	# is_on_floor is false, so there cannot be a "slope" collision.
+	return false
+
 func _on_gun_2_fire() -> void:
 	if gv.fsm.state.name == "Idle":
 		#get_node("../../AnimationPlayer").stop()

@@ -1,4 +1,4 @@
-@uid("uid://2o0thcli7xdf") # Generated automatically, do not modify.
+# @uid("uid://2o0thcli7xdf") # Generated automatically, do not modify.
 extends EnemyState
 
 

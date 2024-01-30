@@ -10,6 +10,10 @@ extends PlayerState
 
 var timer:Timer
 
+var collision:KinematicCollision2D
+var normal:Vector2
+
+
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
 	timer = Timer.new()
@@ -45,18 +49,26 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 
 	if player.get_slide_collision_count() > 0:
-		var collision = player.get_slide_collision(0)
-		var normal = collision.get_normal()
+		collision = player.get_slide_collision(0)
+		normal = collision.get_normal()
+		var normal2: Vector2 = player.get_floor_normal()
+		
+		# print("#############: " + str(player.get_floor_angle()))
+		# print("#############: " + str(normal2.x))
+		# print("#############: " + str(normal2.aspect())) 
+
+		#But_L_spr.rotation = -player.get_floor_angle()
+		#But_P_spr.rotation = -player.get_floor_angle()		
 
 		#if input_direction_x == 1:
-		But_L_spr.rotation = normal.angle() + deg_to_rad(90)
+		#But_L_spr.rotation = normal.angle() + deg_to_rad(90)
 		#elif input_direction_x == -1:
-		But_P_spr.rotation = normal.angle() + deg_to_rad(90)
+		#But_P_spr.rotation = normal.angle() + deg_to_rad(90)
 
 		# var angleDelta = normal.angle() - (But_L_spr.rotation - PI)
 		# But_L_spr.rotation = angleDelta + But_L_spr.rotation
 
-	#var normal: Vector2 = player.get_floor_normal()
+	
 	#But_L_spr.rotation =  player.get_floor_normal().angle() + PI/2
 	#But_P_spr.rotation =  player.get_floor_normal().angle() + PI/2
 	#But_L_spr.rotation = player.get_floor_angle() * input_direction_x
@@ -66,7 +78,31 @@ func physics_update(delta: float) -> void:
 	#print("#############: " + str(player.get_floor_angle()))
 	
 			
-	get_node("../../AnimationPlayer").play("walk")
+	# var slope_angle = rad2deg(acos(get_collision_normal().dot(Vector2(0, -1))))
+
+
+
+	# To make a kinematic body rotate on a slope
+	# first you'll need to get the floor normal
+	# either using a raycast2d, or by using the kinematic body's get_slide_collision()
+	# Then you use atan2(normal.x, -normal.y) to get the rotation.
+
+	# Use this whenever you want the alignment to happen:
+
+	# var temp_scale = scale 
+	# transform = align_with_y(transform, get_collision_normal()) 
+	# scale = temp_scale
+
+	# Here's the function that handles the math:
+
+	# func align_with_y(xform, new_y): 
+	# 	xform.basis.y = new_y 
+	# 	xform.basis.x = -xform.basis.z.cross(new_y) 
+	# 	xform.basis = xform.basis.orthonormalized() 
+	# 	return xform
+
+
+	get_node("../../AnimationPlayer").play("walk_2")
 			
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()	

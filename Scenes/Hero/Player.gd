@@ -33,6 +33,9 @@ const health_max:int = 100
 signal player_stats_changed
 signal bomb_hit_me
 
+var eyes_blink_timer:Timer
+
+
 # node.reparent(new_parent)
 
 func _ready():
@@ -42,8 +45,11 @@ func _ready():
 	set_process(true)
 	set_process_input(true)
 	gv.Player = self
-	
 
+	$Torso/Head/powieka_P.visible = false
+	$Torso/Head/powieka_L.visible = false
+
+	
 	if FileAccess.file_exists("user://game.dat") == false:
 		gv.save_player_data()
 	else:
@@ -60,11 +66,52 @@ func _ready():
 	gv.Hero_current_weapon = 3
 
 	load_inventory()
+
+	eyes_blink_timer = Timer.new()
+	add_child(eyes_blink_timer)
+	eyes_blink_timer.wait_time = 5
+	eyes_blink_timer.one_shot = true
+	eyes_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
+	eyes_blink_timer.start(randf_range(1.0,10.0))
+	
 	
 	emit_signal("player_stats_changed", self)
 	print("Hero: ready ...") 
 	
+func _on_eyes_blink_timer_timeout():
+	if $Torso/Head/powieka_P.visible == true:
+		open_eyes()
+		eyes_blink_timer.start(randf_range(2,10))
+	else:
+		close_eyes()
+		eyes_blink_timer.start(randf_range(0.3,2))	
 
+
+func close_left_eye():
+	$Torso/Head/powieka_L.visible = true
+
+func close_right_eye():
+	$Torso/Head/powieka_P.visible = true
+
+func open_left_eye():
+	$Torso/Head/powieka_L.visible = false
+
+func open_right_eye():
+	$Torso/Head/powieka_P.visible = false
+
+func open_eyes():
+	open_left_eye()
+	open_right_eye()
+
+func close_eyes():
+	close_left_eye()
+	close_right_eye()	
+
+func is_eyes_open():
+	if $Torso/Head/powieka_P.visible == true and $Torso/Head/powieka_L.visible == true:
+		return false
+	else:
+		return true	
 
 func load_inventory():
 	match gv.Hero_current_weapon:

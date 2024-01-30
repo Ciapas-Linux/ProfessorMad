@@ -23,7 +23,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Pause.gd" id="19_wtpt7"]
 [ext_resource type="AudioStream" uid="uid://cjfvr0k666q2" path="res://Assets/Sounds/jump-3.wav" id="20_12bei"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Reload_bomb.gd" id="20_ovpjw"]
-[ext_resource type="Script" uid="uid://2o0thcli7xdf" path="res://Scenes/Enemies/Rysiek/Hit_rpg.gd" id="21_io7a4"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Hit_rpg.gd" id="21_io7a4"]
 [ext_resource type="AudioStream" uid="uid://jw6t37kavthv" path="res://Assets/Sounds/Hero/upadek3.ogg" id="21_kvf1g"]
 [ext_resource type="AudioStream" uid="uid://dkyg3pkatql21" path="res://Assets/Sounds/Hero/sit_down1.wav" id="22_c3k80"]
 [ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="23_qit8k"]

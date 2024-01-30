@@ -14,11 +14,11 @@ func _ready():
 
 	$Camera2DPro.SetFollowNode($Player)
 
-	#$Camera2DPro.SetFollowNode($Enemy)
+	# $Camera2DPro.SetFollowNode($Enemy)
 
-	#await get_tree().create_timer(2.0).timeout
+	# await get_tree().create_timer(2.0).timeout
 
-	#$Camera2DPro.Tween_to($Enemy.global_position,Vector2(-400,0))
+	# $Camera2DPro.Tween_to($Enemy.global_position,Vector2(-400,0))
 
 
 #func _process(delta):
