@@ -24,6 +24,13 @@ Features (to be continued ... ):
 <BR><BR><BR><BR>
 
 
+<div align="center">
+ <img src="https://raw.githubusercontent.com/Ciapas-Linux/assets/main/Web/ysolek_1.png"/>
+</div>
+
+
+<BR><BR><BR><BR>
+
 Here is the link to the youtube channel, click on image to watch videos:
 
 <div align="center">
