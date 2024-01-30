@@ -14,6 +14,7 @@ During his exciting adventures, the professor will perform missions, bravely fac
 Features (to be continued ... ):
 
 ☢ Destructable enemy objects
+<BR>
 ☢ During the attack, bullet holes are created in enemy objects
 
 
