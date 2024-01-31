@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=46 format=3 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0ywglto5tx2h" path="res://Scenes/Explosives/box1.tscn" id="8_7yfa0"]
 [ext_resource type="PackedScene" uid="uid://drddobovkd13n" path="res://Scenes/Cars/polonez1/polonez_1.tscn" id="9_gev1q"]
 [ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="9_slswn"]
+[ext_resource type="Texture2D" uid="uid://1s83i5lxhkdf" path="res://Assets/Ground/Grunt_1.jpg" id="10_037ni"]
 [ext_resource type="PackedScene" uid="uid://bf53eb0rugcu0" path="res://Scenes/Explosives/CoinBox.tscn" id="10_wbal7"]
 [ext_resource type="PackedScene" uid="uid://6nqelg3184dc" path="res://Scenes/Explosives/CoinBarell.tscn" id="11_clono"]
 [ext_resource type="Texture2D" uid="uid://1gwp2bo4v3me" path="res://Assets/Backgrounds/asphalt_1.png" id="13_e358x"]
@@ -30,9 +31,11 @@
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="27_weviq"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="28_ibdmt"]
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Objects/bullet1.png" id="29_8ah6a"]
+[ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="29_8cr16"]
 [ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="33_fhpux"]
 [ext_resource type="AudioStream" uid="uid://cqbdq5gnyhmn8" path="res://Assets/Music/mountain-trials.ogg" id="34_ewt0x"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
+[ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="35_sfvns"]
 [ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_3/maluch_3.tscn" id="36_hqr6o"]
 [ext_resource type="PackedScene" uid="uid://chf1nu07b05ko" path="res://Scenes/Cars/maluch_red/maluch_red.tscn" id="37_ccyvi"]
 [ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="37_cq0q3"]
@@ -156,6 +159,14 @@ position = Vector2(2803, 97)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grunt/GruntBody2D"]
 position = Vector2(8488, 655)
 shape = SubResource("RectangleShape2D_fmhf3")
+
+[node name="Deep" type="Sprite2D" parent="Grunt/GruntBody2D"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(8000, 1430)
+texture = ExtResource("10_037ni")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 1500)
 
 [node name="maluch" parent="." instance=ExtResource("15_g3kcy")]
 position = Vector2(1012, 463)
@@ -293,6 +304,14 @@ texture = ExtResource("3_vafg6")
 region_enabled = true
 region_rect = Rect2(0, 0, 4000, 1200)
 
+[node name="Stars" type="Sprite2D" parent="SkyCanvas"]
+visible = false
+texture_repeat = 2
+position = Vector2(8000, 200)
+texture = ExtResource("29_8cr16")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 1500)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 
@@ -322,6 +341,13 @@ motion_mirroring = Vector2(3300, 0)
 position = Vector2(1816, 64)
 mesh = SubResource("ArrayMesh_7k65n")
 texture = ExtResource("5_e85i1")
+
+[node name="Trawka_1" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(8000, 724)
+texture = ExtResource("35_sfvns")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 62)
 
 [node name="Maluch_red" parent="." instance=ExtResource("37_ccyvi")]
 position = Vector2(4402, 529)

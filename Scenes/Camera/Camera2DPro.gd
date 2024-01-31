@@ -52,7 +52,8 @@ var previous_state : int = IDLE
 func _ready():
 	self.drag_right_margin = -0.3
 	self.drag_left_margin = 0.8
-	set_zoom_level(_zoom_level)	
+	set_zoom_level(_zoom_level)
+	SetState(IDLE)		
 
 
 func _physics_process(delta):
@@ -150,13 +151,13 @@ func Tween_to(_position: Vector2,_offset:Vector2) -> void:
 	tween.set_ease(tween.EASE_OUT)
 	tween.set_trans(tween.TRANS_SINE)
 
-	var tween_callback = func():
-		SetState(FOLLOW_TARGET)
-		set_zoom_level(_zoom_level)	
+	#var tween_callback = func():
+	#	SetState(IDLE)
+		#set_zoom_level(_zoom_level)	
 		#global_position = old_position 
 		
 
-	tween.tween_callback(tween_callback).set_delay(8)
+	#tween.tween_callback(tween_callback).set_delay(8)
 	tween.tween_property(self, "zoom", Vector2(1.8,1.8), 6)
 	#_position.y = _position.y + 900
 	#_position.x = _position.x - 300
@@ -172,15 +173,25 @@ func set_zoom_level(value: float) -> void:
 	
 
 
-func _unhandled_input(event):
-	if event.is_action_pressed("zoom_in"):
-		#_zoom_at_point2(zoom_step,get_global_mouse_position())
-		#zoom_camera(-zoom_speed, get_global_mouse_position())
-		set_zoom_level(_zoom_level - zoom_factor)
-	if event.is_action_pressed("zoom_out"):
-		set_zoom_level(_zoom_level + zoom_factor)
-		#_zoom_at_point2(1/zoom_step,get_global_mouse_position())
-		#zoom_camera(zoom_speed, event.position)
+# func _unhandled_input(event):
+# 	if event.is_action_pressed("zoom_in"):
+# 		#_zoom_at_point2(zoom_step,get_global_mouse_position())
+# 		#zoom_camera(-zoom_speed, get_global_mouse_position())
+# 		set_zoom_level(_zoom_level - zoom_factor)
+# 	if event.is_action_pressed("zoom_out"):
+# 		set_zoom_level(_zoom_level + zoom_factor)
+# 		#_zoom_at_point2(1/zoom_step,get_global_mouse_position())
+# 		#zoom_camera(zoom_speed, event.position)
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -33,7 +33,7 @@ const health_max:int = 100
 signal player_stats_changed
 signal bomb_hit_me
 
-var eyes_blink_timer:Timer
+var eyes_rnd_blink_timer:Timer
 
 
 # node.reparent(new_parent)
@@ -63,29 +63,37 @@ func _ready():
 	print("")  
 
 	############################ !!!!!!!!!!!!!!!!	
-	gv.Hero_current_weapon = 3
+	gv.Hero_current_weapon = 0
+	############################ !!!!!!!!!!!!!!!!
 
 	load_inventory()
 
-	eyes_blink_timer = Timer.new()
-	add_child(eyes_blink_timer)
-	eyes_blink_timer.wait_time = 5
-	eyes_blink_timer.one_shot = true
-	eyes_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
-	eyes_blink_timer.start(randf_range(1.0,10.0))
+	eyes_rnd_blink_timer = Timer.new()
+	add_child(eyes_rnd_blink_timer)
+	eyes_rnd_blink_timer.wait_time = 5
+	eyes_rnd_blink_timer.one_shot = true
+	eyes_rnd_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
+	eyes_rnd_blink_timer.start(randf_range(1.0,10.0))
 	
 	
 	emit_signal("player_stats_changed", self)
 	print("Hero: ready ...") 
 	
+
+
+
 func _on_eyes_blink_timer_timeout():
 	if $Torso/Head/powieka_P.visible == true:
 		open_eyes()
-		eyes_blink_timer.start(randf_range(2,10))
+		eyes_rnd_blink_timer.start(randf_range(2,10))
 	else:
 		close_eyes()
-		eyes_blink_timer.start(randf_range(0.3,2))	
+		eyes_rnd_blink_timer.start(randf_range(0.3,2))	
 
+func blink_eyes(_time:float):
+	close_eyes()
+	await get_tree().create_timer(_time).timeout
+	open_eyes()
 
 func close_left_eye():
 	$Torso/Head/powieka_L.visible = true
