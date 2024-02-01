@@ -143,7 +143,9 @@ func Move_to(_position: Vector2) -> void:
 	target_position = _position
 	SetState(MOVE_TO_TARGET)
 
-func Tween_to(_position: Vector2,_offset:Vector2) -> void:
+
+# Vector2(1.8,1.8), tm 6 , pt 2
+func Tween_to(_position: Vector2,_offset:Vector2,_zoom:Vector2,_zoom_time:float,_position_time:float) -> void:
 	old_position = global_position
 	#target_position = _position
 	var tween: Tween = create_tween()
@@ -158,10 +160,10 @@ func Tween_to(_position: Vector2,_offset:Vector2) -> void:
 		
 
 	#tween.tween_callback(tween_callback).set_delay(8)
-	tween.tween_property(self, "zoom", Vector2(1.8,1.8), 6)
+	tween.tween_property(self, "zoom", _zoom, _zoom_time)
 	#_position.y = _position.y + 900
 	#_position.x = _position.x - 300
-	tween.tween_property(self, "global_position", _position + _offset, 2)
+	tween.tween_property(self, "global_position", _position + _offset, _position_time)
 	SetState(IDLE)				
 
 func set_zoom_level(value: float) -> void:
