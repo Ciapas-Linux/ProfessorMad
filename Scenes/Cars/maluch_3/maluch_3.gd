@@ -31,11 +31,11 @@ func _unhandled_input(event):
 			$snd_click.play() 
 			get_viewport().set_input_as_handled()
 			gv.set_cursor_red()
-			var space_state = get_world_2d().direct_space_state
+			var space_state:PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 			var params = PhysicsPointQueryParameters2D.new()
 			params.position = get_global_mouse_position()
-			var out = space_state.intersect_point(params)
-			for node in out:
+			var out:Array[Dictionary] = space_state.intersect_point(params)
+			for node:Dictionary in out:
 				print(node.collider.name)
 		
 func _on_Area2D_mouse_entered() -> void:
