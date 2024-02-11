@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=47 format=3 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="37_cq0q3"]
 [ext_resource type="PackedScene" uid="uid://dwiyyg4wrha0d" path="res://Scenes/Explosives/Box_3/Box_3.tscn" id="37_y336g"]
 [ext_resource type="PackedScene" uid="uid://cikdwts4xbonp" path="res://Scenes/Items/item-ak-47.tscn" id="38_w2bgm"]
+[ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="41_lm60g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
 size = Vector2(20060, 67)
@@ -169,6 +170,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
 [node name="maluch" parent="." instance=ExtResource("15_g3kcy")]
+z_index = -1
 position = Vector2(1012, 463)
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -360,12 +362,16 @@ visible = false
 position = Vector2(556, 651)
 
 [node name="Box3" parent="." instance=ExtResource("37_y336g")]
-position = Vector2(1305, 623)
+position = Vector2(2458, 623)
 scale = Vector2(0.5, 0.5)
 
 [node name="Maluch3" parent="." instance=ExtResource("36_hqr6o")]
 z_index = 1
-position = Vector2(1845, 548)
+position = Vector2(7046, 548)
+
+[node name="WoodRamp1" parent="." instance=ExtResource("41_lm60g")]
+position = Vector2(1405, 470)
+scale = Vector2(2.5, 2.5)
 
 [node name="Fiat125p" parent="." instance=ExtResource("37_cq0q3")]
 position = Vector2(6734, 284)

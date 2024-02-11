@@ -10,6 +10,8 @@ signal turn(value)
 var collision:KinematicCollision2D
 var normal:Vector2
 
+var slope_angle:float = 0
+
 const UP = Vector2(0, -1)
 const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
@@ -94,11 +96,11 @@ func physics_update(delta: float) -> void:
 	
 	player.move_and_slide()
 
-	if Ray.is_colliding():
-		player.draw_line(Ray.position, player.to_local(Ray.get_collision_point()), Color(1, 0, 0), 2,true)
-		var collider = Ray.get_collider()
-		if collider.has_method("do_thing"):
-			collider.do_thing()
+	# if Ray.is_colliding():
+	# 	player.draw_line(Ray.position, player.to_local(Ray.get_collision_point()), Color(1, 0, 0), 2,true)
+	# 	var collider = Ray.get_collider()
+	# 	if collider.has_method("do_thing"):
+	# 		collider.do_thing()
 
 	#var laserOrigin = to_local(Ray.global_position)		
 
@@ -115,8 +117,8 @@ func physics_update(delta: float) -> void:
 			#print("#############: " + str(normal2.x))
 			#print("#############: " + str(normal2.aspect())) 
 
-			var slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
-			print("#############: " + str(slope_angle))
+			slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
+			#print("#############: " + str(slope_angle))
 
 			#var angleDelta = normal.angle() - (But_L_spr.rotation - PI)
 			#But_L_spr.rotation = angleDelta + But_L_spr.rotation	
@@ -127,10 +129,10 @@ func physics_update(delta: float) -> void:
 
 		# Result angle: 0.78 going Up
 		# 0.78 standing down
-			But_L_spr.rotation = player.get_floor_angle() 
-			But_P_spr.rotation = player.get_floor_angle()
-			#But_L_spr.rotation = atan2(normal.x, -normal.y)
-			#But_P_spr.rotation = atan2(normal.x, -normal.y)  		 		
+			# But_L_spr.rotation = player.get_floor_angle() 
+			# But_P_spr.rotation = player.get_floor_angle()
+			# But_L_spr.rotation = atan2(normal.x, -normal.y)
+			# But_P_spr.rotation = atan2(normal.x, -normal.y)  		 		
 
 # This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
 # If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.

@@ -315,7 +315,6 @@ libraries = {
 }
 
 [node name="Driver" type="AnimatedSprite2D" parent="."]
-z_index = 1
 position = Vector2(-2, 36)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_t238t")

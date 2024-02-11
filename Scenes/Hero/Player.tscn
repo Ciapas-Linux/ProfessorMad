@@ -1768,6 +1768,7 @@ texture = ExtResource("6_qo55g")
 offset = Vector2(67, 123)
 
 [node name="But_P" type="Sprite2D" parent="leg_p"]
+z_index = 1
 position = Vector2(19.2095, 213.168)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_8e4pt")
@@ -1781,6 +1782,7 @@ texture = ExtResource("8_isolj")
 offset = Vector2(-22, 121)
 
 [node name="But_L" type="Sprite2D" parent="leg_l"]
+z_index = 1
 position = Vector2(-64.9381, 177.262)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_j66un")

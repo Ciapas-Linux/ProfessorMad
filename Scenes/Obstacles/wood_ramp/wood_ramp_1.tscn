@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://py3j2km3qk07"]
+
+[ext_resource type="Texture2D" uid="uid://c3sgnv1ltmbdh" path="res://Assets/Objects/rampa_2.png" id="1_pb1bx"]
+
+[node name="WoodRamp1" type="StaticBody2D"]
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(93, -49, 360, 83, 346.8, 104.8, 100.3, -16, 79, -13, 78.5, 108, 51, 106, 48.7, -14, -124, -13, -123.5, 108, -152, 107, -154.3, -11.5, -191, -16.6, -345.9, 102.9, -354, 93, -176, -49)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pb1bx")

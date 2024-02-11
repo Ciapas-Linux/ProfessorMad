@@ -77,7 +77,9 @@ func _ready():
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
+	
 	gv.enemy_fsm = $EnemyStateMachine
+	
 	#drone = get_parent().get_node("Flying_drone")
 	screen_size = get_viewport_rect().size
 	gold_amount = randi_range(1,1125)
@@ -101,7 +103,9 @@ func _ready():
 	#previous_state = gv.enemy_fsm.estate.name
 	#gv.enemy_fsm.transition_to("Release_drone")
 	#print("Drone2: ready " + Drone2.name)
-	$CreateDrone.start()
+	
+	
+	#$CreateDrone.start()
 
 
 func _unhandled_input(event):
