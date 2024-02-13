@@ -3,8 +3,6 @@ extends PlayerState
 
 signal turn(value)
 
-@onready var But_L_spr:Sprite2D = get_node("../../leg_l/But_L")
-@onready var But_P_spr:Sprite2D = get_node("../../leg_p/But_P")
 @onready var Ray:RayCast2D = get_node("../../RayCast2D")
 
 var collision:KinematicCollision2D
@@ -15,6 +13,7 @@ var slope_angle:float = 0
 const UP = Vector2(0, -1)
 const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
+# Enter state:
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
@@ -24,7 +23,12 @@ func enter(_msg := {}) -> void:
 	gv.Hero_is_on_floor = true
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
+
+	# print("******** Player enter idle fsm ")	
 	
+# Exit state:	
+func exit(_msg := {}) -> void:
+	pass
 
 func physics_update(delta: float) -> void:
 
@@ -96,43 +100,8 @@ func physics_update(delta: float) -> void:
 	
 	player.move_and_slide()
 
-	# if Ray.is_colliding():
-	# 	player.draw_line(Ray.position, player.to_local(Ray.get_collision_point()), Color(1, 0, 0), 2,true)
-	# 	var collider = Ray.get_collider()
-	# 	if collider.has_method("do_thing"):
-	# 		collider.do_thing()
-
-	#var laserOrigin = to_local(Ray.global_position)		
-
-	if player.is_on_floor():
-		if player.get_slide_collision_count() > 0:
-			collision = player.get_slide_collision(0)
-			normal = collision.get_normal()
-			var normal2: Vector2 = player.get_floor_normal()
-			
-			# math.acos(normal.dot(b))
-
-			#print("#############: " + str( collision.get_angle(Vector2(-1, 0)) ))
-			#print("#############: " + str(player.get_floor_angle()))
-			#print("#############: " + str(normal2.x))
-			#print("#############: " + str(normal2.aspect())) 
-
-			slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
-			#print("#############: " + str(slope_angle))
-
-			#var angleDelta = normal.angle() - (But_L_spr.rotation - PI)
-			#But_L_spr.rotation = angleDelta + But_L_spr.rotation	
-
-		# normal.angle_to(Vector3(0, 1, 0))	
-
-		# Vector2 slide ( Vector2 n ) const
-
-		# Result angle: 0.78 going Up
-		# 0.78 standing down
-			# But_L_spr.rotation = player.get_floor_angle() 
-			# But_P_spr.rotation = player.get_floor_angle()
-			# But_L_spr.rotation = atan2(normal.x, -normal.y)
-			# But_P_spr.rotation = atan2(normal.x, -normal.y)  		 		
+	
+			 		
 
 # This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
 # If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.
@@ -158,20 +127,84 @@ func _on_gun_2_fire() -> void:
 			player.position.x += 3
 	
 		
-func _on_gun_2_fire_stop() -> void:
-	if gv.fsm.state.name == "Idle":
+# func _on_gun_2_fire_stop() -> void:
+# 	if gv.fsm.state.name == "Idle":
+# 		#get_node("../../AnimationPlayer").stop()
+# 		#get_node("../../AnimationPlayer").play("idle")	
+# 	pass	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if player.is_on_floor():
+# 		if player.get_slide_collision_count() > 0:
+# 			collision = player.get_slide_collision(0)
+# 			normal = collision.get_normal()
+# 			#var normal2: Vector2 = player.get_floor_normal()
+			
+# 			# math.acos(normal.dot(b))
+
+# 			#print("#############: " + str( collision.get_angle(Vector2(-1, 0)) ))
+# 			#print("#############: " + str(player.get_floor_angle()))
+# 			#print("#############: " + str(normal2.x))
+# 			#print("#############: " + str(normal2.aspect())) 
+
+# 			slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
+
+
+
+
+#print("#############: " + str(slope_angle))
+
+			#var angleDelta = normal.angle() - (But_L_spr.rotation - PI)
+			#But_L_spr.rotation = angleDelta + But_L_spr.rotation	
+
+		# normal.angle_to(Vector3(0, 1, 0))	
+
+		# Vector2 slide ( Vector2 n ) const
+
+		# Result angle: 0.78 going Up
+		# 0.78 standing down
+			#player.But_L_spr.global_rotation = player.get_floor_angle() 
+			#player.But_P_spr.rotation = player.get_floor_angle()
+
+			#player.rotation = -player.get_floor_angle() 
+			#player.rotation =- player.get_floor_angle()
+
+			# But_L_spr.rotation = atan2(normal.x, -normal.y)
+			# But_P_spr.rotation = atan2(normal.x, -normal.y)  		
+
+
+
 		
 		#get_node("../../AnimationPlayer").stop()
-		#get_node("../../AnimationPlayer").play("idle")
-		pass
-		
-		
+		#get_node("../../AnimationPlayer").play("idle")	
 		
 	# print("ASSSSSSSSSS ---->" + name)	
 		
 		
 		
-		
+# if Ray.is_colliding():
+	# 	player.draw_line(Ray.position, player.to_local(Ray.get_collision_point()), Color(1, 0, 0), 2,true)
+	# 	var collider = Ray.get_collider()
+	# 	if collider.has_method("do_thing"):
+	# 		collider.do_thing()
+
+	#player.But_P_spr.rotation = randf_range(100,100) #player.get_floor_angle()
+
+	#var laserOrigin = to_local(Ray.global_position)		
 		
 
 

@@ -5,10 +5,6 @@
 
 extends PlayerState
 
-@onready var But_L_spr:Sprite2D = get_node("../../leg_l/But_L")
-@onready var But_P_spr:Sprite2D = get_node("../../leg_p/But_P")
-
-
 
 var collision:KinematicCollision2D
 var normal:Vector2
@@ -20,7 +16,7 @@ const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
 	
-	
+
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
@@ -45,19 +41,7 @@ func physics_update(delta: float) -> void:
 	# 1 Right <>  -1 left
 	
 	player.move_and_slide()
-
-
-	# Rotate shoes to slope angle:
-	if is_on_slope():
-		if player.get_slide_collision_count() > 0:
-			collision = player.get_slide_collision(0)
-			normal = collision.get_normal()
-			var normal2: Vector2 = player.get_floor_normal()
-		
-			slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
-		
-			But_L_spr.rotation = player.get_floor_angle() 
-			But_P_spr.rotation = player.get_floor_angle()
+	
 
 	get_node("../../AnimationPlayer").play("walk_2")
 			
@@ -84,6 +68,59 @@ func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
 		return true
 	# is_on_floor is false, so there cannot be a "slope" collision.
 	return false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # Rotate shoes to slope angle:
+# 	if player.is_on_floor():
+# 		if player.get_slide_collision_count() > 0:
+# 			collision = player.get_slide_collision(0)
+# 			normal = collision.get_normal()
+# 			#var normal2: Vector2 = player.get_floor_normal()
+		
+# 			slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
+		
+# 			#player.But_L_spr.rotation = player.get_floor_angle() 
+# 			#player.But_P_spr.rotation = player.get_floor_angle()
+# 			#player.rotation = -player.get_floor_angle() 
+
+
+
+
+
+#var But_anim : Animation = get_node("../../AnimationPlayer").get_animation("walk_2")
+	
+	# var track_idx = animation.find_track( "../../leg_l/Lydka_l/But_l")
+	# print("$$$$$$$$$$$$$$$: " + str(track_idx))
+	# for track_indx in animation.get_track_count():
+	# 	animation.track_get_path(track_indx)
+	# 	print("********: " + str(animation.track_get_path(track_indx)) + "  :" +  str(track_indx))	
+
+	
+
+	# print("******** Player enter walk fsm ")
+
+
+# leg_p/Lydka_p/But_p:position
+# leg_p/Lydka_p/But_p:rotation
+
+
+
 
 
 # var timer:Timer

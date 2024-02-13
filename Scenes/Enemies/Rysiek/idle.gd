@@ -95,14 +95,14 @@ func physics_update(delta: float) -> void:
 			estate_machine.transition_to("Jump_left")	 """		
 					
 	# WALK LEFT				
-	if enemy.global_position.distance_to(gv.Hero_global_position) >= enemy.follow_distance:
-		#if get_node("../../Say").visible == false:
-		if enemy.direction == "R":
-			enemy.previous_state = gv.enemy_fsm.estate.name
-			estate_machine.transition_to("Walk_Right")
-		if enemy.direction == "L":
-			enemy.previous_state = gv.enemy_fsm.estate.name
-			estate_machine.transition_to("Walk_Left")
+	# if enemy.global_position.distance_to(gv.Hero_global_position) >= enemy.follow_distance:
+	# 	#if get_node("../../Say").visible == false:
+	# 	if enemy.direction == "R":
+	# 		enemy.previous_state = gv.enemy_fsm.estate.name
+	# 		estate_machine.transition_to("Walk_Right")
+	# 	if enemy.direction == "L":
+	# 		enemy.previous_state = gv.enemy_fsm.estate.name
+	# 		estate_machine.transition_to("Walk_Left")
 		
 	
 	enemy.move_and_slide()
