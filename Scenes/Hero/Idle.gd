@@ -4,6 +4,7 @@ extends PlayerState
 signal turn(value)
 
 @onready var Ray:RayCast2D = get_node("../../RayCast2D")
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 var collision:KinematicCollision2D
 var normal:Vector2
@@ -18,13 +19,20 @@ func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
-	get_node("../../AnimationPlayer").stop()
-	get_node("../../AnimationPlayer").play("idle")
+	if anim_player.current_animation != "touch_down":
+		anim_player.stop()
+		anim_player.play("idle")
+
 	gv.Hero_is_on_floor = true
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
 
-	# print("******** Player enter idle fsm ")	
+	# print("******** Player enter idle fsm ")
+
+func _on_animation_player_animation_finished(anim_name:StringName):
+	if anim_name == "touch_down":
+		#anim_player.stop()
+		anim_player.play("idle")
 	
 # Exit state:	
 func exit(_msg := {}) -> void:
@@ -125,7 +133,26 @@ func _on_gun_2_fire() -> void:
 			player.position.x -= 3
 		else:	
 			player.position.x += 3
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 # func _on_gun_2_fire_stop() -> void:
 # 	if gv.fsm.state.name == "Idle":
@@ -133,22 +160,7 @@ func _on_gun_2_fire() -> void:
 # 		#get_node("../../AnimationPlayer").play("idle")	
 # 	pass	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# if player.is_on_floor():
+#if player.is_on_floor():
 # 		if player.get_slide_collision_count() > 0:
 # 			collision = player.get_slide_collision(0)
 # 			normal = collision.get_normal()
@@ -206,6 +218,8 @@ func _on_gun_2_fire() -> void:
 
 	#var laserOrigin = to_local(Ray.global_position)		
 		
+
+
 
 
 

@@ -8,13 +8,15 @@ extends PlayerState
 
 var collision:KinematicCollision2D
 var normal:Vector2
-var slope_angle:float = 0
+var slope_angle_deg:float = 0
 const UP = Vector2(0, -1)
 const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
 
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+
 func enter(_msg := {}) -> void:
-	get_node("../../AnimationPlayer").stop()
+	anim_player.stop()
 	
 
 
@@ -34,19 +36,20 @@ func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.gravity * delta
 	
-	#if player.is_on_wall():
-		#print("Hero: stop on wall going: " + str(input_direction_x))
-
-	# print("$$$$$$$$$$$$$$$: " + str(input_direction_x))	
-	# 1 Right <>  -1 left
-	
+		
 	player.move_and_slide()
-	
 
-	get_node("../../AnimationPlayer").play("walk_2")
 			
+	if is_on_slope() == true:
+		#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
+		anim_player.play("walk_up")
+	else:
+		anim_player.play("walk_2")	
+			
+
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()	
+
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})
@@ -83,6 +86,26 @@ func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
 
 
 
+
+
+# if player.is_on_floor():
+	# 	if player.get_slide_collision_count() > 0:
+	# 		collision = player.get_slide_collision(0)
+	# 		normal = collision.get_normal()
+	# 		slope_angle_deg = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
+	# 		if slope_angle_deg > 15:
+	# 			get_node("../../AnimationPlayer").play("walk_up")
+	# 		else:
+	# 			get_node("../../AnimationPlayer").play("walk_2")	
+	# 		#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
+		
+
+
+#if player.is_on_wall():
+		#print("Hero: stop on wall going: " + str(input_direction_x))
+
+	# print("$$$$$$$$$$$$$$$: " + str(input_direction_x))	
+	# 1 Right <>  -1 left
 
 
 

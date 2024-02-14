@@ -6,7 +6,7 @@
 z_index = -1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(93, -49, 360, 83, 346.8, 104.8, 100.3, -16, 79, -13, 78.5, 108, 51, 106, 48.7, -14, -124, -13, -123.5, 108, -152, 107, -154.3, -11.5, -191, -16.6, -345.9, 102.9, -354, 93, -176, -49)
+polygon = PackedVector2Array(100, -43, 360, 83, 346.8, 104.8, 100.3, -16, 48.7, -14, -153, -15, -191, -16.6, -345.9, 102.9, -356, 92, -190, -39)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pb1bx")

@@ -1,5 +1,9 @@
 extends PlayerState
 
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+@onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
+
+
 # AIR
 
 func enter(msg := {}) -> void:
@@ -7,8 +11,8 @@ func enter(msg := {}) -> void:
 		player.velocity.y = - player.jump_impulse
 		get_node("../../snd_walk").stop()
 		get_node("../../snd_jump").play()
-		get_node("../../AnimationPlayer").stop()
-		get_node("../../AnimationPlayer").play("jump")
+		anim_player.stop()
+		anim_player.play("jump")
 		gv.Hero_is_on_floor = false
 				
 		#if get_node("../../snd_walk").playing != true:
@@ -16,11 +20,6 @@ func enter(msg := {}) -> void:
 		
 
 func physics_update(delta: float) -> void:
-	
-	if player.is_on_floor():
-		if gv.Hero_is_paused == true:
-			state_machine.transition_to("Idle")
-			return	
 	
 	if Input.is_action_pressed("ui_right"):
 		#gv.Hero_direction = Vector2.RIGHT
@@ -34,7 +33,17 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 		
 	if player.is_on_floor():
+		if gv.Hero_is_paused == true:
+			state_machine.transition_to("Idle")
+			return	
+		anim_player.play("touch_down")
 		state_machine.transition_to("Idle")
-		get_node("../../snd_fall").play()
+		snd_fall.play()
 		
-			
+		
+					
+
+
+func _on_animation_player_animation_finished(_anim_name:StringName):
+	#state_machine.transition_to("Idle")
+	pass
