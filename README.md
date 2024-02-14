@@ -26,11 +26,8 @@ Features (to be continued ... ):
 How to play:
 
 Use "mouse" to move crosshair for select target
-
 Press "space" to fire
-
 "Right arrow" moves right
-
 "Left arrow" moves left
 
 "Up arrow" jump
