@@ -24,17 +24,29 @@ Features (to be continued ... ):
 <BR><BR><BR><BR>
 
 How to play:
+
 Use "mouse" to move crosshair for select target
+
 Press "space" to fire
+
 "Right arrow" moves right
+
 "Left arrow" moves left
+
 "Up arrow" jump
+
 Up and "right arrow" jumps to the right
+
 Up and "left arrow" jumps to the left
+
 Press "r" and left or right arrow to run
+
 The letter "w" switches weapons
+
 The letter "t" sets you in a precise standing shooting position
+
 "Down arrow" changes the shooting position to kneeling position
+
 To return to the starting position, press the up arrow again
 
 <BR><BR><BR><BR>
