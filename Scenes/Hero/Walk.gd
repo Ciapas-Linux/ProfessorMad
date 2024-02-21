@@ -10,6 +10,7 @@ var collision:KinematicCollision2D
 var normal:Vector2
 var slope_angle_deg:float = 0
 const UP = Vector2(0, -1)
+const DOWN = Vector2(0, 1)
 const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
 
