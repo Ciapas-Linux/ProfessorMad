@@ -3,6 +3,8 @@
 # ##########
 extends Sprite2D
 
+@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
+
 var can_fire:bool = true
 var bullet:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet.tscn")
 var bullet_shell:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet_shell.tscn")
@@ -25,13 +27,11 @@ func _ready():
 	add_child(timer_next_shot)
 	$ammo.text = str(ammo)	
 	
-
 func _on_timer_next_shot_timeout() -> void:
-	if gv.fsm.state.name == "Idle":
-		position.y = position.y + recoil
-	else:
-		position.y = position.y + recoil
-		position.x = position.x - recoil
+	# if gv.fsm.state.name == "Idle":
+	# else:
+	if anim_player.is_playing() == false:
+				anim_player.play("shoot")
 	$Timer.start(0.1)
 	shoot()	
 		
@@ -45,11 +45,8 @@ func _process(_delta: float) -> void:
 	$RayCast2D.target_position = get_local_mouse_position()			
 
 	if Input.is_action_just_pressed("Fire"):
-		if gv.fsm.state.name == "Idle":
-			position.y = position.y + recoil
-		else:
-			position.y = position.y + recoil
-			position.x = position.x - recoil
+		if anim_player.is_playing() == false:
+				anim_player.play("shoot")
 		$Timer.start(0.1)
 		shoot()
 
@@ -82,16 +79,6 @@ func shoot():
 	fire.emit()
 	# $Bullet_shell.restart()
 	# $Bullet_shell.emiting(true)
-	
-
-	
-
-func _on_timer_timeout():
-	if gv.fsm.state.name == "Idle":
-		position.y = position.y - recoil
-	else:
-		position.y = position.y - recoil	
-		position.x = position.x + recoil  
 	
 
 func _on_firing_sprite_animation_finished() -> void:

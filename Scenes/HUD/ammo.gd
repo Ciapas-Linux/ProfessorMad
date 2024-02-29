@@ -3,8 +3,10 @@ extends Label
 var weapon:Sprite2D 
 var timer :Timer
 
+var spawn_node_path:String = "../../Player/Body_parts/weapon_spawn"
+
 func _ready() -> void:
-	weapon = get_node("../../Player/Torso/arm_r").get_child(1)
+	weapon = get_node(spawn_node_path).get_child(0)
 	timer = Timer.new()
 	timer.wait_time = 0.3
 	timer.one_shot = false
@@ -21,4 +23,4 @@ func _on_timer_timeout() -> void:
 	if weapon:
 		text = "%s" % weapon.ammo 
 	else:
-		weapon = get_node("../../Player/Torso/arm_r").get_child(1)	
+		weapon = get_node(spawn_node_path).get_child(0)	

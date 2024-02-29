@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="3_vafg6"]
 [ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="4_rhujv"]
 [ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="5_e85i1"]
-[ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Hero/Player.tscn" id="6_0huhg"]
+[ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="6_0huhg"]
 [ext_resource type="PackedScene" uid="uid://b76igam5emt8l" path="res://Scenes/Enemies/Rysiek/enemy2.tscn" id="7_efrhx"]
 [ext_resource type="PackedScene" uid="uid://0ywglto5tx2h" path="res://Scenes/Explosives/box1.tscn" id="8_7yfa0"]
 [ext_resource type="PackedScene" uid="uid://drddobovkd13n" path="res://Scenes/Cars/polonez1/polonez_1.tscn" id="9_gev1q"]
@@ -93,6 +93,7 @@ script = ExtResource("1_ow16c")
 
 [node name="Player" parent="." instance=ExtResource("6_0huhg")]
 visibility_layer = 2
+z_index = 2
 position = Vector2(173, 413)
 scale = Vector2(0.261768, 0.261768)
 
@@ -345,6 +346,7 @@ mesh = SubResource("ArrayMesh_7k65n")
 texture = ExtResource("5_e85i1")
 
 [node name="Trawka_1" type="Sprite2D" parent="."]
+z_index = 2
 texture_repeat = 2
 position = Vector2(8000, 724)
 texture = ExtResource("35_sfvns")

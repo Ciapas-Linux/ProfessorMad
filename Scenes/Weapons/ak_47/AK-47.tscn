@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1qp52xv868g7"]
+[gd_scene load_steps=13 format=3 uid="uid://1qp52xv868g7"]
 
 [ext_resource type="Texture2D" uid="uid://dixuean8o1l3w" path="res://Assets/Objects/ak47.png" id="1_7u0r0"]
 [ext_resource type="Script" path="res://Scenes/Weapons/ak_47/AK-47.gd" id="2_ryoe4"]
@@ -8,6 +8,44 @@
 [ext_resource type="Texture2D" uid="uid://x2ibakeuf7v1" path="res://Assets/Explosions/gun_fire/gun_fire1.png" id="6_clfd6"]
 [ext_resource type="Texture2D" uid="uid://b7ln2qljat8ku" path="res://Assets/Explosions/gun_fire/gun_fire2.png" id="7_jjjkj"]
 [ext_resource type="Texture2D" uid="uid://c3vmigwrt1efy" path="res://Assets/Explosions/gun_fire/gun_fire3.png" id="8_7remb"]
+
+[sub_resource type="Animation" id="Animation_mw7bc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(75, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_6uch2"]
+resource_name = "shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(75, 30), Vector2(30, 30), Vector2(75, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_npcpi"]
+_data = {
+"RESET": SubResource("Animation_mw7bc"),
+"shoot": SubResource("Animation_6uch2")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q0vnt"]
 animations = [{
@@ -27,10 +65,15 @@ animations = [{
 }]
 
 [node name="AK-47" type="Sprite2D"]
-z_index = -1
 texture = ExtResource("1_7u0r0")
 offset = Vector2(75, 30)
 script = ExtResource("2_ryoe4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_npcpi")
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.33

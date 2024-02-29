@@ -1,10 +1,10 @@
 [gd_scene load_steps=30 format=3 uid="uid://bnf5waeilny8y"]
 
-[ext_resource type="Texture2D" uid="uid://ukstupt5orp8" path="res://Assets/Hero/BodyParts/głowa3.png" id="1_g44m8"]
+[ext_resource type="Texture2D" uid="uid://ukstupt5orp8" path="res://Assets/Player/BodyParts/głowa3.png" id="1_g44m8"]
 [ext_resource type="Shader" path="res://Shaders/sky/sky2.gdshader" id="1_neudf"]
-[ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Hero/BodyParts/korpus2blur.png" id="2_ktyd8"]
+[ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="2_ktyd8"]
 [ext_resource type="Script" path="res://Scripts/Stage2/Camera.gd" id="2_pmb5e"]
-[ext_resource type="PackedScene" uid="uid://b52diux3ykntq" path="res://Scenes/Hero25D/player_25D.tscn" id="3_v37f7"]
+[ext_resource type="PackedScene" uid="uid://b52diux3ykntq" path="res://Scenes/Player25D/player_25D.tscn" id="3_v37f7"]
 [ext_resource type="Script" path="res://Scripts/Stage2/hud/HUD.gd" id="4_imecl"]
 [ext_resource type="Script" path="res://Scripts/Stage2/hud/label_position.gd" id="5_6gk77"]
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Objects/bullet1.png" id="5_gj7c5"]

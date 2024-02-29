@@ -27,7 +27,6 @@ shader_parameter/color_treshold = 0.6
 shader_parameter/noise = SubResource("NoiseTexture2D_cj2xk")
 
 [node name="Rocket_4" type="Sprite2D"]
-z_index = -1
 texture = ExtResource("1_nowhg")
 offset = Vector2(40, 0)
 script = ExtResource("2_eseiu")
