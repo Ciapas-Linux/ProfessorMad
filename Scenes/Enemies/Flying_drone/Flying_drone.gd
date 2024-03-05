@@ -34,7 +34,7 @@ signal on_kill
 
 #var screen_size : Vector2
 var enemy2:Enemy
-var bomb:Resource = preload("res://Scenes/Enemies/Flying _drone/Bomb2.tscn")
+var bomb:Resource = preload("res://Scenes/Enemies/Flying_drone/Bomb2.tscn")
 var boom:Area2D
 
 var mouse_enter:bool = false

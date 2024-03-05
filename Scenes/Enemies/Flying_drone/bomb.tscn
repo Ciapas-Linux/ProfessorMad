@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://cenwqq2j5dqih"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying_drone/Bomb.gd" id="1_c26cx"]
+[ext_resource type="Texture2D" uid="uid://dntpsay1fcbgh" path="res://Assets/Objects/bomb.png" id="2_kmt2a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbwb3"]
+radius = 26.69
+height = 57.884
+
+[sub_resource type="Animation" id="Animation_1pvje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4uwmk"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.349066, 0.0, -0.349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 30), Vector2(0, 30), Vector2(0, 30), Vector2(0, 30), Vector2(0, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02kcn"]
+_data = {
+"RESET": SubResource("Animation_1pvje"),
+"rotate": SubResource("Animation_4uwmk")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ruifd"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7b7x"]
+size = Vector2(665, 49)
+
+[node name="Bomb" type="CharacterBody2D"]
+position = Vector2(0, 30)
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_c26cx")
+
+[node name="BombSprite" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.698418, 0.698418)
+texture = ExtResource("2_kmt2a")
+offset = Vector2(-9.53674e-07, 85.9084)
+
+[node name="BombCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 86)
+scale = Vector2(0.711878, 0.967452)
+shape = SubResource("CapsuleShape2D_kbwb3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BombSprite")
+libraries = {
+"": SubResource("AnimationLibrary_02kcn")
+}
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+z_index = 3
+position = Vector2(0, 85)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ruifd")
+animation = &"explode"
+
+[node name="BombArea2D" type="Area2D" parent="."]
+position = Vector2(0, 86)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombArea2D"]
+shape = SubResource("RectangleShape2D_x7b7x")
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="body_entered" from="BombArea2D" to="." method="_on_area_2d_body_entered"]

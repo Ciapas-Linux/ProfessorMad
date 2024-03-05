@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=3 uid="uid://chihd8eru52sc"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/Flying_drone.gd" id="1_j8n5l"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying_drone/Flying_drone.gd" id="1_j8n5l"]
 [ext_resource type="Texture2D" uid="uid://bb3k7f0f6f4co" path="res://Assets/Enemy/Dron2/0001.png" id="3_hqq70"]
 [ext_resource type="Texture2D" uid="uid://dyewapfg8cpcg" path="res://Assets/Enemy/Dron2/0002.png" id="4_14rm5"]
 [ext_resource type="Texture2D" uid="uid://crnc00w7biu02" path="res://Assets/Enemy/Dron2/0003.png" id="5_5u6p8"]
@@ -33,8 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://6dk81ylj0dj7" path="res://Assets/Enemy/Dron2/explode/0006.png" id="46_2fg0a"]
 [ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="47_l04ju"]
 [ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="48_l46y6"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/Health.gd" id="49_ei2ci"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Flying _drone/HitPoints.gd" id="50_skf5i"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying_drone/Health.gd" id="49_ei2ci"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Flying_drone/HitPoints.gd" id="50_skf5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shara"]
 size = Vector2(200, 80)
