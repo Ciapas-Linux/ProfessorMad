@@ -1299,7 +1299,7 @@ flip_h = true
 
 [node name="Leg_L" type="Sprite2D" parent="Body_parts"]
 position = Vector2(98, 161)
-rotation = -0.0762949
+rotation = -0.0730732
 scale = Vector2(0.699974, 0.699974)
 texture = ExtResource("11_8mg4h")
 offset = Vector2(1, 80)
@@ -1312,7 +1312,7 @@ texture = ExtResource("5_kvy3r")
 offset = Vector2(46.9803, 25.5456)
 
 [node name="Calf_L" type="Sprite2D" parent="Body_parts/Leg_L/Foot_L"]
-position = Vector2(6.75247, -119.255)
+position = Vector2(6.75249, -119.255)
 rotation = 0.0643795
 scale = Vector2(0.454545, 0.454545)
 texture = ExtResource("12_55wsn")
@@ -1320,22 +1320,21 @@ offset = Vector2(-1, 133)
 
 [node name="Leg_R" type="Sprite2D" parent="Body_parts"]
 position = Vector2(17, 172)
-rotation = 0.0603944
 scale = Vector2(0.700003, 0.700003)
 texture = ExtResource("8_abub0")
 offset = Vector2(7.42856, 73.2857)
 
 [node name="Foot_R" type="Sprite2D" parent="Body_parts/Leg_R"]
-position = Vector2(4.82487, 386.279)
-rotation = -0.0332747
+position = Vector2(-12.8564, 384.28)
+rotation = 0.0499134
 scale = Vector2(2.19985, 2.19985)
 texture = ExtResource("5_kvy3r")
 offset = Vector2(47.8803, 29.6873)
 
 [node name="Calf_R" type="Sprite2D" parent="Body_parts/Leg_R/Foot_R"]
-position = Vector2(4.61031, -47.6234)
-rotation = 0.0670483
-scale = Vector2(0.454543, 0.454543)
+position = Vector2(4.61033, -47.6234)
+rotation = 0.0670486
+scale = Vector2(0.454544, 0.454544)
 texture = ExtResource("9_tlemh")
 offset = Vector2(-0.104025, 1.08356)
 

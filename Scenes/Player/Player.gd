@@ -35,9 +35,9 @@ signal bomb_hit_me
 
 var eyes_rnd_blink_timer:Timer
 
-@onready var But_L_spr:Sprite2D = get_node("leg_l/Lydka_l/But_l")
-@onready var But_P_spr:Sprite2D = get_node("leg_p/Lydka_p/But_p")
-@onready var But_anim : Animation = get_node("AnimationPlayer").get_animation("walk_2")
+#@onready var But_L_spr:Sprite2D = get_node("leg_l/Lydka_l/But_l")
+#@onready var But_P_spr:Sprite2D = get_node("leg_p/Lydka_p/But_p")
+#@onready var But_anim : Animation = get_node("AnimationPlayer").get_animation("walk_2")
 	
 # var humanoid_profile:SkeletonProfileHumanoid
 # var Player_skeleton:Skeleton2D
@@ -55,9 +55,9 @@ func _ready():
 	$Body_parts/Head/powieka_P.visible = false
 	$Body_parts/Head/powieka_L.visible = false
 
-	for track_indx in But_anim.get_track_count():
-		But_anim.track_get_path(track_indx)
-		print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
+	# for track_indx in But_anim.get_track_count():
+	# 	But_anim.track_get_path(track_indx)
+	# 	print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
 
 
 	# But_anim.track_set_enabled (14, false)
@@ -70,11 +70,11 @@ func _ready():
 	# But_anim.remove_track (15)
 	# But_anim.remove_track (14)
 
-	print("================")
+	# print("================")
 
-	for track_indx in But_anim.get_track_count():
-		But_anim.track_get_path(track_indx)
-		print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
+	# for track_indx in But_anim.get_track_count():
+	# 	But_anim.track_get_path(track_indx)
+	# 	print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
 
 
 	if FileAccess.file_exists("user://game.dat") == false:
@@ -113,7 +113,7 @@ func _ready():
 	# humanoid_profile.set_bone_name("upper_arm_r", "RightArm")
 
 
-	emit_signal("player_stats_changed", self)
+	#emit_signal("player_stats_changed", self)
 	print("Hero: ready ...") 
 	
 
