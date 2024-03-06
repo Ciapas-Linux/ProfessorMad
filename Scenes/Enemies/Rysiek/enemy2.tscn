@@ -1031,6 +1031,9 @@ collision_mask = 17
 floor_stop_on_slope = false
 floor_snap_length = 2.0
 script = ExtResource("1_ea6gb")
+speed = null
+gravity = null
+jump_impulse = null
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 

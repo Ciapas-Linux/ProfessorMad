@@ -32,9 +32,10 @@ signal on_boss_position
 signal on_base_position
 signal on_kill
 
-#var screen_size : Vector2
+@onready var bomb:Resource = preload("res://Scenes/Enemies/Drone/Bomb2.tscn")
+
+
 var enemy2:Enemy
-var bomb:Resource = preload("res://Scenes/Enemies/Flying_drone/Bomb2.tscn")
 var boom:Area2D
 
 var mouse_enter:bool = false

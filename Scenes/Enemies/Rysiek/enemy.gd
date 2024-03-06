@@ -69,7 +69,7 @@ var drone:CharacterBody2D
 var mouse_enter:bool = false
 
 
-@onready var flying_drone:Resource = preload("res://Scenes/Enemies/Flying_drone/Flying_drone.tscn")
+@onready var flying_drone:Resource = preload("res://Scenes/Enemies/Drone/Drone.tscn")
 @onready var Chat:Resource = preload("res://Scenes/CloudChat/Chat.tscn")
 var chat_instance:Node2D
 
@@ -105,7 +105,7 @@ func _ready():
 	#print("Drone2: ready " + Drone2.name)
 	
 	
-	#$CreateDrone.start()
+	$CreateDrone.start()
 
 
 func _unhandled_input(event):

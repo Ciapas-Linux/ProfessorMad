@@ -17,7 +17,7 @@ func _ready():
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	$BulletHits.connect("mouse_entered", _on_Area2D_mouse_entered)
 	$BulletHits.connect("mouse_exited", _on_Area2D_mouse_exited)
-	drone = get_parent().get_node("Flying_drone")
+	drone = get_parent().get_node("Drone")
 	position.x = drone.global_position.x
 	position.y = drone.global_position.y + 50
 	$Explosion.stop()
