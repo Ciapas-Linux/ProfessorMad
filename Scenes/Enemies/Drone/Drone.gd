@@ -1,3 +1,10 @@
+
+
+# #####################
+# # Drone     .SCRIPT #
+# #####################
+
+
 extends CharacterBody2D
 
 var x_distance_to_hero:float = 0
