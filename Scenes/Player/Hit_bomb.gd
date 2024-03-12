@@ -5,14 +5,15 @@ extends PlayerState
 @onready var tween: Tween
 
 func enter(_msg := {}) -> void:
+	gv.Hero_weapon.visible = false
 	anim_player.stop()
 	#anim_player.play("Bomb_hit_me")
 	print("Hero: enter state machine hit bomb!")
-	_explode()
 	get_node("../../BloodSplash").visible = true
 	get_node("../../BloodSplash").emitting = true
 	get_node("../../snd_hit1").play()
-	
+	_explode()
+
 @warning_ignore("unused_parameter")
 func physics_update(delta: float) -> void:
 	pass
@@ -110,6 +111,7 @@ func _explode():
 
 func on_tween_finished():
 	#if anim_name == "Bomb_hit_me":
+	gv.Hero_weapon.visible = true
 	player.fade_in()
 	state_machine.transition_to("Idle")
 
