@@ -1,6 +1,6 @@
 extends PlayerState
 
-@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer2")
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
 
 
@@ -44,6 +44,7 @@ func physics_update(delta: float) -> void:
 					
 
 
-func _on_animation_player_animation_finished(_anim_name:StringName):
+func _on_animation_player_2_animation_finished(_anim_name:StringName):
 	#state_machine.transition_to("Idle")
 	pass
+

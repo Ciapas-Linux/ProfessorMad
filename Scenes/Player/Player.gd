@@ -35,6 +35,8 @@ signal bomb_hit_me
 
 var eyes_rnd_blink_timer:Timer
 
+
+
 #@onready var But_L_spr:Sprite2D = get_node("leg_l/Lydka_l/But_l")
 #@onready var But_P_spr:Sprite2D = get_node("leg_p/Lydka_p/But_p")
 #@onready var But_anim : Animation = get_node("AnimationPlayer").get_animation("walk_2")
@@ -117,7 +119,29 @@ func _ready():
 	print("Hero: ready ...") 
 	
 
+func fade_in():
+	$Body_parts/Arm_L.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Hand_L.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Hand_L/ForeArm_L.self_modulate = Color(1, 1, 1, 1)
 
+	$Body_parts/Arm_R.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Arm_R/Hand_R.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Arm_R/Hand_R/ForeArm_R.self_modulate = Color(1, 1, 1, 1)
+	
+	
+	$Body_parts/Leg_L.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Leg_L/Foot_L.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Leg_L/Foot_L/Calf_L.self_modulate = Color(1, 1, 1, 1)
+	
+	$Body_parts/Leg_R.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Leg_R/Foot_R.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Leg_R/Foot_R/Calf_R.self_modulate = Color(1, 1, 1, 1)
+	
+	$Body_parts/Body.self_modulate = Color(1, 1, 1, 1)
+	
+	$Body_parts/Head.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Head/powieka_P.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Head/powieka_L.self_modulate = Color(1, 1, 1, 1)
 
 func _on_eyes_blink_timer_timeout():
 	if $Body_parts/Head/powieka_P.visible == true:
@@ -274,6 +298,17 @@ func bomb_explode():
 # #################
 # # GARBAGE       #
 # #################
+
+
+# for node in $Body_parts.get_children():
+# 		if node.get_child_count() > 0:
+# 			if node.get_class() == "Sprite2D":
+# 				node.self_modulate = Color(1, 1, 1, 1)
+# 				print("QQQQQQQQ######> " + node.get_name())
+# 		else:
+# 			node.self_modulate = Color(1, 1, 1, 1)
+# 			print("QQQQQQQQ######> " + node.get_name())
+
 
 #@onready var weapons:Array[Resource] = [preload("res://Scenes/Guns/AK-47.tscn"), preload("res://Scenes/Guns/rpg_7.tscn")]
 

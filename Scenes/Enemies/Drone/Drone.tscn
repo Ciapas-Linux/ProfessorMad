@@ -348,6 +348,7 @@ autostart = true
 stream = ExtResource("22_1k5gp")
 volume_db = 2.0
 pitch_scale = 0.5
+max_distance = 5000.0
 
 [node name="TimerNoBoss" type="Timer" parent="."]
 wait_time = 5.0

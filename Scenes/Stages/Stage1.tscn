@@ -111,7 +111,7 @@ script = ExtResource("3_ueebj")
 
 [node name="Enemy" parent="." instance=ExtResource("7_efrhx")]
 z_index = 1
-position = Vector2(8842, 441)
+position = Vector2(3311, 441)
 collision_mask = 27
 
 [node name="Box1" parent="." groups=["Explosives"] instance=ExtResource("8_7yfa0")]

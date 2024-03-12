@@ -29,11 +29,12 @@ func enter(_msg := {}) -> void:
 
 	# print("******** Player enter idle fsm ")
 
-func _on_animation_player_animation_finished(anim_name:StringName):
+func _on_animation_player_2_animation_finished(anim_name:StringName):
 	if anim_name == "touch_down":
 		#anim_player.stop()
 		anim_player.play("idle")
 	
+
 # Exit state:	
 func exit(_msg := {}) -> void:
 	pass
@@ -218,6 +219,8 @@ func _on_gun_2_fire() -> void:
 
 	#var laserOrigin = to_local(Ray.global_position)		
 		
+
+
 
 
 
