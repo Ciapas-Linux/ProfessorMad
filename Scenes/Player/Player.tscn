@@ -1276,7 +1276,7 @@ flip_h = true
 
 [node name="Leg_L" type="Sprite2D" parent="Body_parts"]
 position = Vector2(12, -45)
-rotation = -0.0762949
+rotation = -0.0730732
 scale = Vector2(0.699892, 0.699892)
 texture = ExtResource("11_8mg4h")
 offset = Vector2(1, 80)
@@ -1289,7 +1289,7 @@ texture = ExtResource("5_kvy3r")
 offset = Vector2(46.9803, 25.5456)
 
 [node name="Calf_L" type="Sprite2D" parent="Body_parts/Leg_L/Foot_L"]
-position = Vector2(6.75251, -119.255)
+position = Vector2(6.7525, -119.255)
 rotation = 0.0643795
 scale = Vector2(0.454547, 0.454547)
 texture = ExtResource("12_55wsn")
@@ -1297,21 +1297,20 @@ offset = Vector2(-1, 133)
 
 [node name="Leg_R" type="Sprite2D" parent="Body_parts"]
 position = Vector2(-69, -34)
-rotation = 0.0603944
 scale = Vector2(0.700006, 0.700006)
 texture = ExtResource("8_abub0")
 offset = Vector2(7.42856, 73.2857)
 
 [node name="Foot_R" type="Sprite2D" parent="Body_parts/Leg_R"]
-position = Vector2(4.82619, 386.262)
-rotation = -0.0332747
+position = Vector2(-12.8537, 384.263)
+rotation = 0.0499134
 scale = Vector2(2.19965, 2.19965)
 texture = ExtResource("5_kvy3r")
 offset = Vector2(47.8803, 29.6873)
 
 [node name="Calf_R" type="Sprite2D" parent="Body_parts/Leg_R/Foot_R"]
-position = Vector2(4.6103, -47.6236)
-rotation = 0.0670483
+position = Vector2(4.61033, -47.6236)
+rotation = 0.0670486
 scale = Vector2(0.454545, 0.454545)
 texture = ExtResource("9_tlemh")
 offset = Vector2(-0.104025, 1.08356)
@@ -1341,7 +1340,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_hfn3g")
 
 [node name="weapon_spawn" type="Marker2D" parent="Body_parts"]
-position = Vector2(29.2697, -103.423)
+position = Vector2(79, -38)
 rotation = 0.137862
 scale = Vector2(0.767881, 0.767881)
 gizmo_extents = 33.0
@@ -1354,14 +1353,14 @@ texture = ExtResource("2_a310c")
 offset = Vector2(11.7867, 73.2179)
 
 [node name="Hand_R" type="Sprite2D" parent="Body_parts/Arm_R"]
-position = Vector2(116.446, 245.697)
+position = Vector2(116.447, 245.697)
 rotation = -0.0472624
 scale = Vector2(0.960004, 0.960004)
 texture = ExtResource("8_3wmc7")
 offset = Vector2(58.5516, 32.5195)
 
 [node name="ForeArm_R" type="Sprite2D" parent="Body_parts/Arm_R"]
-position = Vector2(8.9856, 147.402)
+position = Vector2(8.9856, 147.403)
 rotation = -0.828832
 scale = Vector2(0.800003, 0.800003)
 texture = ExtResource("4_5bscy")
@@ -1457,7 +1456,7 @@ position = Vector2(12.1925, -0.00991732)
 remote_path = NodePath("../../../../../../../Body_parts/Arm_R/Hand_R")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Skeleton2D/Base/Body/Arm_R/ForeArm_R/Hand_R"]
-position = Vector2(-1.66192, -50.1619)
+position = Vector2(74.1952, 25.3286)
 remote_path = NodePath("../../../../../../../Body_parts/weapon_spawn")
 
 [node name="Leg_R" type="Bone2D" parent="Skeleton2D/Base"]
