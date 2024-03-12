@@ -126,7 +126,7 @@ func fade_in():
 
 	$Body_parts/Arm_R.self_modulate = Color(1, 1, 1, 1)
 	$Body_parts/Arm_R/Hand_R.self_modulate = Color(1, 1, 1, 1)
-	$Body_parts/Arm_R/Hand_R/ForeArm_R.self_modulate = Color(1, 1, 1, 1)
+	$Body_parts/Arm_R/ForeArm_R.self_modulate = Color(1, 1, 1, 1)
 	
 	
 	$Body_parts/Leg_L.self_modulate = Color(1, 1, 1, 1)
