@@ -1,7 +1,7 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-	get_node("../../AnimationPlayer").stop()
+	get_node("../../AnimationPlayer2").stop()
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():

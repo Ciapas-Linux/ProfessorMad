@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://c44bp5cutt8em"]
+[gd_scene load_steps=77 format=3 uid="uid://c44bp5cutt8em"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_qy254"]
 [ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="2_81kcy"]
@@ -1157,12 +1157,40 @@ tracks/6/keys = {
 "values": [0.160401, 0.264131, 0.160401]
 }
 
+[sub_resource type="Animation" id="Animation_jioko"]
+resource_name = "target_up"
+
+[sub_resource type="Animation" id="Animation_hci2m"]
+resource_name = "target_up_rpg"
+
+[sub_resource type="Animation" id="Animation_8nitr"]
+resource_name = "target_up_walk"
+
+[sub_resource type="Animation" id="Animation_ysxn4"]
+resource_name = "target_down"
+
+[sub_resource type="Animation" id="Animation_essdy"]
+resource_name = "target_down_walk"
+
+[sub_resource type="Animation" id="Animation_wv72u"]
+resource_name = "rpg_shoot"
+
+[sub_resource type="Animation" id="Animation_20ack"]
+resource_name = "run"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlisb"]
 _data = {
 "Bomb_hit_me": SubResource("Animation_jpg3p"),
 "RESET": SubResource("Animation_yln3e"),
 "idle": SubResource("Animation_1ocjx"),
 "jump": SubResource("Animation_h6dd3"),
+"rpg_shoot": SubResource("Animation_wv72u"),
+"run": SubResource("Animation_20ack"),
+"target_down": SubResource("Animation_ysxn4"),
+"target_down_walk": SubResource("Animation_essdy"),
+"target_up": SubResource("Animation_jioko"),
+"target_up_rpg": SubResource("Animation_hci2m"),
+"target_up_walk": SubResource("Animation_8nitr"),
 "touch_down": SubResource("Animation_4y230"),
 "walk": SubResource("Animation_hlm5f"),
 "walk_2": SubResource("Animation_wuq2i")
@@ -1260,7 +1288,7 @@ offset = Vector2(7.82233, 62.8831)
 flip_v = true
 
 [node name="Hand_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(128.033, -185.837)
+position = Vector2(128.033, -185.836)
 rotation = -1.00082
 scale = Vector2(0.6399, 0.6399)
 texture = ExtResource("6_sh2oj")
@@ -1276,7 +1304,7 @@ flip_h = true
 
 [node name="Leg_L" type="Sprite2D" parent="Body_parts"]
 position = Vector2(12, -45)
-rotation = -0.0762949
+rotation = -0.0730732
 scale = Vector2(0.699892, 0.699892)
 texture = ExtResource("11_8mg4h")
 offset = Vector2(1, 80)
@@ -1291,28 +1319,27 @@ offset = Vector2(46.9803, 25.5456)
 [node name="Calf_L" type="Sprite2D" parent="Body_parts/Leg_L/Foot_L"]
 position = Vector2(6.75251, -119.255)
 rotation = 0.0643795
-scale = Vector2(0.454547, 0.454547)
+scale = Vector2(0.454548, 0.454548)
 texture = ExtResource("12_55wsn")
 offset = Vector2(-1, 133)
 
 [node name="Leg_R" type="Sprite2D" parent="Body_parts"]
 position = Vector2(-69, -34)
-rotation = 0.0603944
 scale = Vector2(0.700006, 0.700006)
 texture = ExtResource("8_abub0")
 offset = Vector2(7.42856, 73.2857)
 
 [node name="Foot_R" type="Sprite2D" parent="Body_parts/Leg_R"]
-position = Vector2(4.82619, 386.262)
-rotation = -0.0332747
+position = Vector2(-12.8537, 384.263)
+rotation = 0.0499134
 scale = Vector2(2.19965, 2.19965)
 texture = ExtResource("5_kvy3r")
 offset = Vector2(47.8803, 29.6873)
 
 [node name="Calf_R" type="Sprite2D" parent="Body_parts/Leg_R/Foot_R"]
-position = Vector2(4.61031, -47.6236)
-rotation = 0.0670483
-scale = Vector2(0.454545, 0.454545)
+position = Vector2(4.61032, -47.6236)
+rotation = 0.0670486
+scale = Vector2(0.454546, 0.454546)
 texture = ExtResource("9_tlemh")
 offset = Vector2(-0.104025, 1.08356)
 
@@ -1341,8 +1368,8 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_hfn3g")
 
 [node name="weapon_spawn" type="Marker2D" parent="Body_parts"]
-position = Vector2(83.7636, -47.3844)
-rotation = 0.059491
+position = Vector2(83.7636, -47.3845)
+rotation = 0.0594909
 scale = Vector2(0.767881, 0.767881)
 gizmo_extents = 33.0
 

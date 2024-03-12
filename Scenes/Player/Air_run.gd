@@ -7,8 +7,8 @@ func enter(msg := {}) -> void:
 		player.velocity.y = - player.jump_impulse_run
 		get_node("../../snd_walk").stop()
 		get_node("../../snd_jump").play()
-		get_node("../../AnimationPlayer").stop()
-		get_node("../../AnimationPlayer").play("jump")
+		get_node("../../AnimationPlayer2").stop()
+		get_node("../../AnimationPlayer2").play("jump")
 		gv.Hero_is_on_floor = false
 				
 		#if get_node("../../snd_walk").playing != true:

@@ -13,8 +13,8 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	
-	get_node("../../AnimationPlayer").stop()
-	get_node("../../AnimationPlayer").play("target_down")
+	get_node("../../AnimationPlayer2").stop()
+	get_node("../../AnimationPlayer2").play("target_down")
 
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
