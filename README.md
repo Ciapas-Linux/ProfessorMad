@@ -26,7 +26,7 @@ Features (to be continued ... ):
 <BR>
 ☢ Player sprite: Cut out body parts + 2D skeleton animation system used.
 <BR>
-☢ Quite precise shooting of the guns weapons, the bullet hits the place where the cursor is, while maintaining the offset for moving objects
+☢ Quite precise shooting of the guns weapons, the bullet hits the place where the cursor is,     while maintaining the offset for moving objects
 
 <BR><BR><BR><BR>
 
