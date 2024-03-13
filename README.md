@@ -16,13 +16,15 @@ Attention! The main branch is a development version and is constantly changing, 
 
 Features (to be continued ... ):
 
-☢ Destructable enemy objects
+☢ Destructable enemy objects.
 <BR>
-☢ During the attack, bullet holes are created in enemy objects
+☢ During the attack, bullet holes are created in enemy objects.
 <BR>
-☢ Nice guided missiles
+☢ Nice guided missiles.
 <BR>
-☢ Autonomous drones attacking with bombs
+☢ Autonomous drones attacking with bombs.
+<BR>
+☢ Player sprite: Cut out body parts + 2D skeleton animation system used.
 
 <BR><BR><BR><BR>
 

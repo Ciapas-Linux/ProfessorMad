@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://c44bp5cutt8em"]
+[gd_scene load_steps=78 format=3 uid="uid://c44bp5cutt8em"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_qy254"]
 [ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="2_81kcy"]
@@ -1178,6 +1178,9 @@ tracks/6/keys = {
 "values": [0.160401, 0.264131, 0.160401]
 }
 
+[sub_resource type="Animation" id="Animation_4bsbp"]
+resource_name = "walk_up"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlisb"]
 _data = {
 "Bomb_hit_me": SubResource("Animation_jpg3p"),
@@ -1193,7 +1196,8 @@ _data = {
 "target_up_walk": SubResource("Animation_8nitr"),
 "touch_down": SubResource("Animation_4y230"),
 "walk": SubResource("Animation_hlm5f"),
-"walk_2": SubResource("Animation_wuq2i")
+"walk_2": SubResource("Animation_wuq2i"),
+"walk_up": SubResource("Animation_4bsbp")
 }
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_to38a"]
