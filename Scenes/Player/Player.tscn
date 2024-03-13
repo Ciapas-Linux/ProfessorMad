@@ -976,6 +976,27 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_h6dd3"]
 resource_name = "jump"
 
+[sub_resource type="Animation" id="Animation_wv72u"]
+resource_name = "rpg_shoot"
+
+[sub_resource type="Animation" id="Animation_20ack"]
+resource_name = "run"
+
+[sub_resource type="Animation" id="Animation_ysxn4"]
+resource_name = "target_down"
+
+[sub_resource type="Animation" id="Animation_essdy"]
+resource_name = "target_down_walk"
+
+[sub_resource type="Animation" id="Animation_jioko"]
+resource_name = "target_up"
+
+[sub_resource type="Animation" id="Animation_hci2m"]
+resource_name = "target_up_rpg"
+
+[sub_resource type="Animation" id="Animation_8nitr"]
+resource_name = "target_up_walk"
+
 [sub_resource type="Animation" id="Animation_4y230"]
 resource_name = "touch_down"
 
@@ -1157,27 +1178,6 @@ tracks/6/keys = {
 "values": [0.160401, 0.264131, 0.160401]
 }
 
-[sub_resource type="Animation" id="Animation_jioko"]
-resource_name = "target_up"
-
-[sub_resource type="Animation" id="Animation_hci2m"]
-resource_name = "target_up_rpg"
-
-[sub_resource type="Animation" id="Animation_8nitr"]
-resource_name = "target_up_walk"
-
-[sub_resource type="Animation" id="Animation_ysxn4"]
-resource_name = "target_down"
-
-[sub_resource type="Animation" id="Animation_essdy"]
-resource_name = "target_down_walk"
-
-[sub_resource type="Animation" id="Animation_wv72u"]
-resource_name = "rpg_shoot"
-
-[sub_resource type="Animation" id="Animation_20ack"]
-resource_name = "run"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlisb"]
 _data = {
 "Bomb_hit_me": SubResource("Animation_jpg3p"),
@@ -1353,7 +1353,7 @@ offset = Vector2(0, -147)
 [node name="Head" type="Sprite2D" parent="Body_parts"]
 position = Vector2(-15.4651, -347.309)
 rotation = 0.423203
-scale = Vector2(2.19962, 2.19962)
+scale = Vector2(2.4996, 2.4996)
 texture = ExtResource("10_udm5j")
 offset = Vector2(-21, -97)
 
@@ -1414,7 +1414,7 @@ remote_path = NodePath("../../../../Body_parts/Body")
 [node name="Head" type="Bone2D" parent="Skeleton2D/Base/Body"]
 position = Vector2(-27, -308)
 rotation = 0.262802
-scale = Vector2(2.19997, 2.19997)
+scale = Vector2(2.5, 2.5)
 rest = Transform2D(2.12444, 0.571527, -0.571527, 2.12444, -27, -308)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Body/Head"]

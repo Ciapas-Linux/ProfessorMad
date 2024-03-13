@@ -204,7 +204,7 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			get_node(spawn_node_path).add_child(gv.Hero_weapon)
 			gv.set_cursor_orange()
 			gv.Hero_weapon.transform = get_node(marker_node_path).transform
-			gv.Hero_weapon.scale = Vector2(3.2,3.2)
+			gv.Hero_weapon.scale = Vector2(4,4)
 		
 		2: # RPG-7 Grenade launcher
 			gv.Hero_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
