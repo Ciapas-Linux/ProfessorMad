@@ -39,12 +39,12 @@ func _explode():
 	
 	body_parts = get_node("../../Body_parts/Hand_L")
 	tween.tween_property(body_parts, "global_rotation", randf_range(-5.0,5.0), 1.7)
-	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-475.0,575.0) , player.global_position.y - randf_range(585.0,805.0)), 1.8)
+	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-475.0,575.0) , player.global_position.y - randf_range(585.0,905.0)), 1.8)
 	tween.tween_property(body_parts, "self_modulate", Color(1, 1, 1, 0), 1.5)
 	
 	body_parts = get_node("../../Body_parts/Hand_L/ForeArm_L")
 	tween.tween_property(body_parts, "global_rotation", randf_range(-5.0,5.0), 1.5)
-	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-475.0,475.0), player.global_position.y - randf_range(585.0,805.0)), 1.5)
+	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-475.0,475.0), player.global_position.y - randf_range(585.0,905.0)), 1.5)
 	tween.tween_property(body_parts, "self_modulate", Color(1, 1, 1, 0), 1.6)
 	
 	body_parts = get_node("../../Body_parts/Leg_L")
@@ -64,17 +64,17 @@ func _explode():
 	
 	body_parts = get_node("../../Body_parts/Leg_R")
 	tween.tween_property(body_parts, "global_rotation", randf_range(-5.0,5.0), 1.2)
-	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-495.0,595.0), player.global_position.y - randf_range(685.0,805.0)), 1.5)
+	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-495.0,595.0), player.global_position.y - randf_range(685.0,905.0)), 1.5)
 	tween.tween_property(body_parts, "self_modulate", Color(1, 1, 1, 0), 1.3)
 	
 	body_parts = get_node("../../Body_parts/Leg_R/Foot_R")
 	tween.tween_property(body_parts, "global_rotation", randf_range(-5.0,5.0), 2.1)
-	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-405.0,405.0), player.global_position.y - randf_range(585.0,735.0)), 1.3)
+	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-405.0,405.0), player.global_position.y - randf_range(585.0,935.0)), 1.3)
 	tween.tween_property(body_parts, "self_modulate", Color(1, 1, 1, 0), 1.4)
 	
 	body_parts = get_node("../../Body_parts/Leg_R/Foot_R/Calf_R")
 	tween.tween_property(body_parts, "global_rotation", randf_range(-5.0,5.0), 1.2)
-	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-405.0,505.0), player.global_position.y - randf_range(485.0,735.0)), 1.3)
+	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-405.0,505.0), player.global_position.y - randf_range(485.0,935.0)), 1.3)
 	tween.tween_property(body_parts, "self_modulate", Color(1, 1, 1, 0), 1.3)
 	
 	body_parts = get_node("../../Body_parts/Body")
@@ -84,7 +84,7 @@ func _explode():
 	
 	body_parts = get_node("../../Body_parts/Arm_R")
 	tween.tween_property(body_parts, "global_rotation", randf_range(-5.0,5.0), 1.9)
-	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-405.0,605.0), player.global_position.y - randf_range(525.0,835.0)), 1.6)
+	tween.tween_property(body_parts, "global_position", Vector2(player.global_position.x + randf_range(-405.0,605.0), player.global_position.y - randf_range(525.0,1005.0)), 1.6)
 	tween.tween_property(body_parts, "self_modulate", Color(1, 1, 1, 0), 1.4)
 
 	body_parts = get_node("../../Body_parts/Arm_R/Hand_R")
