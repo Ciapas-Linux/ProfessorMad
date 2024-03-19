@@ -6,6 +6,9 @@
 
 extends Sprite2D
 
+
+@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
+
 var can_fire:bool = true
 var rocket_4_misille:Resource = preload("res://Scenes/Weapons/rocket_4/rocket_4_misille.tscn")
 var recoil:int = 130
@@ -63,7 +66,8 @@ func shoot():
 	shoots += 1
 	all_shoots += 1
 	fire.emit()
-	gv.Player.get_node("AnimationPlayer").play("rpg_shoot")
+	if anim_player.is_playing() == false:
+				anim_player.play("shoot")
 	
 	if shoots == 4:
 		ready_to_fire = false
@@ -73,8 +77,8 @@ func shoot():
 	
 
 func _on_timer_timeout() -> void:
-	gv.Player.get_node("AnimationPlayer").play("target_up_rpg")
-
+	#gv.Player.get_node("AnimationPlayer").play("target_up_rpg")
+	pass
 
 
 

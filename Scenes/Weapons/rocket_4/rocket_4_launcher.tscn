@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ka4do5pd7dl"]
+[gd_scene load_steps=13 format=3 uid="uid://ka4do5pd7dl"]
 
 [ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Objects/rocket_launcher.png" id="1_nowhg"]
 [ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
@@ -6,6 +6,43 @@
 [ext_resource type="Shader" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gdshader" id="4_e0vpj"]
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="5_cx56q"]
 [ext_resource type="Texture2D" uid="uid://k4mycie8tmu4" path="res://Assets/Particles/sparks/spark_1.png" id="6_nbug4"]
+
+[sub_resource type="Animation" id="Animation_y2xfh"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 0), Vector2(-40, 0), Vector2(40, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b0kxr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_466ls"]
+_data = {
+"RESET": SubResource("Animation_b0kxr"),
+"shoot": SubResource("Animation_y2xfh")
+}
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ttcl1"]
 seed = 1
@@ -30,6 +67,11 @@ shader_parameter/noise = SubResource("NoiseTexture2D_cj2xk")
 texture = ExtResource("1_nowhg")
 offset = Vector2(40, 0)
 script = ExtResource("2_eseiu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_466ls")
+}
 
 [node name="BulletsSpawn" type="Marker2D" parent="."]
 position = Vector2(110, -25)
