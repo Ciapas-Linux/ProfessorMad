@@ -1,7 +1,7 @@
 extends PlayerState
 
 
-@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer2")
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 @onready var tween: Tween
 
 func enter(_msg := {}) -> void:
@@ -11,6 +11,7 @@ func enter(_msg := {}) -> void:
 	print("Hero: enter state machine hit bomb!")
 	get_node("../../BloodSplash").visible = true
 	get_node("../../BloodSplash").emitting = true
+	get_node("../../snd_splash_1").play()
 	get_node("../../snd_hit1").play()
 	_explode()
 
@@ -118,7 +119,7 @@ func on_tween_finished():
 func _on_player_bomb_hit_me() -> void:
 	pass # Replace with function body.
 
-func _on_animation_player_2_animation_finished(anim_name:StringName) -> void:
+func _on_animation_player_2_animation_finished(_anim_name:StringName) -> void:
 	# if anim_name == "Bomb_hit_me":
 	# 	state_machine.transition_to("Idle")
 	pass

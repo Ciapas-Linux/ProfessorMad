@@ -2,6 +2,9 @@ extends PlayerState
 
 var walk = false
 var walk_speed 
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+
+
 
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
@@ -13,8 +16,8 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	
-	get_node("../../AnimationPlayer2").stop()
-	get_node("../../AnimationPlayer2").play("target_down")
+	#anim_player.stop()
+	anim_player.play("target_down")
 
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
@@ -43,7 +46,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("ui_right"):		
 		walk = false
 		player.velocity.x = 0
-		get_node("../../AnimationPlayer").stop()
+		anim_player.stop()
 		get_node("../../snd_walk").stop()	
 		#print_debug(walk) 
 		#print_debug("release key right") 
@@ -51,11 +54,11 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("ui_left"):		
 		walk = false
 		player.velocity.x = 0
-		get_node("../../AnimationPlayer").stop()
+		anim_player.stop()
 		get_node("../../snd_walk").stop()	
 		
 	if walk == true:
-		get_node("../../AnimationPlayer").play("target_down_walk")
+		anim_player.play("target_down_walk")
 		if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
 		

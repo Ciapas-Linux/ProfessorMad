@@ -4,7 +4,7 @@ extends PlayerState
 signal turn(value)
 
 @onready var Ray:RayCast2D = get_node("../../RayCast2D")
-@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer2")
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 var collision:KinematicCollision2D
 var normal:Vector2
@@ -20,7 +20,7 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	if anim_player.current_animation != "touch_down":
-		anim_player.stop()
+		#anim_player.stop()
 		anim_player.play("idle")
 
 	gv.Hero_is_on_floor = true
@@ -51,10 +51,11 @@ func physics_update(delta: float) -> void:
 	if gv.Hero_is_paused == true:	
 		return
 
+	# if gv.Hero_current_weapon != 0:
 	if Input.is_action_just_pressed("Weapon"):
-		get_node("../../snd_switch_weapon").play()
-		player.load_next_weapon()
-		print("Player: switch weapon")
+			get_node("../../snd_switch_weapon").play()
+			player.load_next_weapon()
+			print("Player: switch weapon")
 
 	if Input.is_action_just_pressed("Reload"):
 		gv.Hero_weapon.reload()
@@ -95,13 +96,13 @@ func physics_update(delta: float) -> void:
 				
 		
 	# TO AIM:	
-	if Input.is_action_pressed("Target"):
+	if Input.is_action_just_pressed("Target"):
 		state_machine.transition_to("target_up")
 		#player.scale.x = player.scale.y * 1
 		#gv.hero_sprite.set_flip_h(false) 
 		
 	# SIT DOWN:	
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_down"):
 		state_machine.transition_to("target_down")
 		#player.scale.x = player.scale.y * 1
 		#gv.hero_sprite.set_flip_h(false)

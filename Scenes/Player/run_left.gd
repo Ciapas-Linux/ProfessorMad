@@ -20,7 +20,7 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	
-	get_node("../../AnimationPlayer2").play("run")
+	get_node("../../AnimationPlayer").play("run")
 		
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()

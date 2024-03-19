@@ -7,6 +7,7 @@ extends Sprite2D
 
 var can_fire:bool = true
 var rpg_head:Resource = preload("res://Scenes/Weapons/rpg_7/rpg_7_head.tscn")
+@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 var recoil:int = 130
 var shoots:int = 0
 const ammo_max:int = 15
@@ -53,25 +54,28 @@ func shoot():
 	get_tree().root.add_child(head)
 	shoots += 1
 	fire.emit()
-	gv.Player.get_node("AnimationPlayer").play("rpg_shoot")
+	#gv.Player.get_node("AnimationPlayer").play("rpg_shoot")
 	ready_to_fire = false
 
-	if gv.fsm.state.name == "Idle":
-		position.y = position.y + recoil
-	else:
-		position.y = position.y + recoil
-		position.x = position.x - recoil
-		$Timer.start(0.5)
+	if anim_player.is_playing() == false:
+				anim_player.play("shoot")
+
+	# if gv.fsm.state.name == "Idle":
+	# 	position.y = position.y + recoil
+	# else:
+	# 	position.y = position.y + recoil
+	# 	position.x = position.x - recoil
+		#$Timer.start(0.5)
 	
 
-func _on_timer_timeout() -> void:
-	if gv.fsm.state.name == "Idle":
-		position.y = position.y - recoil
-	else:
-		position.y = position.y - recoil	
-		position.x = position.x + recoil  
+# func _on_timer_timeout() -> void:
+# 	if gv.fsm.state.name == "Idle":
+# 		position.y = position.y - recoil
+# 	else:
+# 		position.y = position.y - recoil	
+# 		position.x = position.x + recoil  
 
-	gv.Player.get_node("AnimationPlayer").play("target_up_rpg")
+	#gv.Player.get_node("AnimationPlayer").play("target_up_rpg")
 
 
 

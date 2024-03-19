@@ -1,6 +1,6 @@
 extends PlayerState
 
-@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer2")
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
 
 

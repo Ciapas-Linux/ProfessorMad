@@ -2,6 +2,8 @@ extends PlayerState
 
 var walk = false
 var walk_speed  
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+
 
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
@@ -13,13 +15,22 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	
-	get_node("../../AnimationPlayer2").stop()
-	get_node("../../AnimationPlayer2").play("target_up_rpg")
+	#anim_player.stop()
+	if gv.Hero_current_weapon == 2:
+		anim_player.play("target_up_rpg")
+	else:
+		anim_player.play("target_up")
 	#get_node("../../AnimationPlayer").connect("finished",_on_fire_finished)
 
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
 		
+
+func _on_animation_player_2_animation_finished(_anim_name:StringName) -> void:
+	if gv.Hero_current_weapon == 0:
+		await get_tree().create_timer(1.0).timeout
+		#state_machine.transition_to("Idle")
+
 
 #func _on_fire_finished() -> void:
 	#get_node("../../AnimationPlayer").play("target_up")
@@ -52,7 +63,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("ui_right"):		
 		walk = false
 		player.velocity.x = 0
-		get_node("../../AnimationPlayer").stop()
+		anim_player.stop()
 		get_node("../../snd_walk").stop()
 		#print_debug(walk) 
 		#print_debug("release key right") 
@@ -60,18 +71,21 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("ui_left"):		
 		walk = false
 		player.velocity.x = 0
-		get_node("../../AnimationPlayer").stop()
+		anim_player.stop()
 		get_node("../../snd_walk").stop()		
 
 #	
 	if walk == true:
-		get_node("../../AnimationPlayer").play("target_up_walk")
+		anim_player.play("target_up_walk")
 		if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()			
 		
 	
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Idle")
+
+	if Input.is_action_just_pressed("ui_down"):
+		state_machine.transition_to("Idle")	
 
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
@@ -93,3 +107,4 @@ func _on_gun_2_fire() -> void:
 	print("timer start")
 	await get_tree().create_timer(1.0).timeout
 	print("timer end") """
+

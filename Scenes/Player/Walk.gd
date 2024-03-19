@@ -14,7 +14,7 @@ const DOWN = Vector2(0, 1)
 const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
 
-@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer2")
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 func enter(_msg := {}) -> void:
 	anim_player.stop()

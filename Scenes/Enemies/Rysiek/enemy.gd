@@ -106,8 +106,8 @@ func _ready():
 	#gv.enemy_fsm.transition_to("Release_drone")
 	#print("Drone2: ready " + Drone2.name)
 	
-	
-	$CreateDrone.start()
+	# Start releasing drones:
+	# $CreateDrone.start()
 
 
 func _unhandled_input(event):
