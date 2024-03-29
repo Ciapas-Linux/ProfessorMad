@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="5_cx56q"]
 [ext_resource type="Texture2D" uid="uid://k4mycie8tmu4" path="res://Assets/Particles/sparks/spark_1.png" id="6_nbug4"]
 
+[sub_resource type="Animation" id="Animation_b0kxr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_y2xfh"]
 resource_name = "shoot"
 length = 0.3
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(40, 0), Vector2(-40, 0), Vector2(40, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_b0kxr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(40, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_466ls"]

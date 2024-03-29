@@ -1,9 +1,8 @@
 
 # #####################
-# DUMMY gun Node.SCRIPT#
+# DUMMY gun Node.SCRIPT #
 # #####################
 
-# @uid("uid://byw0mndg586in") 
 extends Sprite2D
 var ammo:int = 0
 signal fire

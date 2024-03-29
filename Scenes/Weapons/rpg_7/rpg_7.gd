@@ -1,13 +1,14 @@
 
-
 # ############
 # RPG_7.SCRIPT
 # ############
 extends Sprite2D
 
+@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
+
+
 var can_fire:bool = true
 var rpg_head:Resource = preload("res://Scenes/Weapons/rpg_7/rpg_7_head.tscn")
-@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 var recoil:int = 130
 var shoots:int = 0
 const ammo_max:int = 15

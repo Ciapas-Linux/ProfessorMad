@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://1qp52xv868g7"]
+[gd_scene load_steps=12 format=3 uid="uid://1qp52xv868g7"]
 
 [ext_resource type="Texture2D" uid="uid://dixuean8o1l3w" path="res://Assets/Objects/ak47.png" id="1_7u0r0"]
 [ext_resource type="Script" path="res://Scenes/Weapons/ak_47/AK-47.gd" id="2_ryoe4"]
-[ext_resource type="Script" path="res://Scenes/Weapons/ak_47/BulletsSpawn.gd" id="3_tox1b"]
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="4_vlyyy"]
 [ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="5_wdeef"]
 [ext_resource type="Texture2D" uid="uid://x2ibakeuf7v1" path="res://Assets/Explosions/gun_fire/gun_fire1.png" id="6_clfd6"]
@@ -83,7 +82,6 @@ one_shot = true
 position = Vector2(340, -8)
 scale = Vector2(0.574951, 0.574951)
 gizmo_extents = 61.1
-script = ExtResource("3_tox1b")
 
 [node name="SpawnMarker" type="Sprite2D" parent="BulletsSpawn"]
 visible = false
