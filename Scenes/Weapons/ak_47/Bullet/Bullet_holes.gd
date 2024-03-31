@@ -5,7 +5,7 @@ var particles_res:Resource = preload("res://Scenes/Cars/maluch_3/shrapnel.tscn")
 
 @export var min_size : float = 0.5
 @export var max_size : float = 2.3
-@export var vanish_time :float = 0.5
+@export var vanish_time :float = 0.4
 
 
 
