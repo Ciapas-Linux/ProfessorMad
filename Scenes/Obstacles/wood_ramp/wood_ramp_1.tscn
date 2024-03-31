@@ -1,12 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://py3j2km3qk07"]
+[gd_scene load_steps=4 format=3 uid="uid://py3j2km3qk07"]
 
+[ext_resource type="Script" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.gd" id="1_1uiqy"]
 [ext_resource type="Texture2D" uid="uid://c3sgnv1ltmbdh" path="res://Assets/Objects/rampa_2.png" id="1_pb1bx"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="2_w1snx"]
 
 [node name="WoodRamp1" type="StaticBody2D"]
 z_index = -1
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_1uiqy")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(100, -43, 360, 83, 346.8, 104.8, 100.3, -16, 48.7, -14, -153, -15, -191, -16.6, -345.9, 102.9, -356, 92, -190, -39)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pb1bx")
+
+[node name="Bullet_holes" parent="." instance=ExtResource("2_w1snx")]
+min_size = 0.05
+max_size = 0.3

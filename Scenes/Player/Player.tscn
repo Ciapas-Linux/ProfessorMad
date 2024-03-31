@@ -2814,12 +2814,6 @@ collision_mask = 2
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_stkk6")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.0
-parameters/current_position = 0.0
-parameters/current_delta = 0.0
-parameters/output/current_length = 0.0
-parameters/output/current_position = 0.0
-parameters/output/current_delta = 0.0
 
 [node name="snd_splash_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_8b0vu")
