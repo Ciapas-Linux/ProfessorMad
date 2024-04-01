@@ -15,6 +15,8 @@ class_name Camera2DPro extends Camera2D
 # Duration of the zoom's tween animation.
 @export var zoom_duration : float = 0.6
 
+@export var jump_offset : float = 0.2
+
 var target_position : Vector2
 
 var follow_node:Node2D
@@ -71,10 +73,7 @@ func _physics_process(delta):
 	
 	#position.x += 10
 	#print("mx: " + str(get_viewport().get_mouse_position().x) + "   " + "my :" + str(get_viewport().get_mouse_position().y))
-	#if get_viewport().get_mouse_position().x - 500 >= gv.SWidth:
-		
-
-
+	
 
 func _process(delta):
 	if (shake == true):
@@ -96,8 +95,16 @@ func _process_on_state_idle(_delta):
 	pass
 
 func _process_on_state_follow(_delta):
-	position.x = follow_node.global_position.x
-	position.y = (follow_node.global_position.y + cam_Y_offset) * 0.2
+	if get_viewport().get_mouse_position().x > gv.SWidth - 50:
+		position.x += 20
+		return
+	else:
+		if get_viewport().get_mouse_position().x <  100:
+			position.x -= 20	
+		else:
+			if gv.Hero_on_screen == true:
+				position.x = follow_node.global_position.x
+				position.y = (follow_node.global_position.y + cam_Y_offset) * jump_offset
 	
 
 func _process_on_state_move_x(_delta):
@@ -122,7 +129,7 @@ func _process_on_state_move(_delta):
 func SetFollowNode(target):
 	follow_node = target
 	position.x = follow_node.global_position.x
-	position.y = follow_node.global_position.y + cam_Y_offset
+	position.y = follow_node.global_position.y + cam_Y_offset * jump_offset
 	SetState(FOLLOW_TARGET)		
 
 func SetState(state: int):

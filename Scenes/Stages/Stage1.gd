@@ -20,7 +20,7 @@ func _ready():
 
 	# $Camera2DPro.Tween_to($Enemy.global_position,Vector2(-400,0))
 	
-	#$Camera2DPro.Tween_to($Player.global_position,Vector2(-400,0),Vector2(1.4,1.4),6,2)
+	# $Camera2DPro.Tween_to($Player.global_position,Vector2(-400,0),Vector2(1.4,1.4),6,2)
 
 
 #func _process(delta):

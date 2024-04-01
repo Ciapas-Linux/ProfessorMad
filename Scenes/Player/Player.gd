@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var speed := 250.0
 
 # run speed
-@export var speed_run := 500.0
+@export var speed_run := 600.0
 
 # run jump impulse
 @export var jump_impulse_run := 1700.0
@@ -270,6 +270,12 @@ func hit():
 	if health > 0:
 		health -= 10
 	
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	gv.Hero_on_screen = false
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	gv.Hero_on_screen = true
+
 
 func _on_player_area_area_entered(area: Area2D) -> void:
 	if(area.name == "Bomb2"):
@@ -436,6 +442,10 @@ func bomb_explode():
 		#weapon.global_rotation += 0.01
 		#print_debug(mpath)  
 		#weapon.global_rotation = -0.01 + (mpath	*0.01)
+
+
+
+
 
 
 
