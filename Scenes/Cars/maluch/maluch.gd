@@ -1,4 +1,4 @@
-
+extends CharacterBody2D
 
 ###################################################
 #################################################
@@ -6,11 +6,11 @@
 ##########################################
 
 
-extends CharacterBody2D
+
 
 
 @export var speed:float = 100
-@export var gravity:float = 700.0
+#@export var Gravity:float = 700.0
 
 @onready var tween: Tween
 
@@ -185,6 +185,7 @@ func _process_on_state_move_right(_delta: float) -> void:
 		$Driver/AnimationPlayer.play("RESET")
 		$Boss/AnimationPlayer.play("RESET")
 		scale.x = scale.y * -1
+		$smoke_particles.gravity = Vector2(500.0, 2.0)
 		$smoke_particles.emitting = false
 		if get_node("snd_engine").playing == true:
 			get_node("snd_engine").stop()
@@ -223,6 +224,7 @@ func _process_on_state_move_left(_delta: float) -> void:
 		$Driver/AnimationPlayer.play("RESET")
 		$Boss/AnimationPlayer.play("RESET")
 		scale.x = scale.y * 1
+		$smoke_particles.gravity = Vector2(-500.0, 2.0)
 		$smoke_particles.emitting = false
 		if get_node("snd_engine").playing == true:
 			get_node("snd_engine").stop()

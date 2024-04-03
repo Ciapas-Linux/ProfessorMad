@@ -51,14 +51,14 @@ var current_state : int = IDLE
 var previous_state : int = IDLE
 
 
-func _ready():
+func _ready() -> void:
 	self.drag_right_margin = -0.3
 	self.drag_left_margin = 0.8
 	set_zoom_level(_zoom_level)
 	SetState(IDLE)		
 
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	match current_state:
 		IDLE:
 			_process_on_state_idle(delta)
@@ -96,11 +96,11 @@ func _process_on_state_idle(_delta):
 
 func _process_on_state_follow(_delta):
 	if get_viewport().get_mouse_position().x > gv.SWidth - 50:
-		position.x += 20
+		position.x += 30
 		return
 	else:
 		if get_viewport().get_mouse_position().x <  100:
-			position.x -= 20	
+			position.x -= 30	
 		else:
 			if gv.Hero_on_screen == true:
 				position.x = follow_node.global_position.x
@@ -129,7 +129,7 @@ func _process_on_state_move(_delta):
 func SetFollowNode(target):
 	follow_node = target
 	position.x = follow_node.global_position.x
-	position.y = follow_node.global_position.y + cam_Y_offset * jump_offset
+	position.y = (follow_node.global_position.y + cam_Y_offset) * jump_offset
 	SetState(FOLLOW_TARGET)		
 
 func SetState(state: int):

@@ -754,7 +754,7 @@ frame = 17
 frame_progress = 0.250625
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 10.0
 one_shot = true
 
 [node name="BulletCrash" type="AnimatedSprite2D" parent="."]

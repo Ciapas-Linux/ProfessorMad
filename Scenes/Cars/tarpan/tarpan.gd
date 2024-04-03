@@ -1,4 +1,4 @@
-
+extends CharacterBody2D
 
 ##############################################
 # GDscript:									 #
@@ -8,11 +8,11 @@
 
 
 
-extends CharacterBody2D
+
 
 @export var hit_count:int = 12
 @export var speed:float = 100
-@export var gravity:float = 700.0
+#@export var Gravity:float = 700.0
 @onready var tween: Tween
 var local_cursor_position:Vector2
 var player_distance:float
@@ -25,8 +25,8 @@ var current_state : int = MOVE_RIGHT
 var particles_res:Resource = preload("res://Scenes/Cars/maluch/smoke_particles.tscn")
 	
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
-	load("res://Assets/Sounds/pisk_opon2.wav"),
-	load("res://Assets/Sounds/pisk_opon3.wav")]
+  	load("res://Assets/Sounds/pisk_opon2.wav"),
+  	load("res://Assets/Sounds/pisk_opon3.wav")]
 	
 	
 func _ready() -> void:
@@ -35,6 +35,7 @@ func _ready() -> void:
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	$BigExplosion.visible = false
 	print("car maluch start x: " + str(global_position.x))
+	#scale.x = scale.y * -1
 	
 
 func _process(_delta: float) -> void:
@@ -146,8 +147,8 @@ func _process_on_state_move_right(delta: float) -> void:
 	if $Driver/AnimationPlayer.is_playing() == false:
 		$Driver/AnimationPlayer.play("head_rotate")
 		
-	if $Boss/AnimationPlayer.is_playing() == false:
-		$Boss/AnimationPlayer.play("rotate")	
+	#if $Boss/AnimationPlayer.is_playing() == false:
+		#$Boss/AnimationPlayer.play("rotate")	
 		
 	if get_node("snd_engine").playing != true:
 			get_node("snd_engine").play()
@@ -159,8 +160,9 @@ func _process_on_state_move_right(delta: float) -> void:
 		$Kolo_l/AnimationPlayer.stop(true)
 		$Kolo_p/AnimationPlayer.stop(true)
 		$Driver/AnimationPlayer.play("RESET")
-		$Boss/AnimationPlayer.play("RESET")
+		#$Boss/AnimationPlayer.play("RESET")
 		scale.x = scale.y * -1
+		$smoke_particles.gravity = Vector2(500.0, 2.0)
 		$smoke_particles.emitting = false
 		if get_node("snd_engine").playing == true:
 			get_node("snd_engine").stop()
@@ -184,8 +186,8 @@ func _process_on_state_move_left(delta: float) -> void:
 	if $Driver/AnimationPlayer.is_playing() == false:
 		$Driver/AnimationPlayer.play("head_rotate")
 	
-	if $Boss/AnimationPlayer.is_playing() == false:
-		$Boss/AnimationPlayer.play("rotate")
+	#if $Boss/AnimationPlayer.is_playing() == false:
+		#$Boss/AnimationPlayer.play("rotate")
 
 	if $Driver.is_playing() == false:
 		$Driver.play("talk")		
@@ -200,6 +202,7 @@ func _process_on_state_move_left(delta: float) -> void:
 		$Driver/AnimationPlayer.play("RESET")
 		$Boss/AnimationPlayer.play("RESET")
 		scale.x = scale.y * 1
+		$smoke_particles.gravity = Vector2(-500.0, 2.0)
 		$smoke_particles.emitting = false
 		if get_node("snd_engine").playing == true:
 			get_node("snd_engine").stop()
