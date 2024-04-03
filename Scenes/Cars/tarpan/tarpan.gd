@@ -8,8 +8,6 @@ extends CharacterBody2D
 
 
 
-
-
 @export var hit_count:int = 12
 @export var speed:float = 100
 #@export var Gravity:float = 700.0
