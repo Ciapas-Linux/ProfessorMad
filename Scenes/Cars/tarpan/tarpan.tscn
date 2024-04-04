@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdnlw84tvum1f"]
+[gd_scene load_steps=19 format=3 uid="uid://cdnlw84tvum1f"]
 
 [ext_resource type="Texture2D" uid="uid://brc7g048s42vx" path="res://Assets/Objects/cars/tarpan/tarpan_body_1.png" id="1_st4i1"]
 [ext_resource type="Script" path="res://Scenes/Cars/tarpan/tarpan.gd" id="1_vsk2w"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch/smoke_particles.tscn" id="3_s0o2o"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="5_vlf8f"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="6_eq1qn"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="7_al2w3"]
 
 [sub_resource type="Animation" id="Animation_i4fae"]
 length = 0.001
@@ -149,6 +150,9 @@ _data = {
 "head_rotate": SubResource("Animation_86075")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs202"]
+size = Vector2(100, 80)
+
 [node name="Tarpan" type="CharacterBody2D"]
 collision_mask = 29
 script = ExtResource("1_vsk2w")
@@ -184,8 +188,10 @@ libraries = {
 [node name="smoke_particles" parent="." instance=ExtResource("3_s0o2o")]
 z_index = -1
 position = Vector2(-252, 35)
+gravity = Vector2(-300, 2)
 
 [node name="BigExplosion" parent="." instance=ExtResource("5_vlf8f")]
+visible = false
 position = Vector2(0, -122)
 scale = Vector2(2, 2)
 
@@ -202,5 +208,23 @@ libraries = {
 [node name="snd_engine" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_eq1qn")
 volume_db = 6.0
+pitch_scale = 0.57
 
+[node name="front_contact" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="front_contact"]
+position = Vector2(295, 0)
+shape = SubResource("RectangleShape2D_hs202")
+
+[node name="Bullet_holes" parent="." instance=ExtResource("7_al2w3")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]
+[connection signal="area_entered" from="front_contact" to="." method="_on_front_contact_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -18,7 +18,7 @@ const MOVE_RIGHT: int = 0
 const MOVE_LEFT: int = 1
 const STOP: int = 2
 var mouse_enter:bool = false
-var current_state : int = MOVE_RIGHT
+var current_state : int = MOVE_LEFT
 
 var particles_res:Resource = preload("res://Scenes/Cars/maluch/smoke_particles.tscn")
 	
@@ -29,11 +29,13 @@ var particles_res:Resource = preload("res://Scenes/Cars/maluch/smoke_particles.t
 	
 func _ready() -> void:
 	self.input_pickable = true
-	self.connect("mouse_entered", _on_Area2D_mouse_entered)
-	self.connect("mouse_exited", _on_Area2D_mouse_exited)
+	#self.connect("mouse_entered", _on_Area2D_mouse_entered)
+	#self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	$BigExplosion.visible = false
-	print("car maluch start x: " + str(global_position.x))
-	#scale.x = scale.y * -1
+	print("car Tarpan start x: " + str(global_position.x))
+	start_drive()
+	turn_left()
+
 	
 
 func _process(_delta: float) -> void:
@@ -54,14 +56,12 @@ func _process_on_state_stop() -> void:
 		pass
 	
 
-func _on_Area2D_mouse_entered() -> void:
+func _on_mouse_entered() -> void:
 	mouse_enter = true
-	#$object_spr.visible = false
-	
 
-func _on_Area2D_mouse_exited() -> void:
+func _on_mouse_exited() -> void:
 	mouse_enter = false
-	#$object_spr.visible = true
+
 
 func _tween():
 	tween = get_tree().create_tween()
@@ -111,7 +111,7 @@ func bomb_explode():
 
 func hit()-> void:
 	if hit_count > 0:
-		print("maluch boss: dostałem: " + "hits: " + str(hit_count))
+		print("Tarpan boss: dostałem: " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		hit_count -= 1
 		
@@ -131,8 +131,27 @@ func hit()-> void:
 			gv.Cam1.ScreenShake(30,0.5)
 			#queue_free()	
 		
-@warning_ignore("unused_parameter")		
-func _process_on_state_move_right(delta: float) -> void:
+	
+func turn_left() -> void:
+	scale.x = scale.y * -1
+	$smoke_particles.gravity = Vector2(500.0, 2.0)
+	current_state = MOVE_LEFT
+
+
+func turn_right() -> void:
+	scale.x = scale.y * 1
+	$smoke_particles.gravity = Vector2(-500.0, 2.0)
+	current_state = MOVE_RIGHT	
+
+func stop_drive() -> void:
+		current_state = STOP
+		$Kolo_l/AnimationPlayer.stop(true)
+		$Kolo_p/AnimationPlayer.stop(true)
+		$Driver/AnimationPlayer.play("RESET")
+		#$Boss/AnimationPlayer.play("RESET")
+		get_node("snd_engine").stop()
+
+func start_drive() -> void:
 	if $smoke_particles.emitting == false:
 			$smoke_particles.emitting = true
 	
@@ -151,60 +170,25 @@ func _process_on_state_move_right(delta: float) -> void:
 	if get_node("snd_engine").playing != true:
 			get_node("snd_engine").play()
 
-	$Driver.stop()						
-	
-	if global_position.x > randi_range(8000,9000):
-		current_state = MOVE_LEFT
-		$Kolo_l/AnimationPlayer.stop(true)
-		$Kolo_p/AnimationPlayer.stop(true)
-		$Driver/AnimationPlayer.play("RESET")
-		#$Boss/AnimationPlayer.play("RESET")
-		scale.x = scale.y * -1
-		$smoke_particles.gravity = Vector2(500.0, 2.0)
-		$smoke_particles.emitting = false
-		if get_node("snd_engine").playing == true:
-			get_node("snd_engine").stop()
-			
+
+func start_talk():
+	if $Driver.is_playing() == false:
+		$Driver.play("talk")
+
+
+func stop_talk():
+	$Driver.stop()
+
+
+func _process_on_state_move_right(_delta: float) -> void:
 	velocity.x = speed
 	#velocity.y += gravity * delta
 	player_distance = global_position.distance_to(gv.Hero_global_position)
 	move_and_slide()
 	
+
 @warning_ignore("unused_parameter")	
 func _process_on_state_move_left(delta: float) -> void:
-	if $smoke_particles.emitting == false:
-			$smoke_particles.emitting = true
-	
-	if $Kolo_l/AnimationPlayer.is_playing() == false:
-		$Kolo_l/AnimationPlayer.play("rotate")
-		
-	if $Kolo_p/AnimationPlayer.is_playing() == false:
-		$Kolo_p/AnimationPlayer.play("rotate")
-	
-	if $Driver/AnimationPlayer.is_playing() == false:
-		$Driver/AnimationPlayer.play("head_rotate")
-	
-	#if $Boss/AnimationPlayer.is_playing() == false:
-		#$Boss/AnimationPlayer.play("rotate")
-
-	if $Driver.is_playing() == false:
-		$Driver.play("talk")		
-		
-	if get_node("snd_engine").playing != true:
-			get_node("snd_engine").play()
-	
-	if global_position.x < randi_range(200,600):
-		current_state = MOVE_RIGHT
-		$Kolo_l/AnimationPlayer.stop(true)
-		$Kolo_p/AnimationPlayer.stop(true)
-		$Driver/AnimationPlayer.play("RESET")
-		$Boss/AnimationPlayer.play("RESET")
-		scale.x = scale.y * 1
-		$smoke_particles.gravity = Vector2(-500.0, 2.0)
-		$smoke_particles.emitting = false
-		if get_node("snd_engine").playing == true:
-			get_node("snd_engine").stop()
-			
 	velocity.x = -speed
 	#velocity.y += gravity * delta
 	player_distance = global_position.distance_to(gv.Hero_global_position)
@@ -218,22 +202,49 @@ func _on_timer_timeout() -> void:
 		if $snd_player.playing != true:
 			$snd_player.play()
 	
-func _on_area_2d_area_entered(area:Area2D) -> void:
-	print("Car maluch, area hit me: " + area.name)
-	#if (area.name.contains("Bullet") == true):
-		#hit()
-	
+
+func _on_front_contact_area_entered(area:Area2D) -> void:
+	print("Tarpan, hit area: " + area.name)
+	match current_state:
+		STOP:
+			pass
+		MOVE_RIGHT:
+			turn_left()
+		MOVE_LEFT:
+			turn_right()
+			
+
 func _on_big_explosion_finished() -> void:
 	queue_free() 
 
 
 
 
+# if global_position.x < randi_range(200,600):
+# 		current_state = MOVE_RIGHT
+# 		$Kolo_l/AnimationPlayer.stop(true)
+# 		$Kolo_p/AnimationPlayer.stop(true)
+# 		$Driver/AnimationPlayer.play("RESET")
+# 		$Boss/AnimationPlayer.play("RESET")
+# 		scale.x = scale.y * 1
+# 		$smoke_particles.gravity = Vector2(-500.0, 2.0)
+# 		$smoke_particles.emitting = false
+# 		if get_node("snd_engine").playing == true:
+# 			get_node("snd_engine").stop()
 
 
 
-
-
+# if global_position.x > randi_range(8000,9000):
+# 		current_state = MOVE_LEFT
+# 		$Kolo_l/AnimationPlayer.stop(true)
+# 		$Kolo_p/AnimationPlayer.stop(true)
+# 		$Driver/AnimationPlayer.play("RESET")
+# 		#$Boss/AnimationPlayer.play("RESET")
+# 		scale.x = scale.y * -1
+# 		$smoke_particles.gravity = Vector2(500.0, 2.0)
+# 		$smoke_particles.emitting = false
+# 		if get_node("snd_engine").playing == true:
+# 			get_node("snd_engine").stop()
 
 
 
@@ -274,5 +285,11 @@ func _on_big_explosion_finished() -> void:
 #Bullet_hit1_tex = Image.load_from_file("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png")
 	
 	
+
+
+
+
+
+
 
 

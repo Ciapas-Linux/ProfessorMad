@@ -339,6 +339,7 @@ lifetime = 1.0
 randomness = 0.63
 lifetime_randomness = 0.82
 spread = 116.0
+gravity = Vector2(-300, 2)
 script = null
 
 [node name="snd_engine" type="AudioStreamPlayer2D" parent="."]
