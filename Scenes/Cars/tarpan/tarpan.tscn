@@ -151,7 +151,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs202"]
-size = Vector2(100, 80)
+size = Vector2(70, 80)
 
 [node name="Tarpan" type="CharacterBody2D"]
 collision_layer = 32
@@ -212,10 +212,12 @@ volume_db = 6.0
 pitch_scale = 0.57
 
 [node name="front_contact" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="front_contact"]
-position = Vector2(295, 0)
+position = Vector2(254, 0)
 shape = SubResource("RectangleShape2D_hs202")
 
 [node name="Bullet_holes" parent="." instance=ExtResource("7_al2w3")]

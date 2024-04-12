@@ -160,10 +160,10 @@ func _process_on_state_move_right(_delta: float) -> void:
 			$smoke_particles.emitting = true
 	
 	if $Kolo_l/AnimationPlayer.is_playing() == false:
-		$Kolo_l/AnimationPlayer.play("rotate")
-		
+		$Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+			
 	if $Kolo_p/AnimationPlayer.is_playing() == false:
-		$Kolo_p/AnimationPlayer.play("rotate")
+		$Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
 	
 	if $Driver/AnimationPlayer.is_playing() == false:
 		$Driver/AnimationPlayer.play("head_rotate")
@@ -198,10 +198,10 @@ func _process_on_state_move_left(_delta: float) -> void:
 			$smoke_particles.emitting = true
 	
 	if $Kolo_l/AnimationPlayer.is_playing() == false:
-		$Kolo_l/AnimationPlayer.play("rotate")
-		
+		$Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+			
 	if $Kolo_p/AnimationPlayer.is_playing() == false:
-		$Kolo_p/AnimationPlayer.play("rotate")
+		$Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
 	
 	if $Driver/AnimationPlayer.is_playing() == false:
 		$Driver/AnimationPlayer.play("head_rotate")
@@ -239,6 +239,8 @@ func _on_timer_timeout() -> void:
 		$snd_player.stream = sounds[randi() % len(sounds)]
 		if $snd_player.playing != true:
 			$snd_player.play()
+	$Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+	$Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)		
 	
 func _on_area_2d_area_entered(area:Area2D) -> void:
 	print("Car maluch: area hit me: " + area.name)

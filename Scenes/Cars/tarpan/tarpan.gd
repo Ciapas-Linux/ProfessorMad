@@ -33,8 +33,8 @@ func _ready() -> void:
 	#self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	$BigExplosion.visible = false
 	print("car Tarpan start x: " + str(global_position.x))
-	start_drive()
-	#turn_left()
+	start_drive(MOVE_RIGHT)
+	
 
 	
 
@@ -151,15 +151,15 @@ func stop_drive() -> void:
 		#$Boss/AnimationPlayer.play("RESET")
 		get_node("snd_engine").stop()
 
-func start_drive() -> void:
+func start_drive(car_direction:int) -> void:
 	if $smoke_particles.emitting == false:
 			$smoke_particles.emitting = true
 	
 	if $Kolo_l/AnimationPlayer.is_playing() == false:
-		$Kolo_l/AnimationPlayer.play("rotate")
-		
+		$Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+			
 	if $Kolo_p/AnimationPlayer.is_playing() == false:
-		$Kolo_p/AnimationPlayer.play("rotate")
+		$Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
 	
 	if $Driver/AnimationPlayer.is_playing() == false:
 		$Driver/AnimationPlayer.play("head_rotate")
@@ -169,6 +169,14 @@ func start_drive() -> void:
 		
 	if get_node("snd_engine").playing != true:
 			get_node("snd_engine").play()
+
+	match car_direction:
+		MOVE_RIGHT:
+			turn_right()
+		MOVE_LEFT:
+			turn_left()	
+
+	current_state = car_direction		
 
 
 func start_talk():
@@ -187,8 +195,7 @@ func _process_on_state_move_right(_delta: float) -> void:
 	move_and_slide()
 	
 
-@warning_ignore("unused_parameter")	
-func _process_on_state_move_left(delta: float) -> void:
+func _process_on_state_move_left(_delta: float) -> void:
 	velocity.x = -speed
 	#velocity.y += gravity * delta
 	player_distance = global_position.distance_to(gv.Hero_global_position)
@@ -201,6 +208,8 @@ func _on_timer_timeout() -> void:
 		$snd_player.stream = sounds[randi() % len(sounds)]
 		if $snd_player.playing != true:
 			$snd_player.play()
+	$Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+	$Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
 	
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
