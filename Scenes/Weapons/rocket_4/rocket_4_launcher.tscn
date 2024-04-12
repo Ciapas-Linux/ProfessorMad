@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://ka4do5pd7dl"]
+[gd_scene load_steps=13 format=4 uid="uid://ka4do5pd7dl"]
 
-[ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Objects/rocket_launcher.png" id="1_nowhg"]
+[ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Weapons/rocket_4/rocket_launcher.png" id="1_nowhg"]
 [ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
 [ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/weapons/reload1.wav" id="3_dg3vb"]
 [ext_resource type="Shader" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gdshader" id="4_e0vpj"]

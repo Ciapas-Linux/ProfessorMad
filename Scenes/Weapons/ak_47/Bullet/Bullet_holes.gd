@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var particles_res:Resource = preload("res://Scenes/Cars/maluch_3/shrapnel.tscn")
+var particles_res:Resource = preload("res://Scenes/Cars/maluch_fract_red/shrapnel.tscn")
 
 @export var min_size : float = 0.5
 @export var max_size : float = 2.3

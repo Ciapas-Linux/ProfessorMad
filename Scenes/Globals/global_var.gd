@@ -31,10 +31,10 @@ var current_scene = null
 	preload("res://Assets/Particles/bullet-holes/bullet-hole18-sm.png"),
 	preload("res://Assets/Particles/bullet-holes/bullet-hole19-sm.png") ]
 
-var cursor_green = preload("res://Assets/Objects/reticle_green.png")
-var cursor_green_2 = preload("res://Assets/Objects/crosshair2.png")
-var cursor_orange = preload("res://Assets/Objects/reticle.png")
-var cursor_red = preload("res://Assets/Objects/reticle_red.png")
+var cursor_green = preload("res://Assets/Weapons/crosshair/reticle_green.png")
+var cursor_green_2 = preload("res://Assets/Weapons/crosshair/crosshair2.png")
+var cursor_orange = preload("res://Assets/Weapons/crosshair/reticle.png")
+var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 
 # var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
 

@@ -1,0 +1,389 @@
+[gd_scene load_steps=28 format=4 uid="uid://08t55cdhhfpt"]
+
+[ext_resource type="Script" path="res://Scenes/Cars/maluch_seledyn/maluch.gd" id="1_6uoeo"]
+[ext_resource type="Texture2D" uid="uid://bja5f1kyekcbh" path="res://Assets/Objects/cars/maluch_seledyn/body.png" id="2_8tf6w"]
+[ext_resource type="Texture2D" uid="uid://ndfncjdx4jwl" path="res://Assets/Objects/cars/maluch_seledyn/kolo_p.png" id="3_xpvro"]
+[ext_resource type="Texture2D" uid="uid://b2n1yrat1lfew" path="res://Assets/Objects/cars/maluch_seledyn/cicias1/kot2_00.png" id="4_6qfak"]
+[ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="5_lk2sk"]
+[ext_resource type="Texture2D" uid="uid://bdy1ltp3wx83k" path="res://Assets/Objects/cars/maluch_seledyn/cicias1/kot2_01.png" id="5_xd2qy"]
+[ext_resource type="Texture2D" uid="uid://cj8qj2cx3y0j1" path="res://Assets/Objects/cars/maluch_seledyn/cicias1/kot2_02.png" id="6_5pvdd"]
+[ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="6_txscb"]
+[ext_resource type="Texture2D" uid="uid://k7uep3dh00dm" path="res://Assets/Objects/cars/maluch_seledyn/stary_ysol1.png" id="7_oj8qd"]
+[ext_resource type="Texture2D" uid="uid://c608lt4nvlyeh" path="res://Assets/Objects/cars/maluch_seledyn/cicias1/kot2_03.png" id="7_v8bhq"]
+[ext_resource type="Texture2D" uid="uid://b1anr1u0mgf2v" path="res://Assets/Objects/cars/maluch_seledyn/cicias1/kot2_04.png" id="8_thutg"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="12_6iota"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="13_rm1xg"]
+[ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="14_nybt4"]
+
+[sub_resource type="Animation" id="Animation_vv5q0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-142, 74)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_etvfv"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-142, 74), Vector2(-142, 74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l3jmw"]
+_data = {
+"RESET": SubResource("Animation_vv5q0"),
+"rotate": SubResource("Animation_etvfv")
+}
+
+[sub_resource type="Animation" id="Animation_tvbcf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(172, 73)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_17ojm"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(172, 73), Vector2(172, 73)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwrbo"]
+_data = {
+"RESET": SubResource("Animation_tvbcf"),
+"rotate": SubResource("Animation_17ojm")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t238t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6qfak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xd2qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5pvdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v8bhq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_thutg")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4shkl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kmycd"]
+resource_name = "head_rotate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.9, 2.4, 2.9, 3.1, 3.3, 3.6, 4.3, 5.8, 6.1, 6.5, 7.7, 8.3, 9.1, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, 0.218166, 0.0, -0.210749, -0.280998, -0.294968, -0.243904, -0.309122, -0.0802853, -0.0872668, -0.309501, -0.304302, -0.302924, -0.267619, -0.044603, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.4, 4.8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(23, 35), Vector2(42, 26), Vector2(9, 29), Vector2(27, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8ord"]
+_data = {
+"RESET": SubResource("Animation_4shkl"),
+"head_rotate": SubResource("Animation_kmycd")
+}
+
+[sub_resource type="Animation" id="Animation_k77j5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, -21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_bcr7w"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-90, -21), Vector2(-90, -21), Vector2(-90, -21), Vector2(-90, -21), Vector2(-90, -21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pvec"]
+_data = {
+"RESET": SubResource("Animation_k77j5"),
+"rotate": SubResource("Animation_bcr7w")
+}
+
+[node name="maluch" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 16
+motion_mode = 1
+script = ExtResource("1_6uoeo")
+
+[node name="object_spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_8tf6w")
+
+[node name="Kolo_l" type="Sprite2D" parent="."]
+position = Vector2(-142, 74)
+rotation = 6.28319
+scale = Vector2(0.350516, 0.350516)
+texture = ExtResource("3_xpvro")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Kolo_l"]
+libraries = {
+"": SubResource("AnimationLibrary_l3jmw")
+}
+
+[node name="Kolo_p" type="Sprite2D" parent="."]
+position = Vector2(172, 73)
+rotation = 6.28319
+scale = Vector2(0.334534, 0.334534)
+texture = ExtResource("3_xpvro")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Kolo_p"]
+libraries = {
+"": SubResource("AnimationLibrary_vwrbo")
+}
+
+[node name="Driver" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 36)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_t238t")
+animation = &"talk"
+frame = 4
+frame_progress = 0.103255
+offset = Vector2(-2.33281, -79.3155)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driver"]
+libraries = {
+"": SubResource("AnimationLibrary_n8ord")
+}
+
+[node name="BigExplosion" parent="." instance=ExtResource("13_rm1xg")]
+visible = false
+scale = Vector2(2, 2)
+
+[node name="smoke_particles" parent="." instance=ExtResource("5_lk2sk")]
+position = Vector2(-225, 71)
+amount = 16
+lifetime = 1.0
+randomness = 0.63
+lifetime_randomness = 0.82
+spread = 116.0
+gravity = Vector2(-300, 2)
+script = null
+
+[node name="snd_engine" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_txscb")
+volume_db = 6.0
+
+[node name="Boss" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(-90, -21)
+rotation = -0.174533
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_oj8qd")
+offset = Vector2(5, -130)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boss"]
+libraries = {
+"": SubResource("AnimationLibrary_2pvec")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="snd_player" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MaluchArea2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MaluchArea2D"]
+polygon = PackedVector2Array(57, -93, 123.4, -22.9, 235, -2, 239, 56, 217, 79, 201.7, 36.9, 168.2, 28.8, 132, 51, 121, 91, -87, 88.9, -94, 64, -128, 32, -173, 39, -197, 76, -225, 70, -241, 9, -131, -96)
+
+[node name="Bullet_holes" parent="." instance=ExtResource("12_6iota")]
+min_size = 0.3
+max_size = 0.6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(57, -93, 123.4, -22.9, 235, -2, 239, 56, 217, 79, 201.7, 36.9, 168.2, 28.8, 132, 51, 121, 91, -87, 88.9, -94, 64, -128, 32, -173, 39, -197, 76, -225, 70, -241, 9, -131, -96)
+
+[node name="snd_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_nybt4")
+volume_db = 2.0
+pitch_scale = 1.4
+
+[connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="MaluchArea2D" to="." method="_on_area_2d_area_entered"]

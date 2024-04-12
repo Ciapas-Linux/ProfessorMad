@@ -20,7 +20,7 @@ const STOP: int = 2
 var mouse_enter:bool = false
 var current_state : int = MOVE_LEFT
 
-var particles_res:Resource = preload("res://Scenes/Cars/maluch/smoke_particles.tscn")
+var particles_res:Resource = preload("res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn")
 	
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
   	load("res://Assets/Sounds/pisk_opon2.wav"),

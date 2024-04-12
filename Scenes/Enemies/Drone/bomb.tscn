@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cenwqq2j5dqih"]
+[gd_scene load_steps=9 format=4 uid="uid://cenwqq2j5dqih"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Drone/Bomb.gd" id="1_c26cx"]
-[ext_resource type="Texture2D" uid="uid://dntpsay1fcbgh" path="res://Assets/Objects/bomb.png" id="2_kmt2a"]
+[ext_resource type="Texture2D" uid="uid://dntpsay1fcbgh" path="res://Assets/Weapons/bomb.png" id="2_kmt2a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbwb3"]
 radius = 26.69

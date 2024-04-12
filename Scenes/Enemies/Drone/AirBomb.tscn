@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://brw4phlwbfpmh"]
+[gd_scene load_steps=5 format=4 uid="uid://brw4phlwbfpmh"]
 
-[ext_resource type="Texture2D" uid="uid://dntpsay1fcbgh" path="res://Assets/Objects/bomb.png" id="1_7x6qj"]
+[ext_resource type="Texture2D" uid="uid://dntpsay1fcbgh" path="res://Assets/Weapons/bomb.png" id="1_7x6qj"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Drone/AirBomb.gd" id="1_oeohy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2puid"]

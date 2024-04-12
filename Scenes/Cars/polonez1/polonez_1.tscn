@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drddobovkd13n"]
+[gd_scene load_steps=6 format=4 uid="uid://drddobovkd13n"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/polonez1/polonez_1.gd" id="1_5f680"]
-[ext_resource type="Texture2D" uid="uid://dssc8fnnc4mtn" path="res://Assets/Objects/polonez1.png" id="1_ia8tm"]
+[ext_resource type="Texture2D" uid="uid://dssc8fnnc4mtn" path="res://Assets/Objects/cars/polonez_red/polonez1.png" id="1_ia8tm"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="3_p6sby"]
 [ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="4_8hgn6"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="6_wjsii"]

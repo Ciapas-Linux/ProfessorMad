@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://1gwp2bo4v3me" path="res://Assets/Backgrounds/asphalt_1.png" id="13_e358x"]
 [ext_resource type="Script" path="res://Scenes/HUD/fps.gd" id="13_lg0wn"]
 [ext_resource type="Script" path="res://Scenes/HUD/pos.gd" id="14_odo0c"]
-[ext_resource type="PackedScene" uid="uid://08t55cdhhfpt" path="res://Scenes/Cars/maluch/maluch.tscn" id="15_g3kcy"]
+[ext_resource type="PackedScene" uid="uid://08t55cdhhfpt" path="res://Scenes/Cars/maluch_seledyn/maluch.tscn" id="15_g3kcy"]
 [ext_resource type="Script" path="res://Scenes/HUD/state.gd" id="15_rddg4"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="16_3ay2h"]
 [ext_resource type="Script" path="res://Scenes/HUD/Health.gd" id="18_8y8ui"]
@@ -30,13 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="25_a4niq"]
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="27_weviq"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="28_ibdmt"]
-[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Objects/bullet1.png" id="29_8ah6a"]
+[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="29_8ah6a"]
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="29_8cr16"]
 [ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="33_fhpux"]
 [ext_resource type="AudioStream" uid="uid://cqbdq5gnyhmn8" path="res://Assets/Music/mountain-trials.ogg" id="34_ewt0x"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="35_sfvns"]
-[ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_3/maluch_3.tscn" id="36_hqr6o"]
+[ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_fract_red/maluch_3.tscn" id="36_hqr6o"]
 [ext_resource type="PackedScene" uid="uid://chf1nu07b05ko" path="res://Scenes/Cars/maluch_red/maluch_red.tscn" id="37_ccyvi"]
 [ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="37_cq0q3"]
 [ext_resource type="PackedScene" uid="uid://dwiyyg4wrha0d" path="res://Scenes/Explosives/Box_3/Box_3.tscn" id="37_y336g"]
@@ -175,6 +175,8 @@ region_rect = Rect2(0, 0, 20000, 1500)
 [node name="maluch" parent="." instance=ExtResource("15_g3kcy")]
 z_index = -1
 position = Vector2(1012, 463)
+speed = null
+hit_count = null
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 5
@@ -360,6 +362,7 @@ position = Vector2(10954, 529)
 
 [node name="Polonez1" parent="." instance=ExtResource("9_gev1q")]
 position = Vector2(5733, 526)
+hit_count = null
 
 [node name="item-Ak-47" parent="." instance=ExtResource("38_w2bgm")]
 visible = false
@@ -383,6 +386,8 @@ scale = Vector2(2.5, 2.5)
 [node name="Tarpan" parent="." instance=ExtResource("43_jmlqg")]
 position = Vector2(13579, 403)
 scale = Vector2(1.8, 1.8)
+hit_count = null
+speed = null
 
 [node name="Kibel1" parent="." instance=ExtResource("44_3xj1c")]
 position = Vector2(17064, 316)
