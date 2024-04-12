@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=4 uid="uid://dl2kws5sjyad3"]
 
-[ext_resource type="Script" path="res://Scenes/Cars/maluch_fract_red/maluch_3.gd" id="1_lfyfs"]
+[ext_resource type="Script" path="res://Scenes/Cars/maluch_fract_red/maluch_fract_red.gd" id="1_lfyfs"]
 [ext_resource type="Texture2D" uid="uid://bcrby7a04efk3" path="res://Assets/Explosions/Explosion1.png" id="2_6k0y1"]
 [ext_resource type="Texture2D" uid="uid://b5o3at7s67uyi" path="res://Assets/Objects/cars/maluch_red/maluch2_kolo.png" id="2_pcqor"]
 [ext_resource type="Texture2D" uid="uid://d2qq8pl14as2p" path="res://Assets/Objects/cars/maluch_fract_red/maluch3_body.png" id="3_jgetw"]

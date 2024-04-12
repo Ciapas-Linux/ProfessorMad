@@ -6,7 +6,7 @@
 
 extends Area2D
 
-@export var max_speed := 800.0
+@export var max_speed := 1300.0 #800
 @export var drag_factor := 0.15   #ORG: 0.15
 var _current_velocity:Vector2 = Vector2.ZERO
 var target:Node2D = null

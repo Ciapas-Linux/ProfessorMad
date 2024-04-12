@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=4 uid="uid://08t55cdhhfpt"]
 
-[ext_resource type="Script" path="res://Scenes/Cars/maluch_seledyn/maluch.gd" id="1_6uoeo"]
+[ext_resource type="Script" path="res://Scenes/Cars/maluch_seledyn/maluch_seledyn.gd" id="1_6uoeo"]
 [ext_resource type="Texture2D" uid="uid://bja5f1kyekcbh" path="res://Assets/Objects/cars/maluch_seledyn/body.png" id="2_8tf6w"]
 [ext_resource type="Texture2D" uid="uid://ndfncjdx4jwl" path="res://Assets/Objects/cars/maluch_seledyn/kolo_p.png" id="3_xpvro"]
 [ext_resource type="Texture2D" uid="uid://b2n1yrat1lfew" path="res://Assets/Objects/cars/maluch_seledyn/cicias1/kot2_00.png" id="4_6qfak"]
