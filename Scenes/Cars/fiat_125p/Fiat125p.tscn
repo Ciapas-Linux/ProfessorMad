@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8hur7jykmt1v"]
+[gd_scene load_steps=13 format=4 uid="uid://8hur7jykmt1v"]
 
 [ext_resource type="Texture2D" uid="uid://cenxci6tto20a" path="res://Assets/Objects/cars/fiat125/fiat_125_body.png" id="1_awviu"]
 [ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p.gd" id="1_j6dho"]

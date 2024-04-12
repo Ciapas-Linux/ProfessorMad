@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdnlw84tvum1f"]
+[gd_scene load_steps=19 format=4 uid="uid://cdnlw84tvum1f"]
 
 [ext_resource type="Texture2D" uid="uid://brc7g048s42vx" path="res://Assets/Objects/cars/tarpan/tarpan_body_1.png" id="1_st4i1"]
 [ext_resource type="Script" path="res://Scenes/Cars/tarpan/tarpan.gd" id="1_vsk2w"]
@@ -154,7 +154,8 @@ _data = {
 size = Vector2(100, 80)
 
 [node name="Tarpan" type="CharacterBody2D"]
-collision_mask = 29
+collision_layer = 32
+collision_mask = 27
 script = ExtResource("1_vsk2w")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -188,7 +189,7 @@ libraries = {
 [node name="smoke_particles" parent="." instance=ExtResource("3_s0o2o")]
 z_index = -1
 position = Vector2(-252, 35)
-gravity = Vector2(-300, 2)
+gravity = Vector2(-200, 2)
 
 [node name="BigExplosion" parent="." instance=ExtResource("5_vlf8f")]
 visible = false
@@ -222,6 +223,8 @@ shape = SubResource("RectangleShape2D_hs202")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="snd_player" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

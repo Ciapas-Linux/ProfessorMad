@@ -34,7 +34,7 @@ func _ready() -> void:
 	$BigExplosion.visible = false
 	print("car Tarpan start x: " + str(global_position.x))
 	start_drive()
-	turn_left()
+	#turn_left()
 
 	
 
