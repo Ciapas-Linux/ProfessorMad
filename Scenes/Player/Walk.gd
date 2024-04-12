@@ -1,9 +1,10 @@
+extends PlayerState
 
 #.#############>
 #. WALK       #>
 #.#############>
 
-extends PlayerState
+
 
 
 var collision:KinematicCollision2D

@@ -1,4 +1,3 @@
-#@uid("uid://cx8xk4374qt8n") # Generated automatically, do not modify.
 extends PlayerState
 
 signal turn(value)

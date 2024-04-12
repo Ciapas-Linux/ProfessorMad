@@ -1,10 +1,11 @@
+extends Area2D
 
 # ##########################>
 # # Rocket 4 launcher misille .SCRIPT #
 # ##########################>
 
 
-extends Area2D
+
 
 @export var max_speed := 1300.0 #800
 @export var drag_factor := 0.15   #ORG: 0.15
