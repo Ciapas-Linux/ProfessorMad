@@ -34,9 +34,7 @@ func _ready() -> void:
 	$BigExplosion.visible = false
 	print("car Tarpan start x: " + str(global_position.x))
 	start_drive(MOVE_RIGHT)
-	
-
-	
+		
 
 func _process(_delta: float) -> void:
 	#if Input.is_action_just_pressed("Fire"):
@@ -117,7 +115,7 @@ func hit()-> void:
 		
 		if hit_count == 0:
 			$CollisionPolygon2D.set_deferred("disabled", true)
-			$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
+			#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
 			$BigExplosion.explode()
 			$BigExplosion.visible = true
 			$smoke_particles.emitting = false

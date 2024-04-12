@@ -152,8 +152,6 @@ size = Vector2(70, 80)
 collision_layer = 32
 collision_mask = 27
 script = ExtResource("1_vsk2w")
-hit_count = null
-speed = null
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -231,8 +229,8 @@ position = Vector2(254, 0)
 shape = SubResource("RectangleShape2D_hs202")
 
 [node name="Bullet_holes" parent="." instance=ExtResource("7_al2w3")]
-min_size = null
-max_size = null
+min_size = 0.2
+max_size = 0.6
 vanish_time = null
 
 [node name="Timer" type="Timer" parent="."]

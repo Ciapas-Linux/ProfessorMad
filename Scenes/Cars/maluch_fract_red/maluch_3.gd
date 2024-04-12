@@ -3,11 +3,21 @@ extends Area2D
 
 @onready var tween: Tween
 var hit_count:int
-
+@export var speed:float = 100
+const MOVE_RIGHT: int = 0
+const MOVE_LEFT: int = 1
+const STOP: int = 2
+var mouse_enter:bool = false
+var current_state : int = MOVE_LEFT
 signal explode
 
-var mouse_enter:bool = false
+var particles_res:Resource = preload("res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn")
+	
+@onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
+  	load("res://Assets/Sounds/pisk_opon2.wav"),
+  	load("res://Assets/Sounds/pisk_opon3.wav")]
 
+	
 func _ready():
 	randomize() 
 	self.input_pickable = true

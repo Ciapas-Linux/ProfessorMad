@@ -386,8 +386,6 @@ scale = Vector2(2.5, 2.5)
 [node name="Tarpan" parent="." instance=ExtResource("43_jmlqg")]
 position = Vector2(13579, 403)
 scale = Vector2(1.8, 1.8)
-hit_count = null
-speed = null
 
 [node name="Kibel1" parent="." instance=ExtResource("44_3xj1c")]
 position = Vector2(17064, 316)
