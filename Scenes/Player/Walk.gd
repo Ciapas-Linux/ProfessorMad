@@ -5,8 +5,6 @@ extends PlayerState
 #.#############>
 
 
-
-
 var collision:KinematicCollision2D
 var normal:Vector2
 var slope_angle_deg:float = 0
@@ -18,14 +16,15 @@ const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 func enter(_msg := {}) -> void:
-	anim_player.stop()
+	#anim_player.stop()
+	anim_player.play("walk")
 	
 
 
 func physics_update(delta: float) -> void:
-	if not player.is_on_floor():
-		state_machine.transition_to("Air")
-		return
+	#if not player.is_on_floor():
+	#	state_machine.transition_to("Air")
+	#	return
 	
 	if gv.Hero_is_paused == true:
 		state_machine.transition_to("Idle")
@@ -38,20 +37,24 @@ func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.gravity * delta
 	
+	if get_node("../../snd_walk").playing != true:
+			get_node("../../snd_walk").play()	
 		
 	player.move_and_slide()
 
+	if player.is_on_floor():
+		var norm: Vector2 = player.get_floor_normal()
+		var offset: float = deg_to_rad(90)
+		
+		player.Foot_R.rotation = norm.angle() + offset
+		player.Foot_L.rotation = norm.angle() + offset
 			
-	if is_on_slope() == true:
-		#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
-		anim_player.play("walk_up")
-	else:
-		anim_player.play("walk")	
+	# if is_on_slope() == true:
+	# 	#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
+	# 	anim_player.play("walk_up")
+	# else:
+	# 	anim_player.play("walk")	
 			
-
-	if get_node("../../snd_walk").playing != true:
-			get_node("../../snd_walk").play()	
-
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})

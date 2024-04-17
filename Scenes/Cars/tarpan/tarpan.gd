@@ -76,7 +76,7 @@ func _tween():
 	tween.tween_property($Kolo_l, "self_modulate", Color(1, 1, 1, 0), 1.0)
 	tween.tween_property($Kolo_p, "self_modulate", Color(1, 1, 1, 0), 1.0)
 	tween.tween_property($Driver, "self_modulate", Color(1, 1, 1, 0), 1.0)
-	tween.tween_property($Boss, "self_modulate", Color(1, 1, 1, 0), 1.0)
+	#tween.tween_property($Boss, "self_modulate", Color(1, 1, 1, 0), 1.0)
 
 func rpg_hit():
 	$CollisionPolygon2D.set_deferred("disabled", true)

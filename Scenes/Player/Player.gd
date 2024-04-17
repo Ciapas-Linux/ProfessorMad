@@ -37,8 +37,14 @@ var eyes_rnd_blink_timer:Timer
 
 
 
-#@onready var But_L_spr:Sprite2D = get_node("leg_l/Lydka_l/But_l")
-#@onready var But_P_spr:Sprite2D = get_node("leg_p/Lydka_p/But_p")
+# Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D
+@onready var Foot_R:RemoteTransform2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D")
+@onready var Foot_L:RemoteTransform2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/RemoteTransform2D")
+
+#@onready var Foot_RR:CharacterBody2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/Sprite2D")
+#@onready var Foot_LL:Sprite2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/Sprite2D")
+
+
 #@onready var But_anim : Animation = get_node("AnimationPlayer").get_animation("walk_2")
 	
 # var humanoid_profile:SkeletonProfileHumanoid
@@ -240,13 +246,12 @@ func load_next_weapon():
 		gv.Hero_current_weapon = 0
 		load_inventory()
 
-
-
 func _physics_process(_delta):
 	gv.Hero_global_position = global_position
 	gv.Hero_local_position = position
 	if position.x < -50:
 		position.x = 0
+		gv.fsm.transition_to("Idle")
 	
 	if is_on_wall():
 		gv.Hero_is_on_wall = true
@@ -276,14 +281,25 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	gv.Hero_on_screen = true
 
-
-func _on_player_area_area_entered(area: Area2D) -> void:
+func _on_left_area_2d_area_entered(area:Area2D) -> void:
 	if(area.name == "Bomb2"):
 		health -= 25
-	print("PlayerArea hit by: " + area.name) 
+	gv.fsm.transition_to("Shockwave") 	
+	print("Left PlayerArea2D hit by: " + area.name) 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("PlayerArea enter body: " + body.name) 
+func _on_left_area_2d_body_entered(body:Node2D) -> void:
+	print("Left PlayerArea enter body: " + body.name) 
+
+func _on_right_area_2d_area_entered(area:Area2D) -> void:
+	if(area.name == "Bomb2"):
+		health -= 25
+	gv.fsm.transition_to("Shockwave") 
+	print("Right PlayerArea2D hit by: " + area.name)
+	
+
+func _on_right_area_2d_body_entered(body:Node2D) -> void:
+	print("Right PlayerArea enter body: " + body.name) 
+
 
 func bomb_explode():
 	if health > 0:
@@ -442,6 +458,14 @@ func bomb_explode():
 		#weapon.global_rotation += 0.01
 		#print_debug(mpath)  
 		#weapon.global_rotation = -0.01 + (mpath	*0.01)
+
+
+
+
+
+
+
+
 
 
 

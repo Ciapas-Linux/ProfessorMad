@@ -10,11 +10,11 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_1uiqy")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(100, -43, 360, 83, 346.8, 104.8, 100.3, -16, 48.7, -14, -153, -15, -191, -16.6, -345.9, 102.9, -356, 92, -190, -39)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pb1bx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(87, -72, 361, 55, 351, 79, 89, 82, -163, 82, -355, 82, -366, 66, -192, -72)
 
 [node name="Bullet_holes" parent="." instance=ExtResource("2_w1snx")]
 min_size = 0.05

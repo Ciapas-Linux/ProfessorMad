@@ -40,8 +40,6 @@ func exit(_msg := {}) -> void:
 
 func physics_update(delta: float) -> void:
 
-	player.velocity.y += player.gravity * delta
-
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		gv.Hero_is_on_floor = false
@@ -51,19 +49,22 @@ func physics_update(delta: float) -> void:
 		return
 
 	# if gv.Hero_current_weapon != 0:
+	# GO --> Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("../../snd_switch_weapon").play()
 			player.load_next_weapon()
 			print("Player: switch weapon")
 
+	# GO --> Reload weapon
 	if Input.is_action_just_pressed("Reload"):
 		gv.Hero_weapon.reload()
 		print("Player: reload weapon")
 
+	# GO --> AIR
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})
-	
-	# input left
+			
+	# GO --> Walk left
 	if Input.is_action_pressed("ui_left"):
 		if gv.Hero_is_paused == false:
 			player.scale.x = player.scale.y * -1
@@ -71,29 +72,26 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("Walk")
 			turn.emit(false)  
 	
-	# input right
+	# GO --> Walk right
 	if Input.is_action_pressed("ui_right"):
 		if gv.Hero_is_paused == false:
 			gv.Hero_direction = Vector2.RIGHT
 			player.scale.x = player.scale.y * 1
 			state_machine.transition_to("Walk")
 			turn.emit(true)
-		
-		
-	# RUN RIGHT:	
-	if Input.is_action_pressed("run") and Input.is_action_pressed("ui_right"):
-		state_machine.transition_to("run_right")
-		player.scale.x = player.scale.y * 1
-		gv.Hero_direction = Vector2.RIGHT
-		
-		
-	# RUN LEFT:	
-	if Input.is_action_pressed("run") and Input.is_action_pressed("ui_left"): 
-		state_machine.transition_to("run_left")
-		player.scale.x = player.scale.y * -1
-		gv.Hero_direction = Vector2.LEFT
 				
-		
+	# GO --> RUN:	
+	if Input.is_action_pressed("run"):
+		if gv.Hero_direction == Vector2.RIGHT: 
+			state_machine.transition_to("run_right")
+			player.scale.x = player.scale.y * 1
+			
+		if gv.Hero_direction == Vector2.LEFT: 
+			state_machine.transition_to("run_left")
+			player.scale.x = player.scale.y * -1	
+
+	
+					
 	# TO AIM:	
 	if Input.is_action_just_pressed("Target"):
 		state_machine.transition_to("target_up")
@@ -106,11 +104,57 @@ func physics_update(delta: float) -> void:
 		#player.scale.x = player.scale.y * 1
 		#gv.hero_sprite.set_flip_h(false)
 
-	
+	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 
 	
-			 		
+
+	if player.is_on_floor():
+		var norm: Vector2 = player.get_floor_normal()
+		var offset: float = deg_to_rad(90)
+		
+		player.Foot_R.rotation = norm.angle() + offset
+		player.Foot_L.rotation = norm.angle() + offset
+		# player.Foot_R.rotation = -(norm.angle() + offset)
+
+
+		# player.Foot_LL.rotation = norm.angle()  + offset
+		
+		# player.Foot_L.rotation = randf_range(-1,1)
+		# player.Foot_R.rotation = norm.angle() + offset
+		
+		#print("#############: " + str(player.get_floor_angle()))
+		#print("#############: " + str(norm.angle())) 
+
+		slope_angle = norm.angle() + offset
+		# print("#############: " + str(slope_angle)) 
+
+		# if player.get_slide_collision_count() > 0:
+		# 	collision = player.get_slide_collision(0)
+		# 	normal = collision.get_normal()
+		# 	#var normal2: Vector2 = player.get_floor_normal()
+			
+		# 	# math.acos(normal.dot(b))
+
+		# 	#print("#############: " + str( collision.get_angle(Vector2(-1, 0)) ))
+		# 	#print("#############: " + str(player.get_floor_angle()))
+		# 	#print("#############: " + str(normal2.x))
+		# 	#print("#############: " + str(normal2.aspect())) 
+
+		# 	slope_angle = rad_to_deg(acos(normal.dot(Vector2(0, -1))))
+			
+		# 	player.Foot_R.rotation = slope_angle
+		# 	player.Foot_L.rotation = slope_angle
+
+
+
+
+		# var normal = side.get_collision_normal() 
+		# rotation = normal.angle() + deg2rad(90)
+
+
+
+
 
 # This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
 # If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.

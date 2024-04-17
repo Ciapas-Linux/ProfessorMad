@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b76igam5emt8l"]
+[gd_scene load_steps=53 format=4 uid="uid://b76igam5emt8l"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy.gd" id="1_ea6gb"]
 [ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/Rysiek/enemy_korpus1.png" id="2_5x8kf"]
@@ -1241,7 +1241,7 @@ volume_db = 5.0
 pitch_scale = 1.29
 
 [node name="CreateDrone" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

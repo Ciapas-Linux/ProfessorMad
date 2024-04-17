@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="44_xxdy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
-size = Vector2(20060, 67)
+size = Vector2(20060, 200)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gwivr"]
 _surfaces = [{
@@ -147,7 +147,7 @@ position = Vector2(-70, 53)
 
 [node name="GruntBody2D" type="StaticBody2D" parent="Grunt"]
 collision_layer = 2
-collision_mask = 30
+collision_mask = 31
 
 [node name="Road" type="Sprite2D" parent="Grunt/GruntBody2D"]
 texture_repeat = 2
@@ -161,7 +161,7 @@ visible = false
 position = Vector2(2803, 97)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grunt/GruntBody2D"]
-position = Vector2(8488, 655)
+position = Vector2(8482, 727)
 shape = SubResource("RectangleShape2D_fmhf3")
 
 [node name="Deep" type="Sprite2D" parent="Grunt/GruntBody2D"]
@@ -380,7 +380,7 @@ position = Vector2(7046, 548)
 position = Vector2(6734, 359)
 
 [node name="WoodRamp1" parent="." instance=ExtResource("44_xxdy7")]
-position = Vector2(2050, 470)
+position = Vector2(2050, 531)
 scale = Vector2(2.5, 2.5)
 
 [node name="Tarpan" parent="." instance=ExtResource("43_jmlqg")]

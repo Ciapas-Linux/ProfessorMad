@@ -55,6 +55,7 @@ func physics_update(delta: float) -> void:
 		walk = true
 		#print_debug(walk) 
 	
+	# walk backward
 	if Input.is_action_pressed("ui_left"):
 		#gv.Hero_direction = Vector2.LEFT
 		player.velocity.x = -walk_speed
