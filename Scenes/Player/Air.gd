@@ -26,7 +26,6 @@ func enter(msg := {}) -> void:
 	delay_timer.connect("timeout", _on_timer_timeout)
 
 	if msg.has("do_jump"):
-		#player.velocity.y = -player.jump_impulse
 		anim_player.stop()
 		anim_player.play("jump_start")
 		get_node("../../snd_walk").stop()
@@ -37,7 +36,7 @@ func enter(msg := {}) -> void:
 			current_state = FALL_DOWN
 
 func _on_timer_timeout():
-	footR_CollisionShape2D.set_deferred("disabled", false)
+	#footR_CollisionShape2D.set_deferred("disabled", false)
 	#footL_CollisionShape2D.set_deferred("disabled", false)
 	start_check_floor = true		
 
@@ -97,5 +96,7 @@ func _on_animation_player_2_animation_finished(anim_name:StringName):
 		current_state = MOVE_UP
 		footR_CollisionShape2D.set_deferred("disabled", true)
 		footL_CollisionShape2D.set_deferred("disabled", true)
+		player.Foot_R.rotation = deg_to_rad(85)
+		player.Foot_L.rotation = deg_to_rad(85)
 		delay_timer.start()
 

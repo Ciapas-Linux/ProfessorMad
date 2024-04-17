@@ -1,5 +1,9 @@
 extends PlayerState
 
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+@onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
+
+
 # AIR
 
 func enter(msg := {}) -> void:
@@ -10,11 +14,10 @@ func enter(msg := {}) -> void:
 		get_node("../../AnimationPlayer").stop()
 		get_node("../../AnimationPlayer").play("jump")
 		gv.Hero_is_on_floor = false
+		player.Foot_R.rotation = deg_to_rad(85)
+		player.Foot_L.rotation = deg_to_rad(85)
 				
-		#if get_node("../../snd_walk").playing != true:
-			#get_node("../../snd_walk").play()	
 		
-
 func physics_update(delta: float) -> void:
 	
 	if player.is_on_floor():
