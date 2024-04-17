@@ -41,6 +41,9 @@ var eyes_rnd_blink_timer:Timer
 @onready var Foot_R:RemoteTransform2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D")
 @onready var Foot_L:RemoteTransform2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/RemoteTransform2D")
 
+@onready var SlopeRayCast:RayCast2D = get_node("RayCast2D")
+
+
 #@onready var Foot_RR:CharacterBody2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/Sprite2D")
 #@onready var Foot_LL:Sprite2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/Sprite2D")
 

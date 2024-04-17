@@ -2,11 +2,13 @@ extends PlayerState
 
 signal turn(value)
 
-@onready var Ray:RayCast2D = get_node("../../RayCast2D")
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
+
 var collision:KinematicCollision2D
-var normal:Vector2
+var floor_normal:Vector2
+var ray_normal:Vector2
+var offset: float
 
 var slope_angle:float = 0
 
@@ -109,12 +111,17 @@ func physics_update(delta: float) -> void:
 
 	
 
-	if player.is_on_floor():
-		var norm: Vector2 = player.get_floor_normal()
-		var offset: float = deg_to_rad(90)
+	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
+		floor_normal = player.get_floor_normal()
+		offset = deg_to_rad(90)
+		ray_normal =  player.SlopeRayCast.get_collision_normal()
 		
-		player.Foot_R.rotation = norm.angle() + offset
-		player.Foot_L.rotation = norm.angle() + offset
+		#player.Foot_R.rotation = floor_normal.angle() + offset
+		#player.Foot_L.rotation = floor_normal.angle() + offset
+
+		player.Foot_R.rotation = ray_normal.angle() + offset
+		player.Foot_L.rotation = ray_normal.angle() + offset
+
 		# player.Foot_R.rotation = -(norm.angle() + offset)
 
 
@@ -126,7 +133,7 @@ func physics_update(delta: float) -> void:
 		#print("#############: " + str(player.get_floor_angle()))
 		#print("#############: " + str(norm.angle())) 
 
-		slope_angle = norm.angle() + offset
+		# slope_angle = ray_normal.angle() + offset
 		# print("#############: " + str(slope_angle)) 
 
 		# if player.get_slide_collision_count() > 0:

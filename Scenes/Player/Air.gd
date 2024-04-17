@@ -21,7 +21,7 @@ func enter(msg := {}) -> void:
 
 	delay_timer = Timer.new()
 	add_child(delay_timer)
-	delay_timer.wait_time = 0.5
+	delay_timer.wait_time = 0.3
 	delay_timer.one_shot = true
 	delay_timer.connect("timeout", _on_timer_timeout)
 

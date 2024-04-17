@@ -6,18 +6,23 @@ extends PlayerState
 
 
 var collision:KinematicCollision2D
-var normal:Vector2
+# var normal:Vector2
 var slope_angle_deg:float = 0
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
-const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
+const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(45)
 
+var floor_normal:Vector2
+var ray_normal:Vector2
+var offset: float
+var tilt:float = 0.0
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 func enter(_msg := {}) -> void:
 	#anim_player.stop()
-	anim_player.play("walk")
+	#anim_player.play("walk")
+	pass
 	
 
 
@@ -30,11 +35,11 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Idle")
 		return	
 
-	var input_direction_x: float = (
-		Input.get_action_strength("ui_right")
-		- Input.get_action_strength("ui_left"))
+	# var input_direction_x: float = (
+	# 	Input.get_action_strength("ui_right")
+	# 	- Input.get_action_strength("ui_left"))
 		
-	player.velocity.x = player.speed * input_direction_x
+	player.velocity.x = player.speed * gv.Hero_direction.x
 	player.velocity.y += player.gravity * delta
 	
 	if get_node("../../snd_walk").playing != true:
@@ -42,13 +47,30 @@ func physics_update(delta: float) -> void:
 		
 	player.move_and_slide()
 
-	if player.is_on_floor():
-		var norm: Vector2 = player.get_floor_normal()
-		var offset: float = deg_to_rad(90)
+	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
+		floor_normal = player.get_floor_normal()
+		offset = deg_to_rad(85)
+		ray_normal =  player.SlopeRayCast.get_collision_normal()
 		
-		player.Foot_R.rotation = norm.angle() + offset
-		player.Foot_L.rotation = norm.angle() + offset
-			
+		#player.Foot_R.rotation = floor_normal.angle() + offset
+		#player.Foot_L.rotation = floor_normal.angle() + offset
+
+		player.Foot_R.rotation = ray_normal.angle() + offset
+		player.Foot_L.rotation = ray_normal.angle() + offset
+		
+		
+		tilt = rad_to_deg(ray_normal.angle() + offset ) * -1
+		
+
+		print("$$$$$$$$$$$$$$$: " + str(tilt))
+
+		if tilt < 10:
+			if anim_player.get_current_animation() != "walk":
+				anim_player.play("walk")		
+		elif tilt > 10:
+			if anim_player.get_current_animation() != "walk_up":
+				anim_player.play("walk_up")
+				
 	# if is_on_slope() == true:
 	# 	#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
 	# 	anim_player.play("walk_up")
@@ -58,9 +80,11 @@ func physics_update(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})
-	elif is_equal_approx(input_direction_x, 0.0):
-		state_machine.transition_to("Idle")
+	# elif is_equal_approx(input_direction_x, 0.0):
+	# 	state_machine.transition_to("Idle")
 
+	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		state_machine.transition_to("Idle")
 
 
 # This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
