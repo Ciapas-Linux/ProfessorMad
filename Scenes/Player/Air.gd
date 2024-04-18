@@ -1,13 +1,14 @@
 extends PlayerState
 
+# 🌟🌟🌟 AIR STATE 🌟🌟🌟
+
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
 
-@onready var footR_CollisionShape2D : CollisionShape2D = get_node("../../footR_CollisionShape2D")
-@onready var footL_CollisionShape2D : CollisionShape2D = get_node("../../footL_CollisionShape2D")
+#@onready var footR_CollisionShape2D : CollisionShape2D = get_node("../../footR_CollisionShape2D")
+#@onready var footL_CollisionShape2D : CollisionShape2D = get_node("../../footL_CollisionShape2D")
 
 
-# AIR STATE
 
 const START_MOVE_UP: int = 0
 const MOVE_UP: int = 1
@@ -94,8 +95,8 @@ func _on_animation_player_2_animation_finished(anim_name:StringName):
 		print("Player: Jump")
 		player.velocity.y = -player.jump_impulse
 		current_state = MOVE_UP
-		footR_CollisionShape2D.set_deferred("disabled", true)
-		footL_CollisionShape2D.set_deferred("disabled", true)
+		#footR_CollisionShape2D.set_deferred("disabled", true)
+		#footL_CollisionShape2D.set_deferred("disabled", true)
 		player.Foot_R.rotation = deg_to_rad(85)
 		player.Foot_L.rotation = deg_to_rad(85)
 		delay_timer.start()

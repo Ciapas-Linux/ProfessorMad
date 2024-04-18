@@ -287,8 +287,8 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_left_area_2d_area_entered(area:Area2D) -> void:
 	if(area.name == "Bomb2"):
 		health -= 25
-	gv.fsm.transition_to("Shockwave") 	
-	print("Left PlayerArea2D hit by: " + area.name) 
+		gv.fsm.transition_to("Shockwave") 	
+		print("Left PlayerArea2D hit by: " + area.name) 
 
 func _on_left_area_2d_body_entered(body:Node2D) -> void:
 	print("Left PlayerArea enter body: " + body.name) 
@@ -296,8 +296,8 @@ func _on_left_area_2d_body_entered(body:Node2D) -> void:
 func _on_right_area_2d_area_entered(area:Area2D) -> void:
 	if(area.name == "Bomb2"):
 		health -= 25
-	gv.fsm.transition_to("Shockwave") 
-	print("Right PlayerArea2D hit by: " + area.name)
+		gv.fsm.transition_to("Shockwave") 
+		print("Right PlayerArea2D hit by: " + area.name)
 	
 
 func _on_right_area_2d_body_entered(body:Node2D) -> void:

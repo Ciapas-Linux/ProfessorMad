@@ -1,19 +1,19 @@
 extends PlayerState
 
+
+#.#############>
+#. IDLE 🌟🌟🌟#>
+#.#############>
+
+
 signal turn(value)
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
-
-var collision:KinematicCollision2D
 var floor_normal:Vector2
 var ray_normal:Vector2
 var offset: float
 
-var slope_angle:float = 0
-
-const UP = Vector2(0, -1)
-const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(5)
 
 # Enter state:
 func enter(_msg := {}) -> void:
@@ -21,7 +21,6 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	if anim_player.current_animation != "touch_down":
-		#anim_player.stop()
 		anim_player.play("idle")
 
 	gv.Hero_is_on_floor = true
@@ -32,10 +31,8 @@ func enter(_msg := {}) -> void:
 
 func _on_animation_player_2_animation_finished(anim_name:StringName):
 	if anim_name == "touch_down":
-		#anim_player.stop()
 		anim_player.play("idle")
 	
-
 # Exit state:	
 func exit(_msg := {}) -> void:
 	pass
@@ -91,8 +88,6 @@ func physics_update(delta: float) -> void:
 		if gv.Hero_direction == Vector2.LEFT: 
 			state_machine.transition_to("run_left")
 			player.scale.x = player.scale.y * -1	
-
-	
 					
 	# TO AIM:	
 	if Input.is_action_just_pressed("Target"):
@@ -108,21 +103,43 @@ func physics_update(delta: float) -> void:
 
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
-
 	
 
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		floor_normal = player.get_floor_normal()
 		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
-		
-		#player.Foot_R.rotation = floor_normal.angle() + offset
-		#player.Foot_L.rotation = floor_normal.angle() + offset
-
+				
 		player.Foot_R.rotation = ray_normal.angle() + offset
 		player.Foot_L.rotation = ray_normal.angle() + offset
 
-		# player.Foot_R.rotation = -(norm.angle() + offset)
+
+func _on_gun_2_fire() -> void:
+	if gv.fsm.state.name == "Idle":
+		#get_node("../../AnimationPlayer").stop()
+		#get_node("../../AnimationPlayer").play("RESET")
+		if player.turn == true:
+			player.position.x -= 3
+		else:	
+			player.position.x += 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# player.Foot_R.rotation = -(norm.angle() + offset)
 
 
 		# player.Foot_LL.rotation = norm.angle()  + offset
@@ -161,48 +178,23 @@ func physics_update(delta: float) -> void:
 
 
 
+#player.Foot_R.rotation = floor_normal.angle() + offset
+		#player.Foot_L.rotation = floor_normal.angle() + offset
 
 
-# This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
-# If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.
-func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
-	if player.is_on_floor():
-		for i in range(player.get_slide_collision_count()):
-			collision = player.get_slide_collision(i)
-			# Is this a "floor" collision?
-			if collision.normal.angle_to(UP) <= max_floor_angle:
-				return false
-		# We didn't find a "floor" collision, but is_on_floor() is true, so there must be a "slope" collision.
-		return true
-	# is_on_floor is false, so there cannot be a "slope" collision.
-	return false
-
-func _on_gun_2_fire() -> void:
-	if gv.fsm.state.name == "Idle":
-		#get_node("../../AnimationPlayer").stop()
-		#get_node("../../AnimationPlayer").play("RESET")
-		if player.turn == true:
-			player.position.x -= 3
-		else:	
-			player.position.x += 3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# # This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
+# # If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.
+# func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
+# 	if player.is_on_floor():
+# 		for i in range(player.get_slide_collision_count()):
+# 			collision = player.get_slide_collision(i)
+# 			# Is this a "floor" collision?
+# 			if collision.normal.angle_to(UP) <= max_floor_angle:
+# 				return false
+# 		# We didn't find a "floor" collision, but is_on_floor() is true, so there must be a "slope" collision.
+# 		return true
+# 	# is_on_floor is false, so there cannot be a "slope" collision.
+# 	return false
 
 
 		

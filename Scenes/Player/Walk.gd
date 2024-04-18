@@ -1,16 +1,8 @@
 extends PlayerState
 
 #.#############>
-#. WALK       #>
+#. WALK 🌟🌟🌟#>
 #.#############>
-
-
-var collision:KinematicCollision2D
-# var normal:Vector2
-var slope_angle_deg:float = 0
-const UP = Vector2(0, -1)
-const DOWN = Vector2(0, 1)
-const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(45)
 
 var floor_normal:Vector2
 var ray_normal:Vector2
@@ -20,48 +12,29 @@ var tilt:float = 0.0
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 func enter(_msg := {}) -> void:
-	#anim_player.stop()
-	#anim_player.play("walk")
-	pass
+	if get_node("../../snd_walk").playing != true:
+			get_node("../../snd_walk").play()
 	
-
-
 func physics_update(delta: float) -> void:
-	#if not player.is_on_floor():
-	#	state_machine.transition_to("Air")
-	#	return
-	
+		
 	if gv.Hero_is_paused == true:
 		state_machine.transition_to("Idle")
 		return	
-
-	# var input_direction_x: float = (
-	# 	Input.get_action_strength("ui_right")
-	# 	- Input.get_action_strength("ui_left"))
 		
 	player.velocity.x = player.speed * gv.Hero_direction.x
 	player.velocity.y += player.gravity * delta
-	
-	if get_node("../../snd_walk").playing != true:
-			get_node("../../snd_walk").play()	
-		
 	player.move_and_slide()
 
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		floor_normal = player.get_floor_normal()
 		offset = deg_to_rad(85)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
-		
-		#player.Foot_R.rotation = floor_normal.angle() + offset
-		#player.Foot_L.rotation = floor_normal.angle() + offset
-
+				
 		player.Foot_R.rotation = ray_normal.angle() + offset
 		player.Foot_L.rotation = ray_normal.angle() + offset
-		
-		
+				
 		tilt = rad_to_deg(ray_normal.angle() + offset ) * -1
 		
-
 		print("$$$$$$$$$$$$$$$: " + str(tilt))
 
 		if tilt < 10:
@@ -71,35 +44,14 @@ func physics_update(delta: float) -> void:
 			if anim_player.get_current_animation() != "walk_up":
 				anim_player.play("walk_up")
 				
-	# if is_on_slope() == true:
-	# 	#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
-	# 	anim_player.play("walk_up")
-	# else:
-	# 	anim_player.play("walk")	
-			
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})
-	# elif is_equal_approx(input_direction_x, 0.0):
-	# 	state_machine.transition_to("Idle")
-
+	
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		state_machine.transition_to("Idle")
 
 
-# This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
-# If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.
-func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
-	if player.is_on_floor():
-		for i in range(player.get_slide_collision_count()):
-			collision = player.get_slide_collision(i)
-			# Is this a "floor" collision?
-			if collision.get_normal().angle_to(UP) <= max_floor_angle:
-				return false
-		# We didn't find a "floor" collision, but is_on_floor() is true, so there must be a "slope" collision.
-		return true
-	# is_on_floor is false, so there cannot be a "slope" collision.
-	return false
 
 
 
@@ -115,6 +67,60 @@ func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
 
 
 
+
+#var collision:KinematicCollision2D
+#var slope_angle_deg:float = 0
+#const UP = Vector2(0, -1)
+#const DOWN = Vector2(0, 1)
+#const DEFAULT_MAX_FLOOR_ANGLE = deg_to_rad(45)
+
+
+
+#anim_player.stop()
+	#anim_player.play("walk")
+
+#if not player.is_on_floor():
+	#	state_machine.transition_to("Air")
+	#	return
+
+
+# var input_direction_x: float = (
+	# 	Input.get_action_strength("ui_right")
+	# 	- Input.get_action_strength("ui_left"))
+
+
+#player.Foot_R.rotation = floor_normal.angle() + offset
+		#player.Foot_L.rotation = floor_normal.angle() + offset
+
+
+
+# if is_on_slope() == true:
+	# 	#print("$$$$$$$$$$$$$$$: " + str(slope_angle_deg))
+	# 	anim_player.play("walk_up")
+	# else:
+	# 	anim_player.play("walk")	
+		
+
+# # This function assumes that you are already using move_and_slide, and that a "slope" is a subtype of a "floor", so if is_on_slope() is true, then is_on_floor() must also be true.
+# # If there are simultaneous collisions with both a "floor" and a "slope", then this returns false.
+# func is_on_slope(max_floor_angle = DEFAULT_MAX_FLOOR_ANGLE):
+# 	if player.is_on_floor():
+# 		for i in range(player.get_slide_collision_count()):
+# 			collision = player.get_slide_collision(i)
+# 			# Is this a "floor" collision?
+# 			if collision.get_normal().angle_to(UP) <= max_floor_angle:
+# 				return false
+# 		# We didn't find a "floor" collision, but is_on_floor() is true, so there must be a "slope" collision.
+# 		return true
+# 	# is_on_floor is false, so there cannot be a "slope" collision.
+# 	return false
+
+
+
+
+
+# elif is_equal_approx(input_direction_x, 0.0):
+	# 	state_machine.transition_to("Idle")
 
 
 # if player.is_on_floor():
