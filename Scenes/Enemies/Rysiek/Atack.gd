@@ -1,5 +1,5 @@
 
-extends EnemyState
+extends RysiekState
 
 
 # ####################

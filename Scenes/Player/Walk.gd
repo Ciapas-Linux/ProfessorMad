@@ -35,7 +35,7 @@ func physics_update(delta: float) -> void:
 				
 		tilt = rad_to_deg(ray_normal.angle() + offset ) * -1
 		
-		print("$$$$$$$$$$$$$$$: " + str(tilt))
+		#print("$$$$$$$$$$$$$$$: " + str(tilt))
 
 		if tilt < 10:
 			if anim_player.get_current_animation() != "walk":

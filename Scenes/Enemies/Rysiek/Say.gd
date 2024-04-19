@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var enemy:Enemy
+var rysiek:Rysiek
 
 var shift_x:int = 20
 var shift_y:int = 100
@@ -10,7 +10,7 @@ signal it_was_shown
 
 func _ready():
 	self.visible = false
-	enemy = get_parent()
+	rysiek = get_parent()
 	
 	timer = Timer.new()
 	add_child(timer)
@@ -46,7 +46,7 @@ func first_time_catch_profesor():
 	tween.parallel().tween_property(self, "scale", Vector2.ONE * 1, 0.5)
 	tween.parallel().tween_property(self, "position", Vector2(position.x - shift_x,position.y - shift_y), 0.5)
 	tween.connect('finished', _on_tween_finished)
-	print("enemy say: Hello profesor!")
+	print("rysiek say: Hello profesor!")
 	shift_y += 100
 	shift_x += 20
 	timer.start()
@@ -55,7 +55,7 @@ func _on_idle_first_hero_catch() -> void:
 	first_time_catch_profesor()
 
 func _on_follow_left_first_hero_catch() -> void:
-	print("enemy say: Hello profesor!")
+	print("rysiek say: Hello profesor!")
 	first_time_catch_profesor()
 	
 func _on_tween_finished():

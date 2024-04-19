@@ -25,13 +25,6 @@ func enter(_msg := {}) -> void:
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
 		
-
-func _on_animation_player_2_animation_finished(_anim_name:StringName) -> void:
-	if gv.Hero_current_weapon == 0:
-		await get_tree().create_timer(1.0).timeout
-		#state_machine.transition_to("Idle")
-
-
 #func _on_fire_finished() -> void:
 	#get_node("../../AnimationPlayer").play("target_up")
 
@@ -98,6 +91,26 @@ func _on_gun_2_fire() -> void:
 			player.position.x -= 3
 		else:	
 			player.position.x += 3
+
+
+
+
+
+
+
+
+
+
+
+
+# func _on_animation_player_2_animation_finished(_anim_name:StringName) -> void:
+# 	if gv.Hero_current_weapon == 0:
+# 		await get_tree().create_timer(1.0).timeout
+# 		#state_machine.transition_to("Idle")
+
+
+
+
 
 
 

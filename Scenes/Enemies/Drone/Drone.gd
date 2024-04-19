@@ -1,11 +1,11 @@
-
+extends CharacterBody2D
 
 # #####################
 # # Drone     .SCRIPT #
 # #####################
 
 
-extends CharacterBody2D
+
 
 var x_distance_to_hero:float = 0
 var y_distance_to_hero:float = 0
@@ -42,7 +42,7 @@ signal on_kill
 @onready var bomb:Resource = preload("res://Scenes/Enemies/Drone/Bomb2.tscn")
 
 
-var enemy2:Enemy
+var rysiek:Rysiek
 var boom:Area2D
 
 var mouse_enter:bool = false
@@ -58,10 +58,10 @@ func _ready():
 	$Drone_explosion.visible = false
 	#screen_size = get_viewport_rect().size
 	# enemy2 = get_parent().get_node("Enemy")
-	enemy2 = get_tree().root.get_node("Stage1/Enemy")
+	rysiek = get_tree().root.get_node("Stage1/Rysiek")
 	$drone_snd.play()
-	position.x = enemy2.global_position.x
-	position.y = enemy2.global_position.y - 200
+	position.x = rysiek.global_position.x
+	position.y = rysiek.global_position.y - 200
 	#$Health.visible = true
 	$DroneSprite.play("flying")
 	print("Flying drone: ready ...") 

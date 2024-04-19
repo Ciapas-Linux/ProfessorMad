@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=48 format=4 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="4_rhujv"]
 [ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="5_e85i1"]
 [ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="6_0huhg"]
-[ext_resource type="PackedScene" uid="uid://b76igam5emt8l" path="res://Scenes/Enemies/Rysiek/enemy2.tscn" id="7_efrhx"]
+[ext_resource type="PackedScene" uid="uid://b76igam5emt8l" path="res://Scenes/Enemies/Rysiek/Rysiek.tscn" id="7_efrhx"]
 [ext_resource type="PackedScene" uid="uid://0ywglto5tx2h" path="res://Scenes/Explosives/box1.tscn" id="8_7yfa0"]
 [ext_resource type="PackedScene" uid="uid://drddobovkd13n" path="res://Scenes/Cars/polonez_fso/polonez_1.tscn" id="9_gev1q"]
 [ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="9_slswn"]
@@ -33,7 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="29_8ah6a"]
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="29_8cr16"]
 [ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="33_fhpux"]
-[ext_resource type="AudioStream" uid="uid://cqbdq5gnyhmn8" path="res://Assets/Music/mountain-trials.ogg" id="34_ewt0x"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="35_sfvns"]
 [ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_fract_red/maluch_fract_red.tscn" id="36_hqr6o"]
@@ -111,9 +110,9 @@ drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 script = ExtResource("3_ueebj")
 
-[node name="Enemy" parent="." instance=ExtResource("7_efrhx")]
+[node name="Rysiek" parent="." instance=ExtResource("7_efrhx")]
 z_index = 1
-position = Vector2(16234, 441)
+position = Vector2(3521, 441)
 collision_mask = 27
 
 [node name="Box1" parent="." groups=["Explosives"] instance=ExtResource("8_7yfa0")]
@@ -293,11 +292,6 @@ texture = ExtResource("25_a4niq")
 [node name="PlayerEnemyRay" type="Node2D" parent="."]
 visible = false
 script = ExtResource("27_weviq")
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("34_ewt0x")
-volume_db = -30.559
-autoplay = true
 
 [node name="SkyCanvas" type="CanvasLayer" parent="."]
 layer = -3

@@ -1,4 +1,4 @@
-extends EnemyState
+extends RysiekState
 
 # #################
 # # IDLE  .SCRIPT #
@@ -12,60 +12,60 @@ extends EnemyState
 signal first_hero_catch
 
 func enter(_msg := {}) -> void:
-	enemy.velocity = Vector2.ZERO
+	rysiek.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
 	#get_node("../../snd_fall").stop()
 	get_node("../../AnimationPlayer").stop()
 	get_node("../../AnimationPlayer").play("idle")
-	print("enemy fsm: IDLE")
+	print("rysiek fsm: IDLE")
 		
  
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:
 	
-	enemy.velocity.y += enemy.gravity * delta
+	rysiek.velocity.y += rysiek.gravity * delta
 	
 	
 	
-	if not enemy.is_on_floor():
-		enemy.previous_state = gv.enemy_fsm.estate.name
-		estate_machine.transition_to("Air")
+	if not rysiek.is_on_floor():
+		rysiek.previous_state = gv.rysiek_fsm.rstate.name
+		rstate_machine.transition_to("Air")
 		return
 		
 	# GAME PAUSE:
 	""" if gv.Game_pause == true:
-		enemy.previous_state = gv.enemy_fsm.estate.name
+		rysiek.previous_state = gv.enemy_fsm.estate.name
 		estate_machine.transition_to("Pause") """
 
 
-	# print("XXXXXXXXX: " + str(int(enemy.global_position.distance_to(gv.Hero_global_position))))
+	# print("XXXXXXXXX: " + str(int(rysiek.global_position.distance_to(gv.Hero_global_position))))
 		
 
 	# TURN LEFT: player is on left side
-	# if gv.Hero_global_position.x + enemy.change_direction_distance < enemy.global_position.x:
-	if gv.Hero_global_position.x < enemy.global_position.x:
-		if enemy.direction == "R":	
-			enemy.scale.x = enemy.scale.y * 1
-			enemy.direction = "L"
+	# if gv.Hero_global_position.x + rysiek.change_direction_distance < rysiek.global_position.x:
+	if gv.Hero_global_position.x < rysiek.global_position.x:
+		if rysiek.rysiek_direction == Vector2.RIGHT:	
+			rysiek.scale.x = rysiek.scale.y * 1
+			rysiek.rysiek_direction = Vector2.LEFT
 	
 	# TURN RIGHT: player is on right side
-	if gv.Hero_global_position.x > enemy.global_position.x:
-		if enemy.direction == "L":
-			enemy.scale.x = enemy.scale.y * -1
-			enemy.direction = "R"
+	if gv.Hero_global_position.x > rysiek.global_position.x:
+		if rysiek.rysiek_direction == Vector2.LEFT:
+			rysiek.scale.x = rysiek.scale.y * -1
+			rysiek.rysiek_direction = Vector2.RIGHT
 	
 	# SEE PLAYER:					
-	if 	enemy.see_Player == true:		
-		if enemy.first_hero_catch == false:
+	if 	rysiek.see_Player == true:		
+		if rysiek.first_hero_catch == false:
 			#emit_signal("first_hero_catch")
-			enemy.first_hero_catch = true
+			rysiek.first_hero_catch = true
 
-			# This enemy cloud say information:
-			enemy.chat_instance = enemy.Chat.instantiate()
-			enemy.chat_instance.Say("Eeeee ty \ncwaniaczku !!!",6,0,220)
-			enemy.get_tree().root.add_child(enemy.chat_instance)
-			#enemy.chat_instance.connect('early_hit', _on_bomb_early_hit)
-			print("enemy: First time see profesor")
+			# This rysiek cloud say information:
+			rysiek.chat_instance = rysiek.Chat.instantiate()
+			rysiek.chat_instance.Say("Eeeee ty \ncwaniaczku !!!",6,0,220)
+			rysiek.get_tree().root.add_child(rysiek.chat_instance)
+			#rysiek.chat_instance.connect('early_hit', _on_bomb_early_hit)
+			print("rysiek: First time see profesor")
 
 			# PAUSE:
 			# get_tree().paused = true
@@ -73,61 +73,61 @@ func physics_update(delta: float) -> void:
 			#get_node("../../snd_first_see").play()
 			
 	# ESCAPE:		
-	""" if enemy.global_position.distance_to(gv.Hero_global_position) <= enemy.contact_distance:
+	""" if rysiek.global_position.distance_to(gv.Hero_global_position) <= rysiek.contact_distance:
 		#if get_node("../../Say").visible == false:
-		if enemy.direction == "R":
-			enemy.previous_state = gv.enemy_fsm.estate.name
+		if rysiek.direction == "R":
+			rysiek.previous_state = gv.enemy_fsm.estate.name
 			estate_machine.transition_to("Walk_Left")
-		if enemy.direction == "L":
-			enemy.previous_state = gv.enemy_fsm.estate.name
+		if rysiek.direction == "L":
+			rysiek.previous_state = gv.enemy_fsm.estate.name
 			estate_machine.transition_to("Walk_Right")	 """
 
 	# Atack1:		
-	""" if enemy.global_position.distance_to(gv.Hero_global_position) <= enemy.Atack1_distance and enemy.global_position.distance_to(gv.Hero_global_position) > enemy.Atack1_distance/2: 
+	""" if rysiek.global_position.distance_to(gv.Hero_global_position) <= rysiek.Atack1_distance and rysiek.global_position.distance_to(gv.Hero_global_position) > rysiek.Atack1_distance/2: 
 		#if get_node("../../Say").visible == false:
-		if enemy.direction == "R":
-			enemy.previous_state = gv.enemy_fsm.estate.name
+		if rysiek.direction == "R":
+			rysiek.previous_state = gv.enemy_fsm.estate.name
 			print("enemy2: Atack jump right")
 			estate_machine.transition_to("Jump_right")
-		if enemy.direction == "L":
-			enemy.previous_state = gv.enemy_fsm.estate.name
+		if rysiek.direction == "L":
+			rysiek.previous_state = gv.enemy_fsm.estate.name
 			print("enemy2: Atack jump left")
 			estate_machine.transition_to("Jump_left")	 """		
 					
 	# WALK LEFT				
-	# if enemy.global_position.distance_to(gv.Hero_global_position) >= enemy.follow_distance:
+	# if rysiek.global_position.distance_to(gv.Hero_global_position) >= rysiek.follow_distance:
 	# 	#if get_node("../../Say").visible == false:
-	# 	if enemy.direction == "R":
-	# 		enemy.previous_state = gv.enemy_fsm.estate.name
+	# 	if rysiek.direction == "R":
+	# 		rysiek.previous_state = gv.enemy_fsm.estate.name
 	# 		estate_machine.transition_to("Walk_Right")
-	# 	if enemy.direction == "L":
-	# 		enemy.previous_state = gv.enemy_fsm.estate.name
+	# 	if rysiek.direction == "L":
+	# 		rysiek.previous_state = gv.enemy_fsm.estate.name
 	# 		estate_machine.transition_to("Walk_Left")
 		
 	
-	enemy.move_and_slide()
+	rysiek.move_and_slide()
 	
-	But_L_spr.rotation = enemy.get_floor_angle()
-	But_P_spr.rotation = enemy.get_floor_angle()
+	But_L_spr.rotation = rysiek.get_floor_angle()
+	But_P_spr.rotation = rysiek.get_floor_angle()
 
 	
 func _on_enemy_somebody_hitme() -> void:
 	if gv.enemy_fsm.estate.name != "Hit":
-		enemy.previous_state = gv.enemy_fsm.estate.name
-	estate_machine.transition_to("Hit")
+		rysiek.previous_state = gv.enemy_fsm.estate.name
+	rstate_machine.transition_to("Hit")
 		
 
 
 	##################### :)
-    # 	   .-"-.
-    #    _/.-.-.\_
-    #   ( ( o o ) )
-    #    |/  "  \|
-    #     \'/^\'/
-    #     /`\ /`\
-    #    /  /|\  \
-    #   ( (/ T \) )
-    #    \__/^\__/
+	# 	   .-"-.
+	#    _/.-.-.\_
+	#   ( ( o o ) )
+	#    |/  "  \|
+	#     \'/^\'/
+	#     /`\ /`\
+	#    /  /|\  \
+	#   ( (/ T \) )
+	#    \__/^\__/
 
 
 #	print("XXXXXXXXX: " + str(int(enemy.global_position.distance_to(gv.Hero_global_position))))

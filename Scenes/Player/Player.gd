@@ -1,15 +1,15 @@
 
 
 
-# |#################|>
-# |# PLAYER.SCRIPT #|>>>
-# |#################|>
+# ######################################
+# #   🌟🌟🌟 MAIN PLAYER SCRIPT 🌟🌟🌟 #
+# ######################################
 
 
 class_name Hero
 extends CharacterBody2D
 
-# Horizontal speed in pixels per second.
+# Horizontal walk speed in pixels per second.
 @export var speed := 250.0
 
 # run speed
@@ -30,11 +30,10 @@ var health:int = 100
 const health_max:int = 100
 
 
-signal player_stats_changed
+#signal player_stats_changed
 signal bomb_hit_me
 
 var eyes_rnd_blink_timer:Timer
-
 
 
 # Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D
@@ -43,17 +42,6 @@ var eyes_rnd_blink_timer:Timer
 
 @onready var SlopeRayCast:RayCast2D = get_node("RayCast2D")
 
-
-#@onready var Foot_RR:CharacterBody2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/Sprite2D")
-#@onready var Foot_LL:Sprite2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/Sprite2D")
-
-
-#@onready var But_anim : Animation = get_node("AnimationPlayer").get_animation("walk_2")
-	
-# var humanoid_profile:SkeletonProfileHumanoid
-# var Player_skeleton:Skeleton2D
-
-# node.reparent(new_parent)
 
 func _ready():
 	gv.fsm = $StateMachine
@@ -66,33 +54,10 @@ func _ready():
 	$Body_parts/Head/powieka_P.visible = false
 	$Body_parts/Head/powieka_L.visible = false
 
-	# for track_indx in But_anim.get_track_count():
-	# 	But_anim.track_get_path(track_indx)
-	# 	print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
-
-
-	# But_anim.track_set_enabled (14, false)
-	# But_anim.track_set_enabled (15, false)
-	# But_anim.track_set_enabled (16, false)
-	# But_anim.track_set_enabled (17, false)
-
-	# But_anim.remove_track (17)
-	# But_anim.remove_track (16)
-	# But_anim.remove_track (15)
-	# But_anim.remove_track (14)
-
-	# print("================")
-
-	# for track_indx in But_anim.get_track_count():
-	# 	But_anim.track_get_path(track_indx)
-	# 	print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
-
-
 	if FileAccess.file_exists("user://game.dat") == false:
 		gv.save_player_data()
 	else:
 		gv.load_player_data()	
-
 	
 	print("")  
 	print("Hero level: " + str(gv.Hero_level)) 
@@ -112,19 +77,7 @@ func _ready():
 	eyes_rnd_blink_timer.one_shot = true
 	eyes_rnd_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
 	eyes_rnd_blink_timer.start(randf_range(1.0,10.0))
-	
-	
-	# humanoid_profile = SkeletonProfileHumanoid.new()
-	# Player_skeleton = $Skeleton2D
-	# Player_skeleton.profile = humanoid_profile
-	# humanoid_profile.set_bone_name("hips", "Pelvis")
-	# humanoid_profile.set_bone_name("spine", "Spine1")
-	# humanoid_profile.set_bone_name("chest", "Spine2")
-	# humanoid_profile.set_bone_name("upper_arm_l", "LeftArm")
-	# humanoid_profile.set_bone_name("upper_arm_r", "RightArm")
-
-
-	#emit_signal("player_stats_changed", self)
+		
 	print("Hero: ready ...") 
 	
 
@@ -238,7 +191,6 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			gv.Hero_weapon.transform = get_node("Body_parts/weapon_spawn/rocket_4").transform
 			gv.Hero_weapon.scale = Vector2(3,3)		
 
-
 func load_next_weapon():
 	print(str(gv.Hero_guns.size()))
 	if gv.Hero_guns.size() > gv.Hero_current_weapon:
@@ -252,8 +204,8 @@ func load_next_weapon():
 func _physics_process(_delta):
 	gv.Hero_global_position = global_position
 	gv.Hero_local_position = position
-	if position.x < -50:
-		position.x = 0
+	if global_position.x < -850:
+		global_position.x = 0
 		gv.fsm.transition_to("Idle")
 	
 	if is_on_wall():
@@ -261,14 +213,11 @@ func _physics_process(_delta):
 	else:
 		gv.Hero_is_on_wall = false
 
-	
-
 func _process(_delta: float) -> void:
 	pass
 	
 func _on_gun_2_fire() -> void:
 	print("Hero: me shooting")
-
 		
 func _on_idle_turn(value):
 	turn = value
@@ -285,20 +234,20 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	gv.Hero_on_screen = true
 
 func _on_left_area_2d_area_entered(area:Area2D) -> void:
-	if(area.name == "Bomb2"):
+	if area.name == "Bomb2":
 		health -= 25
-		gv.fsm.transition_to("Shockwave") 	
+		gv.fsm.transition_to("Shockwave", {back_area = true}) 	
 		print("Left PlayerArea2D hit by: " + area.name) 
+
+func _on_right_area_2d_area_entered(area:Area2D) -> void:
+	if area.name == "Bomb2":
+		health -= 25
+		gv.fsm.transition_to("Shockwave", {front_area = true}) 
+		print("Right PlayerArea2D hit by: " + area.name)
 
 func _on_left_area_2d_body_entered(body:Node2D) -> void:
 	print("Left PlayerArea enter body: " + body.name) 
 
-func _on_right_area_2d_area_entered(area:Area2D) -> void:
-	if(area.name == "Bomb2"):
-		health -= 25
-		gv.fsm.transition_to("Shockwave") 
-		print("Right PlayerArea2D hit by: " + area.name)
-	
 
 func _on_right_area_2d_body_entered(body:Node2D) -> void:
 	print("Right PlayerArea enter body: " + body.name) 
@@ -308,9 +257,6 @@ func bomb_explode():
 	if health > 0:
 		health -= 25	
 	print("Hero: enemies hit me by drone big bomb!")
-
-	#ShakeScreen.shake(60,0.5)
-	
 	gv.fsm.transition_to("Hit_bomb")
 
 
@@ -328,6 +274,64 @@ func bomb_explode():
 # #################
 # # GARBAGE       #
 # #################
+
+
+
+#@onready var Foot_RR:CharacterBody2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/Sprite2D")
+#@onready var Foot_LL:Sprite2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/Sprite2D")
+
+
+#@onready var But_anim : Animation = get_node("AnimationPlayer").get_animation("walk_2")
+	
+# var humanoid_profile:SkeletonProfileHumanoid
+# var Player_skeleton:Skeleton2D
+
+# node.reparent(new_parent)
+
+
+
+
+# for track_indx in But_anim.get_track_count():
+	# 	But_anim.track_get_path(track_indx)
+	# 	print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
+
+
+	# But_anim.track_set_enabled (14, false)
+	# But_anim.track_set_enabled (15, false)
+	# But_anim.track_set_enabled (16, false)
+	# But_anim.track_set_enabled (17, false)
+
+	# But_anim.remove_track (17)
+	# But_anim.remove_track (16)
+	# But_anim.remove_track (15)
+	# But_anim.remove_track (14)
+
+	# print("================")
+
+	# for track_indx in But_anim.get_track_count():
+	# 	But_anim.track_get_path(track_indx)
+	# 	print("********: " + str(But_anim.track_get_path(track_indx)) + "  :" +  str(track_indx))	
+
+
+
+# humanoid_profile = SkeletonProfileHumanoid.new()
+	# Player_skeleton = $Skeleton2D
+	# Player_skeleton.profile = humanoid_profile
+	# humanoid_profile.set_bone_name("hips", "Pelvis")
+	# humanoid_profile.set_bone_name("spine", "Spine1")
+	# humanoid_profile.set_bone_name("chest", "Spine2")
+	# humanoid_profile.set_bone_name("upper_arm_l", "LeftArm")
+	# humanoid_profile.set_bone_name("upper_arm_r", "RightArm")
+
+
+	#emit_signal("player_stats_changed", self)
+
+
+
+
+
+
+
 
 
 # for node in $Body_parts.get_children():

@@ -1,4 +1,4 @@
-extends EnemyState
+extends RysiekState
 
 # #####################
 # # FOLLOW LEFT       #
@@ -11,7 +11,7 @@ signal first_hero_catch
 
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
-	enemy.scale.x = enemy.scale.y * 1
+	rysiek.scale.x = rysiek.scale.y * 1
 	get_node("../../AnimationPlayer").play("walk")
 	print("enemy fsm: FOLLOW LEFT")
 	pass
@@ -27,48 +27,48 @@ func physics_update(delta: float) -> void:
 		enemy.previous_state = gv.enemy_fsm.estate.name
 		estate_machine.transition_to("Pause") """
 
-	enemy.velocity.x = -enemy.speed
-	enemy.velocity.y += enemy.gravity * delta
+	rysiek.velocity.x = -rysiek.speed
+	rysiek.velocity.y += rysiek.gravity * delta
 	
-	enemy.move_and_slide()
+	rysiek.move_and_slide()
 	
 	
 	if ray_cast.is_colliding():
 		if ray_cast.get_collider().name == "Player":
-			print("enemy: ray hit Player")
-			enemy.player_collision_point = ray_cast.get_collision_point()
-			print("enemy: distance to player --> " + 
-			str(int(enemy.position.distance_to
-			(enemy.player_collision_point))))
+			print("rysiek: ray hit Player")
+			rysiek.player_collision_point = ray_cast.get_collision_point()
+			print("rysiek: distance to player --> " + 
+			str(int(rysiek.position.distance_to
+			(rysiek.player_collision_point))))
 			
-			enemy.previous_state = gv.enemy_fsm.estate.name
+			rysiek.previous_state = gv.rysiek_fsm.rstate.name
 			get_node("../../AnimationPlayer").stop()
-			if enemy.first_hero_catch == false:
+			if rysiek.first_hero_catch == false:
 				emit_signal("first_hero_catch")
-				enemy.first_hero_catch = true
-				print("enemy: First time see profesor")
+				rysiek.first_hero_catch = true
+				print("rysiek: First time see profesor")
 			else:
-				print("enemy: me see profesor")	
-			estate_machine.transition_to("idle")
+				print("rysiek: me see profesor")	
+			rstate_machine.transition_to("idle")
 						
 		else:
-			print("enemy: ray hit --> " + ray_cast.get_collider().name)	
+			print("rysiek: ray hit --> " + ray_cast.get_collider().name)	
 		
 		
 				
-	if enemy.is_on_wall():	
-		enemy.previous_state = gv.enemy_fsm.estate.name
+	if rysiek.is_on_wall():	
+		rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		get_node("../../AnimationPlayer").stop()
 		print("enemy2: stop on wall going left")
-		estate_machine.transition_to("Jump_left")		
+		rstate_machine.transition_to("Jump_left")		
 		
 		
 			
 	
 func _on_enemy_somebody_hitme() -> void:
-	if gv.enemy_fsm.estate.name != "Hit":
-		enemy.previous_state = gv.enemy_fsm.estate.name
-		estate_machine.transition_to("Hit")
+	if gv.rysiek_fsm.rstate.name != "Hit":
+		rysiek.previous_state = gv.rysiek_fsm.rstate.name
+		rstate_machine.transition_to("Hit")
 
 
 

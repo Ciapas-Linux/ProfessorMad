@@ -1,13 +1,13 @@
 [gd_scene load_steps=53 format=4 uid="uid://b76igam5emt8l"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy.gd" id="1_ea6gb"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Rysiek.gd" id="1_ea6gb"]
 [ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/Rysiek/enemy_korpus1.png" id="2_5x8kf"]
 [ext_resource type="Texture2D" uid="uid://bfl7bgmhpeggh" path="res://Assets/Enemy/Rysiek/face_3-sm.png" id="3_se1m8"]
 [ext_resource type="Texture2D" uid="uid://cdoj2usu3xuis" path="res://Assets/Enemy/Rysiek/enemy_reka_L.png" id="4_60k1i"]
 [ext_resource type="Texture2D" uid="uid://dald3r8q0a3so" path="res://Assets/Enemy/Rysiek/enemy_noga_L_2.png" id="5_wrhox"]
 [ext_resource type="Texture2D" uid="uid://chmoss01r3yrf" path="res://Assets/Enemy/Rysiek/But_1.png" id="6_06gb8"]
 [ext_resource type="Texture2D" uid="uid://b8kjn7sdrhq8w" path="res://Assets/Enemy/Rysiek/enemy_noga_P_2.png" id="7_3sjdu"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/enemy-fsm/EnemyStateMachine.gd" id="7_jy4yv"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Rysiek-fsm/RysiekStateMachine.gd" id="7_jy4yv"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/idle.gd" id="8_n4uo6"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Walk_Left.gd" id="9_i622y"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Walk_Right.gd" id="10_axbmg"]
@@ -1025,7 +1025,7 @@ height = 320.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uohuh"]
 size = Vector2(1182.61, 336)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Rysiek" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 17
 floor_stop_on_slope = false
@@ -1101,69 +1101,51 @@ z_index = 1
 position = Vector2(-5.43185, 40.5)
 shape = SubResource("CapsuleShape2D_2v0ca")
 
-[node name="EnemyStateMachine" type="Node" parent="."]
+[node name="RysiekStateMachine" type="Node" parent="."]
 script = ExtResource("7_jy4yv")
-einitial_state = NodePath("idle")
+rinitial_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="EnemyStateMachine"]
+[node name="idle" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("8_n4uo6")
 
-[node name="Walk_Left" type="Node" parent="EnemyStateMachine"]
+[node name="Walk_Left" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("9_i622y")
 
-[node name="Walk_Right" type="Node" parent="EnemyStateMachine"]
+[node name="Walk_Right" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("10_axbmg")
 
-[node name="Jump_right" type="Node" parent="EnemyStateMachine"]
+[node name="Jump_right" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("11_kd86f")
 
-[node name="Jump_left" type="Node" parent="EnemyStateMachine"]
+[node name="Jump_left" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("12_m0388")
 
-[node name="Death" type="Node" parent="EnemyStateMachine"]
+[node name="Death" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("13_aunfr")
 
-[node name="Air" type="Node" parent="EnemyStateMachine"]
+[node name="Air" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("14_86mds")
 
-[node name="Atack" type="Node" parent="EnemyStateMachine"]
+[node name="Atack" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("15_5y8fn")
 
-[node name="Hit" type="Node" parent="EnemyStateMachine"]
+[node name="Hit" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("16_xefwx")
 
-[node name="Follow_left" type="Node" parent="EnemyStateMachine"]
+[node name="Follow_left" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("17_scqo6")
 
-[node name="Release_drone" type="Node" parent="EnemyStateMachine"]
+[node name="Release_drone" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("18_0b351")
 
-[node name="Pause" type="Node" parent="EnemyStateMachine"]
+[node name="Pause" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("19_wtpt7")
 
-[node name="Reload_bomb" type="Node" parent="EnemyStateMachine"]
+[node name="Reload_bomb" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("20_ovpjw")
 
-[node name="Hit_rpg" type="Node" parent="EnemyStateMachine"]
+[node name="Hit_rpg" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("21_io7a4")
-
-[node name="snd_walk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_mcf4x")
-volume_db = 2.007
-
-[node name="snd_jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("20_12bei")
-volume_db = 3.0
-pitch_scale = 0.81
-max_distance = 3000.0
-
-[node name="snd_fall" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("21_kvf1g")
-volume_db = 8.0
-pitch_scale = 0.67
-
-[node name="snd_sit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_c3k80")
 
 [node name="Health" type="TextureProgressBar" parent="."]
 top_level = true
@@ -1195,7 +1177,6 @@ wait_time = 20.0
 script = ExtResource("29_n0x5g")
 
 [node name="PlayerCast2D" type="RayCast2D" parent="."]
-visible = false
 rotation = 1.56997
 scale = Vector2(0.738, 15)
 
@@ -1214,11 +1195,6 @@ z_index = 2
 scale = Vector2(0.246944, 0.246944)
 texture = ExtResource("29_n0dpc")
 
-[node name="snd_first_see" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("30_ukg66")
-volume_db = 8.0
-pitch_scale = 1.08
-
 [node name="EyesRange" type="Area2D" parent="."]
 visible = false
 position = Vector2(0, 115)
@@ -1231,6 +1207,38 @@ shape = SubResource("RectangleShape2D_uohuh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="CreateDrone" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -830)
+enabled = false
+zoom = Vector2(0.5, 0.5)
+
+[node name="snd_walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_mcf4x")
+volume_db = 2.007
+
+[node name="snd_jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_12bei")
+volume_db = 3.0
+pitch_scale = 0.81
+max_distance = 3000.0
+
+[node name="snd_fall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_kvf1g")
+volume_db = 8.0
+pitch_scale = 0.67
+
+[node name="snd_sit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_c3k80")
+
+[node name="snd_first_see" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_ukg66")
+volume_db = 8.0
+pitch_scale = 1.08
+
 [node name="snd_release_drone" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("31_la8ke")
 volume_db = 8.0
@@ -1239,15 +1247,6 @@ pitch_scale = 0.78
 [node name="hurt_player" type="AudioStreamPlayer2D" parent="."]
 volume_db = 5.0
 pitch_scale = 1.29
-
-[node name="CreateDrone" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -830)
-enabled = false
-zoom = Vector2(0.5, 0.5)
 
 [node name="snd_rpg_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_bik5d")
@@ -1268,14 +1267,14 @@ stream = ExtResource("38_8dwaa")
 volume_db = 2.0
 pitch_scale = 1.4
 
-[connection signal="somebody_hitme" from="." to="EnemyStateMachine/idle" method="_on_enemy_somebody_hitme"]
-[connection signal="somebody_hitme" from="." to="EnemyStateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]
-[connection signal="somebody_hitme" from="." to="EnemyStateMachine/Hit" method="_on_enemy_somebody_hitme"]
-[connection signal="somebody_hitme" from="." to="EnemyStateMachine/Follow_left" method="_on_enemy_somebody_hitme"]
-[connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Hit" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Release_drone" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Reload_bomb" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="EnemyStateMachine/Hit_rpg" method="_on_animation_player_animation_finished"]
+[connection signal="somebody_hitme" from="." to="RysiekStateMachine/idle" method="_on_enemy_somebody_hitme"]
+[connection signal="somebody_hitme" from="." to="RysiekStateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]
+[connection signal="somebody_hitme" from="." to="RysiekStateMachine/Hit" method="_on_enemy_somebody_hitme"]
+[connection signal="somebody_hitme" from="." to="RysiekStateMachine/Follow_left" method="_on_enemy_somebody_hitme"]
+[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Hit" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Release_drone" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Reload_bomb" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Hit_rpg" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Recover_Health" to="." method="_on_recover_health_timeout"]
 [connection signal="body_entered" from="EyesRange" to="." method="_on_eyes_range_body_entered"]
 [connection signal="body_exited" from="EyesRange" to="." method="_on_eyes_range_body_exited"]

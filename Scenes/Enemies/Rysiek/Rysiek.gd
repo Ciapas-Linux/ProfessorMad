@@ -3,7 +3,7 @@
 # # enemy     .SCRIPT #
 # #####################
 
-class_name Enemy
+class_name Rysiek
 extends CharacterBody2D
 
 # Horizontal speed in pixels per second.
@@ -38,7 +38,8 @@ var chat_instance:Node2D
 var screen_size : Vector2
 var gun_fire:bool = false
 
-var direction:String = "L"
+#var direction:String = "L"
+var rysiek_direction:Vector2 = Vector2.LEFT
 var move_left:bool = false
 var move_right:bool = false
 
@@ -63,7 +64,7 @@ var first_hero_catch:bool = false
 
 var head:Node
 
-var collision:KinematicCollision2D 
+#var collision:KinematicCollision2D 
 
 signal somebody_hitme
 signal enemy2_death
@@ -80,7 +81,7 @@ func _ready():
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	
-	gv.enemy_fsm = $EnemyStateMachine
+	gv.rysiek_fsm = $RysiekStateMachine
 	
 	#drone = get_parent().get_node("Flying_drone")
 	screen_size = get_viewport_rect().size
@@ -90,7 +91,7 @@ func _ready():
 	gv.Enemy_position = position
 	gv.Enemy_global_position = global_position
 	scale.x = scale.y * 1
-	direction = "L"
+	rysiek_direction = Vector2.LEFT
 	print("Enemy: ready ...")
 	print("Enemy: distance to Hero: " + str(int(position.distance_to(gv.Hero_global_position))))
 	#print("Enemy state:" + gv.enemy_fsm.estate.name)
@@ -139,8 +140,8 @@ func _on_create_drone_timeout():
 	Drone2.connect('on_boss_position', _drone_on_me_position)
 	Drone2.connect('on_kill', _drone_on_kill)
 	Drone2.visible = true
-	previous_state = gv.enemy_fsm.estate.name
-	gv.enemy_fsm.transition_to("Release_drone")
+	previous_state = gv.rysiek_fsm.rstate.name
+	gv.rysiek_fsm.transition_to("Release_drone")
 	print("Drone2: ready " + Drone2.name)
 
 func _drone_on_kill():
@@ -216,9 +217,9 @@ func hit():
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
 		
-	if direction == "L":
+	if rysiek_direction == Vector2.LEFT:
 		position.x += 30
-	if direction == "R":
+	if rysiek_direction == Vector2.RIGHT:
 		position.x -= 30	
 	if health > 0:
 		health -= 10 # DAMAGE RATE   

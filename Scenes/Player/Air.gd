@@ -1,6 +1,6 @@
 extends PlayerState
 
-# 🌟🌟🌟 AIR STATE 🌟🌟🌟
+
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
@@ -27,14 +27,15 @@ func enter(msg := {}) -> void:
 	delay_timer.connect("timeout", _on_timer_timeout)
 
 	if msg.has("do_jump"):
-		anim_player.stop()
-		anim_player.play("jump_start")
+		#anim_player.stop()
 		get_node("../../snd_walk").stop()
 		current_state = START_MOVE_UP
+		anim_player.play("jump_start")
+		#player.velocity.y = -player.jump_impulse
 		#footR_CollisionShape2D.set_deferred("disabled", true)
-	else:
-		if not player.is_on_floor():
-			current_state = FALL_DOWN
+	# else:
+	# 	if not player.is_on_floor():
+	# 		current_state = FALL_DOWN
 
 func _on_timer_timeout():
 	#footR_CollisionShape2D.set_deferred("disabled", false)
@@ -42,10 +43,9 @@ func _on_timer_timeout():
 	start_check_floor = true		
 
 func physics_update(delta: float) -> void:
-	
 	match current_state:
-		
 		START_MOVE_UP:
+			#print("Player: Air --> START_MOVE_UP")
 			pass
 		
 		MOVE_UP:
@@ -57,8 +57,12 @@ func physics_update(delta: float) -> void:
 				# gv.Hero_direction = Vector2.LEFT
 				player.velocity.x = -player.speed	
 			
+			
 			player.velocity.y += player.gravity * delta
 			player.move_and_slide()
+
+			#print("Player: Air --> MOVE_UP")
+			
 			if start_check_floor == true:
 				check_touch_down()
 		
@@ -74,30 +78,25 @@ func physics_update(delta: float) -> void:
 			player.velocity.y += player.gravity * delta
 			player.move_and_slide()
 			check_touch_down()
+			#print("Player: Air --> FALL_DOWN")
 			
-							
-	
-func check_touch_down():
-	if player.is_on_floor():
-				if gv.Hero_is_paused == true:
-					state_machine.transition_to("Idle")
-					return	
-				anim_player.play("touch_down")
-				state_machine.transition_to("Idle")
-				snd_fall.play()
+				
+func check_touch_down() -> void:
+	if player.is_on_floor() == true:
+		anim_player.play("touch_down")
+		state_machine.transition_to("Idle")
+		snd_fall.play()
 
-func _on_animation_player_2_animation_finished(anim_name:StringName):
+func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "jump_start":
 		get_node("../../snd_jump").play()
-		anim_player.stop()
 		anim_player.play("jump")
 		gv.Hero_is_on_floor = false
-		print("Player: Jump")
-		player.velocity.y = -player.jump_impulse
 		current_state = MOVE_UP
-		#footR_CollisionShape2D.set_deferred("disabled", true)
-		#footL_CollisionShape2D.set_deferred("disabled", true)
+		player.velocity.y = -player.jump_impulse
 		player.Foot_R.rotation = deg_to_rad(85)
 		player.Foot_L.rotation = deg_to_rad(85)
+		#footR_CollisionShape2D.set_deferred("disabled", true)
+		#footL_CollisionShape2D.set_deferred("disabled", true)
 		delay_timer.start()
-
+		print("Player: Jump")

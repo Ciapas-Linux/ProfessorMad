@@ -20,6 +20,7 @@ func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
+	
 	if anim_player.current_animation != "touch_down":
 		anim_player.play("idle")
 
@@ -27,7 +28,7 @@ func enter(_msg := {}) -> void:
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
 
-	# print("******** Player enter idle fsm ")
+	print("Player: enter idle fsm")
 
 func _on_animation_player_2_animation_finished(anim_name:StringName):
 	if anim_name == "touch_down":

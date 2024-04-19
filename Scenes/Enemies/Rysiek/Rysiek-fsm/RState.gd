@@ -1,9 +1,9 @@
 # Virtual base class for all states.
-class_name EState
+class_name RState
 extends Node
 
 # We store a reference to the state machine to call its `transition_to()` method directly.
-var estate_machine = null
+var rstate_machine = null
 
 
 # All methods below are virtual and called by the state machine.

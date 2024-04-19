@@ -11,7 +11,7 @@ func enter(msg := {}) -> void:
 		player.velocity.y = - player.jump_impulse_run
 		get_node("../../snd_walk").stop()
 		get_node("../../snd_jump").play()
-		get_node("../../AnimationPlayer").stop()
+		#get_node("../../AnimationPlayer").stop()
 		get_node("../../AnimationPlayer").play("jump")
 		gv.Hero_is_on_floor = false
 		player.Foot_R.rotation = deg_to_rad(85)

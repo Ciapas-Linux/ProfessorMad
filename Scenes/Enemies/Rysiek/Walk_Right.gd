@@ -1,4 +1,4 @@
-extends EnemyState
+extends RysiekState
 
 # #####################
 # # WALK RIGHT.SCRIPT #
@@ -11,28 +11,28 @@ var stop:bool = false
 
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
-	enemy.scale.x = enemy.scale.y * -1
-	enemy.direction = "R"
+	rysiek.scale.x = rysiek.scale.y * -1
+	rysiek.rysiek_direction = Vector2.RIGHT
 	get_node("../../AnimationPlayer").play("walk")
 	#timer = Timer.new()
 	#add_child(timer)
 	#timer.set_one_shot(true)
 	#timer.set_wait_time(1)
 	#timer.connect("timeout",  _timer_timeout)
-	print("enemy fsm: WALK RIGHT")
+	print("rysiek fsm: WALK RIGHT")
 	
 func _timer_timeout():
 	pass
 
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:
-	enemy.velocity.x = enemy.speed
-	enemy.velocity.y += enemy.gravity * delta
-	player_distance = enemy.global_position.distance_to(gv.Hero_global_position)
+	rysiek.velocity.x = rysiek.speed
+	rysiek.velocity.y += rysiek.gravity * delta
+	player_distance = rysiek.global_position.distance_to(gv.Hero_global_position)
 
 	# GAME PAUSE:
 	""" if gv.Game_pause == true:
-		enemy.previous_state = gv.enemy_fsm.estate.name
+		rysiek.previous_state = gv.enemy_fsm.estate.name
 		estate_machine.transition_to("Pause") """
 	
 	# print("player distance: " + str(int(player_distance)))
@@ -45,37 +45,37 @@ func physics_update(delta: float) -> void:
 	#if gv.fsm.state.name == "Idle" or gv.fsm.state.name == "target_up" or gv.fsm.state.name == "target_down":
 		#timer.start()
 		#if gv.Enemy_direction == Vector2.RIGHT:
-		#if is_equal_approx(player_distance, enemy.contact_distance):
-	if player_distance > enemy.contact_distance + 500:
-		# if gv.Hero_pos_x + enemy.change_direction_distance < enemy.position.x:
-		# 	enemy.scale.x = enemy.scale.y * 1
-		# 	enemy.direction = "L"
-		# if gv.Hero_pos_x - enemy.change_direction_distance > enemy.position.x:
-		# 	enemy.scale.x = enemy.scale.y * -1
-		# 	enemy.direction = "R"
+		#if is_equal_approx(player_distance, rysiek.contact_distance):
+	if player_distance > rysiek.contact_distance + 500:
+		# if gv.Hero_pos_x + rysiek.change_direction_distance < rysiek.position.x:
+		# 	rysiek.scale.x = rysiek.scale.y * 1
+		# 	rysiek.direction = "L"
+		# if gv.Hero_pos_x - rysiek.change_direction_distance > rysiek.position.x:
+		# 	rysiek.scale.x = rysiek.scale.y * -1
+		# 	rysiek.direction = "R"
 
 		get_node("../../AnimationPlayer").stop()
-		enemy.previous_state = gv.enemy_fsm.estate.name
-		estate_machine.transition_to("idle")	
+		rysiek.previous_state = gv.enemy_fsm.estate.name
+		rstate_machine.transition_to("idle")	
 
 
 			
-	enemy.move_and_slide()		
+	rysiek.move_and_slide()		
 
-	if enemy.is_on_wall():
-		enemy.previous_state = gv.enemy_fsm.estate.name
+	if rysiek.is_on_wall():
+		rysiek.previous_state = gv.enemy_fsm.estate.name
 		get_node("../../AnimationPlayer").stop()
 		print("enemy2: stop on wall going right")
-		estate_machine.transition_to("Jump_right")
+		rstate_machine.transition_to("Jump_right")
 
-	if enemy.is_on_floor() == false:
-		enemy.previous_state = gv.enemy_fsm.estate.name
-		estate_machine.transition_to("Air")			
+	if rysiek.is_on_floor() == false:
+		rysiek.previous_state = gv.enemy_fsm.estate.name
+		rstate_machine.transition_to("Air")			
 
 func _on_enemy_somebody_hitme() -> void:
 	if gv.enemy_fsm.estate.name != "Hit":
-		enemy.previous_state = gv.enemy_fsm.estate.name
-	estate_machine.transition_to("Hit")
+		rysiek.previous_state = gv.enemy_fsm.estate.name
+	rstate_machine.transition_to("Hit")
 	
 	
 	
@@ -87,41 +87,41 @@ func _on_enemy_somebody_hitme() -> void:
 	
 	
 #	if stop == true:
-#		if player_distance >= enemy.contact_distance:
-#			if gv.Hero_pos_x + enemy.change_direction_distance < enemy.position.x:
-#				enemy.scale.x = enemy.scale.y * 1
-#			if gv.Hero_pos_x - enemy.change_direction_distance > enemy.position.x:
-#				enemy.scale.x = enemy.scale.y * -1
+#		if player_distance >= rysiek.contact_distance:
+#			if gv.Hero_pos_x + rysiek.change_direction_distance < rysiek.position.x:
+#				rysiek.scale.x = rysiek.scale.y * 1
+#			if gv.Hero_pos_x - rysiek.change_direction_distance > rysiek.position.x:
+#				rysiek.scale.x = rysiek.scale.y * -1
 #
 #			stop = false
 #			get_node("../../AnimationPlayer").stop()
-#			enemy.previous_state = gv.enemy_fsm.estate.name
+#			rysiek.previous_state = gv.enemy_fsm.estate.name
 #			estate_machine.transition_to("idle")
 		
 	
 	
 
-# print(enemy.global_position.distance_to(gv.Hero_global_position))
-# print(enemy.global_position.distance_to(enemy.player_collision_point))
+# print(rysiek.global_position.distance_to(gv.Hero_global_position))
+# print(rysiek.global_position.distance_to(rysiek.player_collision_point))
 	
 
 # print(randi_range(50,2800))
 
-#if enemy.global_position.distance_to(gv.Hero_global_position)	> enemy.contact_distance:
+#if rysiek.global_position.distance_to(gv.Hero_global_position)	> rysiek.contact_distance:
 		
 
 #stop_delay += 1
 		
 #	if ray_cast.is_colliding():
 #		if ray_cast.get_collider().name == "Player":
-#			enemy.player_collision_point = ray_cast.get_collision_point()
+#			rysiek.player_collision_point = ray_cast.get_collision_point()
 #
-#			# print("enemy: ray hit Player")
-#			# print("enemy: distance to player --> " + 
-#			# str(int(enemy.position.distance_to
-#			# (enemy.player_collision_point))))
+#			# print("rysiek: ray hit Player")
+#			# print("rysiek: distance to player --> " + 
+#			# str(int(rysiek.position.distance_to
+#			# (rysiek.player_collision_point))))
 #
-#			if enemy.position.distance_to(enemy.player_collision_point) > enemy.contact_distance + 100:
-#				enemy.previous_state = gv.enemy_fsm.estate.name
+#			if rysiek.position.distance_to(rysiek.player_collision_point) > rysiek.contact_distance + 100:
+#				rysiek.previous_state = gv.enemy_fsm.estate.name
 #				get_node("../../AnimationPlayer").stop()
 #				estate_machine.transition_to("idle")

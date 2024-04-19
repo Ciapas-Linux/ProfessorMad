@@ -1,4 +1,4 @@
-extends EnemyState
+extends RysiekState
 
 # ####################
 # # PAUSE    .SCRIPT #
@@ -12,6 +12,6 @@ func physics_update(delta: float) -> void:
 	pass
 
 	if gv.Game_pause == false:
-		#enemy.previous_state = gv.enemy_fsm.estate.name
-		estate_machine.transition_to(enemy.previous_state)
+		#rysiek.previous_state = gv.rysiek_fsm.rstate.name
+		rstate_machine.transition_to(rysiek.previous_state)
 		

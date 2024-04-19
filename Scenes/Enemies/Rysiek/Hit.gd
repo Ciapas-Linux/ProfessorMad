@@ -1,4 +1,4 @@
-extends EnemyState
+extends RysiekState
 
 # ####################
 # # HIT       SCRIPT #
@@ -14,7 +14,7 @@ func enter(_msg := {}) -> void:
 	#if get_node("../../Snd_hit1").playing != true:
 			#get_node("../../Snd_hit1").play()
 	
-	snd_player.stream = enemy.hurt_sounds[randi() % len(enemy.hurt_sounds)]
+	snd_player.stream = rysiek.hurt_sounds[randi() % len(rysiek.hurt_sounds)]
 	if snd_player.playing != true:
 		snd_player.play()		
 	
@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hitme":
 		#enemy.previous_state = gv.fsm.state.name
-		estate_machine.transition_to(enemy.previous_state)
+		rstate_machine.transition_to(rysiek.previous_state)
 		#print(enemy.previous_state)
 
 

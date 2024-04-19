@@ -1,4 +1,4 @@
-extends EnemyState
+extends RysiekState
 
 # ####################
 # # DEATH .SCRIPT #

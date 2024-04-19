@@ -74,7 +74,7 @@ var mouse_enter_node:Node2D
 
 
 # ENEMY FIRST BOSS WREDNY RYSIEK
-@onready var enemy_fsm:EnemyStateMachine
+@onready var rysiek_fsm:RysiekStateMachine
 var Enemy_position:Vector2
 var Enemy_global_position:Vector2
 var Enemy_direction:Vector2 = Vector2.RIGHT
