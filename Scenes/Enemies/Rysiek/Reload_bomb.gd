@@ -16,5 +16,5 @@ func enter(_msg := {}) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "reload_bomb":
-		rysiek.previous_state = gv.enemy_fsm.estate.name
+		rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("idle")

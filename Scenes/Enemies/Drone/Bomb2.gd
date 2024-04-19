@@ -109,7 +109,7 @@ func _on_area_entered(area):
 # if bomb hit Body2D
 func _on_body_entered(body):
 	print("Bomb hit Body: " + body.name)
-	if (body.name == "Enemy"):
+	if (body.name == "Rysiek"):
 		return
 	bomb_hit_target = true
 	speed = randi_range(500,600)

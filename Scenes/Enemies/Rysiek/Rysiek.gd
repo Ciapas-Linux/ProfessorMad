@@ -159,9 +159,9 @@ func _drone_on_kill():
 	
 
 func _drone_on_me_position():
-	if (gv.enemy_fsm.estate.name != "Air") and (gv.enemy_fsm.estate.name and "Jump_right") and (gv.enemy_fsm.estate.name != "Jump_left"): 
-		previous_state = gv.enemy_fsm.estate.name
-		gv.enemy_fsm.transition_to("Reload_bomb")
+	if (gv.rysiek_fsm.rstate.name != "Air") and (gv.rysiek_fsm.rstate.name and "Jump_right") and (gv.rysiek_fsm.rstate.name != "Jump_left"): 
+		previous_state = gv.rysiek_fsm.rstate.name
+		gv.rysiek_fsm.transition_to("Reload_bomb")
 		#velocity = Vector2.ZERO
 		#get_node("../../AnimationPlayer").stop()
 		#get_node("../../AnimationPlayer").play("release_drone")
@@ -199,7 +199,7 @@ func rpg_hit():
 	head.texture = Head_death_img
 	get_tree().current_scene.add_child(_particle)
 	health = 0
-	gv.enemy_fsm.transition_to("Hit_rpg")
+	gv.rysiek_fsm.transition_to("Hit_rpg")
 	#emit_signal("enemy2_death")
 	#queue_free() 
 
