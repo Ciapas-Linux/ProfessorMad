@@ -10,19 +10,19 @@ class_name Hero
 extends CharacterBody2D
 
 # Horizontal walk speed in pixels per second.
-@export var speed := 250.0
+@export var speed :float = 250.0
 
 # run speed
-@export var speed_run := 600.0
+@export var speed_run :float = 600.0
 
 # run jump impulse
-@export var jump_impulse_run := 1700.0
+@export var jump_impulse_run :float = 1700.0
 
 # Vertical acceleration in pixel per second squared.
-@export var gravity := 2000.0
+@export var gravity :float = 2000.0
 
 # Vertical speed applied when jumping.
-@export var jump_impulse := 1200.0
+@export var jump_impulse : float = 1200.0
 
 var screen_size : Vector2
 var turn:bool = true

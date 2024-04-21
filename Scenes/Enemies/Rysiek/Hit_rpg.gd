@@ -17,5 +17,5 @@ func physics_update(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "Hit_rpg":
 		await get_tree().create_timer(1.0).timeout
-		gv.enemy_fsm.transition_to("idle")
+		gv.rysiek_fsm.transition_to("idle")
 	

@@ -112,8 +112,8 @@ func physics_update(delta: float) -> void:
 
 	
 func _on_enemy_somebody_hitme() -> void:
-	if gv.enemy_fsm.estate.name != "Hit":
-		rysiek.previous_state = gv.enemy_fsm.estate.name
+	if gv.rysiek_fsm.rstate.name != "Hit":
+		rysiek.previous_state = gv.rysiek_fsm.rstate.name
 	rstate_machine.transition_to("Hit")
 		
 
