@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=53 format=4 uid="uid://dj6r8726lv3r6"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
@@ -28,10 +28,15 @@
 [ext_resource type="Script" path="res://Scenes/HUD/floor.gd" id="22_4oawl"]
 [ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="23_vobvt"]
 [ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="25_a4niq"]
+[ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="27_lex4l"]
+[ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="27_rk3k2"]
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="27_weviq"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="28_ibdmt"]
+[ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="28_sywva"]
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="29_8ah6a"]
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="29_8cr16"]
+[ext_resource type="Texture2D" uid="uid://bhga7y1xb2xbx" path="res://Assets/UI/panel_1.png" id="30_hnuyw"]
+[ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="31_xcmld"]
 [ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="33_fhpux"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="35_sfvns"]
@@ -171,7 +176,7 @@ texture = ExtResource("10_037ni")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
-[node name="maluch" parent="." instance=ExtResource("15_g3kcy")]
+[node name="maluch_seledyn" parent="." instance=ExtResource("15_g3kcy")]
 z_index = -1
 position = Vector2(1012, 463)
 speed = null
@@ -221,11 +226,15 @@ scale = Vector2(1.23669, 1.23669)
 text = "0"
 script = ExtResource("20_xawl8")
 
+[node name="Panel_1" type="Sprite2D" parent="HUD"]
+position = Vector2(1764, 75)
+texture = ExtResource("30_hnuyw")
+
 [node name="pos" type="Label" parent="HUD"]
-offset_left = 1776.0
-offset_top = 26.0
-offset_right = 1816.0
-offset_bottom = 52.0
+offset_left = 1712.0
+offset_top = 34.0
+offset_right = 1767.0
+offset_bottom = 69.0
 scale = Vector2(1, 0.985)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -233,10 +242,10 @@ text = "x:  y:"
 script = ExtResource("14_odo0c")
 
 [node name="state" type="Label" parent="HUD"]
-offset_left = 1776.0
-offset_top = 6.0
-offset_right = 1830.0
-offset_bottom = 32.0
+offset_left = 1712.0
+offset_top = 14.0
+offset_right = 1776.0
+offset_bottom = 42.0
 scale = Vector2(0.873, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -244,10 +253,10 @@ text = "STATE:"
 script = ExtResource("15_rddg4")
 
 [node name="Direction" type="Label" parent="HUD"]
-offset_left = 1775.0
-offset_top = 55.0
-offset_right = 1815.0
-offset_bottom = 83.0
+offset_left = 1711.0
+offset_top = 63.0
+offset_right = 1751.0
+offset_bottom = 91.0
 scale = Vector2(1, 0.931)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -255,20 +264,20 @@ text = "Dir:"
 script = ExtResource("21_awip0")
 
 [node name="floor" type="Label" parent="HUD"]
-offset_left = 1775.0
-offset_top = 76.0
-offset_right = 1822.0
-offset_bottom = 102.0
+offset_left = 1711.0
+offset_top = 84.0
+offset_right = 1766.0
+offset_bottom = 112.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Floor:"
 script = ExtResource("22_4oawl")
 
 [node name="wall" type="Label" parent="HUD"]
-offset_left = 1776.0
-offset_top = 97.0
-offset_right = 1824.0
-offset_bottom = 125.0
+offset_left = 1712.0
+offset_top = 105.0
+offset_right = 1760.0
+offset_bottom = 133.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Wall:"
@@ -288,6 +297,19 @@ texture = ExtResource("29_8ah6a")
 position = Vector2(19, 90)
 scale = Vector2(0.359971, 0.359971)
 texture = ExtResource("25_a4niq")
+
+[node name="Quit" type="TextureButton" parent="HUD"]
+offset_left = 1620.0
+offset_top = 21.0
+offset_right = 1720.0
+offset_bottom = 71.0
+texture_normal = ExtResource("27_lex4l")
+texture_pressed = ExtResource("28_sywva")
+texture_hover = ExtResource("27_rk3k2")
+
+[node name="snd_scifi_bleep" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("31_xcmld")
+pitch_scale = 0.92
 
 [node name="PlayerEnemyRay" type="Node2D" parent="."]
 visible = false
@@ -366,7 +388,7 @@ position = Vector2(556, 651)
 position = Vector2(7862, 623)
 scale = Vector2(0.5, 0.5)
 
-[node name="Maluch3" parent="." instance=ExtResource("36_hqr6o")]
+[node name="Maluch_fract_red" parent="." instance=ExtResource("36_hqr6o")]
 z_index = 1
 position = Vector2(7046, 548)
 
@@ -384,3 +406,6 @@ scale = Vector2(1.8, 1.8)
 [node name="Kibel1" parent="." instance=ExtResource("44_3xj1c")]
 position = Vector2(17064, 316)
 scale = Vector2(1.6, 1.6)
+
+[connection signal="pressed" from="HUD/Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="HUD/snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

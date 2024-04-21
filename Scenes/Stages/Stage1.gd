@@ -26,7 +26,12 @@ func _ready():
 #func _process(delta):
 	#pass
 	
+func _on_quit_pressed() -> void:
+	get_node("HUD/snd_scifi_bleep").play()
+	
 
+func _on_snd_scifi_bleep_finished() -> void:
+	get_tree().quit()
 
 
 
@@ -55,3 +60,7 @@ func _ready():
 # Scripts are unnamed classes already by default
 # (unless named with class_name).
 	
+
+
+
+

@@ -270,7 +270,6 @@ func bomb_explode():
 
 
 
-
 # #################
 # # GARBAGE       #
 # #################
@@ -465,6 +464,8 @@ func bomb_explode():
 		#weapon.global_rotation += 0.01
 		#print_debug(mpath)  
 		#weapon.global_rotation = -0.01 + (mpath	*0.01)
+
+
 
 
 
