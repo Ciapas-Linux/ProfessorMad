@@ -10,6 +10,8 @@ signal early_hit
 
 var mouse_enter:bool = false
 
+@onready var tween: Tween
+
 func _ready():
 	#$BulletHits.input_pickable = true
 	self.input_pickable = true
@@ -21,6 +23,9 @@ func _ready():
 	position.x = drone.global_position.x
 	position.y = drone.global_position.y + 50
 	$Explosion.stop()
+	$Shock_wave.scale = Vector2(0.1, 0.1)
+	$Shock_wave.visible = false
+	$Explosion.scale = Vector2(0.1, 0.1)
 	$Explosion.visible = false
 	$BombSprite.visible = true
 	$AnimationPlayer.play("rotate")
@@ -40,6 +45,26 @@ func _physics_process(delta):
 			position += transform.y * speed * delta
 							
 	
+func shock_wave():
+	$Shock_wave.visible = true
+	tween = get_tree().create_tween()
+	tween.connect("finished", on_tween_finished)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_parallel(true)
+
+	tween.tween_property($Shock_wave, "scale", Vector2(2.5,2.5), 0.6)
+	tween.tween_property($Shock_wave, "self_modulate", Color(1, 0, 0, 0), 1)
+
+	tween.tween_property($Explosion, "scale", Vector2(4.2,4.2), 0.6)
+	tween.tween_property($Explosion, "global_position", Vector2(global_position.x, global_position.y - 200), 1)
+	
+
+
+func on_tween_finished():
+	$Shock_wave.visible = false
+	
+
 func _unhandled_input(event):
 	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
@@ -70,6 +95,7 @@ func explode():
 	$Explosion.visible = true
 	$AnimationPlayer.stop(true)
 	$Explosion.play("explode")
+	shock_wave()
 	$snd_explode.play()
 	gv.Cam1.ScreenShake(30,0.5)
 	
@@ -133,6 +159,7 @@ func _on_bullet_hits_area_entered(area: Area2D) -> void:
 	
 	
 func _on_explosion_animation_finished() -> void:
+	$Shock_wave.visible = false
 	$snd_fall.stop()
 	queue_free()
 

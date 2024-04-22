@@ -4237,7 +4237,7 @@ offset = Vector2(7.82233, 62.8831)
 [node name="Hand_L" type="Sprite2D" parent="Body_parts"]
 position = Vector2(126.204, -185.614)
 rotation = -1.00082
-scale = Vector2(0.767897, 0.767897)
+scale = Vector2(0.767896, 0.767896)
 texture = ExtResource("6_sh2oj")
 offset = Vector2(43.5112, 80.9778)
 
@@ -4265,7 +4265,7 @@ offset = Vector2(46.9803, 25.5456)
 
 [node name="Calf_L" type="Sprite2D" parent="Body_parts/Leg_L/Foot_L"]
 position = Vector2(-0.139597, -119.333)
-rotation = 0.00341918
+rotation = 0.00341919
 scale = Vector2(0.45456, 0.45456)
 texture = ExtResource("12_55wsn")
 offset = Vector2(-1, 133)
@@ -4294,13 +4294,13 @@ offset = Vector2(-0.104025, 1.08356)
 [node name="Body" type="Sprite2D" parent="Body_parts"]
 position = Vector2(-38, -39.0007)
 rotation = 0.160401
-scale = Vector2(0.999813, 0.999813)
+scale = Vector2(0.999812, 0.999812)
 texture = ExtResource("2_81kcy")
 offset = Vector2(0, -147)
 
 [node name="Arm_R" type="Sprite2D" parent="Body_parts"]
 z_index = 1
-position = Vector2(-29.2564, -274.585)
+position = Vector2(-29.2564, -274.584)
 rotation = 0.149461
 scale = Vector2(0.799865, 0.799865)
 texture = ExtResource("2_a310c")
@@ -4314,14 +4314,14 @@ texture = ExtResource("8_3wmc7")
 offset = Vector2(58.5516, 32.5195)
 
 [node name="ForeArm_R" type="Sprite2D" parent="Body_parts/Arm_R"]
-position = Vector2(8.99152, 147.35)
+position = Vector2(8.99151, 147.35)
 rotation = -0.87154
 scale = Vector2(0.800015, 0.800015)
 texture = ExtResource("4_5bscy")
 offset = Vector2(-1.67987, 86.6881)
 
 [node name="Head" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-15.4657, -347.302)
+position = Vector2(-15.4657, -347.301)
 rotation = 0.423203
 scale = Vector2(2.49961, 2.49961)
 texture = ExtResource("10_udm5j")
@@ -4626,7 +4626,7 @@ collision_mask = 2
 
 [node name="footR_CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-80.3696, 282.296)
-rotation = -0.00152841
+rotation = -0.0015284
 scale = Vector2(1.53971, 1.53971)
 shape = SubResource("CircleShape2D_wf041")
 disabled = true
