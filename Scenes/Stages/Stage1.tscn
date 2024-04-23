@@ -378,7 +378,6 @@ position = Vector2(10954, 529)
 
 [node name="Polonez1" parent="." instance=ExtResource("9_gev1q")]
 position = Vector2(5733, 526)
-hit_count = null
 
 [node name="item-Ak-47" parent="." instance=ExtResource("38_w2bgm")]
 visible = false
