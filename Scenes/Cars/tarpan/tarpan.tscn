@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://cdnlw84tvum1f"]
+[gd_scene load_steps=19 format=3 uid="uid://cdnlw84tvum1f"]
 
-[ext_resource type="Texture2D" uid="uid://brc7g048s42vx" path="res://Assets/Objects/cars/tarpan/tarpan_body_1.png" id="1_st4i1"]
+[ext_resource type="Texture2D" uid="uid://brc7g048s42vx" path="res://Assets/Cars/tarpan/tarpan_body_1.png" id="1_st4i1"]
 [ext_resource type="Script" path="res://Scenes/Cars/tarpan/tarpan.gd" id="1_vsk2w"]
-[ext_resource type="Texture2D" uid="uid://dvo75n5mtdqeg" path="res://Assets/Objects/cars/tarpan/tarpan_kolo.png" id="2_uo871"]
+[ext_resource type="Texture2D" uid="uid://dvo75n5mtdqeg" path="res://Assets/Cars/tarpan/tarpan_kolo.png" id="2_uo871"]
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="3_s0o2o"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="5_vlf8f"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="6_eq1qn"]

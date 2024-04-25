@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://b76igam5emt8l"]
+[gd_scene load_steps=53 format=3 uid="uid://b76igam5emt8l"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Rysiek.gd" id="1_ea6gb"]
 [ext_resource type="Texture2D" uid="uid://cn3qgdl45513k" path="res://Assets/Enemy/Rysiek/enemy_korpus1.png" id="2_5x8kf"]

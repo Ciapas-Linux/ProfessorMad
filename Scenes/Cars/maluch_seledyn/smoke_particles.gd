@@ -23,9 +23,9 @@ func _physics_process(_delta) -> void:
 func _process_on_state_stop() -> void:
 		pass
 	
-func _process_on_state_move_right(delta: float) -> void:
+func _process_on_state_move_right(_delta: float) -> void:
 		pass
 
-func _process_on_state_move_left(delta: float) -> void:
+func _process_on_state_move_left(_delta: float) -> void:
 		pass
 			

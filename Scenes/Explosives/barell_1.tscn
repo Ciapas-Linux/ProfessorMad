@@ -245,7 +245,6 @@ text = "0"
 stream = ExtResource("6_idltf")
 volume_db = 2.0
 pitch_scale = 1.4
-parameters/looping = null
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

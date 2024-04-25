@@ -4,7 +4,7 @@ extends RigidBody2D
 
 @onready var tween: Tween
 
-var hit_texture:CompressedTexture2D = preload("res://Assets/Objects/cars/polonez_red/polonez1_hit.png")
+var hit_texture:CompressedTexture2D = preload("res://Assets/Cars/polonez_red/polonez1_hit.png")
 var timer: Timer
 
 

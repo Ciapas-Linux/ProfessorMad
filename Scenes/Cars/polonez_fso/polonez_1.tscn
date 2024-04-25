@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://drddobovkd13n"]
+[gd_scene load_steps=7 format=3 uid="uid://drddobovkd13n"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/polonez_fso/polonez_1.gd" id="1_5f680"]
-[ext_resource type="Texture2D" uid="uid://dssc8fnnc4mtn" path="res://Assets/Objects/cars/polonez_red/polonez1.png" id="1_ia8tm"]
+[ext_resource type="Texture2D" uid="uid://dssc8fnnc4mtn" path="res://Assets/Cars/polonez_red/polonez1.png" id="1_ia8tm"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="3_p6sby"]
 [ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="4_8hgn6"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="6_wjsii"]
@@ -11,7 +11,9 @@
 z_index = 3
 collision_layer = 2
 collision_mask = 31
+mass = 1000.0
 script = ExtResource("1_5f680")
+hit_count = null
 
 [node name="object_spr" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

@@ -107,6 +107,7 @@ func rpg_hit():
 	tween.tween_property($object_spr, "global_position", Vector2(global_position.x + randf_range(-300.0,400.0), global_position.y - randf_range(300.0,400.0)), 1.2)
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 2.1)
 	$object_spr.texture = Barrel_hit_tex
+	gv.Cam1.ScreenShake(30, 0.5)
 	print("Coin Barell: enemies hit me by rpg!")
 
 func bomb_explode():
@@ -124,6 +125,7 @@ func bomb_explode():
 	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 165), 0.7)
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
 	$object_spr.texture = Barrel_hit_tex
+	gv.Cam1.ScreenShake(30, 0.5)
 	print("Coin Barell: enemies hit me by drone big bomb!")
 
 func _on_explosion_spr_animation_finished() -> void:

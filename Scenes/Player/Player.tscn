@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://c44bp5cutt8em"]
+[gd_scene load_steps=76 format=3 uid="uid://c44bp5cutt8em"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_qy254"]
 [ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="2_81kcy"]

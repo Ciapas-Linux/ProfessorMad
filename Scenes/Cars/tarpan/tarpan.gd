@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 @export var hit_count:int = 12
 @export var speed:float = 100
-#@export var Gravity:float = 700.0
+@export var Gravity:float = 700.0
 @onready var tween: Tween
 var local_cursor_position:Vector2
 var player_distance:float
@@ -20,7 +20,7 @@ const STOP: int = 2
 var mouse_enter:bool = false
 var current_state : int = MOVE_LEFT
 
-var particles_res:Resource = preload("res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn")
+#var particles_res:Resource = preload("res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn")
 	
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
   	load("res://Assets/Sounds/pisk_opon2.wav"),
@@ -80,7 +80,7 @@ func _tween():
 
 func rpg_hit():
 	$CollisionPolygon2D.set_deferred("disabled", true)
-	$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
+	#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
 	$BigExplosion.visible = true
 	$BigExplosion.explode()
 	$smoke_particles.emitting = false
@@ -95,7 +95,7 @@ func rpg_hit():
 
 func bomb_explode():
 	$CollisionPolygon2D.set_deferred("disabled", true)
-	$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
+	#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
 	$BigExplosion.visible = true
 	$BigExplosion.explode()
 	$smoke_particles.emitting = false

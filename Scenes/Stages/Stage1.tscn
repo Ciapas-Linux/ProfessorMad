@@ -117,7 +117,7 @@ script = ExtResource("3_ueebj")
 
 [node name="Rysiek" parent="." instance=ExtResource("7_efrhx")]
 z_index = 1
-position = Vector2(3521, 441)
+position = Vector2(10371, 441)
 collision_mask = 27
 
 [node name="Box1" parent="." groups=["Explosives"] instance=ExtResource("8_7yfa0")]
@@ -127,7 +127,7 @@ scale = Vector2(1.42786, 1.42786)
 
 [node name="Coin" parent="." instance=ExtResource("9_slswn")]
 z_index = 3
-position = Vector2(3958, 623)
+position = Vector2(6538, 623)
 
 [node name="CoinBox" parent="." instance=ExtResource("10_wbal7")]
 z_index = 3
@@ -137,7 +137,7 @@ scale = Vector2(0.5, 0.5)
 [node name="CoinBarell" parent="." instance=ExtResource("11_clono")]
 visibility_layer = 32
 z_index = 3
-position = Vector2(5086, 561)
+position = Vector2(6254, 561)
 scale = Vector2(0.578, 0.578)
 
 [node name="CoinBarell2" parent="." instance=ExtResource("11_clono")]
@@ -377,7 +377,7 @@ region_rect = Rect2(0, 0, 20000, 62)
 position = Vector2(10954, 529)
 
 [node name="Polonez1" parent="." instance=ExtResource("9_gev1q")]
-position = Vector2(5733, 526)
+position = Vector2(12232, 526)
 
 [node name="item-Ak-47" parent="." instance=ExtResource("38_w2bgm")]
 visible = false
@@ -392,10 +392,11 @@ z_index = 1
 position = Vector2(7046, 548)
 
 [node name="Fiat125p" parent="." instance=ExtResource("37_cq0q3")]
-position = Vector2(6734, 359)
+position = Vector2(1160, 510)
+scale = Vector2(1.3, 1.3)
 
 [node name="WoodRamp1" parent="." instance=ExtResource("44_xxdy7")]
-position = Vector2(2050, 531)
+position = Vector2(3059, 531)
 scale = Vector2(2.5, 2.5)
 
 [node name="Tarpan" parent="." instance=ExtResource("43_jmlqg")]

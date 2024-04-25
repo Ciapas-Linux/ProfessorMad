@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://csnc7omlt1dsf"]
+[gd_scene load_steps=3 format=3 uid="uid://csnc7omlt1dsf"]
 
 [ext_resource type="Texture2D" uid="uid://bijjoad0gyr3q" path="res://Assets/Particles/Smoke/smoke_06.png" id="1_dvuhr"]
 [ext_resource type="Script" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.gd" id="2_fhhpx"]

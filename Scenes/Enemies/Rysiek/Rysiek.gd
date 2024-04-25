@@ -108,7 +108,7 @@ func _ready():
 	#print("Drone2: ready " + Drone2.name)
 	
 	# Start releasing drones:
-	$CreateDrone.start()
+	# $CreateDrone.start()
 
 
 func _unhandled_input(event):
