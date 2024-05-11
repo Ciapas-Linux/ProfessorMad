@@ -65,12 +65,15 @@ var Hero_on_screen:bool = true
 # 4 ?
 
 
-# Hero global signals:
+# Player global signals:
 signal player_bullet_ready
 
 signal s_mouse_enter_node(node :Node2D)
-
 var mouse_enter_node:Node2D
+
+# GUI signals:
+# var pop_up_2D:Resource = preload("res://Scenes/UI/PopUp_2D.tscn")
+# signal popup_2D_dialog
 
 
 # ENEMY FIRST BOSS WREDNY RYSIEK
@@ -205,6 +208,7 @@ func _ready():
 
 	print("Get Cam1 reference ...")		
 	Cam1 = get_node("/root/Stage1/Camera2DPro")
+	
 		
 	print("Stage1 ready ...")	
 

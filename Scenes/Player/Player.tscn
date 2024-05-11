@@ -4376,6 +4376,9 @@ position = Vector2(-27, -308)
 rotation = 0.262802
 scale = Vector2(2.50008, 2.50008)
 rest = Transform2D(2.12444, 0.571527, -0.571527, 2.12444, -27, -308)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 15.0574
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Body/Head"]
 remote_path = NodePath("../../../../../Body_parts/Head")
@@ -4407,6 +4410,9 @@ position = Vector2(113.391, -157.071)
 rotation = -1.78505
 scale = Vector2(1.2, 1.2)
 rest = Transform2D(-0.212618, -0.977135, 0.977135, -0.212618, 113.391, -157.071)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -102.276
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Body/Arm_L/ForeArm_L/Hand_L"]
 position = Vector2(-9.13923, -11.1353)
@@ -4438,6 +4444,9 @@ position = Vector2(99.3216, -141.974)
 rotation = -1.80334
 scale = Vector2(1.7, 1.7)
 rest = Transform2D(-0.276544, -1.1677, 1.1677, -0.276544, 99.3216, -141.974)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -103.324
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Body/Arm_R/ForeArm_R/Hand_R"]
 position = Vector2(12.1925, -0.00991732)
@@ -4471,6 +4480,9 @@ position = Vector2(4.59911, 221.399)
 rotation = -0.0956964
 scale = Vector2(2.19996, 2.19996)
 rest = Transform2D(2.19669, -0.120781, 0.120781, 2.19669, 4.59911, 221.399)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -5.483
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Leg_R/Calf_R/Foot_R"]
 position = Vector2(-5.51132, -3.74912)
@@ -4506,6 +4518,9 @@ position = Vector2(5.71429, 245.714)
 rotation = 0.0609603
 scale = Vector2(2.19993, 2.19993)
 rest = Transform2D(2.2, 0, 0, 2.2, 5.71429, 245.714)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 3.49277
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Leg_L/Calf_L/Foot_L"]
 position = Vector2(-1.66366, 6.39008)
@@ -4625,6 +4640,7 @@ target_position = Vector2(0, 400)
 collision_mask = 2
 
 [node name="footR_CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-80.3696, 282.296)
 rotation = -0.0015284
 scale = Vector2(1.53971, 1.53971)
@@ -4633,6 +4649,7 @@ disabled = true
 debug_color = Color(0.691652, 0.412921, 0.722655, 0.42)
 
 [node name="footL_CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(22.4469, 278.151)
 rotation = 0.109749
 scale = Vector2(1.53965, 1.53965)

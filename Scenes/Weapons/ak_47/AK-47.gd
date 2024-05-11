@@ -1,7 +1,9 @@
+extends Sprite2D
+
 # ##########
 # AK-47.SCRIPT
 # ##########
-extends Sprite2D
+
 
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 

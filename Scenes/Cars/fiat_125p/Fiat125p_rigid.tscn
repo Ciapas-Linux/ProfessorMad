@@ -1,28 +1,29 @@
-[gd_scene load_steps=36 format=3 uid="uid://8hur7jykmt1v"]
+[gd_scene load_steps=37 format=3 uid="uid://bykqjn8n5jcgh"]
 
-[ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p.gd" id="1_3ag5h"]
-[ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Cars/fiat125/fiat_125_kolo.png" id="2_5oxaa"]
-[ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="2_tadd5"]
-[ext_resource type="Texture2D" uid="uid://cuck4e418m28k" path="res://Assets/Cars/fiat125/fiat_125_body_2.png" id="3_8eaq1"]
-[ext_resource type="Texture2D" uid="uid://bu4nb337r8wmh" path="res://Assets/Cars/fiat125/szyba_mala_lewa.png" id="4_3croh"]
-[ext_resource type="Texture2D" uid="uid://cfl0xqpvdlwlb" path="res://Assets/Cars/fiat125/szyba_duza_lewa.png" id="5_nutnc"]
-[ext_resource type="Texture2D" uid="uid://b151dqpd8syuy" path="res://Assets/Cars/fiat125/szyba_duza_p.png" id="6_e82q4"]
-[ext_resource type="Texture2D" uid="uid://ctydqdu0gmjnw" path="res://Assets/Cars/fiat125/szyba_mala_p1.png" id="7_hbqss"]
-[ext_resource type="Texture2D" uid="uid://dmkb0w4fpff74" path="res://Assets/Cars/fiat125/szyba_mala_p2.png" id="8_1utpk"]
-[ext_resource type="Texture2D" uid="uid://bags4nfiay8cp" path="res://Assets/Cars/fiat125/szyba_front_1.png" id="9_7p8yc"]
-[ext_resource type="Texture2D" uid="uid://bhxvqwilo8wa7" path="res://Assets/Cars/fiat125/szyba_front_2.png" id="10_lxi8s"]
-[ext_resource type="Texture2D" uid="uid://40jytaqn3q6t" path="res://Assets/Cars/fiat125/szyba_front_3.png" id="11_g2cra"]
-[ext_resource type="Texture2D" uid="uid://deywov0esurss" path="res://Assets/Cars/fiat125/szyba_front_4.png" id="12_74qwy"]
-[ext_resource type="Texture2D" uid="uid://bxmn802sk8vt0" path="res://Assets/Cars/fiat125/boczek_przod.png" id="13_gc7nf"]
-[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="14_1sjlk"]
-[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="14_80i07"]
-[ext_resource type="Texture2D" uid="uid://by8ps4vrl5byq" path="res://Assets/Cars/fiat125/driver.png" id="14_dccel"]
-[ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="15_fp2jy"]
-[ext_resource type="Texture2D" uid="uid://csye6g4klqmc1" path="res://Assets/Cars/fiat125/dzwi_przod.png" id="17_yu8bc"]
-[ext_resource type="Texture2D" uid="uid://beqkppd7d23jl" path="res://Assets/Cars/fiat125/dzwi_tyl.png" id="18_lijhk"]
-[ext_resource type="Texture2D" uid="uid://crlqmbd4wl30a" path="res://Assets/Cars/fiat125/dach.png" id="18_p4g3j"]
-[ext_resource type="Texture2D" uid="uid://dyd4fxbc3jrid" path="res://Assets/Cars/fiat125/przodek.png" id="19_lr5wx"]
-[ext_resource type="Texture2D" uid="uid://cl1lg32wjh5fm" path="res://Assets/Cars/fiat125/dupa.png" id="20_0gdfx"]
+[ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.gd" id="1_8cnbt"]
+[ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="2_wpouw"]
+[ext_resource type="Texture2D" uid="uid://cuck4e418m28k" path="res://Assets/Cars/fiat125/fiat_125_body_2.png" id="3_kiyjk"]
+[ext_resource type="Texture2D" uid="uid://bu4nb337r8wmh" path="res://Assets/Cars/fiat125/szyba_mala_lewa.png" id="4_n8h8w"]
+[ext_resource type="Texture2D" uid="uid://ctydqdu0gmjnw" path="res://Assets/Cars/fiat125/szyba_mala_p1.png" id="5_yrxcd"]
+[ext_resource type="Texture2D" uid="uid://dmkb0w4fpff74" path="res://Assets/Cars/fiat125/szyba_mala_p2.png" id="6_8tlsw"]
+[ext_resource type="Texture2D" uid="uid://bhxvqwilo8wa7" path="res://Assets/Cars/fiat125/szyba_front_2.png" id="7_38xs4"]
+[ext_resource type="Texture2D" uid="uid://40jytaqn3q6t" path="res://Assets/Cars/fiat125/szyba_front_3.png" id="8_nt1sd"]
+[ext_resource type="Texture2D" uid="uid://deywov0esurss" path="res://Assets/Cars/fiat125/szyba_front_4.png" id="9_wsd7r"]
+[ext_resource type="Texture2D" uid="uid://beqkppd7d23jl" path="res://Assets/Cars/fiat125/dzwi_tyl.png" id="10_2vyoh"]
+[ext_resource type="Texture2D" uid="uid://dyd4fxbc3jrid" path="res://Assets/Cars/fiat125/przodek.png" id="11_dakwa"]
+[ext_resource type="Texture2D" uid="uid://cl1lg32wjh5fm" path="res://Assets/Cars/fiat125/dupa.png" id="12_ulnw8"]
+[ext_resource type="Texture2D" uid="uid://bxmn802sk8vt0" path="res://Assets/Cars/fiat125/boczek_przod.png" id="13_04til"]
+[ext_resource type="Texture2D" uid="uid://by8ps4vrl5byq" path="res://Assets/Cars/fiat125/driver.png" id="14_tgrhy"]
+[ext_resource type="Texture2D" uid="uid://b151dqpd8syuy" path="res://Assets/Cars/fiat125/szyba_duza_p.png" id="15_8uryv"]
+[ext_resource type="Texture2D" uid="uid://cfl0xqpvdlwlb" path="res://Assets/Cars/fiat125/szyba_duza_lewa.png" id="16_orar3"]
+[ext_resource type="Texture2D" uid="uid://bags4nfiay8cp" path="res://Assets/Cars/fiat125/szyba_front_1.png" id="17_tp2b0"]
+[ext_resource type="Texture2D" uid="uid://csye6g4klqmc1" path="res://Assets/Cars/fiat125/dzwi_przod.png" id="18_6w35r"]
+[ext_resource type="Texture2D" uid="uid://crlqmbd4wl30a" path="res://Assets/Cars/fiat125/dach.png" id="19_6fc03"]
+[ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Cars/fiat125/fiat_125_kolo.png" id="20_crhiu"]
+[ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="21_r0h17"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="22_0kfhm"]
+[ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="23_eg2uo"]
+[ext_resource type="AudioStream" uid="uid://bf2sk8t0onx3e" path="res://Assets/Sounds/Sfx/level_up.wav" id="24_315am"]
 
 [sub_resource type="Animation" id="Animation_e8m2p"]
 length = 0.001
@@ -270,126 +271,130 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwuyi"]
 size = Vector2(150, 70)
 
-[node name="Fiat125p" type="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
+[node name="Fiat125p_rigid" type="RigidBody2D"]
 collision_layer = 2
-collision_mask = 63
-script = ExtResource("1_3ag5h")
+collision_mask = 31
+mass = 1200.0
+can_sleep = false
+script = ExtResource("1_8cnbt")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
+scale = Vector2(1.4, 1.4)
 polygon = PackedVector2Array(151, -107, 209, -41, 272, -32, 335, -22, 334, 52, 320, 69, 43, 77, -193, 82, -324, 81, -335, 55, -343, 1, -336, -13, -298, -22, -240, -27, -178, -32, -147, -59, -97, -109, 33, -109)
 
-[node name="smoke_particles" parent="." instance=ExtResource("2_tadd5")]
+[node name="smoke_particles" parent="." instance=ExtResource("2_wpouw")]
 position = Vector2(300, 50)
 
-[node name="object_spr" type="Sprite2D" parent="."]
-texture = ExtResource("3_8eaq1")
+[node name="body_parts" type="Node2D" parent="."]
+scale = Vector2(1.4, 1.4)
 
-[node name="szyba_l_1" type="Sprite2D" parent="."]
+[node name="object_spr" type="Sprite2D" parent="body_parts"]
+texture = ExtResource("3_kiyjk")
+
+[node name="szyba_l_1" type="Sprite2D" parent="body_parts"]
 position = Vector2(-99, -62)
-texture = ExtResource("4_3croh")
+texture = ExtResource("4_n8h8w")
 
-[node name="szyba_p_2" type="Sprite2D" parent="."]
+[node name="szyba_p_2" type="Sprite2D" parent="body_parts"]
 position = Vector2(93, -65)
-texture = ExtResource("7_hbqss")
+texture = ExtResource("5_yrxcd")
 
-[node name="szyba_p_3" type="Sprite2D" parent="."]
+[node name="szyba_p_3" type="Sprite2D" parent="body_parts"]
 position = Vector2(111, -63)
-texture = ExtResource("8_1utpk")
+texture = ExtResource("6_8tlsw")
 
-[node name="szyba_front_2" type="Sprite2D" parent="."]
+[node name="szyba_front_2" type="Sprite2D" parent="body_parts"]
 position = Vector2(-101, -58)
-texture = ExtResource("10_lxi8s")
+texture = ExtResource("7_38xs4")
 
-[node name="szyba_front_3" type="Sprite2D" parent="."]
+[node name="szyba_front_3" type="Sprite2D" parent="body_parts"]
 position = Vector2(53, -64)
-texture = ExtResource("11_g2cra")
+texture = ExtResource("8_nt1sd")
 
-[node name="szyba_front_4" type="Sprite2D" parent="."]
+[node name="szyba_front_4" type="Sprite2D" parent="body_parts"]
 position = Vector2(114, -59)
-texture = ExtResource("12_74qwy")
+texture = ExtResource("9_wsd7r")
 
-[node name="dzwi_tyl" type="Sprite2D" parent="."]
+[node name="dzwi_tyl" type="Sprite2D" parent="body_parts"]
 position = Vector2(77, 16)
-texture = ExtResource("18_lijhk")
+texture = ExtResource("10_2vyoh")
 
-[node name="przod" type="Sprite2D" parent="."]
+[node name="przod" type="Sprite2D" parent="body_parts"]
 position = Vector2(-263, 27)
-texture = ExtResource("19_lr5wx")
+texture = ExtResource("11_dakwa")
 
-[node name="dupa" type="Sprite2D" parent="."]
+[node name="dupa" type="Sprite2D" parent="body_parts"]
 position = Vector2(267, 17)
-texture = ExtResource("20_0gdfx")
+texture = ExtResource("12_ulnw8")
 
-[node name="boczek_p" type="Sprite2D" parent="."]
+[node name="boczek_p" type="Sprite2D" parent="body_parts"]
 position = Vector2(-62, -41)
-texture = ExtResource("13_gc7nf")
+texture = ExtResource("13_04til")
 
-[node name="Driver" type="Sprite2D" parent="."]
+[node name="Driver" type="Sprite2D" parent="body_parts"]
 position = Vector2(-46.081, -30.3063)
 rotation = -0.261916
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("14_dccel")
+texture = ExtResource("14_tgrhy")
 offset = Vector2(-3.54091, -66.6797)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Driver"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="body_parts/Driver"]
 libraries = {
 "": SubResource("AnimationLibrary_f71lj")
 }
 
-[node name="szyba_p_1" type="Sprite2D" parent="."]
+[node name="szyba_p_1" type="Sprite2D" parent="body_parts"]
 position = Vector2(48, -66)
-texture = ExtResource("6_e82q4")
+texture = ExtResource("15_8uryv")
 
-[node name="szyba_l_2" type="Sprite2D" parent="."]
+[node name="szyba_l_2" type="Sprite2D" parent="body_parts"]
 visible = false
 position = Vector2(-44, -67)
-texture = ExtResource("5_nutnc")
+texture = ExtResource("16_orar3")
 
-[node name="szyba_front_1" type="Sprite2D" parent="."]
+[node name="szyba_front_1" type="Sprite2D" parent="body_parts"]
 position = Vector2(-42, -60)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("9_7p8yc")
+texture = ExtResource("17_tp2b0")
 
-[node name="dzwi_przod" type="Sprite2D" parent="."]
+[node name="dzwi_przod" type="Sprite2D" parent="body_parts"]
 position = Vector2(-74, 18)
-texture = ExtResource("17_yu8bc")
+texture = ExtResource("18_6w35r")
 
-[node name="dach" type="Sprite2D" parent="."]
+[node name="dach" type="Sprite2D" parent="body_parts"]
 position = Vector2(17, -69)
-texture = ExtResource("18_p4g3j")
+texture = ExtResource("19_6fc03")
 
-[node name="Kolo_l" type="Sprite2D" parent="."]
+[node name="Kolo_l" type="Sprite2D" parent="body_parts"]
 position = Vector2(-248, 77)
-texture = ExtResource("2_5oxaa")
+texture = ExtResource("20_crhiu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Kolo_l"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="body_parts/Kolo_l"]
 libraries = {
 "": SubResource("AnimationLibrary_fw436")
 }
 
-[node name="Kolo_p" type="Sprite2D" parent="."]
+[node name="Kolo_p" type="Sprite2D" parent="body_parts"]
 position = Vector2(179, 76)
-texture = ExtResource("2_5oxaa")
+texture = ExtResource("20_crhiu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Kolo_p"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="body_parts/Kolo_p"]
 libraries = {
 "": SubResource("AnimationLibrary_7pgsx")
 }
 
-[node name="front_contact" type="Area2D" parent="."]
+[node name="front_contact" type="Area2D" parent="body_parts"]
 collision_layer = 32
 collision_mask = 15
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="front_contact"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body_parts/front_contact"]
 position = Vector2(-284, 36)
 shape = SubResource("RectangleShape2D_qwuyi")
 
-[node name="Bullet_holes" parent="." instance=ExtResource("14_1sjlk")]
+[node name="Bullet_holes" parent="." instance=ExtResource("21_r0h17")]
 
-[node name="BigExplosion" parent="." instance=ExtResource("14_80i07")]
+[node name="BigExplosion" parent="." instance=ExtResource("22_0kfhm")]
 visible = false
 
 [node name="Timer" type="Timer" parent="."]
@@ -397,18 +402,24 @@ wait_time = 2.0
 autostart = true
 
 [node name="snd_engine" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_fp2jy")
+stream = ExtResource("23_eg2uo")
 volume_db = 6.0
 pitch_scale = 0.7
 
 [node name="snd_player" type="AudioStreamPlayer2D" parent="."]
 
+[node name="snd_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_315am")
+volume_db = 7.0
+
 [node name="kolo_l_CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-248, 77)
+position = Vector2(-349, 107)
+scale = Vector2(1.4, 1.4)
 polygon = PackedVector2Array(12, -45, -3, -46, -19, -44, -35, -33, -45, -18, -48, 0, -46, 20, -39, 33, -25, 44, -3, 49, 18, 46, 35, 36, 47, 17, 49, -6, 42, -24, 29, -36)
 
 [node name="kolo_p_CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(179, 76)
+position = Vector2(254, 106)
+scale = Vector2(1.4, 1.4)
 polygon = PackedVector2Array(4, -47, -9, -46, -22, -42, -34, -36, -43, -25, -48, -12, -49, 8, -47, 19, -41, 30.1, -29, 43, -16, 50, 2, 50, 20, 47, 31, 41, 39, 32, 45, 24, 49, 14, 50, 0, 48, -16, 41, -30, 30, -39, 19, -45)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

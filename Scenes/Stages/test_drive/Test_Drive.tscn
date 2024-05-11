@@ -1,54 +1,44 @@
-[gd_scene load_steps=54 format=4 uid="uid://dj6r8726lv3r6"]
+[gd_scene load_steps=44 format=4 uid="uid://bpfrvrd33jaow"]
 
-[ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
-[ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
-[ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="3_vafg6"]
-[ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="4_rhujv"]
-[ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="5_e85i1"]
-[ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="6_0huhg"]
-[ext_resource type="PackedScene" uid="uid://b76igam5emt8l" path="res://Scenes/Enemies/Rysiek/Rysiek.tscn" id="7_efrhx"]
-[ext_resource type="PackedScene" uid="uid://0ywglto5tx2h" path="res://Scenes/Explosives/box1.tscn" id="8_7yfa0"]
-[ext_resource type="PackedScene" uid="uid://drddobovkd13n" path="res://Scenes/Cars/polonez_fso/polonez_1.tscn" id="9_gev1q"]
-[ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="9_slswn"]
-[ext_resource type="Texture2D" uid="uid://1s83i5lxhkdf" path="res://Assets/Ground/Grunt_1.jpg" id="10_037ni"]
-[ext_resource type="PackedScene" uid="uid://bf53eb0rugcu0" path="res://Scenes/Explosives/CoinBox.tscn" id="10_wbal7"]
-[ext_resource type="PackedScene" uid="uid://6nqelg3184dc" path="res://Scenes/Explosives/CoinBarell.tscn" id="11_clono"]
-[ext_resource type="Texture2D" uid="uid://1gwp2bo4v3me" path="res://Assets/Backgrounds/asphalt_1.png" id="13_e358x"]
-[ext_resource type="Script" path="res://Scenes/HUD/fps.gd" id="13_lg0wn"]
-[ext_resource type="Script" path="res://Scenes/HUD/pos.gd" id="14_odo0c"]
-[ext_resource type="PackedScene" uid="uid://08t55cdhhfpt" path="res://Scenes/Cars/maluch_seledyn/maluch_seledyn.tscn" id="15_g3kcy"]
-[ext_resource type="Script" path="res://Scenes/HUD/state.gd" id="15_rddg4"]
-[ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="16_3ay2h"]
-[ext_resource type="Script" path="res://Scenes/HUD/Health.gd" id="18_8y8ui"]
-[ext_resource type="Script" path="res://Scenes/HUD/ammo.gd" id="19_nmle6"]
-[ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="20_4flmq"]
-[ext_resource type="Script" path="res://Scenes/Coin/coin_label.gd" id="20_xawl8"]
-[ext_resource type="Script" path="res://Scenes/HUD/Direction.gd" id="21_awip0"]
-[ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="21_i66ii"]
-[ext_resource type="Script" path="res://Scenes/HUD/floor.gd" id="22_4oawl"]
-[ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="23_vobvt"]
-[ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="25_a4niq"]
-[ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="27_lex4l"]
-[ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="27_rk3k2"]
-[ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="27_weviq"]
-[ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="28_ibdmt"]
-[ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="28_sywva"]
-[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="29_8ah6a"]
-[ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="29_8cr16"]
-[ext_resource type="Texture2D" uid="uid://bhga7y1xb2xbx" path="res://Assets/UI/panel_1.png" id="30_hnuyw"]
-[ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="31_xcmld"]
-[ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="33_fhpux"]
-[ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_nhyhv"]
-[ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="35_sfvns"]
-[ext_resource type="PackedScene" uid="uid://dl2kws5sjyad3" path="res://Scenes/Cars/maluch_fract_red/maluch_fract_red.tscn" id="36_hqr6o"]
-[ext_resource type="PackedScene" uid="uid://chf1nu07b05ko" path="res://Scenes/Cars/maluch_red/maluch_red.tscn" id="37_ccyvi"]
-[ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="37_cq0q3"]
-[ext_resource type="PackedScene" uid="uid://dwiyyg4wrha0d" path="res://Scenes/Explosives/Box_3/Box_3.tscn" id="37_y336g"]
-[ext_resource type="PackedScene" uid="uid://cikdwts4xbonp" path="res://Scenes/Items/item-ak-47.tscn" id="38_w2bgm"]
-[ext_resource type="PackedScene" uid="uid://cdnlw84tvum1f" path="res://Scenes/Cars/tarpan/tarpan.tscn" id="43_jmlqg"]
-[ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="44_3xj1c"]
-[ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="44_xxdy7"]
-[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.tscn" id="48_4igoq"]
+[ext_resource type="Script" path="res://Scenes/Stages/test_drive/test_drive.gd" id="1_pd46n"]
+[ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="2_de3xc"]
+[ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_6x0sm"]
+[ext_resource type="PackedScene" uid="uid://b76igam5emt8l" path="res://Scenes/Enemies/Rysiek/Rysiek.tscn" id="4_7xj0i"]
+[ext_resource type="Texture2D" uid="uid://1gwp2bo4v3me" path="res://Assets/Backgrounds/asphalt_1.png" id="9_5etf4"]
+[ext_resource type="Texture2D" uid="uid://1s83i5lxhkdf" path="res://Assets/Ground/Grunt_1.jpg" id="10_g6ptq"]
+[ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="12_heg8h"]
+[ext_resource type="Script" path="res://Scenes/HUD/fps.gd" id="13_avwxs"]
+[ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="14_7ecy6"]
+[ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="15_xm1vj"]
+[ext_resource type="Script" path="res://Scenes/HUD/Health.gd" id="16_dppjq"]
+[ext_resource type="Script" path="res://Scenes/HUD/ammo.gd" id="17_dnflx"]
+[ext_resource type="Script" path="res://Scenes/Coin/coin_label.gd" id="18_2mkb0"]
+[ext_resource type="Texture2D" uid="uid://bhga7y1xb2xbx" path="res://Assets/UI/panel_1.png" id="19_neff0"]
+[ext_resource type="Script" path="res://Scenes/HUD/pos.gd" id="20_75vxu"]
+[ext_resource type="Script" path="res://Scenes/HUD/state.gd" id="21_a0cie"]
+[ext_resource type="Script" path="res://Scenes/HUD/Direction.gd" id="22_0p6ak"]
+[ext_resource type="Script" path="res://Scenes/HUD/floor.gd" id="23_iysv8"]
+[ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="24_eby42"]
+[ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="25_0he12"]
+[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="26_1l31h"]
+[ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="27_dsnfl"]
+[ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="28_2ys4m"]
+[ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="29_tnf1w"]
+[ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="30_kwkpr"]
+[ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="31_obryp"]
+[ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="32_kj3ny"]
+[ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="33_p6haw"]
+[ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="34_augbo"]
+[ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_8plis"]
+[ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="36_8kwsa"]
+[ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="37_060mj"]
+[ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="38_kj7ay"]
+[ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="39_pqkgd"]
+[ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="45_25my5"]
+[ext_resource type="PackedScene" uid="uid://cdnlw84tvum1f" path="res://Scenes/Cars/tarpan/tarpan.tscn" id="46_5u0mt"]
+[ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="47_6dlft"]
+[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.tscn" id="48_wqrqr"]
+[ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="49_h7kwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
 size = Vector2(20060, 200)
@@ -96,9 +86,9 @@ _surfaces = [{
 }]
 
 [node name="Stage1" type="Node2D"]
-script = ExtResource("1_ow16c")
+script = ExtResource("1_pd46n")
 
-[node name="Player" parent="." instance=ExtResource("6_0huhg")]
+[node name="Player" parent="." instance=ExtResource("2_de3xc")]
 visibility_layer = 2
 z_index = 2
 position = Vector2(173, 413)
@@ -114,37 +104,12 @@ drag_left_margin = 0.5
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
-script = ExtResource("3_ueebj")
+script = ExtResource("3_6x0sm")
 
-[node name="Rysiek" parent="." instance=ExtResource("7_efrhx")]
+[node name="Rysiek" parent="." instance=ExtResource("4_7xj0i")]
 z_index = 1
 position = Vector2(10371, 441)
 collision_mask = 27
-
-[node name="Box1" parent="." groups=["Explosives"] instance=ExtResource("8_7yfa0")]
-z_index = 3
-position = Vector2(8559, 601)
-scale = Vector2(1.42786, 1.42786)
-
-[node name="Coin" parent="." instance=ExtResource("9_slswn")]
-z_index = 3
-position = Vector2(6538, 623)
-
-[node name="CoinBox" parent="." instance=ExtResource("10_wbal7")]
-z_index = 3
-position = Vector2(9382, 626)
-scale = Vector2(0.5, 0.5)
-
-[node name="CoinBarell" parent="." instance=ExtResource("11_clono")]
-visibility_layer = 32
-z_index = 3
-position = Vector2(6254, 561)
-scale = Vector2(0.578, 0.578)
-
-[node name="CoinBarell2" parent="." instance=ExtResource("11_clono")]
-z_index = 3
-position = Vector2(9869, 552)
-scale = Vector2(0.577711, 0.577711)
 
 [node name="Grunt" type="Node2D" parent="."]
 z_index = -1
@@ -157,7 +122,7 @@ collision_mask = 31
 [node name="Road" type="Sprite2D" parent="Grunt/GruntBody2D"]
 texture_repeat = 2
 position = Vector2(8500, 510)
-texture = ExtResource("13_e358x")
+texture = ExtResource("9_5etf4")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 339)
 
@@ -173,13 +138,9 @@ shape = SubResource("RectangleShape2D_fmhf3")
 z_index = -1
 texture_repeat = 2
 position = Vector2(8000, 1430)
-texture = ExtResource("10_037ni")
+texture = ExtResource("10_g6ptq")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
-
-[node name="maluch_seledyn" parent="." instance=ExtResource("15_g3kcy")]
-z_index = -1
-position = Vector2(1012, 463)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 5
@@ -192,10 +153,10 @@ offset_bottom = 43.0
 scale = Vector2(1, 0.969)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("16_3ay2h")
+theme_override_fonts/font = ExtResource("12_heg8h")
 theme_override_font_sizes/font_size = 20
 text = "FPS:"
-script = ExtResource("13_lg0wn")
+script = ExtResource("13_avwxs")
 
 [node name="Health" type="TextureProgressBar" parent="HUD"]
 offset_left = 37.0
@@ -203,9 +164,9 @@ offset_top = 50.0
 offset_right = 237.0
 offset_bottom = 77.0
 scale = Vector2(0.646371, 0.661628)
-texture_under = ExtResource("20_4flmq")
-texture_progress = ExtResource("21_i66ii")
-script = ExtResource("18_8y8ui")
+texture_under = ExtResource("14_7ecy6")
+texture_progress = ExtResource("15_xm1vj")
+script = ExtResource("16_dppjq")
 
 [node name="ammo" type="Label" parent="HUD"]
 offset_left = 36.0
@@ -214,7 +175,7 @@ offset_right = 76.0
 offset_bottom = 136.0
 scale = Vector2(1.2226, 1.21801)
 text = "0"
-script = ExtResource("19_nmle6")
+script = ExtResource("17_dnflx")
 
 [node name="coins" type="Label" parent="HUD"]
 offset_left = 36.0
@@ -223,11 +184,11 @@ offset_right = 76.0
 offset_bottom = 101.0
 scale = Vector2(1.23669, 1.23669)
 text = "0"
-script = ExtResource("20_xawl8")
+script = ExtResource("18_2mkb0")
 
 [node name="Panel_1" type="Sprite2D" parent="HUD"]
 position = Vector2(1764, 75)
-texture = ExtResource("30_hnuyw")
+texture = ExtResource("19_neff0")
 
 [node name="pos" type="Label" parent="HUD"]
 offset_left = 1712.0
@@ -238,7 +199,7 @@ scale = Vector2(1, 0.985)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "x:  y:"
-script = ExtResource("14_odo0c")
+script = ExtResource("20_75vxu")
 
 [node name="state" type="Label" parent="HUD"]
 offset_left = 1712.0
@@ -249,7 +210,7 @@ scale = Vector2(0.873, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "STATE:"
-script = ExtResource("15_rddg4")
+script = ExtResource("21_a0cie")
 
 [node name="Direction" type="Label" parent="HUD"]
 offset_left = 1711.0
@@ -260,7 +221,7 @@ scale = Vector2(1, 0.931)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Dir:"
-script = ExtResource("21_awip0")
+script = ExtResource("22_0p6ak")
 
 [node name="floor" type="Label" parent="HUD"]
 offset_left = 1711.0
@@ -270,7 +231,7 @@ offset_bottom = 112.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Floor:"
-script = ExtResource("22_4oawl")
+script = ExtResource("23_iysv8")
 
 [node name="wall" type="Label" parent="HUD"]
 offset_left = 1712.0
@@ -280,39 +241,39 @@ offset_bottom = 133.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Wall:"
-script = ExtResource("23_vobvt")
+script = ExtResource("24_eby42")
 
 [node name="img_heart" type="Sprite2D" parent="HUD"]
 position = Vector2(19, 58)
 scale = Vector2(0.0855846, 0.0776065)
-texture = ExtResource("28_ibdmt")
+texture = ExtResource("25_0he12")
 
 [node name="img_bullet" type="Sprite2D" parent="HUD"]
 position = Vector2(19, 124)
 scale = Vector2(0.184475, 0.184475)
-texture = ExtResource("29_8ah6a")
+texture = ExtResource("26_1l31h")
 
 [node name="img_coin" type="Sprite2D" parent="HUD"]
 position = Vector2(19, 90)
 scale = Vector2(0.359971, 0.359971)
-texture = ExtResource("25_a4niq")
+texture = ExtResource("27_dsnfl")
 
 [node name="Quit" type="TextureButton" parent="HUD"]
 offset_left = 1620.0
 offset_top = 21.0
 offset_right = 1720.0
 offset_bottom = 71.0
-texture_normal = ExtResource("27_lex4l")
-texture_pressed = ExtResource("28_sywva")
-texture_hover = ExtResource("27_rk3k2")
+texture_normal = ExtResource("28_2ys4m")
+texture_pressed = ExtResource("29_tnf1w")
+texture_hover = ExtResource("30_kwkpr")
 
 [node name="snd_scifi_bleep" type="AudioStreamPlayer" parent="HUD"]
-stream = ExtResource("31_xcmld")
+stream = ExtResource("31_obryp")
 pitch_scale = 0.92
 
 [node name="PlayerEnemyRay" type="Node2D" parent="."]
 visible = false
-script = ExtResource("27_weviq")
+script = ExtResource("32_kj3ny")
 
 [node name="SkyCanvas" type="CanvasLayer" parent="."]
 layer = -3
@@ -322,7 +283,7 @@ z_index = -100
 texture_repeat = 2
 position = Vector2(8000, 0)
 scale = Vector2(5.48, 1)
-texture = ExtResource("3_vafg6")
+texture = ExtResource("33_p6haw")
 region_enabled = true
 region_rect = Rect2(0, 0, 4000, 1200)
 
@@ -330,7 +291,7 @@ region_rect = Rect2(0, 0, 4000, 1200)
 visible = false
 texture_repeat = 2
 position = Vector2(8000, 200)
-texture = ExtResource("29_8cr16")
+texture = ExtResource("34_augbo")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
@@ -342,10 +303,11 @@ layer = -1
 [node name="Moon_img" type="MeshInstance2D" parent="ParallaxBackground/MoonLayer"]
 position = Vector2(0, -268)
 mesh = SubResource("ArrayMesh_gwivr")
-texture = ExtResource("35_nhyhv")
-script = ExtResource("33_fhpux")
+texture = ExtResource("35_8plis")
+script = ExtResource("36_8kwsa")
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 position = Vector2(0, 191)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(2500, 0)
@@ -353,60 +315,43 @@ motion_mirroring = Vector2(2500, 0)
 [node name="Sprite2D" type="MeshInstance2D" parent="ParallaxBackground/Clouds"]
 position = Vector2(1000, -219)
 mesh = SubResource("ArrayMesh_3ms7f")
-texture = ExtResource("4_rhujv")
+texture = ExtResource("37_060mj")
 
 [node name="Buildings" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 position = Vector2(-683, -116)
 motion_mirroring = Vector2(3300, 0)
 
 [node name="Sprite2D" type="MeshInstance2D" parent="ParallaxBackground/Buildings"]
 position = Vector2(1816, 64)
 mesh = SubResource("ArrayMesh_7k65n")
-texture = ExtResource("5_e85i1")
+texture = ExtResource("38_kj7ay")
 
 [node name="Trawka_1" type="Sprite2D" parent="."]
 z_index = 2
 texture_repeat = 2
 position = Vector2(8000, 724)
-texture = ExtResource("35_sfvns")
+texture = ExtResource("39_pqkgd")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 62)
 
-[node name="Maluch_red" parent="." instance=ExtResource("37_ccyvi")]
-position = Vector2(10954, 529)
-
-[node name="Polonez1" parent="." instance=ExtResource("9_gev1q")]
-position = Vector2(12232, 526)
-
-[node name="item-Ak-47" parent="." instance=ExtResource("38_w2bgm")]
-visible = false
-position = Vector2(556, 651)
-
-[node name="Box3" parent="." instance=ExtResource("37_y336g")]
-position = Vector2(7862, 623)
-scale = Vector2(0.5, 0.5)
-
-[node name="Maluch_fract_red" parent="." instance=ExtResource("36_hqr6o")]
-z_index = 1
-position = Vector2(7046, 548)
-
-[node name="WoodRamp1" parent="." instance=ExtResource("44_xxdy7")]
+[node name="WoodRamp1" parent="." instance=ExtResource("45_25my5")]
 position = Vector2(3059, 531)
 scale = Vector2(2.5, 2.5)
 
-[node name="Tarpan" parent="." instance=ExtResource("43_jmlqg")]
+[node name="Tarpan" parent="." instance=ExtResource("46_5u0mt")]
 position = Vector2(13579, 403)
 scale = Vector2(1.8, 1.8)
 
-[node name="Kibel1" parent="." instance=ExtResource("44_3xj1c")]
+[node name="Kibel1" parent="." instance=ExtResource("47_6dlft")]
 position = Vector2(17064, 316)
 scale = Vector2(1.6, 1.6)
 
-[node name="Fiat125p-rigid" parent="." instance=ExtResource("48_4igoq")]
-position = Vector2(833, 94)
+[node name="Fiat125p-rigid" parent="." instance=ExtResource("48_wqrqr")]
+position = Vector2(833, 137)
 
-[node name="Fiat125p" parent="." instance=ExtResource("37_cq0q3")]
-position = Vector2(1633, 442)
+[node name="Fiat125p" parent="." instance=ExtResource("49_h7kwe")]
+position = Vector2(11567, 442)
 
 [connection signal="pressed" from="HUD/Quit" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="HUD/snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5uovtiv2cevc"]
+
+[ext_resource type="Script" path="res://Scenes/UI/popup_2d.gd" id="1_ulmk2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjsj8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="PopUp2D" type="Node2D"]
+script = ExtResource("1_ulmk2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bjsj8")
