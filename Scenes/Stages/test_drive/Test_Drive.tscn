@@ -1,9 +1,8 @@
-[gd_scene load_steps=44 format=4 uid="uid://bpfrvrd33jaow"]
+[gd_scene load_steps=41 format=4 uid="uid://bpfrvrd33jaow"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/test_drive/test_drive.gd" id="1_pd46n"]
 [ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="2_de3xc"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_6x0sm"]
-[ext_resource type="PackedScene" uid="uid://b76igam5emt8l" path="res://Scenes/Enemies/Rysiek/Rysiek.tscn" id="4_7xj0i"]
 [ext_resource type="Texture2D" uid="uid://1gwp2bo4v3me" path="res://Assets/Backgrounds/asphalt_1.png" id="9_5etf4"]
 [ext_resource type="Texture2D" uid="uid://1s83i5lxhkdf" path="res://Assets/Ground/Grunt_1.jpg" id="10_g6ptq"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="12_heg8h"]
@@ -35,9 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="38_kj7ay"]
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="39_pqkgd"]
 [ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="45_25my5"]
-[ext_resource type="PackedScene" uid="uid://cdnlw84tvum1f" path="res://Scenes/Cars/tarpan/tarpan.tscn" id="46_5u0mt"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="47_6dlft"]
-[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.tscn" id="48_wqrqr"]
 [ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="49_h7kwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
@@ -105,11 +102,6 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 script = ExtResource("3_6x0sm")
-
-[node name="Rysiek" parent="." instance=ExtResource("4_7xj0i")]
-z_index = 1
-position = Vector2(10371, 441)
-collision_mask = 27
 
 [node name="Grunt" type="Node2D" parent="."]
 z_index = -1
@@ -336,22 +328,15 @@ region_enabled = true
 region_rect = Rect2(0, 0, 20000, 62)
 
 [node name="WoodRamp1" parent="." instance=ExtResource("45_25my5")]
-position = Vector2(3059, 531)
+position = Vector2(2991, 531)
 scale = Vector2(2.5, 2.5)
-
-[node name="Tarpan" parent="." instance=ExtResource("46_5u0mt")]
-position = Vector2(13579, 403)
-scale = Vector2(1.8, 1.8)
 
 [node name="Kibel1" parent="." instance=ExtResource("47_6dlft")]
 position = Vector2(17064, 316)
 scale = Vector2(1.6, 1.6)
 
-[node name="Fiat125p-rigid" parent="." instance=ExtResource("48_wqrqr")]
-position = Vector2(833, 137)
-
 [node name="Fiat125p" parent="." instance=ExtResource("49_h7kwe")]
-position = Vector2(11567, 442)
+position = Vector2(4942, 442)
 
 [connection signal="pressed" from="HUD/Quit" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="HUD/snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

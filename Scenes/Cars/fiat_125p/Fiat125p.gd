@@ -32,7 +32,7 @@ func _ready() -> void:
 	#self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	$BigExplosion.visible = false
 	print("car Fiat125p start x: " + str(global_position.x))
-	start_drive(MOVE_RIGHT)
+	start_drive(MOVE_LEFT)
 		
 
 func _process(_delta: float) -> void:
