@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bpfrvrd33jaow"]
+[gd_scene load_steps=42 format=4 uid="uid://bpfrvrd33jaow"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/test_drive/test_drive.gd" id="1_pd46n"]
 [ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="2_de3xc"]
@@ -30,12 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="34_augbo"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_8plis"]
 [ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="36_8kwsa"]
+[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.tscn" id="36_kb37b"]
 [ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="37_060mj"]
+[ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="37_kjkaq"]
 [ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="38_kj7ay"]
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="39_pqkgd"]
 [ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="45_25my5"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="47_6dlft"]
-[ext_resource type="PackedScene" uid="uid://8hur7jykmt1v" path="res://Scenes/Cars/fiat_125p/Fiat125p.tscn" id="49_h7kwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
 size = Vector2(20060, 200)
@@ -328,15 +329,18 @@ region_enabled = true
 region_rect = Rect2(0, 0, 20000, 62)
 
 [node name="WoodRamp1" parent="." instance=ExtResource("45_25my5")]
-position = Vector2(2991, 531)
+position = Vector2(14671, 531)
 scale = Vector2(2.5, 2.5)
 
 [node name="Kibel1" parent="." instance=ExtResource("47_6dlft")]
 position = Vector2(17064, 316)
 scale = Vector2(1.6, 1.6)
 
-[node name="Fiat125p" parent="." instance=ExtResource("49_h7kwe")]
-position = Vector2(4942, 442)
+[node name="Fiat125p_rigid" parent="." instance=ExtResource("36_kb37b")]
+position = Vector2(1176, -130)
+
+[node name="Gorka" parent="." instance=ExtResource("37_kjkaq")]
+position = Vector2(4667, 772)
 
 [connection signal="pressed" from="HUD/Quit" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="HUD/snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

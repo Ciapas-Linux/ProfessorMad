@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dapdj53d8fslu"]
+
+[node name="Gorka" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-201, -4, -47, -91.75, 332.75, -279.25, 618, -282, 867, -144.75, 1016.25, -0.75)

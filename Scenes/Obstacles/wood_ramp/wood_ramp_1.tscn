@@ -14,7 +14,7 @@ script = ExtResource("1_1uiqy")
 texture = ExtResource("1_pb1bx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(87, -72, 361, 55, 351, 79, 89, 82, -163, 82, -355, 82, -366, 66, -192, -72)
+polygon = PackedVector2Array(87, -72, 411, 79, 351, 79, 89, 82, -163, 82, -355, 82, -389, 82, -192, -72)
 
 [node name="Bullet_holes" parent="." instance=ExtResource("2_w1snx")]
 min_size = 0.05

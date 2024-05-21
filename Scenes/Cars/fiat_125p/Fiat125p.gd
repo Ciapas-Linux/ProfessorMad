@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 
 @export var hit_count:int = 12
-@export var speed:float = 100
+@export var speed:float = 300
 @export var gravity:float = 700.0
 @onready var tween: Tween
 var local_cursor_position:Vector2
@@ -17,6 +17,7 @@ var player_distance:float
 const MOVE_RIGHT: int = 0
 const MOVE_LEFT: int = 1
 const STOP: int = 2
+const ACCELERATE: int = 3
 var mouse_enter:bool = false
 var current_state : int = MOVE_LEFT
 
@@ -48,10 +49,30 @@ func _physics_process(_delta) -> void:
 			_process_on_state_move_right(_delta)
 		MOVE_LEFT:
 			_process_on_state_move_left(_delta)
+		ACCELERATE:	
+			_process_on_state_accelerate(_delta)
 
 func _process_on_state_stop() -> void:
 		pass
 	
+func _process_on_state_move_right(delta: float) -> void:
+	velocity.x = speed
+	velocity.y += gravity * delta
+	player_distance = global_position.distance_to(gv.Hero_global_position)
+	move_and_slide()
+	
+
+func _process_on_state_move_left(delta: float) -> void:
+	velocity.x = -speed
+	velocity.y += gravity * delta
+	player_distance = global_position.distance_to(gv.Hero_global_position)
+	move_and_slide()
+
+func _process_on_state_accelerate(delta: float) -> void:
+	velocity.x = -speed
+	velocity.y += gravity * delta
+	player_distance = global_position.distance_to(gv.Hero_global_position)
+	move_and_slide()				
 
 func _on_mouse_entered() -> void:
 	mouse_enter = true
@@ -60,7 +81,7 @@ func _on_mouse_exited() -> void:
 	mouse_enter = false
 
 
-func _tween():
+func _tween_explode():
 	tween = get_tree().create_tween()
 	#tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_LINEAR) # or TRANS_LINEAR,TRANS_QUINT,TRANS_CUBIC,TRANS_BACK,TRANS_SINE
@@ -91,7 +112,7 @@ func rpg_hit():
 	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
-	_tween()
+	_tween_explode()
 
 
 func bomb_explode():
@@ -106,7 +127,7 @@ func bomb_explode():
 	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
-	_tween()
+	_tween_explode()
 
 func hit()-> void:
 	if hit_count > 0:
@@ -126,7 +147,7 @@ func hit()-> void:
 			current_state = STOP
 			get_node("snd_engine").stop()
 			$snd_player.stop()
-			_tween()
+			_tween_explode()
 			gv.Cam1.ScreenShake(30,0.5)
 			#queue_free()	
 		
@@ -185,20 +206,6 @@ func start_talk():
 
 func stop_talk():
 	$Driver.stop()
-
-
-func _process_on_state_move_right(delta: float) -> void:
-	velocity.x = speed
-	velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
-	move_and_slide()
-	
-
-func _process_on_state_move_left(delta: float) -> void:
-	velocity.x = -speed
-	velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
-	move_and_slide()		
 		
 
 func _on_timer_timeout() -> void:

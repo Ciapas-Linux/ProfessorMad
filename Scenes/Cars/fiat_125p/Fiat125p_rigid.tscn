@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://bykqjn8n5jcgh"]
+[gd_scene load_steps=39 format=3 uid="uid://bykqjn8n5jcgh"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.gd" id="1_8cnbt"]
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="2_wpouw"]
 [ext_resource type="Texture2D" uid="uid://cuck4e418m28k" path="res://Assets/Cars/fiat125/fiat_125_body_2.png" id="3_kiyjk"]
+[ext_resource type="Texture2D" uid="uid://cenxci6tto20a" path="res://Assets/Cars/fiat125/fiat_125_body.png" id="3_l4nb8"]
 [ext_resource type="Texture2D" uid="uid://bu4nb337r8wmh" path="res://Assets/Cars/fiat125/szyba_mala_lewa.png" id="4_n8h8w"]
 [ext_resource type="Texture2D" uid="uid://ctydqdu0gmjnw" path="res://Assets/Cars/fiat125/szyba_mala_p1.png" id="5_yrxcd"]
 [ext_resource type="Texture2D" uid="uid://dmkb0w4fpff74" path="res://Assets/Cars/fiat125/szyba_mala_p2.png" id="6_8tlsw"]
@@ -24,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="22_0kfhm"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="23_eg2uo"]
 [ext_resource type="AudioStream" uid="uid://bf2sk8t0onx3e" path="res://Assets/Sounds/Sfx/level_up.wav" id="24_315am"]
+[ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="26_kc0ge"]
 
 [sub_resource type="Animation" id="Animation_e8m2p"]
 length = 0.001
@@ -274,21 +276,54 @@ size = Vector2(150, 70)
 [node name="Fiat125p_rigid" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 31
-mass = 1200.0
-can_sleep = false
+mass = 50.0
+gravity_scale = 5.0
 script = ExtResource("1_8cnbt")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(1.4, 1.4)
-polygon = PackedVector2Array(151, -107, 209, -41, 272, -32, 335, -22, 334, 52, 320, 69, 43, 77, -193, 82, -324, 81, -335, 55, -343, 1, -336, -13, -298, -22, -240, -27, -178, -32, -147, -59, -97, -109, 33, -109)
+polygon = PackedVector2Array(151, -107, 209, -41, 272, -32, 302.857, -12.8571, 300, 15, 288.571, 35, 43.5714, 36.4286, -196.429, 38.5714, -300, 37.1429, -321.429, 19.2857, -334.286, -5, -318.571, -16.4286, -298, -22, -240, -27, -178, -32, -147, -59, -97, -109, 33, -109)
+
+[node name="WheelHolder" type="PinJoint2D" parent="."]
+position = Vector2(-348, 100)
+node_a = NodePath("..")
+node_b = NodePath("Wheel")
+softness = 0.05
+
+[node name="Wheel" parent="WheelHolder" instance=ExtResource("26_kc0ge")]
+
+[node name="WheelHolder2" type="PinJoint2D" parent="."]
+position = Vector2(252, 100)
+node_a = NodePath("..")
+node_b = NodePath("Wheel")
+softness = 0.05
+
+[node name="Wheel" parent="WheelHolder2" instance=ExtResource("26_kc0ge")]
 
 [node name="smoke_particles" parent="." instance=ExtResource("2_wpouw")]
 position = Vector2(300, 50)
 
+[node name="object_spr" type="Sprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("3_l4nb8")
+
+[node name="Driver" type="Sprite2D" parent="."]
+position = Vector2(-46.081, -30.3063)
+rotation = -0.261916
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("14_tgrhy")
+offset = Vector2(-3.54091, -66.6797)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driver"]
+libraries = {
+"": SubResource("AnimationLibrary_f71lj")
+}
+
 [node name="body_parts" type="Node2D" parent="."]
 scale = Vector2(1.4, 1.4)
 
-[node name="object_spr" type="Sprite2D" parent="body_parts"]
+[node name="podloga" type="Sprite2D" parent="body_parts"]
+visible = false
 texture = ExtResource("3_kiyjk")
 
 [node name="szyba_l_1" type="Sprite2D" parent="body_parts"]
@@ -316,32 +351,24 @@ position = Vector2(114, -59)
 texture = ExtResource("9_wsd7r")
 
 [node name="dzwi_tyl" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(77, 16)
 texture = ExtResource("10_2vyoh")
 
 [node name="przod" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(-263, 27)
 texture = ExtResource("11_dakwa")
 
 [node name="dupa" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(267, 17)
 texture = ExtResource("12_ulnw8")
 
 [node name="boczek_p" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(-62, -41)
 texture = ExtResource("13_04til")
-
-[node name="Driver" type="Sprite2D" parent="body_parts"]
-position = Vector2(-46.081, -30.3063)
-rotation = -0.261916
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("14_tgrhy")
-offset = Vector2(-3.54091, -66.6797)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="body_parts/Driver"]
-libraries = {
-"": SubResource("AnimationLibrary_f71lj")
-}
 
 [node name="szyba_p_1" type="Sprite2D" parent="body_parts"]
 position = Vector2(48, -66)
@@ -362,10 +389,12 @@ position = Vector2(-74, 18)
 texture = ExtResource("18_6w35r")
 
 [node name="dach" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(17, -69)
 texture = ExtResource("19_6fc03")
 
 [node name="Kolo_l" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(-248, 77)
 texture = ExtResource("20_crhiu")
 
@@ -375,6 +404,7 @@ libraries = {
 }
 
 [node name="Kolo_p" type="Sprite2D" parent="body_parts"]
+visible = false
 position = Vector2(179, 76)
 texture = ExtResource("20_crhiu")
 
@@ -413,13 +443,17 @@ stream = ExtResource("24_315am")
 volume_db = 7.0
 
 [node name="kolo_l_CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-349, 107)
 scale = Vector2(1.4, 1.4)
 polygon = PackedVector2Array(12, -45, -3, -46, -19, -44, -35, -33, -45, -18, -48, 0, -46, 20, -39, 33, -25, 44, -3, 49, 18, 46, 35, 36, 47, 17, 49, -6, 42, -24, 29, -36)
+disabled = true
 
 [node name="kolo_p_CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(254, 106)
 scale = Vector2(1.4, 1.4)
 polygon = PackedVector2Array(4, -47, -9, -46, -22, -42, -34, -36, -43, -25, -48, -12, -49, 8, -47, 19, -41, 30.1, -29, 43, -16, 50, 2, 50, 20, 47, 31, 41, 39, 32, 45, 24, 49, 14, 50, 0, 48, -16, 41, -30, 30, -39, 19, -45)
+disabled = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

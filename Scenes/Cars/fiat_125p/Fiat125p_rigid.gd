@@ -10,7 +10,7 @@ extends RigidBody2D
 
 
 @export var hit_count:int = 12
-@export var speed:float = 100
+@export var speed:float = 60000
 @export var spin_power = 10000
 
 var thrust = Vector2(0, -250)
@@ -32,6 +32,8 @@ var current_state : int = STOP
   	load("res://Assets/Sounds/pisk_opon2.wav"),
   	load("res://Assets/Sounds/pisk_opon3.wav")]
 	
+
+var wheels:Array[RigidBody2D] = []	
 	
 func _ready() -> void:
 	self.input_pickable = true
@@ -44,13 +46,19 @@ func _ready() -> void:
 	#apply_central_impulse(Vector2(0, -100))
 	#apply_force(get_local_mouse_position().normalized() * 20)
 	#apply_central_impulse(Vector2(0, -100))
-	add_constant_force( Vector2(1000, 0), Vector2(0, 0) )
+	#add_constant_force( Vector2(1000, 0), Vector2(0, 0) )
+	#wheels = get_tree().get_nodes_in_group(
+	#wheels = $WheelHolder/Wheel.get_tree().get_nodes_in_group("wheel")
+	#wheels[0] = $WheelHolder.get_node("Wheel")
+	wheels.append($WheelHolder.get_node("Wheel"))
+	wheels.append($WheelHolder2.get_node("Wheel")) 
 	#start_drive(MOVE_RIGHT)
+	$smoke_particles.emitting = true
+	get_node("snd_engine").play()
+	#turn_right()
 		
 
 func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("Fire"):
-		#local_cursor_position = get_local_mouse_position()
 	pass	
 
 func _physics_process(_delta) -> void:
@@ -62,20 +70,43 @@ func _physics_process(_delta) -> void:
 		MOVE_LEFT:
 			_process_on_state_move_left(_delta)
 
-# func _input(event):
-# 	if event.is_action_just_pressed("ui_up"):
-# 		apply_impulse(Vector2(), Vector2() * 5)
+
+func _process_on_state_stop(delta) -> void:
+	if Input.is_action_pressed("ui_right"):
+		#$snd_click.play()
+		for wheel in wheels:
+			wheel.apply_torque_impulse(speed * delta * 60)
+
+func _process_on_state_move_right(_delta: float) -> void:
+	#velocity.x = speed
+	#velocity.y += gravity * delta
+	#constant_force = Vector2.RIGHT
+	#constant_torque = 12.0
+	#apply_central_impulse(Vector2(0, -10))
+	#apply_torque_impulse(-100)
+	player_distance = global_position.distance_to(gv.Hero_global_position)
+	#move_and_slide()
+	
+
+func _process_on_state_move_left(_delta: float) -> void:
+	#velocity.x = -speed
+	#velocity.y += gravity * delta
+	player_distance = global_position.distance_to(gv.Hero_global_position)
+	#move_and_slide()				
 
 func _integrate_forces(state):
-
+	pass
 	#add_constant_force( Vector2(1000, 0), Vector2(0, 0) )
 
-	if Input.is_action_just_pressed("ui_up"):
-		$snd_click.play()
+	# if Input.is_action_just_pressed("ui_up"):
+	# 	$snd_click.play()
+
+
 		#state.apply_force(thrust.rotated(rotation))
 		#apply_impulse(Vector2(0, 0),Vector2(100,0))
 		#apply_force(-transform.y, transform.origin + Vector2.DOWN * 0.5)
 		#apply_central_impulse(Vector2(100, 0))
+		
 		#set_linear_velocity(Vector2(1500,0))
 
 	# else:
@@ -87,9 +118,7 @@ func _integrate_forces(state):
 	# 	rotation_direction -= 1
 	# state.apply_torque(rotation_direction * torque)
 
-func _process_on_state_stop(_delta) -> void:
-	if Input.is_action_just_pressed("ui_up"):
-		pass
+
 	
 
 func _on_mouse_entered() -> void:
@@ -189,15 +218,17 @@ func turn_left() -> void:
 
 func turn_right() -> void:
 	$body_parts.scale.x = $body_parts.scale.y * -1
+	$object_spr.scale.x = $object_spr.scale.y * -1
+	$Driver.scale.x = $Driver.scale.y * 1
 	$CollisionPolygon2D.scale.x = $CollisionPolygon2D.scale.y * -1
-	$kolo_l_CollisionPolygon2D.scale.x = $kolo_l_CollisionPolygon2D.scale.y * -1
-	$kolo_p_CollisionPolygon2D.scale.x = $kolo_p_CollisionPolygon2D.scale.y * -1
+	#$kolo_l_CollisionPolygon2D.scale.x = $kolo_l_CollisionPolygon2D.scale.y * -1
+	#$kolo_p_CollisionPolygon2D.scale.x = $kolo_p_CollisionPolygon2D.scale.y * -1
 	$smoke_particles.position.x -= 500
 	#apply_scale(Vector2(-1,1))
 	#transform.x.x = transform.y.y * -1
 	$smoke_particles.gravity = Vector2(100.0, 2.0)
 	#$smoke_particles.amount = 20
-	current_state = MOVE_RIGHT	
+	#current_state = MOVE_RIGHT	
 
 func stop_drive() -> void:
 		current_state = STOP
@@ -245,22 +276,6 @@ func stop_talk():
 	$Driver.stop()
 
 
-func _process_on_state_move_right(_delta: float) -> void:
-	#velocity.x = speed
-	#velocity.y += gravity * delta
-	#constant_force = Vector2.RIGHT
-	#constant_torque = 12.0
-	#apply_central_impulse(Vector2(0, -10))
-	#apply_torque_impulse(-100)
-	player_distance = global_position.distance_to(gv.Hero_global_position)
-	#move_and_slide()
-	
-
-func _process_on_state_move_left(_delta: float) -> void:
-	#velocity.x = -speed
-	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
-	#move_and_slide()		
 		
 
 func _on_timer_timeout() -> void:
@@ -277,13 +292,13 @@ func _on_timer_timeout() -> void:
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
 	print("Fiat125p, hit area: " + area.name)
-	match current_state:
-		STOP:
-			pass
-		MOVE_RIGHT:
-			turn_left()
-		MOVE_LEFT:
-			turn_right()
+	# match current_state:
+	# 	STOP:
+	# 		pass
+	# 	MOVE_RIGHT:
+	# 		turn_left()
+	# 	MOVE_LEFT:
+	# 		turn_right()
 			
 
 func _on_big_explosion_finished() -> void:
