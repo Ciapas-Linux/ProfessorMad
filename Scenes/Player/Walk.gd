@@ -14,6 +14,9 @@ var tilt:float = 0.0
 func enter(_msg := {}) -> void:
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
+
+	anim_player.stop()
+	#anim_player.play("walkx")		
 	
 func physics_update(delta: float) -> void:
 		
@@ -27,7 +30,7 @@ func physics_update(delta: float) -> void:
 
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		floor_normal = player.get_floor_normal()
-		offset = deg_to_rad(85)
+		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
 				
 		player.Foot_R.rotation = ray_normal.angle() + offset
@@ -38,11 +41,11 @@ func physics_update(delta: float) -> void:
 		#print("$$$$$$$$$$$$$$$: " + str(tilt))
 
 		if tilt < 10:
-			if anim_player.get_current_animation() != "walk":
-				anim_player.play("walk")		
+			if anim_player.get_current_animation() != "walkx":
+				anim_player.play("walkx_2")		
 		elif tilt > 10:
 			if anim_player.get_current_animation() != "walk_up":
-				anim_player.play("walk")
+				anim_player.play("walkx_2")
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})

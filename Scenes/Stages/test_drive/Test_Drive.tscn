@@ -329,7 +329,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 20000, 62)
 
 [node name="WoodRamp1" parent="." instance=ExtResource("45_25my5")]
-position = Vector2(14671, 531)
+position = Vector2(8840, 531)
 scale = Vector2(2.5, 2.5)
 
 [node name="Kibel1" parent="." instance=ExtResource("47_6dlft")]
@@ -340,7 +340,7 @@ scale = Vector2(1.6, 1.6)
 position = Vector2(1176, -130)
 
 [node name="Gorka" parent="." instance=ExtResource("37_kjkaq")]
-position = Vector2(4667, 772)
+position = Vector2(2397, 772)
 
 [connection signal="pressed" from="HUD/Quit" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="HUD/snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

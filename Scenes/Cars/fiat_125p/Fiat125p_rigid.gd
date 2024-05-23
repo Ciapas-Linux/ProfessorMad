@@ -55,6 +55,7 @@ func _ready() -> void:
 	#start_drive(MOVE_RIGHT)
 	$smoke_particles.emitting = true
 	get_node("snd_engine").play()
+	$Driver/AnimationPlayer.play("head_rotate")
 	#turn_right()
 		
 
@@ -72,10 +73,11 @@ func _physics_process(_delta) -> void:
 
 
 func _process_on_state_stop(delta) -> void:
-	if Input.is_action_pressed("ui_right"):
-		#$snd_click.play()
-		for wheel in wheels:
-			wheel.apply_torque_impulse(speed * delta * 60)
+	# if Input.is_action_pressed("ui_right"):
+	# 	#$snd_click.play()
+	# 	for wheel in wheels:
+	# 		wheel.apply_torque_impulse(speed * delta * 60)
+	pass
 
 func _process_on_state_move_right(_delta: float) -> void:
 	#velocity.x = speed
@@ -292,6 +294,7 @@ func _on_timer_timeout() -> void:
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
 	print("Fiat125p, hit area: " + area.name)
+	$snd_hit.play()
 	# match current_state:
 	# 	STOP:
 	# 		pass
@@ -299,10 +302,16 @@ func _on_front_contact_area_entered(area:Area2D) -> void:
 	# 		turn_left()
 	# 	MOVE_LEFT:
 	# 		turn_right()
-			
+
+func _on_front_contact_body_entered(body:Node2D) -> void:
+	print("Fiat125p, hit body: " + body.name)
+	$snd_hit.play()
+
 
 func _on_big_explosion_finished() -> void:
 	queue_free() 
+
+
 
 
 

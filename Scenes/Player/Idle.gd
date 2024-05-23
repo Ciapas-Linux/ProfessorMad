@@ -10,10 +10,10 @@ signal turn(value)
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
-var floor_normal:Vector2
+#var floor_normal:Vector2
 var ray_normal:Vector2
-var offset: float
-
+#var offset: float
+var slope_angle:float
 
 # Enter state:
 func enter(_msg := {}) -> void:
@@ -105,14 +105,22 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	
-
+	# Rotate foot to match slope angle:
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
-		floor_normal = player.get_floor_normal()
-		offset = deg_to_rad(90)
+		slope_angle = rad_to_deg(acos(player.get_floor_normal().dot(Vector2(0, -1))))
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
 				
-		player.Foot_R.rotation = ray_normal.angle() + offset
-		player.Foot_L.rotation = ray_normal.angle() + offset
+		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+		
+		if slope_angle > 10:
+			print( "XXXXXXXX: " + str(slope_angle))
+			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
+			#get_node("../../CollisionShape2D").shape.height = 600
+		
+
+
+		#print( "XXXXXXXX: " + str(rad_to_deg(ray_normal.angle() + offset ) * -1 ) )  
 
 
 func _on_gun_2_fire() -> void:
