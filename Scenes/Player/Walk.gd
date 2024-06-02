@@ -41,7 +41,7 @@ func physics_update(delta: float) -> void:
 		#print("$$$$$$$$$$$$$$$: " + str(tilt))
 
 		if tilt < 10:
-			if anim_player.get_current_animation() != "walkx":
+			if anim_player.get_current_animation() != "walkx_2":
 				anim_player.play("walkx_2")		
 		elif tilt > 10:
 			if anim_player.get_current_animation() != "walk_up":
