@@ -73,10 +73,10 @@ func _physics_process(_delta) -> void:
 
 
 func _process_on_state_stop(delta) -> void:
-	# if Input.is_action_pressed("ui_right"):
-	# 	#$snd_click.play()
-	# 	for wheel in wheels:
-	# 		wheel.apply_torque_impulse(speed * delta * 60)
+	if Input.is_action_pressed("ui_right"):
+	 	#$snd_click.play()
+		for wheel in wheels:
+			wheel.apply_torque_impulse(speed * delta * 60)
 	pass
 
 func _process_on_state_move_right(_delta: float) -> void:

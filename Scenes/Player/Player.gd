@@ -204,8 +204,8 @@ func load_next_weapon():
 func _physics_process(_delta):
 	gv.Hero_global_position = global_position
 	gv.Hero_local_position = position
-	if global_position.x < -850:
-		global_position.x = 0
+	if global_position.x < -1500:
+		global_position.x = -500
 		gv.fsm.transition_to("Idle")
 	
 	if is_on_wall():
