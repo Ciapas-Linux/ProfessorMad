@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b53uyaf3owxsq"]
+[gd_scene load_steps=16 format=3 uid="uid://b53uyaf3owxsq"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/ak_47/Bullet/Bullet.gd" id="1_pyyso"]
 [ext_resource type="Texture2D" uid="uid://dofk3o4qwlc1b" path="res://Assets/Weapons/ak_47/missile.png" id="2_0y286"]

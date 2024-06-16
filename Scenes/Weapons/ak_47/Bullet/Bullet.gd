@@ -3,6 +3,7 @@ extends Area2D
 @export var speed:float = 0.0003
 var distance:float = 0.0
 var destination_point:Vector2
+var start_point:Vector2
 
 
 func _enter_tree() -> void:
@@ -15,6 +16,7 @@ func _ready():
 	$BulletCrash.visible = false
 	$CollisionShape2D.disabled = true
 	distance = global_position.distance_to(destination_point)
+	start_point = global_position
 	var tween = create_tween()
 	tween.connect("finished", on_tween_finished)
 	tween.set_trans(Tween.TRANS_LINEAR)
@@ -22,6 +24,11 @@ func _ready():
 	tween.tween_property(self, "position", destination_point, distance*speed)
 	print("Player bullet: " + self.name)
 	
+func _physics_process(_delta):
+	if global_position.distance_to(start_point) > 3500:
+		print("Player bullet out of range: "  + self.name)
+		queue_free()
+
 func on_tween_finished():
 	$CollisionShape2D.disabled = false
 	$BulletSprite.visible = false
@@ -54,6 +61,13 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_bullet_crash_animation_finished() -> void:
 	queue_free()
 	
+
+
+
+
+
+
+
 
 
 

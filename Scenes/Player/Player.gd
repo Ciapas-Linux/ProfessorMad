@@ -201,7 +201,6 @@ func load_next_weapon():
 		gv.Hero_current_weapon = 0
 		load_inventory()
 
-func _physics_process(_delta):
 	gv.Hero_global_position = global_position
 	gv.Hero_local_position = position
 	if global_position.x < -1500:

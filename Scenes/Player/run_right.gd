@@ -4,6 +4,7 @@ extends PlayerState
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
 	get_node("../../AnimationPlayer").play("run")
+	get_node("../../AnimationPlayer").seek(0.3)
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
 	

@@ -43,9 +43,12 @@ func physics_update(delta: float) -> void:
 		if tilt < 10:
 			if anim_player.get_current_animation() != "walkx_2":
 				anim_player.play("walkx_2")		
+				anim_player.seek(0.3,true)
 		elif tilt > 10:
 			if anim_player.get_current_animation() != "walkx_2":
 				anim_player.play("walkx_2")
+				anim_player.seek(0.3,true)
+				
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})

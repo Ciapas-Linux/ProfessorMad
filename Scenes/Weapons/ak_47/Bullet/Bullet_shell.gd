@@ -5,14 +5,10 @@ extends RigidBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	
-
 	angular_velocity = 15
 	apply_impulse(Vector2(randf_range(-250,500),0))
 	apply_torque_impulse(225)
 	apply_torque(randf_range(-300,300))
-
-	
 	
 
 func _integrate_forces(_state):
