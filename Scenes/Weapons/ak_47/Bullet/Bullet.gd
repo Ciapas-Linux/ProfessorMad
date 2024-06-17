@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var speed:float = 0.0003
+@export var max_distance: float = 3500 
+
 var distance:float = 0.0
 var destination_point:Vector2
 var start_point:Vector2
@@ -8,7 +10,7 @@ var start_point:Vector2
 
 func _enter_tree() -> void:
 	destination_point = get_global_mouse_position()
-	# XXXXXX:
+	# AHTUNG! XXXXXX:
 	# Signal from every bullet when enter to scene tree for bullet holes nodes:
 	gv.emit_signal("player_bullet_ready")
 
@@ -25,7 +27,7 @@ func _ready():
 	print("Player bullet: " + self.name)
 	
 func _physics_process(_delta):
-	if global_position.distance_to(start_point) > 3500:
+	if global_position.distance_to(start_point) > max_distance:
 		print("Player bullet out of range: "  + self.name)
 		queue_free()
 
@@ -66,8 +68,8 @@ func _on_bullet_crash_animation_finished() -> void:
 
 
 
-
-
+# ######################################### ->
+# draft trash:
 
 
 
