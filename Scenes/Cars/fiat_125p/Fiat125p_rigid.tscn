@@ -352,7 +352,6 @@ position = Vector2(114, -59)
 texture = ExtResource("9_wsd7r")
 
 [node name="dzwi_tyl" type="Sprite2D" parent="body_parts"]
-visible = false
 position = Vector2(77, 16)
 texture = ExtResource("10_2vyoh")
 
@@ -390,7 +389,6 @@ position = Vector2(-74, 18)
 texture = ExtResource("18_6w35r")
 
 [node name="dach" type="Sprite2D" parent="body_parts"]
-visible = false
 position = Vector2(17, -69)
 texture = ExtResource("19_6fc03")
 
@@ -414,12 +412,13 @@ libraries = {
 "": SubResource("AnimationLibrary_7pgsx")
 }
 
-[node name="front_contact" type="Area2D" parent="body_parts"]
+[node name="front_contact" type="Area2D" parent="."]
+scale = Vector2(1.4, 1.4)
 collision_layer = 32
 collision_mask = 15
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="body_parts/front_contact"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="front_contact"]
 position = Vector2(-284, 36)
 shape = SubResource("RectangleShape2D_qwuyi")
 
@@ -461,6 +460,7 @@ pitch_scale = 1.26
 enabled = false
 target_position = Vector2(-1500, 0)
 
-[connection signal="area_entered" from="body_parts/front_contact" to="." method="_on_front_contact_area_entered"]
-[connection signal="body_entered" from="body_parts/front_contact" to="." method="_on_front_contact_body_entered"]
+[connection signal="area_entered" from="front_contact" to="." method="_on_front_contact_area_entered"]
+[connection signal="body_entered" from="front_contact" to="." method="_on_front_contact_body_entered"]
+[connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

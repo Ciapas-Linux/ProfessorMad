@@ -11,10 +11,10 @@ extends RigidBody2D
 
 @export var hit_count:int = 12
 @export var speed:float = 60000
-@export var spin_power = 10000
+#@export var spin_power = 10000
 
-var thrust = Vector2(0, -250)
-var torque = 20000
+#var thrust = Vector2(0, -250)
+#var torque = 20000
 
 @onready var tween: Tween
 
@@ -135,19 +135,33 @@ func _tween():
 	#tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_LINEAR) # or TRANS_LINEAR,TRANS_QUINT,TRANS_CUBIC,TRANS_BACK,TRANS_SINE
 	tween.set_parallel(true)
-	tween.tween_property($body_parts/object_spr, "rotation", randf_range(-2.5, 2.5), 1.0)
-	tween.tween_property($body_parts/object_spr, "global_position", Vector2(global_position.x, global_position.y - 75), 0.9)
+	$object_spr.visible = false
+
+	for wheel in wheels:
+			wheel.visible = false
+
+	var _sign: int = 0		 
+
+	for _node in $body_parts.get_children():
+		_node.visible = true
+		#print("Fiat125p Rigid: " + _node.name)
+
+		_sign = randi_range(0,1)
+
+		if _sign == 0:
+			tween.tween_property(_node, "global_position", Vector2(global_position.x - randf_range(-170, 270), global_position.y - randf_range(170, 470)), 0.9)
+		elif _sign == 1:
+			tween.tween_property(_node, "global_position", Vector2(global_position.x + randf_range(-170, 270), global_position.y - randf_range(170, 420)), 0.9)
+		
+		tween.tween_property(_node, "rotation", randf_range(-3.5, 3.5), 1.0)
+		tween.tween_property(_node, "self_modulate", Color(1, 1, 1, 0), 1.0)
+				
+	# DRIVER SPRITE:		
+	tween.tween_property($Driver, "global_position", Vector2(global_position.x, global_position.y - randf_range(50, 370)), 0.9)
+	tween.tween_property($Driver, "rotation", randf_range(-3.5, 3.5), 1.0)
+	tween.tween_property($Driver, "self_modulate", Color(1, 1, 1, 0), 1.0)
+
 	
-	tween.tween_property($body_parts/Kolo_l, "global_position", Vector2(global_position.x - 70, global_position.y - 285), 0.6)
-	tween.tween_property($body_parts/Kolo_p, "global_position", Vector2(global_position.x + 120, global_position.y - 185), 0.6)
-	tween.tween_property($body_parts/Kolo_l, "rotation", randf_range(-4.5, 4.5), 0.9)
-	tween.tween_property($body_parts/Kolo_p, "rotation", randf_range(-4.5, 2.5), 0.4)
-	
-	tween.tween_property($body_parts/object_spr, "self_modulate", Color(1, 1, 1, 0), 1.0)
-	tween.tween_property($body_parts/Kolo_l, "self_modulate", Color(1, 1, 1, 0), 1.0)
-	tween.tween_property($body_parts/Kolo_p, "self_modulate", Color(1, 1, 1, 0), 1.0)
-	tween.tween_property($body_parts/Driver, "self_modulate", Color(1, 1, 1, 0), 1.0)
-	#tween.tween_property($Boss, "self_modulate", Color(1, 1, 1, 0), 1.0)
 
 func rpg_hit():
 	$CollisionPolygon2D.set_deferred("disabled", true)
@@ -156,12 +170,13 @@ func rpg_hit():
 	$BigExplosion.explode()
 	$smoke_particles.emitting = false
 	$smoke_particles.visible = false
+	_tween()
 	await get_tree().create_timer(0.3).timeout
 	$Bullet_holes.vanish()
 	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
-	_tween()
+	
 
 
 func bomb_explode():
@@ -268,7 +283,6 @@ func start_drive(car_direction:int) -> void:
 
 	current_state = car_direction		
 
-
 func start_talk():
 	if $Driver.is_playing() == false:
 		$Driver.play("talk")
@@ -278,8 +292,6 @@ func stop_talk():
 	$Driver.stop()
 
 
-		
-
 func _on_timer_timeout() -> void:
 	if current_state == STOP:
 		return
@@ -288,8 +300,8 @@ func _on_timer_timeout() -> void:
 		$snd_player.stream = sounds[randi() % len(sounds)]
 		if $snd_player.playing != true:
 			$snd_player.play()
-	$body_parts/Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
-	$body_parts/Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+	#$body_parts/Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
+	#$body_parts/Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
 	
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
@@ -309,6 +321,8 @@ func _on_front_contact_body_entered(body:Node2D) -> void:
 
 
 func _on_big_explosion_finished() -> void:
+	for wheel in wheels:
+			wheel.queue_free()
 	queue_free() 
 
 

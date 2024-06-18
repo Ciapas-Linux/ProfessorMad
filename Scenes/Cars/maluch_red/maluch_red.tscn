@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://chf1nu07b05ko"]
+[gd_scene load_steps=7 format=3 uid="uid://chf1nu07b05ko"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/maluch_red/maluch_red.gd" id="1_yh5px"]
 [ext_resource type="Texture2D" uid="uid://bx033dfc6pesf" path="res://Assets/Cars/maluch_red/maluch3_body.png" id="2_t3olp"]

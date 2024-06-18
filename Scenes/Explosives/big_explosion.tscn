@@ -677,7 +677,7 @@ anim_speed_max = 1.0
 
 [node name="snd_explode1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("103_nk6ot")
-volume_db = 8.0
+volume_db = 10.0
 pitch_scale = 0.6
 
 [node name="snd_explode2" type="AudioStreamPlayer" parent="."]
