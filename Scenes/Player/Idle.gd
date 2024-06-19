@@ -114,7 +114,7 @@ func physics_update(delta: float) -> void:
 		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
 		
 		if slope_angle > 10:
-			print( "XXXXXXXX: " + str(slope_angle))
+			print( "Slope angle: " + str(slope_angle))
 			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
 			#get_node("../../CollisionShape2D").shape.height = 600
 		

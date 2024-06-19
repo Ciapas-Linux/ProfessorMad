@@ -149,15 +149,15 @@ func _tween():
 		_sign = randi_range(0,1)
 
 		if _sign == 0:
-			tween.tween_property(_node, "global_position", Vector2(global_position.x - randf_range(-170, 270), global_position.y - randf_range(170, 470)), 0.9)
+			tween.tween_property(_node, "global_position", Vector2(global_position.x - randf_range(-270, 570), global_position.y - randf_range(270, 770)), 0.9)
 		elif _sign == 1:
-			tween.tween_property(_node, "global_position", Vector2(global_position.x + randf_range(-170, 270), global_position.y - randf_range(170, 420)), 0.9)
+			tween.tween_property(_node, "global_position", Vector2(global_position.x + randf_range(-170, 570), global_position.y - randf_range(270, 720)), 0.9)
 		
 		tween.tween_property(_node, "rotation", randf_range(-3.5, 3.5), 1.0)
 		tween.tween_property(_node, "self_modulate", Color(1, 1, 1, 0), 1.0)
 				
 	# DRIVER SPRITE:		
-	tween.tween_property($Driver, "global_position", Vector2(global_position.x, global_position.y - randf_range(50, 370)), 0.9)
+	tween.tween_property($Driver, "global_position", Vector2(global_position.x, global_position.y - randf_range(150, 670)), 0.9)
 	tween.tween_property($Driver, "rotation", randf_range(-3.5, 3.5), 1.0)
 	tween.tween_property($Driver, "self_modulate", Color(1, 1, 1, 0), 1.0)
 
