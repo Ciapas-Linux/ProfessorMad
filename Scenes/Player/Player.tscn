@@ -4277,7 +4277,7 @@ texture = ExtResource("8_abub0")
 offset = Vector2(7.42856, 73.2857)
 
 [node name="Foot_R" type="Sprite2D" parent="Body_parts/Leg_R"]
-position = Vector2(6.99065, 375.994)
+position = Vector2(6.99064, 375.994)
 rotation = 0.021653
 scale = Vector2(2.19961, 2.19961)
 texture = ExtResource("5_kvy3r")
