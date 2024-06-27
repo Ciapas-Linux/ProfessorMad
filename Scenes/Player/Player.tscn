@@ -4227,58 +4227,58 @@ libraries = {
 [node name="Body_parts" type="Node2D" parent="."]
 
 [node name="Arm_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-14.9362, -261.212)
-rotation = -0.149285
+position = Vector2(-32.0389, -271.355)
+rotation = -0.427254
 scale = Vector2(0.7999, 0.7999)
 texture = ExtResource("2_a310c")
 offset = Vector2(7.82233, 62.8831)
 
 [node name="Hand_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(113.706, -135.338)
-rotation = -0.722849
-scale = Vector2(0.767907, 0.767907)
+position = Vector2(126.206, -185.613)
+rotation = -1.00082
+scale = Vector2(0.767906, 0.767906)
 texture = ExtResource("6_sh2oj")
 offset = Vector2(43.5112, 80.9778)
 
 [node name="ForeArm_L" type="Sprite2D" parent="Body_parts/Hand_L"]
-position = Vector2(-97.456, -112.953)
+position = Vector2(-97.4561, -112.953)
 rotation = -0.64475
-scale = Vector2(0.833332, 0.833332)
+scale = Vector2(0.833333, 0.833333)
 texture = ExtResource("2_hi5ps")
 offset = Vector2(-0.706993, 89.6866)
 flip_h = true
 
 [node name="Leg_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-31, -42)
-rotation = -0.107671
+position = Vector2(11.9986, -45.0005)
+rotation = -0.0762952
 scale = Vector2(0.699876, 0.699876)
 texture = ExtResource("11_8mg4h")
 offset = Vector2(1, 80)
 
 [node name="Foot_L" type="Sprite2D" parent="Body_parts/Leg_L"]
-position = Vector2(-211.401, 296.653)
-rotation = 0.896743
+position = Vector2(-35.8548, 412.829)
+rotation = 0.0607045
 scale = Vector2(2.19993, 2.19993)
 texture = ExtResource("5_kvy3r")
 offset = Vector2(46.9803, 25.5456)
 
 [node name="Calf_L" type="Sprite2D" parent="Body_parts/Leg_L/Foot_L"]
-position = Vector2(12.5458, -118.558)
-rotation = 0.0643796
+position = Vector2(12.5457, -118.558)
+rotation = 0.0643795
 scale = Vector2(0.45456, 0.45456)
 texture = ExtResource("12_55wsn")
 offset = Vector2(-1, 133)
 
 [node name="Leg_R" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-29, -31)
-rotation = 0.0525751
+position = Vector2(-68.9991, -34.0009)
+rotation = 0.0603944
 scale = Vector2(0.699971, 0.699971)
 texture = ExtResource("8_abub0")
 offset = Vector2(7.42856, 73.2857)
 
 [node name="Foot_R" type="Sprite2D" parent="Body_parts/Leg_R"]
-position = Vector2(45.1453, 374.851)
-rotation = -0.16615
+position = Vector2(6.99065, 375.994)
+rotation = 0.021653
 scale = Vector2(2.19961, 2.19961)
 texture = ExtResource("5_kvy3r")
 offset = Vector2(47.8803, 29.6873)
@@ -4291,16 +4291,16 @@ texture = ExtResource("9_tlemh")
 offset = Vector2(-0.104025, 1.08356)
 
 [node name="Body" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-36.6653, -29.124)
-rotation = 0.230204
+position = Vector2(-38, -39.0007)
+rotation = 0.160401
 scale = Vector2(0.999814, 0.999814)
 texture = ExtResource("2_81kcy")
 offset = Vector2(0, -147)
 
 [node name="Arm_R" type="Sprite2D" parent="Body_parts"]
 z_index = 1
-position = Vector2(-11.5118, -263.525)
-rotation = 0.273208
+position = Vector2(-29.2564, -274.585)
+rotation = 0.149461
 scale = Vector2(0.7999, 0.7999)
 texture = ExtResource("2_a310c")
 offset = Vector2(11.7867, 73.2179)
@@ -4320,8 +4320,8 @@ texture = ExtResource("4_5bscy")
 offset = Vector2(-1.67987, 86.6881)
 
 [node name="Head" type="Sprite2D" parent="Body_parts"]
-position = Vector2(7.31707, -335.103)
-rotation = 0.372614
+position = Vector2(-15.4657, -347.302)
+rotation = 0.423203
 scale = Vector2(2.49958, 2.49958)
 texture = ExtResource("10_udm5j")
 offset = Vector2(-21, -97)
@@ -4337,8 +4337,8 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_hfn3g")
 
 [node name="weapon_spawn" type="Marker2D" parent="Body_parts"]
-position = Vector2(94.4702, -11.8011)
-rotation = 0.183238
+position = Vector2(106.986, -37.8678)
+rotation = 0.0594909
 scale = Vector2(1.08789, 1.08789)
 gizmo_extents = 33.0
 
@@ -4641,17 +4641,17 @@ collision_mask = 2
 
 [node name="footR_CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-7.24685, 296.405)
-rotation = -0.101455
-scale = Vector2(1.53966, 1.53966)
+position = Vector2(-88.4773, 292.281)
+rotation = 0.094168
+scale = Vector2(1.53967, 1.53967)
 shape = SubResource("CircleShape2D_wf041")
 disabled = true
 debug_color = Color(0.691652, 0.412921, 0.722655, 0.42)
 
 [node name="footL_CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-176.093, 216.543)
-rotation = 0.853452
+position = Vector2(21.0246, 284.751)
+rotation = 0.0487888
 scale = Vector2(1.53968, 1.53968)
 shape = SubResource("CircleShape2D_vjavp")
 disabled = true

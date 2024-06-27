@@ -207,7 +207,7 @@ func _ready():
 	print("Screen width: " + str(SWidth) + "   " + "Screen height :" + str(SHeight))
 
 	print("Get Cam1 reference ...")		
-	Cam1 = get_node("/root/Stage1/Camera2DPro")
+	Cam1 = get_node("/root/Scenes/Camera/Camera2DPro")
 	
 		
 	print("Stage1 ready ...")	

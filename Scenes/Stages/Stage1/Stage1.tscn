@@ -1,6 +1,6 @@
 [gd_scene load_steps=54 format=4 uid="uid://dj6r8726lv3r6"]
 
-[ext_resource type="Script" path="res://Scenes/Stages/Stage1.gd" id="1_ow16c"]
+[ext_resource type="Script" path="res://Scenes/Stages/Stage1/Stage1.gd" id="1_ow16c"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_ueebj"]
 [ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="3_vafg6"]
 [ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="4_rhujv"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://b52diux3ykntq"]
 
-[ext_resource type="Script" path="res://Scripts/Player25D/Player25D.gd" id="1_80jv7"]
+[ext_resource type="Script" path="res://Scenes/Player25D/Player25D.gd" id="1_80jv7"]
 [ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="1_rvklo"]
-[ext_resource type="Texture2D" uid="uid://ukstupt5orp8" path="res://Assets/Player/BodyParts/głowa3.png" id="2_a0ela"]
-[ext_resource type="Script" path="res://Scripts/player25D-fsm/P25StateMachine.gd" id="4_f25ob"]
-[ext_resource type="Script" path="res://Scripts/Player25D/idle.gd" id="5_rr5pk"]
+[ext_resource type="Texture2D" uid="uid://ctq5jgwdibvw5" path="res://Assets/Player/BodyParts/głowa8.png" id="3_5vjyq"]
+[ext_resource type="Script" path="res://Scenes/Player25D/player25D-fsm/P25StateMachine.gd" id="4_f25ob"]
+[ext_resource type="Script" path="res://Scenes/Player25D/idle.gd" id="5_rr5pk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6dtpo"]
 
@@ -25,9 +25,10 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("2_a0ela")
+albedo_texture = ExtResource("3_5vjyq")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l53mg"]
+lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_fed0t")
 
 [node name="Player25D" type="CharacterBody3D"]
@@ -42,7 +43,7 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 mesh = SubResource("PlaneMesh_g5aha")
 
 [node name="Head" type="MeshInstance3D" parent="Torso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167965, 0.00999998, -2.43208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167965, 0.00999999, -2.2661)
 mesh = SubResource("PlaneMesh_l53mg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,5 +1,5 @@
 extends Label
 
-func _process(_delta):
+func _physic_process(_delta):
 	text = "STATE:   " + gv.fsm.state.name
 	

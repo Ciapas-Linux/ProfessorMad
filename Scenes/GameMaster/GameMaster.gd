@@ -18,7 +18,7 @@ var text_start:String = "Profesorze Łysolku!"
 
 
 func _ready():
-	Stage1 = get_node("/root/Stage1")
+	Stage1 = get_node("/root/Scenes/Stages/Stage1")
 	
 	#Stage1 = get_tree().get_root().Stage1
 	print("GameMaster name: " + name)

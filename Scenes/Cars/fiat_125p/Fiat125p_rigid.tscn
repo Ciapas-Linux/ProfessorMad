@@ -24,8 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="21_r0h17"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="22_0kfhm"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="23_eg2uo"]
-[ext_resource type="AudioStream" uid="uid://bf2sk8t0onx3e" path="res://Assets/Sounds/Sfx/level_up.wav" id="24_315am"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="26_kc0ge"]
+[ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="26_odadu"]
 [ext_resource type="AudioStream" uid="uid://bd8rnsf4mod6d" path="res://Assets/Sounds/Hero/stukot1.wav" id="27_jig1y"]
 
 [sub_resource type="Animation" id="Animation_e8m2p"]
@@ -423,6 +423,8 @@ position = Vector2(-284, 36)
 shape = SubResource("RectangleShape2D_qwuyi")
 
 [node name="Bullet_holes" parent="." instance=ExtResource("21_r0h17")]
+min_size = 0.3
+max_size = 1.0
 
 [node name="BigExplosion" parent="." instance=ExtResource("22_0kfhm")]
 visible = false
@@ -448,8 +450,9 @@ pitch_scale = 0.7
 [node name="snd_player" type="AudioStreamPlayer2D" parent="."]
 
 [node name="snd_click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_315am")
-volume_db = 7.0
+stream = ExtResource("26_odadu")
+volume_db = 2.0
+pitch_scale = 1.4
 
 [node name="snd_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_jig1y")
