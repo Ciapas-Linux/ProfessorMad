@@ -127,7 +127,6 @@ text = "Wall:"
 script = ExtResource("13_xbl5w")
 
 [node name="help" type="Label" parent="."]
-visible = false
 offset_left = 15.0
 offset_top = 157.0
 offset_right = 315.0
@@ -138,8 +137,11 @@ theme_override_font_sizes/font_size = 25
 text = "< QUICK HELP >
 Move right: arrow right
 Move left: arrow left
+Run: r key
 Jump: arrow up
-Target down: arrow up Target up: t key
+Run and jump:  r key + arrow left or right
+Target down: arrow down
+Target up: t key
 Back to idle: arrow up
 Next weapon: w key
 Shoot: space key
@@ -147,6 +149,7 @@ Lock target: left mouse
 "
 
 [node name="Show_help" type="Label" parent="."]
+visible = false
 offset_left = 15.0
 offset_top = 150.0
 offset_right = 213.0
