@@ -132,9 +132,11 @@ offset_top = 157.0
 offset_right = 315.0
 offset_bottom = 232.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("15_pb2nm")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 28
 text = "< QUICK HELP >
+
 Move right: arrow right
 Move left: arrow left
 Run: r key
