@@ -1,9 +1,10 @@
+extends Node2D
 
 # ##################
 # # Stage 1.SCRIPT #
 # ##################
 
-extends Node2D
+
 
 
 func _ready():
