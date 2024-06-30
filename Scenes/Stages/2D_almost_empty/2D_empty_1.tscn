@@ -1,30 +1,11 @@
-[gd_scene load_steps=38 format=4 uid="uid://ctdq6ddl0la1t"]
+[gd_scene load_steps=19 format=4 uid="uid://ctdq6ddl0la1t"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/2D_almost_empty/2D_empty_1.gd" id="1_yuv4n"]
 [ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="2_0mqdr"]
+[ext_resource type="PackedScene" uid="uid://bbf5db237usnf" path="res://Scenes/HUD/hud.tscn" id="2_ejf4q"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_yo6yy"]
 [ext_resource type="Texture2D" uid="uid://1gwp2bo4v3me" path="res://Assets/Backgrounds/asphalt_1.png" id="4_6aoxc"]
 [ext_resource type="Texture2D" uid="uid://1s83i5lxhkdf" path="res://Assets/Ground/Grunt_1.jpg" id="5_c8kwp"]
-[ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="6_3sisf"]
-[ext_resource type="Script" path="res://Scenes/HUD/fps.gd" id="7_fmuih"]
-[ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="8_ww3rc"]
-[ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="9_njtsi"]
-[ext_resource type="Script" path="res://Scenes/HUD/Health.gd" id="10_6yrs7"]
-[ext_resource type="Script" path="res://Scenes/HUD/ammo.gd" id="11_jd0e7"]
-[ext_resource type="Script" path="res://Scenes/Coin/coin_label.gd" id="12_c3p5h"]
-[ext_resource type="Texture2D" uid="uid://bhga7y1xb2xbx" path="res://Assets/UI/panel_1.png" id="13_sg6rs"]
-[ext_resource type="Script" path="res://Scenes/HUD/pos.gd" id="14_mn1ti"]
-[ext_resource type="Script" path="res://Scenes/HUD/state.gd" id="15_rq8jn"]
-[ext_resource type="Script" path="res://Scenes/HUD/Direction.gd" id="16_a4igm"]
-[ext_resource type="Script" path="res://Scenes/HUD/floor.gd" id="17_0e1ru"]
-[ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="18_mgd1m"]
-[ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="19_ym8av"]
-[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="20_y3bww"]
-[ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="21_pniuq"]
-[ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="22_i7237"]
-[ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="23_1idnr"]
-[ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="24_k1enp"]
-[ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="25_25m03"]
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="26_8t44r"]
 [ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="27_ikcvc"]
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="28_iufa5"]
@@ -131,138 +112,11 @@ texture = ExtResource("5_c8kwp")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-layer = 5
-
-[node name="fps" type="Label" parent="HUD"]
-offset_left = 37.0
-offset_top = 20.0
-offset_right = 77.0
-offset_bottom = 43.0
-scale = Vector2(1, 0.969)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_3sisf")
-theme_override_font_sizes/font_size = 20
-text = "FPS:"
-script = ExtResource("7_fmuih")
-
-[node name="Health" type="TextureProgressBar" parent="HUD"]
-offset_left = 37.0
-offset_top = 50.0
-offset_right = 237.0
-offset_bottom = 77.0
-scale = Vector2(0.646371, 0.661628)
-texture_under = ExtResource("8_ww3rc")
-texture_progress = ExtResource("9_njtsi")
-script = ExtResource("10_6yrs7")
-
-[node name="ammo" type="Label" parent="HUD"]
-offset_left = 36.0
-offset_top = 110.0
-offset_right = 76.0
-offset_bottom = 136.0
-scale = Vector2(1.2226, 1.21801)
-text = "0"
-script = ExtResource("11_jd0e7")
-
-[node name="coins" type="Label" parent="HUD"]
-offset_left = 36.0
-offset_top = 75.0
-offset_right = 76.0
-offset_bottom = 101.0
-scale = Vector2(1.23669, 1.23669)
-text = "0"
-script = ExtResource("12_c3p5h")
-
-[node name="Panel_1" type="Sprite2D" parent="HUD"]
-position = Vector2(1764, 75)
-texture = ExtResource("13_sg6rs")
-
-[node name="pos" type="Label" parent="HUD"]
-offset_left = 1712.0
-offset_top = 34.0
-offset_right = 1767.0
-offset_bottom = 69.0
-scale = Vector2(1, 0.985)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "x:  y:"
-script = ExtResource("14_mn1ti")
-
-[node name="state" type="Label" parent="HUD"]
-offset_left = 1712.0
-offset_top = 14.0
-offset_right = 1776.0
-offset_bottom = 42.0
-scale = Vector2(0.873, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "STATE:"
-script = ExtResource("15_rq8jn")
-
-[node name="Direction" type="Label" parent="HUD"]
-offset_left = 1711.0
-offset_top = 63.0
-offset_right = 1751.0
-offset_bottom = 91.0
-scale = Vector2(1, 0.931)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Dir:"
-script = ExtResource("16_a4igm")
-
-[node name="floor" type="Label" parent="HUD"]
-offset_left = 1711.0
-offset_top = 84.0
-offset_right = 1766.0
-offset_bottom = 112.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Floor:"
-script = ExtResource("17_0e1ru")
-
-[node name="wall" type="Label" parent="HUD"]
-offset_left = 1712.0
-offset_top = 105.0
-offset_right = 1760.0
-offset_bottom = 133.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Wall:"
-script = ExtResource("18_mgd1m")
-
-[node name="img_heart" type="Sprite2D" parent="HUD"]
-position = Vector2(19, 58)
-scale = Vector2(0.0855846, 0.0776065)
-texture = ExtResource("19_ym8av")
-
-[node name="img_bullet" type="Sprite2D" parent="HUD"]
-position = Vector2(19, 124)
-scale = Vector2(0.184475, 0.184475)
-texture = ExtResource("20_y3bww")
-
-[node name="img_coin" type="Sprite2D" parent="HUD"]
-position = Vector2(19, 90)
-scale = Vector2(0.359971, 0.359971)
-texture = ExtResource("21_pniuq")
-
-[node name="Quit" type="TextureButton" parent="HUD"]
-offset_left = 1620.0
-offset_top = 21.0
-offset_right = 1720.0
-offset_bottom = 71.0
-texture_normal = ExtResource("22_i7237")
-texture_pressed = ExtResource("23_1idnr")
-texture_hover = ExtResource("24_k1enp")
-
-[node name="snd_scifi_bleep" type="AudioStreamPlayer" parent="HUD"]
-stream = ExtResource("25_25m03")
-pitch_scale = 0.92
-
 [node name="PlayerEnemyRay" type="Node2D" parent="."]
 visible = false
 script = ExtResource("26_8t44r")
+
+[node name="HUD" parent="." instance=ExtResource("2_ejf4q")]
 
 [node name="SkyCanvas" type="CanvasLayer" parent="."]
 layer = -3
@@ -323,6 +177,3 @@ position = Vector2(8000, 724)
 texture = ExtResource("33_v2owx")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 62)
-
-[connection signal="pressed" from="HUD/Quit" to="." method="_on_quit_pressed"]
-[connection signal="finished" from="HUD/snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

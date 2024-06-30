@@ -1,0 +1,165 @@
+[gd_scene load_steps=22 format=3 uid="uid://bbf5db237usnf"]
+
+[ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_ce2dp"]
+[ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="1_hb5a1"]
+[ext_resource type="Script" path="res://Scenes/HUD/fps.gd" id="2_aoyym"]
+[ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="3_omly6"]
+[ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="4_utnjc"]
+[ext_resource type="Script" path="res://Scenes/HUD/Health.gd" id="5_a16df"]
+[ext_resource type="Script" path="res://Scenes/HUD/ammo.gd" id="6_omamg"]
+[ext_resource type="Script" path="res://Scenes/Coin/coin_label.gd" id="7_o7pps"]
+[ext_resource type="Texture2D" uid="uid://bhga7y1xb2xbx" path="res://Assets/UI/panel_1.png" id="8_ws27l"]
+[ext_resource type="Script" path="res://Scenes/HUD/pos.gd" id="9_5cyg4"]
+[ext_resource type="Script" path="res://Scenes/HUD/state.gd" id="10_wd24y"]
+[ext_resource type="Script" path="res://Scenes/HUD/Direction.gd" id="11_pkqyi"]
+[ext_resource type="Script" path="res://Scenes/HUD/floor.gd" id="12_da0ld"]
+[ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="13_xbl5w"]
+[ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="14_28w4v"]
+[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="15_fjk3j"]
+[ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="16_0xe1c"]
+[ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="17_m2q8c"]
+[ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="18_nafme"]
+[ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="19_ai2io"]
+[ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="20_5ffjx"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_ce2dp")
+
+[node name="fps" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 20.0
+offset_right = 77.0
+offset_bottom = 43.0
+scale = Vector2(1, 0.969)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hb5a1")
+theme_override_font_sizes/font_size = 20
+text = "FPS:"
+script = ExtResource("2_aoyym")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_left = 37.0
+offset_top = 50.0
+offset_right = 237.0
+offset_bottom = 77.0
+scale = Vector2(0.646371, 0.661628)
+texture_under = ExtResource("3_omly6")
+texture_progress = ExtResource("4_utnjc")
+script = ExtResource("5_a16df")
+
+[node name="ammo" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 110.0
+offset_right = 76.0
+offset_bottom = 136.0
+scale = Vector2(1.2226, 1.21801)
+text = "0"
+script = ExtResource("6_omamg")
+
+[node name="coins" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 75.0
+offset_right = 76.0
+offset_bottom = 101.0
+scale = Vector2(1.23669, 1.23669)
+text = "0"
+script = ExtResource("7_o7pps")
+
+[node name="Panel_1" type="Sprite2D" parent="."]
+position = Vector2(1764, 75)
+texture = ExtResource("8_ws27l")
+
+[node name="pos" type="Label" parent="."]
+offset_left = 1712.0
+offset_top = 34.0
+offset_right = 1767.0
+offset_bottom = 69.0
+scale = Vector2(1, 0.985)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "x:  y:"
+script = ExtResource("9_5cyg4")
+
+[node name="state" type="Label" parent="."]
+offset_left = 1712.0
+offset_top = 14.0
+offset_right = 1776.0
+offset_bottom = 42.0
+scale = Vector2(0.873, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "STATE:"
+script = ExtResource("10_wd24y")
+
+[node name="Direction" type="Label" parent="."]
+offset_left = 1711.0
+offset_top = 63.0
+offset_right = 1751.0
+offset_bottom = 91.0
+scale = Vector2(1, 0.931)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Dir:"
+script = ExtResource("11_pkqyi")
+
+[node name="floor" type="Label" parent="."]
+offset_left = 1711.0
+offset_top = 84.0
+offset_right = 1766.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Floor:"
+script = ExtResource("12_da0ld")
+
+[node name="wall" type="Label" parent="."]
+offset_left = 1712.0
+offset_top = 105.0
+offset_right = 1760.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Wall:"
+script = ExtResource("13_xbl5w")
+
+[node name="help" type="Label" parent="."]
+offset_top = 157.0
+offset_right = 40.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "HELP
+Move right: arrow right
+Mmove left:   "
+
+[node name="img_heart" type="Sprite2D" parent="."]
+position = Vector2(19, 58)
+scale = Vector2(0.0855846, 0.0776065)
+texture = ExtResource("14_28w4v")
+
+[node name="img_bullet" type="Sprite2D" parent="."]
+position = Vector2(19, 124)
+scale = Vector2(0.184475, 0.184475)
+texture = ExtResource("15_fjk3j")
+
+[node name="img_coin" type="Sprite2D" parent="."]
+position = Vector2(19, 90)
+scale = Vector2(0.359971, 0.359971)
+texture = ExtResource("16_0xe1c")
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 1620.0
+offset_top = 21.0
+offset_right = 1720.0
+offset_bottom = 71.0
+texture_normal = ExtResource("17_m2q8c")
+texture_pressed = ExtResource("18_nafme")
+texture_hover = ExtResource("19_ai2io")
+
+[node name="snd_scifi_bleep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_5ffjx")
+pitch_scale = 0.92
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]

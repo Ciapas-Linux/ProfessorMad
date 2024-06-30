@@ -12,4 +12,3 @@ func _process(_delta):
 	#value = get_node("../../Player").health 
 	value = gv.Player.health
 	pass
-
