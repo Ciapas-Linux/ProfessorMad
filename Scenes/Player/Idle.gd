@@ -55,6 +55,16 @@ func physics_update(delta: float) -> void:
 			player.load_next_weapon()
 			print("Player: switch weapon")
 
+	# Show Help information	
+	if Input.is_action_just_pressed("Help"):
+			get_node("../../../HUD").show_help()
+			print("Player: press Help key")
+
+	# Hide Help information	
+	if Input.is_action_just_released("Help"):
+			get_node("../../../HUD").hide_help()
+			print("Player: release Help key")				
+
 	# GO --> Reload weapon
 	if Input.is_action_just_pressed("Reload"):
 		gv.Hero_weapon.reload()
@@ -271,11 +281,3 @@ func _on_gun_2_fire() -> void:
 
 	#var laserOrigin = to_local(Ray.global_position)		
 		
-
-
-
-
-
-
-
-

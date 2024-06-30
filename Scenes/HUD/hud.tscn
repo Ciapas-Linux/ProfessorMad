@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bbf5db237usnf"]
+[gd_scene load_steps=24 format=3 uid="uid://bbf5db237usnf"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_ce2dp"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="1_hb5a1"]
@@ -16,11 +16,13 @@
 [ext_resource type="Script" path="res://Scenes/HUD/wall.gd" id="13_xbl5w"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="14_28w4v"]
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="15_fjk3j"]
+[ext_resource type="FontFile" uid="uid://d2md0dam2688h" path="res://Assets/Fonts/Kalam-Regular.ttf" id="15_pb2nm"]
 [ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="16_0xe1c"]
 [ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="17_m2q8c"]
 [ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="18_nafme"]
 [ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="19_ai2io"]
 [ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="20_5ffjx"]
+[ext_resource type="AudioStream" uid="uid://bb0nnwrfynduf" path="res://Assets/Sounds/Sfx/object.wav" id="23_u2b6s"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 5
@@ -125,13 +127,35 @@ text = "Wall:"
 script = ExtResource("13_xbl5w")
 
 [node name="help" type="Label" parent="."]
+visible = false
+offset_left = 15.0
 offset_top = 157.0
-offset_right = 40.0
-offset_bottom = 180.0
+offset_right = 315.0
+offset_bottom = 232.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-text = "HELP
+theme_override_fonts/font = ExtResource("15_pb2nm")
+theme_override_font_sizes/font_size = 25
+text = "< QUICK HELP >
 Move right: arrow right
-Mmove left:   "
+Move left: arrow left
+Jump: arrow up
+Target down: arrow up Target up: t key
+Back to idle: arrow up
+Next weapon: w key
+Shoot: space key
+Lock target: left mouse
+"
+
+[node name="Show_help" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 150.0
+offset_right = 213.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.913725)
+theme_override_fonts/font = ExtResource("15_pb2nm")
+theme_override_font_sizes/font_size = 18
+text = "Press h key for quick help"
 
 [node name="img_heart" type="Sprite2D" parent="."]
 position = Vector2(19, 58)
@@ -157,9 +181,12 @@ texture_normal = ExtResource("17_m2q8c")
 texture_pressed = ExtResource("18_nafme")
 texture_hover = ExtResource("19_ai2io")
 
-[node name="snd_scifi_bleep" type="AudioStreamPlayer" parent="."]
+[node name="snd_quit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_5ffjx")
 pitch_scale = 0.92
 
+[node name="snd_help" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_u2b6s")
+
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="finished" from="snd_scifi_bleep" to="." method="_on_snd_scifi_bleep_finished"]
+[connection signal="finished" from="snd_quit" to="." method="_on_snd_scifi_bleep_finished"]
