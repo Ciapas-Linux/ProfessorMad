@@ -1,27 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnf5waeilny8y"]
+[gd_scene load_steps=15 format=3 uid="uid://bnf5waeilny8y"]
 
-[ext_resource type="Shader" path="res://Shaders/sky/sky2.gdshader" id="1_neudf"]
-[ext_resource type="Script" path="res://Scenes/Stages/Stage2/Camera.gd" id="2_pmb5e"]
+[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/Camera.gd" id="2_pmb5e"]
 [ext_resource type="PackedScene" uid="uid://b52diux3ykntq" path="res://Scenes/Player25D/player_25D.tscn" id="3_v37f7"]
-[ext_resource type="Script" path="res://Scenes/Stages/Stage2/hud/HUD.gd" id="4_imecl"]
-[ext_resource type="Script" path="res://Scenes/Stages/Stage2/hud/label_position.gd" id="5_6gk77"]
+[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/HUD.gd" id="4_imecl"]
+[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/label_position.gd" id="5_6gk77"]
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="5_gj7c5"]
-[ext_resource type="Script" path="res://Scenes/Stages/Stage2/hud/label_state.gd" id="6_khqjm"]
+[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/label_state.gd" id="6_khqjm"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="6_p7kuu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21dkf"]
-shader = ExtResource("1_neudf")
-shader_parameter/add_clouds = true
-shader_parameter/clouds_below = false
-shader_parameter/cloud_scale = 0.36
-shader_parameter/speed = 0.014
-shader_parameter/cloud_dark = 0.54
-shader_parameter/cloud_light = 0.73
-shader_parameter/cloud_cover = 0.69
-shader_parameter/cloud_alpha = 5.06
-shader_parameter/sky_tint = 0.551
-shader_parameter/height_offset = 0.156
-shader_parameter/sky_contribution = 0.5
 
 [sub_resource type="Sky" id="Sky_10hs1"]
 sky_material = SubResource("ShaderMaterial_21dkf")

@@ -206,11 +206,11 @@ func _ready():
 	
 	print("Screen width: " + str(SWidth) + "   " + "Screen height :" + str(SHeight))
 
-	print("Get Cam1 reference ...")		
-	Cam1 = get_node("/root/Stage1/Camera2DPro")
+	print("Get Cam1 2D reference if exist...")		
+	Cam1 = get_node("/root/Stage/Camera2DPro")
 	
 		
-	print("Stage1 ready ...")	
+	print("Stage ready ...")	
 
 func goto_scene(path):
 	# This function will usually be called from a signal callback,

@@ -1,11 +1,12 @@
+extends CanvasLayer
 
 #class_name GameMaster
-extends CanvasLayer
+
 
 
 
 var sprite:AnimatedSprite2D
-var Stage1:Node2D
+var Stage:Node2D
 #enum States { START, IDLE, STAGE_1 }
 const START:int = 1
 const IDLE:int =  2 
@@ -18,7 +19,7 @@ var text_start:String = "Profesorze Łysolku!"
 
 
 func _ready():
-	Stage1 = get_node("/root/Stage1")
+	Stage = get_node("/root/Stage")
 	
 	#Stage1 = get_tree().get_root().Stage1
 	print("GameMaster name: " + name)
@@ -67,12 +68,12 @@ func start():
 func pause():
 	#get_tree().process_mode = PROCESS_MODE_DISABLED
 	#$root/Stage1.process_mode = PROCESS_MODE_DISABLED
-	Stage1.process_mode = PROCESS_MODE_DISABLED
+	Stage.process_mode = PROCESS_MODE_DISABLED
 	#get_tree().paused = true
 	
 func unpause():
 	#process_mode = PROCESS_MODE_INHERIT
-	Stage1.process_mode = PROCESS_MODE_INHERIT
+	Stage.process_mode = PROCESS_MODE_INHERIT
 
 
 # get_tree().paused = true
