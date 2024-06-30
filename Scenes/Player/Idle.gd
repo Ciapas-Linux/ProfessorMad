@@ -23,6 +23,7 @@ func enter(_msg := {}) -> void:
 	
 	if anim_player.current_animation != "touch_down":
 		anim_player.play("idle")
+		anim_player.seek(0.1)
 
 	gv.Hero_is_on_floor = true
 	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
