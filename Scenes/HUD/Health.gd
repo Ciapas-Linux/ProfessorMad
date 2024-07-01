@@ -11,4 +11,4 @@ func _process(_delta):
 	#print_debug(value)
 	#value = get_node("../../Player").health 
 	value = gv.Player.health
-	pass
+	

@@ -127,6 +127,7 @@ text = "Wall:"
 script = ExtResource("13_xbl5w")
 
 [node name="help" type="Label" parent="."]
+visible = false
 offset_left = 15.0
 offset_top = 157.0
 offset_right = 315.0
@@ -151,7 +152,6 @@ Lock target: left mouse
 "
 
 [node name="Show_help" type="Label" parent="."]
-visible = false
 offset_left = 15.0
 offset_top = 150.0
 offset_right = 213.0

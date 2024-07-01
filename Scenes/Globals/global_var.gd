@@ -46,7 +46,7 @@ var Hero_gold:int = 0
 var Hero_pos_x:int = 0
 var Hero_pos_y:int = 0
 var Hero_local_position:Vector2
-var Hero_global_position:Vector2
+#var Hero_global_position:Vector2
 var Hero_state:String = ""
 var Hero_direction:Vector2 = Vector2.RIGHT
 var Hero_is_on_floor:bool = false

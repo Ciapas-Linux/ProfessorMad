@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=4 uid="uid://fusvokqh37g3"]
+
+[ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="1_543hx"]
+[ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="1_x2ki8"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1unnk"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-128, -128, 0, 256, 256, 0),
+"attribute_data": PackedByteArray("AAA3P2Zm1jwAgBI/AAAAAAAA5D4AAAAAmpltPgAAmD1mZlg+AACYPZqZMT0AAJY+ZmbGPAAAlj4AAAAAZmb6PgAAAADNTBo/AADwPc1MVj8AAPA9M7NbPwAArj6amX0/AACuPgAAgD/NTCw/AACAP81MYj8AAFg/zcxmPwAAWD/NzH8/AAAYPwAAgD8zM9s+AAB+PzMzuz4AAH4/ZmauPgAAZj/NzEA+AABmPzMzLz4AADc/zcwsPQ=="),
+"format": 34393296913,
+"index_count": 63,
+"index_data": PackedByteArray("FgAVABQAFAATABIAEgARABAAEAAPAA4ADgANAAwACwAKAAkACQAIAAcABwAGAAUABQAEAAMAAwACAAEAAQAAABYAFgAUABIAEgAQAA4ADgAMAAsACwAJAAcABwAFAAMAAwABABYAFgASAA4ADgALAAcABwADABYAFgAOAAcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 23,
+"vertex_data": PackedByteArray("AABcQpqZ8sIAAJRBAAAAwwAAYMEAAADDMzOJwgAA2sLNzJPCAADaws3M6cIAAFTCmpnzwgAAVMIAAADDQDMzwAAAAMNoZtJBAADEwpqZrEIAAMTCZma3QgAAJMI0M/tCAAAkwgAAAEM0MzFCAAAAQ5qZxEIAALBCmpnNQgAAsEKamf9CAADAQQAAAEM0M5PBAAD8QpqZCcIAAPxCNDMjwgAAzEKamZ/CAADMQmZmqMIAAFxCZmbqwg==")
+}]
+
+[node name="Moon1" type="Node2D"]
+script = ExtResource("1_543hx")
+
+[node name="moon_img" type="MeshInstance2D" parent="."]
+mesh = SubResource("ArrayMesh_1unnk")
+texture = ExtResource("1_x2ki8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
