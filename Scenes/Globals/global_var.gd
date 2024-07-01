@@ -42,6 +42,7 @@ var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 # HERO
 @onready var fsm:StateMachine
 var Player:Hero
+var Player_tilt:int = 0
 var Hero_gold:int = 0
 var Hero_pos_x:int = 0
 var Hero_pos_y:int = 0

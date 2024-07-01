@@ -4749,6 +4749,7 @@ volume_db = 3.0
 pitch_scale = 0.65
 
 [node name="floor" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 362)
 shape = SubResource("RectangleShape2D_cl18p")
 disabled = true

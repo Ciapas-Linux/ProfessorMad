@@ -7,7 +7,7 @@ extends PlayerState
 var floor_normal:Vector2
 var ray_normal:Vector2
 var offset: float
-var tilt:float = 0.0
+# var tilt:float = 0.0
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
@@ -36,15 +36,14 @@ func physics_update(delta: float) -> void:
 		player.Foot_R.rotation = ray_normal.angle() + offset
 		player.Foot_L.rotation = ray_normal.angle() + offset
 				
-		tilt = rad_to_deg(ray_normal.angle() + offset ) * -1
+		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
-		#print("$$$$$$$$$$$$$$$: " + str(tilt))
-
-		if tilt < 10:
+		
+		if gv.Player_tilt < 10:
 			if anim_player.get_current_animation() != "walkx_2":
 				anim_player.play("walkx_2")		
 				anim_player.seek(0.3,true)
-		elif tilt > 10:
+		elif gv.Player_tilt > 10:
 			if anim_player.get_current_animation() != "walkx_2":
 				anim_player.play("walkx_2")
 				anim_player.seek(0.3,true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbf5db237usnf"]
+[gd_scene load_steps=25 format=3 uid="uid://bbf5db237usnf"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_ce2dp"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="1_hb5a1"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="15_fjk3j"]
 [ext_resource type="FontFile" uid="uid://d2md0dam2688h" path="res://Assets/Fonts/Kalam-Regular.ttf" id="15_pb2nm"]
 [ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="16_0xe1c"]
+[ext_resource type="Script" path="res://Scenes/HUD/tilt.gd" id="16_xkvpp"]
 [ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="17_m2q8c"]
 [ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="18_nafme"]
 [ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="19_ai2io"]
@@ -29,15 +30,16 @@ layer = 5
 script = ExtResource("1_ce2dp")
 
 [node name="fps" type="Label" parent="."]
-offset_left = 37.0
-offset_top = 20.0
-offset_right = 77.0
-offset_bottom = 43.0
+offset_left = 11.0
+offset_top = 16.0
+offset_right = 51.0
+offset_bottom = 39.0
 scale = Vector2(1, 0.969)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_hb5a1")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 text = "FPS:"
 script = ExtResource("2_aoyym")
 
@@ -57,6 +59,7 @@ offset_top = 110.0
 offset_right = 76.0
 offset_bottom = 136.0
 scale = Vector2(1.2226, 1.21801)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
 script = ExtResource("6_omamg")
 
@@ -66,11 +69,12 @@ offset_top = 75.0
 offset_right = 76.0
 offset_bottom = 101.0
 scale = Vector2(1.23669, 1.23669)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
 script = ExtResource("7_o7pps")
 
 [node name="Panel_1" type="Sprite2D" parent="."]
-position = Vector2(1764, 75)
+position = Vector2(1759, 100)
 texture = ExtResource("8_ws27l")
 
 [node name="pos" type="Label" parent="."]
@@ -80,6 +84,7 @@ offset_right = 1767.0
 offset_bottom = 69.0
 scale = Vector2(1, 0.985)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "x:  y:"
 script = ExtResource("9_5cyg4")
@@ -91,6 +96,7 @@ offset_right = 1776.0
 offset_bottom = 42.0
 scale = Vector2(0.873, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "STATE:"
 script = ExtResource("10_wd24y")
@@ -102,6 +108,7 @@ offset_right = 1751.0
 offset_bottom = 91.0
 scale = Vector2(1, 0.931)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Dir:"
 script = ExtResource("11_pkqyi")
@@ -112,6 +119,7 @@ offset_top = 84.0
 offset_right = 1766.0
 offset_bottom = 112.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Floor:"
 script = ExtResource("12_da0ld")
@@ -122,6 +130,7 @@ offset_top = 105.0
 offset_right = 1760.0
 offset_bottom = 133.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Wall:"
 script = ExtResource("13_xbl5w")
@@ -161,6 +170,17 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.913725)
 theme_override_fonts/font = ExtResource("15_pb2nm")
 theme_override_font_sizes/font_size = 18
 text = "Press h key for quick help"
+
+[node name="tilt" type="Label" parent="."]
+offset_left = 1712.0
+offset_top = 128.0
+offset_right = 1752.0
+offset_bottom = 156.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tilt:"
+script = ExtResource("16_xkvpp")
 
 [node name="img_heart" type="Sprite2D" parent="."]
 position = Vector2(19, 58)
