@@ -30,22 +30,7 @@ Features (to be continued ... ):
 
 <BR><BR><BR><BR>
 
-How to play:
 
-Use "mouse" to move crosshair for select target<BR>
-Press "space" to fire<BR>
-"Right arrow" moves right<BR>
-"Left arrow" moves left<BR>
-"Up arrow" jump<BR>
-Up and "right arrow" jumps to the right<BR>
-Up and "left arrow" jumps to the left<BR>
-Press "r" and left or right arrow to run<BR>
-The letter "w" switches weapons<BR>
-The letter "t" sets you in a precise standing shooting position<BR>
-"Down arrow" changes the shooting position to kneeling position<BR>
-To return to the starting idle position, press the up arrow again
-
-<BR><BR><BR><BR>
 
 <div align="center">
  <img src="https://raw.githubusercontent.com/Ciapas-Linux/assets/main/Web/ysolek_1.png"/>
