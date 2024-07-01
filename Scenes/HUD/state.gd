@@ -1,5 +1,5 @@
 extends Label
 
-func _physic_process(_delta):
-	text = "STATE:   " + gv.fsm.state.name
-	
+func _process(_delta):
+	text = "STATE:   " + str(gv.fsm.state.name)
+	#text = "STATE:   " + gv.Player.get_node("StateMachine").state.name

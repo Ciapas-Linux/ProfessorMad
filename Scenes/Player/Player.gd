@@ -62,7 +62,8 @@ func _ready():
 	print("")  
 	print("Hero level: " + str(gv.Hero_level)) 
 	print("Hero current weapon: " + str(gv.Hero_current_weapon))
-	print("Hero money: " + str(gv.Hero_gold)) 
+	print("Hero money: " + str(gv.Hero_gold))
+	print("Hero state: " + gv.fsm.state.name)  
 	print("")  
 
 	############################ !!!!!!!!!!!!!!!!	

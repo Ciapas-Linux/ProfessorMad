@@ -36,8 +36,10 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 		
-	if player.is_on_floor():
+	if player.is_on_floor() == true:
+		anim_player.play("touch_down")
+		#get_node("../../snd_fall").play()
 		state_machine.transition_to("Idle")
-		get_node("../../snd_fall").play()
-		
-			
+		snd_fall.play()
+				
+
