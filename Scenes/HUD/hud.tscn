@@ -74,14 +74,14 @@ text = "0"
 script = ExtResource("7_o7pps")
 
 [node name="Panel_1" type="Sprite2D" parent="."]
-position = Vector2(1759, 100)
+position = Vector2(1714, 105)
 texture = ExtResource("8_ws27l")
 
 [node name="pos" type="Label" parent="."]
-offset_left = 1712.0
-offset_top = 34.0
-offset_right = 1767.0
-offset_bottom = 69.0
+offset_left = 1536.0
+offset_top = 49.0
+offset_right = 1591.0
+offset_bottom = 84.0
 scale = Vector2(1, 0.985)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -90,10 +90,10 @@ text = "x:  y:"
 script = ExtResource("9_5cyg4")
 
 [node name="state" type="Label" parent="."]
-offset_left = 1712.0
-offset_top = 14.0
-offset_right = 1776.0
-offset_bottom = 42.0
+offset_left = 1536.0
+offset_top = 29.0
+offset_right = 1600.0
+offset_bottom = 57.0
 scale = Vector2(0.873, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -102,10 +102,10 @@ text = "STATE:"
 script = ExtResource("10_wd24y")
 
 [node name="Direction" type="Label" parent="."]
-offset_left = 1711.0
-offset_top = 63.0
-offset_right = 1751.0
-offset_bottom = 91.0
+offset_left = 1535.0
+offset_top = 78.0
+offset_right = 1575.0
+offset_bottom = 106.0
 scale = Vector2(1, 0.931)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -114,10 +114,10 @@ text = "Dir:"
 script = ExtResource("11_pkqyi")
 
 [node name="floor" type="Label" parent="."]
-offset_left = 1711.0
-offset_top = 84.0
-offset_right = 1766.0
-offset_bottom = 112.0
+offset_left = 1535.0
+offset_top = 99.0
+offset_right = 1590.0
+offset_bottom = 127.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -125,10 +125,10 @@ text = "Floor:"
 script = ExtResource("12_da0ld")
 
 [node name="wall" type="Label" parent="."]
-offset_left = 1712.0
-offset_top = 105.0
-offset_right = 1760.0
-offset_bottom = 133.0
+offset_left = 1536.0
+offset_top = 120.0
+offset_right = 1584.0
+offset_bottom = 148.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -172,10 +172,10 @@ theme_override_font_sizes/font_size = 18
 text = "Press h key for quick help"
 
 [node name="tilt" type="Label" parent="."]
-offset_left = 1712.0
-offset_top = 128.0
-offset_right = 1752.0
-offset_bottom = 156.0
+offset_left = 1536.0
+offset_top = 143.0
+offset_right = 1576.0
+offset_bottom = 171.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -198,10 +198,10 @@ scale = Vector2(0.359971, 0.359971)
 texture = ExtResource("16_0xe1c")
 
 [node name="Quit" type="TextureButton" parent="."]
-offset_left = 1620.0
-offset_top = 21.0
-offset_right = 1720.0
-offset_bottom = 71.0
+offset_left = 1816.0
+offset_top = 136.0
+offset_right = 1916.0
+offset_bottom = 186.0
 texture_normal = ExtResource("17_m2q8c")
 texture_pressed = ExtResource("18_nafme")
 texture_hover = ExtResource("19_ai2io")

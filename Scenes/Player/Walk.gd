@@ -39,15 +39,18 @@ func physics_update(delta: float) -> void:
 				
 		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
-		
-		if gv.Player_tilt < 10:
+		# No slope:
+		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
 			if anim_player.get_current_animation() != "walkx":
 				anim_player.play("walkx")		
 				anim_player.seek(0.3,true)
-		elif gv.Player_tilt > 10:
+			get_node("../../CollisionShape2D").shape.height = 700	
+		# Slope:
+		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
 			if anim_player.get_current_animation() != "target_up_walk":
 				anim_player.play("target_up_walk")
 				anim_player.seek(0.3,true)
+			get_node("../../CollisionShape2D").shape.height = 600	
 				
 
 	if Input.is_action_just_pressed("ui_up"):

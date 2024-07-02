@@ -6,14 +6,16 @@ extends PlayerState
 #.#############>
 
 
-signal turn(value)
+#signal turn(value)
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 #var floor_normal:Vector2
 var ray_normal:Vector2
-#var offset: float
 var slope_angle:float
+var offset: float
+var floor_normal:Vector2
+
 
 # Enter state:
 func enter(_msg := {}) -> void:
@@ -79,7 +81,7 @@ func physics_update(delta: float) -> void:
 			player.scale.x = player.scale.y * -1
 			gv.Player_direction = Vector2.LEFT
 			state_machine.transition_to("Walk")
-			turn.emit(false)  
+			#turn.emit(false)  
 	
 	# GO --> Walk right
 	if Input.is_action_pressed("ui_right"):
@@ -87,7 +89,7 @@ func physics_update(delta: float) -> void:
 			gv.Player_direction = Vector2.RIGHT
 			player.scale.x = player.scale.y * 1
 			state_machine.transition_to("Walk")
-			turn.emit(true)
+			#turn.emit(true)
 				
 	# GO --> RUN:	
 	if Input.is_action_pressed("run"):
@@ -117,19 +119,27 @@ func physics_update(delta: float) -> void:
 	# Rotate foot to match slope angle:
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		slope_angle = rad_to_deg(acos(player.get_floor_normal().dot(Vector2(0, -1))))
+		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
 				
 		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+
+		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
-		if slope_angle > 10:
+		# No slope:
+		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
+			if anim_player.get_current_animation() != "idle":
+				anim_player.play("idle")
+				anim_player.seek(0.3,true)
+			get_node("../../CollisionShape2D").shape.height = 700	
+		# Slope:
+		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
 			if anim_player.get_current_animation() != "idle_tilt":
 				anim_player.play("idle_tilt")	
 			#print( "Slope angle: " + str(slope_angle))
 			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
 			get_node("../../CollisionShape2D").shape.height = 600
-		
-		
 
 
 		#print( "XXXXXXXX: " + str(rad_to_deg(ray_normal.angle() + offset ) * -1 ) )  
