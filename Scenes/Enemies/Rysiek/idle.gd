@@ -43,13 +43,13 @@ func physics_update(delta: float) -> void:
 
 	# TURN LEFT: player is on left side
 	# if gv.Hero_global_position.x + rysiek.change_direction_distance < rysiek.global_position.x:
-	if gv.Hero_global_position.x < rysiek.global_position.x:
+	if gv.Player.global_position.x < rysiek.global_position.x:
 		if rysiek.rysiek_direction == Vector2.RIGHT:	
 			rysiek.scale.x = rysiek.scale.y * 1
 			rysiek.rysiek_direction = Vector2.LEFT
 	
 	# TURN RIGHT: player is on right side
-	if gv.Hero_global_position.x > rysiek.global_position.x:
+	if gv.Player.global_position.x > rysiek.global_position.x:
 		if rysiek.rysiek_direction == Vector2.LEFT:
 			rysiek.scale.x = rysiek.scale.y * -1
 			rysiek.rysiek_direction = Vector2.RIGHT
@@ -219,14 +219,3 @@ func _on_enemy_somebody_hitme() -> void:
 #	if enemy.is_on_floor():
 #		estate_machine.transition_to("Idle")
 #		get_node("../../snd_fall").play()
-
-
-
-
-
-
-
-
-
-
-

@@ -58,20 +58,20 @@ func _process_on_state_stop() -> void:
 func _process_on_state_move_right(delta: float) -> void:
 	velocity.x = speed
 	velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()
 	
 
 func _process_on_state_move_left(delta: float) -> void:
 	velocity.x = -speed
 	velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()
 
 func _process_on_state_accelerate(delta: float) -> void:
 	velocity.x = -speed
 	velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()				
 
 func _on_mouse_entered() -> void:
@@ -231,13 +231,3 @@ func _on_front_contact_area_entered(area:Area2D) -> void:
 
 func _on_big_explosion_finished() -> void:
 	queue_free() 
-
-
-
-
-
-
-
-
-
-

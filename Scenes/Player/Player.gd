@@ -24,6 +24,10 @@ extends CharacterBody2D
 # Vertical speed applied when jumping.
 @export var jump_impulse : float = 1200.0
 
+@export var left_walk_limit :float = -1400.0
+
+@export var spawn_point :float = -500.0
+
 var screen_size : Vector2
 var turn:bool = true
 var health:int = 100
@@ -60,14 +64,14 @@ func _ready():
 		gv.load_player_data()	
 	
 	print("")  
-	print("Hero level: " + str(gv.Hero_level)) 
-	print("Hero current weapon: " + str(gv.Hero_current_weapon))
-	print("Hero money: " + str(gv.Hero_gold))
-	print("Hero state: " + gv.fsm.state.name)  
+	print("Player level: " + str(gv.Player_level)) 
+	print("Player current weapon: " + str(gv.Player_current_weapon))
+	print("Player money: " + str(gv.Player_gold))
+	print("Player state: " + gv.fsm.state.name)  
 	print("")  
 
 	############################ !!!!!!!!!!!!!!!!	
-	gv.Hero_current_weapon = 0
+	gv.Player_current_weapon = 0
 	############################ !!!!!!!!!!!!!!!!
 
 	load_inventory()
@@ -152,70 +156,75 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 	#var spawn_node_path:String = "Body_parts/weapon_spawn"
 	#var marker_node_path:String = "Body_parts/weapon_spawn"
 	
-	match gv.Hero_current_weapon:
+	match gv.Player_current_weapon:
 		0: # Empty weapon = none
 			if get_node("Body_parts/weapon_spawn/rocket_4").get_child_count() > 0:
 				get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
-			gv.Hero_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
+			gv.Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
 			if get_node("Body_parts/weapon_spawn/empty").get_child_count() > 0:
 				get_node("Body_parts/weapon_spawn/empty").get_child(0).queue_free()
-			get_node("Body_parts/weapon_spawn/empty").add_child(gv.Hero_weapon)
+			get_node("Body_parts/weapon_spawn/empty").add_child(gv.Player_weapon)
 			gv.set_cursor_orange()	
 		
 		1: # AK-47 
 			get_node("Body_parts/weapon_spawn/empty").get_child(0).queue_free()
-			gv.Hero_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
+			gv.Player_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
 			if get_node("Body_parts/weapon_spawn/ak-47").get_child_count() > 0:
 				get_node("Body_parts/weapon_spawn/ak-47").get_child(0).queue_free()
-			get_node("Body_parts/weapon_spawn/ak-47").add_child(gv.Hero_weapon)
+			get_node("Body_parts/weapon_spawn/ak-47").add_child(gv.Player_weapon)
 			gv.set_cursor_orange()
-			gv.Hero_weapon.transform = get_node("Body_parts/weapon_spawn/ak-47").transform
-			gv.Hero_weapon.scale = Vector2(3,3)
+			gv.Player_weapon.transform = get_node("Body_parts/weapon_spawn/ak-47").transform
+			gv.Player_weapon.scale = Vector2(3,3)
 		
 		2: # RPG-7 Grenade launcher
 			get_node("Body_parts/weapon_spawn/ak-47").get_child(0).queue_free()
-			gv.Hero_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
+			gv.Player_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
 			if get_node("Body_parts/weapon_spawn/rpg_7").get_child_count() > 0:
 				get_node("Body_parts/weapon_spawn/rpg_7").get_child(0).queue_free()
-			get_node("Body_parts/weapon_spawn/rpg_7").add_child(gv.Hero_weapon)
+			get_node("Body_parts/weapon_spawn/rpg_7").add_child(gv.Player_weapon)
 			gv.set_cursor_orange()
-			gv.Hero_weapon.transform = get_node("Body_parts/weapon_spawn/rpg_7").transform
-			gv.Hero_weapon.scale = Vector2(5,7)	
+			gv.Player_weapon.transform = get_node("Body_parts/weapon_spawn/rpg_7").transform
+			gv.Player_weapon.scale = Vector2(5,7)	
 
 		3: # Home misille rocket launcher
 			get_node("Body_parts/weapon_spawn/rpg_7").get_child(0).queue_free()
-			gv.Hero_weapon = load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn").instantiate()
+			gv.Player_weapon = load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn").instantiate()
 			if get_node("Body_parts/weapon_spawn/rocket_4").get_child_count() > 0:
 				get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
-			get_node("Body_parts/weapon_spawn/rocket_4").add_child(gv.Hero_weapon)
+			get_node("Body_parts/weapon_spawn/rocket_4").add_child(gv.Player_weapon)
 			gv.set_cursor_green()
-			gv.Hero_weapon.transform = get_node("Body_parts/weapon_spawn/rocket_4").transform
-			gv.Hero_weapon.scale = Vector2(3,3)		
+			gv.Player_weapon.transform = get_node("Body_parts/weapon_spawn/rocket_4").transform
+			gv.Player_weapon.scale = Vector2(3,3)		
 
 func load_next_weapon():
-	print(str(gv.Hero_guns.size()))
-	if gv.Hero_guns.size() > gv.Hero_current_weapon:
-		gv.Hero_current_weapon += 1
+	print(str(gv.Player_guns.size()))
+	if gv.Player_guns.size() > gv.Player_current_weapon:
+		gv.Player_current_weapon += 1
 		load_inventory()
-		# Hero_guns = {"no": 0, "ak_47": 1, "rpg_7": 2 }
-	if gv.Hero_guns.size() == gv.Hero_current_weapon:
-		gv.Hero_current_weapon = 0
+		# Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2 }
+	if gv.Player_guns.size() == gv.Player_current_weapon:
+		gv.Player_current_weapon = 0
 		load_inventory()
 
-	gv.Hero_global_position = global_position
-	gv.Hero_local_position = position
-	if global_position.x < -1500:
-		global_position.x = -500
-		gv.fsm.transition_to("Idle")
+	#gv.Hero_global_position = global_position
+	#gv.Hero_local_position = position
 	
-	if is_on_wall():
-		gv.Hero_is_on_wall = true
-	else:
-		gv.Hero_is_on_wall = false
+	# if global_position.x < -1500:
+	# 	global_position.x = -500
+	# 	gv.fsm.transition_to("Idle")
+	
+	# if is_on_wall():
+	# 	gv.Hero_is_on_wall = true
+	# else:
+	# 	gv.Hero_is_on_wall = false
+
 
 func _process(_delta: float) -> void:
-	pass
+	if global_position.x < left_walk_limit:
+		global_position.x = spawn_point
+		gv.fsm.transition_to("Idle")
 	
+
 func _on_gun_2_fire() -> void:
 	print("Hero: me shooting")
 		
@@ -228,10 +237,10 @@ func hit():
 		health -= 10
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	gv.Hero_on_screen = false
+	gv.Player_on_screen = false
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	gv.Hero_on_screen = true
+	gv.Player_on_screen = true
 
 func _on_left_area_2d_area_entered(area:Area2D) -> void:
 	if area.name == "Bomb2":
@@ -464,35 +473,3 @@ func bomb_explode():
 		#weapon.global_rotation += 0.01
 		#print_debug(mpath)  
 		#weapon.global_rotation = -0.01 + (mpath	*0.01)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

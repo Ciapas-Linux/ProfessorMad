@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 func _draw():
 	draw_line(gv.Enemy_global_position,
-	gv.Hero_global_position, Color(255, 0, 0), 0.5, true)
+	gv.Player.global_position, Color(255, 0, 0), 0.5, true)
 	
 
 # get_parent().player_collision_point

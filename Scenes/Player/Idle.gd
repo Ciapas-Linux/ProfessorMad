@@ -25,11 +25,10 @@ func enter(_msg := {}) -> void:
 		anim_player.play("idle")
 		anim_player.seek(0.1)
 
-	gv.Hero_is_on_floor = true
-	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
-		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
+	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+		gv.Player_weapon.connect("fire", _on_gun_2_fire)
 
-	print("Player: enter idle fsm")
+	print("Player: idle")
 
 func _on_animation_player_2_animation_finished(anim_name:StringName):
 	if anim_name == "touch_down":
@@ -43,13 +42,12 @@ func physics_update(delta: float) -> void:
 
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
-		gv.Hero_is_on_floor = false
 		return
 		
-	if gv.Hero_is_paused == true:	
+	if gv.Player_is_paused == true:	
 		return
 
-	# if gv.Hero_current_weapon != 0:
+	# if gv.Player_current_weapon != 0:
 	# GO --> Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("../../snd_switch_weapon").play()
@@ -68,7 +66,7 @@ func physics_update(delta: float) -> void:
 
 	# GO --> Reload weapon
 	if Input.is_action_just_pressed("Reload"):
-		gv.Hero_weapon.reload()
+		gv.Player_weapon.reload()
 		print("Player: reload weapon")
 
 	# GO --> AIR
@@ -77,27 +75,27 @@ func physics_update(delta: float) -> void:
 			
 	# GO --> Walk left
 	if Input.is_action_pressed("ui_left"):
-		if gv.Hero_is_paused == false:
+		if gv.Player_is_paused == false:
 			player.scale.x = player.scale.y * -1
-			gv.Hero_direction = Vector2.LEFT
+			gv.Player_direction = Vector2.LEFT
 			state_machine.transition_to("Walk")
 			turn.emit(false)  
 	
 	# GO --> Walk right
 	if Input.is_action_pressed("ui_right"):
-		if gv.Hero_is_paused == false:
-			gv.Hero_direction = Vector2.RIGHT
+		if gv.Player_is_paused == false:
+			gv.Player_direction = Vector2.RIGHT
 			player.scale.x = player.scale.y * 1
 			state_machine.transition_to("Walk")
 			turn.emit(true)
 				
 	# GO --> RUN:	
 	if Input.is_action_pressed("run"):
-		if gv.Hero_direction == Vector2.RIGHT: 
+		if gv.Player_direction == Vector2.RIGHT: 
 			state_machine.transition_to("run_right")
 			player.scale.x = player.scale.y * 1
 			
-		if gv.Hero_direction == Vector2.LEFT: 
+		if gv.Player_direction == Vector2.LEFT: 
 			state_machine.transition_to("run_left")
 			player.scale.x = player.scale.y * -1	
 					
@@ -125,9 +123,12 @@ func physics_update(delta: float) -> void:
 		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
 		
 		if slope_angle > 10:
-			print( "Slope angle: " + str(slope_angle))
+			if anim_player.get_current_animation() != "idle_tilt":
+				anim_player.play("idle_tilt")	
+			#print( "Slope angle: " + str(slope_angle))
 			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
-			#get_node("../../CollisionShape2D").shape.height = 600
+			get_node("../../CollisionShape2D").shape.height = 600
+		
 		
 
 

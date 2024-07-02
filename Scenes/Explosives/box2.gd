@@ -25,14 +25,14 @@ func _process(_delta) -> void:
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+	if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
 		gv.set_cursor_green()
 	#$object_spr.visible = false
     
 
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+	if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
 		gv.set_cursor_orange()
 	#$object_spr.visible = true
 

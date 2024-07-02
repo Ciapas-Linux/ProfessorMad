@@ -56,7 +56,7 @@ func _physics_process(_delta) -> void:
 			_process_on_state_move_left(_delta)
 
 func _unhandled_input(event):
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+	if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -190,7 +190,7 @@ func _process_on_state_move_right(_delta: float) -> void:
 			
 	velocity.x = speed
 	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()
 	
 func _process_on_state_move_left(_delta: float) -> void:
@@ -229,7 +229,7 @@ func _process_on_state_move_left(_delta: float) -> void:
 			
 	velocity.x = -speed
 	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()		
 		
 
@@ -306,5 +306,3 @@ func _on_big_explosion_finished() -> void:
 #Bullet_hit1_tex = Image.load_from_file("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png")
 	
 	
-
-

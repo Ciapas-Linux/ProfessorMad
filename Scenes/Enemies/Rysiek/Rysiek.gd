@@ -93,7 +93,7 @@ func _ready():
 	scale.x = scale.y * 1
 	rysiek_direction = Vector2.LEFT
 	print("Enemy: ready ...")
-	print("Enemy: distance to Hero: " + str(int(position.distance_to(gv.Hero_global_position))))
+	print("Enemy: distance to Hero: " + str(int(position.distance_to(gv.Player.global_position))))
 	#print("Enemy state:" + gv.enemy_fsm.estate.name)
 	#$Say.visible = false
 	#var Drone2:CharacterBody2D = flying_drone.instantiate()
@@ -112,7 +112,7 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if gv.Hero_current_weapon == gv.Hero_guns["rocket_4"]:
+	if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -321,12 +321,3 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 				
 				
 				
-
-
-
-
-
-
-
-
-

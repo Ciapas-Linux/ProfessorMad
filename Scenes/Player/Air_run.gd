@@ -4,7 +4,7 @@ extends PlayerState
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
 
 
-# AIR
+# AIR RUN
 
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
@@ -13,7 +13,6 @@ func enter(msg := {}) -> void:
 		get_node("../../snd_jump").play()
 		#get_node("../../AnimationPlayer").stop()
 		get_node("../../AnimationPlayer").play("jump")
-		gv.Hero_is_on_floor = false
 		player.Foot_R.rotation = deg_to_rad(85)
 		player.Foot_L.rotation = deg_to_rad(85)
 				
@@ -21,16 +20,16 @@ func enter(msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	
 	if player.is_on_floor():
-		if gv.Hero_is_paused == true:
+		if gv.Player_is_paused == true:
 			state_machine.transition_to("Idle")
 			return	
 	
 	if Input.is_action_pressed("ui_right"):
-		#gv.Hero_direction = Vector2.RIGHT
+		#gv.Player_direction = Vector2.RIGHT
 		player.velocity.x = player.speed_run
 	
 	if Input.is_action_pressed("ui_left"):
-		#gv.Hero_direction = Vector2.LEFT
+		#gv.Player_direction = Vector2.LEFT
 		player.velocity.x = -player.speed_run	
 	
 	player.velocity.y += player.gravity * delta
@@ -42,4 +41,3 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Idle")
 		snd_fall.play()
 				
-

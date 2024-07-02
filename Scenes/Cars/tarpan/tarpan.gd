@@ -189,14 +189,14 @@ func stop_talk():
 func _process_on_state_move_right(_delta: float) -> void:
 	velocity.x = speed
 	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()
 	
 
 func _process_on_state_move_left(_delta: float) -> void:
 	velocity.x = -speed
 	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	move_and_slide()		
 		
 
@@ -292,11 +292,3 @@ func _on_big_explosion_finished() -> void:
 #Bullet_hit1_tex = Image.load_from_file("res://Assets/Particles/bullet-holes/bullet-hole1-sm.png")
 	
 	
-
-
-
-
-
-
-
-

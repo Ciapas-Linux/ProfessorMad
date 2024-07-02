@@ -1,22 +1,26 @@
 extends PlayerState
 
+@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+
+
 func enter(_msg := {}) -> void:
-	player.velocity = Vector2.ZERO
 	get_node("../../AnimationPlayer").play("run")
 	get_node("../../AnimationPlayer").seek(0.3)
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
+	anim_player.stop()			
+	print("Player: run left")		
 
 func physics_update(delta: float) -> void:
-	# if not player.is_on_floor():
-	# 	state_machine.transition_to("Air")
-	# 	return
+	if anim_player.get_current_animation() != "run":
+				anim_player.play("run")
+				anim_player.seek(0.3)	
 	
-	if gv.Hero_is_paused == true:
+	if gv.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return		
 	
-	player.velocity.x = player.speed_run * gv.Hero_direction.x
+	player.velocity.x = player.speed_run * gv.Player_direction.x
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	

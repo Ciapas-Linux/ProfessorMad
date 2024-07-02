@@ -16,15 +16,16 @@ func enter(_msg := {}) -> void:
 			get_node("../../snd_walk").play()
 
 	anim_player.stop()
+	print("Player: walk")
 	#anim_player.play("walkx")		
 	
 func physics_update(delta: float) -> void:
 		
-	if gv.Hero_is_paused == true:
+	if gv.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return	
 		
-	player.velocity.x = player.speed * gv.Hero_direction.x
+	player.velocity.x = player.speed * gv.Player_direction.x
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 
@@ -40,12 +41,12 @@ func physics_update(delta: float) -> void:
 		
 		
 		if gv.Player_tilt < 10:
-			if anim_player.get_current_animation() != "walkx_2":
-				anim_player.play("walkx_2")		
+			if anim_player.get_current_animation() != "walkx":
+				anim_player.play("walkx")		
 				anim_player.seek(0.3,true)
 		elif gv.Player_tilt > 10:
-			if anim_player.get_current_animation() != "walkx_2":
-				anim_player.play("walkx_2")
+			if anim_player.get_current_animation() != "target_up_walk":
+				anim_player.play("target_up_walk")
 				anim_player.seek(0.3,true)
 				
 

@@ -16,7 +16,7 @@ func _process(_delta):
 	#global_position.y = But_l_spawn_marker.global_position.y - 10
 	#rotation_degrees = randf_range(100,100)
 
-	# if gv.Hero_direction == Vector2.LEFT:
+	# if gv.Player_direction == Vector2.LEFT:
 	# 	flip_h = true
 	# else:
 	# 	flip_h = false

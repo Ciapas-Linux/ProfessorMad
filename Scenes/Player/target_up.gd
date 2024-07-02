@@ -16,14 +16,14 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_fall").stop()
 	
 	#anim_player.stop()
-	if gv.Hero_current_weapon == 2:
+	if gv.Player_current_weapon == 2:
 		anim_player.play("target_up_rpg")
 	else:
 		anim_player.play("target_up")
 	#get_node("../../AnimationPlayer").connect("finished",_on_fire_finished)
 
-	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
-		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
+	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+		gv.Player_weapon.connect("fire", _on_gun_2_fire)
 		
 #func _on_fire_finished() -> void:
 	#get_node("../../AnimationPlayer").play("target_up")
@@ -34,23 +34,23 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 	
-	if gv.Hero_is_paused == true:
+	if gv.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return
 
 	if Input.is_action_just_pressed("Reload"):
-		gv.Hero_weapon.reload()
+		gv.Player_weapon.reload()
 		print("Player: reload weapon")			
 				
 	if Input.is_action_pressed("ui_right"):
-		gv.Hero_direction = Vector2.RIGHT
+		gv.Player_direction = Vector2.RIGHT
 		player.velocity.x = walk_speed
 		walk = true
 		#print_debug(walk) 
 	
 	# walk backward
 	if Input.is_action_pressed("ui_left"):
-		#gv.Hero_direction = Vector2.LEFT
+		#gv.Player_direction = Vector2.LEFT
 		player.velocity.x = -walk_speed
 		walk = true	
 	
@@ -104,7 +104,7 @@ func _on_gun_2_fire() -> void:
 
 
 # func _on_animation_player_2_animation_finished(_anim_name:StringName) -> void:
-# 	if gv.Hero_current_weapon == 0:
+# 	if gv.Player_current_weapon == 0:
 # 		await get_tree().create_timer(1.0).timeout
 # 		#state_machine.transition_to("Idle")
 

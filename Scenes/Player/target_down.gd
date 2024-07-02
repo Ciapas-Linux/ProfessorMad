@@ -19,8 +19,8 @@ func enter(_msg := {}) -> void:
 	#anim_player.stop()
 	anim_player.play("target_down")
 
-	if gv.Hero_weapon.is_connected("fire", _on_gun_2_fire) == false:
-		gv.Hero_weapon.connect("fire", _on_gun_2_fire)
+	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+		gv.Player_weapon.connect("fire", _on_gun_2_fire)
 		
 
 func physics_update(delta: float) -> void:
@@ -28,19 +28,19 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 		
-	if gv.Hero_is_paused == true:
+	if gv.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return		
 
 	if Input.is_action_pressed("ui_right"):
-		gv.Hero_direction = Vector2.RIGHT
+		gv.Player_direction = Vector2.RIGHT
 		player.velocity.x = walk_speed
 		walk = true
 		#print_debug(walk) 
 	
 	# walk backward
 	if Input.is_action_pressed("ui_left"):
-		#gv.Hero_direction = Vector2.LEFT
+		#gv.Player_direction = Vector2.LEFT
 		player.velocity.x = -walk_speed
 		walk = true	
 	

@@ -102,7 +102,7 @@ func _process_on_state_follow(_delta):
 		if get_viewport().get_mouse_position().x <  100:
 			position.x -= 30	
 		else:
-			if gv.Hero_on_screen == true:
+			if gv.Player_on_screen == true:
 				position.x = follow_node.global_position.x
 				position.y = (follow_node.global_position.y + cam_Y_offset) * jump_offset
 	
