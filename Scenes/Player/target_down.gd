@@ -1,7 +1,8 @@
 extends PlayerState
 
-var walk = false
-var walk_speed 
+var walk:bool = false
+var walk_speed:float
+ 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 
@@ -17,11 +18,13 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_fall").stop()
 	
 	#anim_player.stop()
+	#anim_player.set_blend_time("idle", "target_down",0.5)
 	anim_player.play("target_down")
-
+	
 	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Player_weapon.connect("fire", _on_gun_2_fire)
 		
+	print("Player: Target down")	
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
@@ -66,8 +69,8 @@ func physics_update(delta: float) -> void:
 	
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
-			
 
+	
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Idle")
 	

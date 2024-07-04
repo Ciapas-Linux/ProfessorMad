@@ -4490,6 +4490,43 @@ floor_snap_length = 15.0
 safe_margin = 0.1
 script = ExtResource("1_qy254")
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("9_vrxjr")
+initial_state = NodePath("Air")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("10_i3ph1")
+
+[node name="Air" type="Node" parent="StateMachine"]
+script = ExtResource("11_0d1mc")
+
+[node name="Air_run" type="Node" parent="StateMachine"]
+script = ExtResource("12_cr0ms")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("13_ecdah")
+
+[node name="target_down" type="Node" parent="StateMachine"]
+script = ExtResource("13_aen1y")
+
+[node name="target_up" type="Node" parent="StateMachine"]
+script = ExtResource("14_mpr4e")
+
+[node name="run_right" type="Node" parent="StateMachine"]
+script = ExtResource("15_jqpk3")
+
+[node name="run_left" type="Node" parent="StateMachine"]
+script = ExtResource("17_hpn2y")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("18_ck5f5")
+
+[node name="Hit_bomb" type="Node" parent="StateMachine"]
+script = ExtResource("19_glkt1")
+
+[node name="Shockwave" type="Node" parent="StateMachine"]
+script = ExtResource("27_6dkp5")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
 libraries = {
@@ -4499,21 +4536,21 @@ libraries = {
 [node name="Body_parts" type="Node2D" parent="."]
 
 [node name="Arm_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-32.0389, -271.355)
-rotation = -0.427254
+position = Vector2(-29.9294, -277.847)
+rotation = 1.61784
 scale = Vector2(0.799898, 0.799898)
 texture = ExtResource("2_a310c")
 offset = Vector2(7.82233, 62.8831)
 
 [node name="Hand_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(126.205, -185.613)
-rotation = -1.00082
+position = Vector2(-249.996, -244.42)
+rotation = 1.95004
 scale = Vector2(0.767903, 0.767903)
 texture = ExtResource("6_sh2oj")
 offset = Vector2(43.5112, 80.9778)
 
 [node name="ForeArm_L" type="Sprite2D" parent="Body_parts/Hand_L"]
-position = Vector2(-97.4562, -112.953)
+position = Vector2(-97.4561, -112.953)
 rotation = -0.64475
 scale = Vector2(0.833333, 0.833333)
 texture = ExtResource("2_hi5ps")
@@ -4522,7 +4559,7 @@ flip_h = true
 
 [node name="Leg_L" type="Sprite2D" parent="Body_parts"]
 position = Vector2(11.9986, -45.0005)
-rotation = -0.0762947
+rotation = -0.0992807
 scale = Vector2(0.699872, 0.699872)
 texture = ExtResource("11_8mg4h")
 offset = Vector2(1, 80)
@@ -4543,20 +4580,20 @@ offset = Vector2(-1, 133)
 
 [node name="Leg_R" type="Sprite2D" parent="Body_parts"]
 position = Vector2(-68.9991, -34.0009)
-rotation = 0.0603944
+rotation = 0.034795
 scale = Vector2(0.699972, 0.699972)
 texture = ExtResource("8_abub0")
 offset = Vector2(7.42856, 73.2857)
 
 [node name="Foot_R" type="Sprite2D" parent="Body_parts/Leg_R"]
-position = Vector2(6.99068, 375.993)
+position = Vector2(6.99067, 375.993)
 rotation = 0.021653
 scale = Vector2(2.19961, 2.19961)
 texture = ExtResource("5_kvy3r")
 offset = Vector2(47.8803, 29.6873)
 
 [node name="Calf_R" type="Sprite2D" parent="Body_parts/Leg_R/Foot_R"]
-position = Vector2(1.10613, -43.1174)
+position = Vector2(1.10614, -43.1174)
 rotation = 0.0121206
 scale = Vector2(0.454554, 0.454554)
 texture = ExtResource("9_tlemh")
@@ -4819,43 +4856,6 @@ position = Vector2(20, -22)
 shape = SubResource("CapsuleShape2D_k13dm")
 one_way_collision_margin = 10.0
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("9_vrxjr")
-initial_state = NodePath("Air")
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("10_i3ph1")
-
-[node name="Air" type="Node" parent="StateMachine"]
-script = ExtResource("11_0d1mc")
-
-[node name="Air_run" type="Node" parent="StateMachine"]
-script = ExtResource("12_cr0ms")
-
-[node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("13_ecdah")
-
-[node name="target_down" type="Node" parent="StateMachine"]
-script = ExtResource("13_aen1y")
-
-[node name="target_up" type="Node" parent="StateMachine"]
-script = ExtResource("14_mpr4e")
-
-[node name="run_right" type="Node" parent="StateMachine"]
-script = ExtResource("15_jqpk3")
-
-[node name="run_left" type="Node" parent="StateMachine"]
-script = ExtResource("17_hpn2y")
-
-[node name="Death" type="Node" parent="StateMachine"]
-script = ExtResource("18_ck5f5")
-
-[node name="Hit_bomb" type="Node" parent="StateMachine"]
-script = ExtResource("19_glkt1")
-
-[node name="Shockwave" type="Node" parent="StateMachine"]
-script = ExtResource("27_6dkp5")
-
 [node name="OriginMarker" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("24_gea1l")
@@ -4907,14 +4907,13 @@ hue_variation_min = -0.73
 hue_variation_max = 0.8
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(0, 400)
 collision_mask = 2
 
 [node name="footR_CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-88.4773, 292.281)
-rotation = 0.094168
+position = Vector2(-80.1192, 292.673)
+rotation = 0.0685686
 scale = Vector2(1.53966, 1.53966)
 shape = SubResource("CircleShape2D_wf041")
 disabled = true
@@ -4922,8 +4921,8 @@ debug_color = Color(0.691652, 0.412921, 0.722655, 0.42)
 
 [node name="footL_CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(21.0244, 284.749)
-rotation = 0.0487893
+position = Vector2(28.601, 284.455)
+rotation = 0.0258033
 scale = Vector2(1.53967, 1.53967)
 shape = SubResource("CircleShape2D_vjavp")
 disabled = true
@@ -4978,8 +4977,9 @@ position = Vector2(0, 362)
 shape = SubResource("RectangleShape2D_cl18p")
 disabled = true
 
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Idle" method="_on_animation_player_2_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Idle" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Air" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Air_run" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Shockwave" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Back_Area2D" to="." method="_on_left_area_2d_area_entered"]
 [connection signal="body_entered" from="Back_Area2D" to="." method="_on_left_area_2d_body_entered"]

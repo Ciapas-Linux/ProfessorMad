@@ -3,7 +3,6 @@ extends PlayerState
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
 
-
 # AIR RUN
 
 func enter(msg := {}) -> void:
@@ -11,11 +10,11 @@ func enter(msg := {}) -> void:
 		player.velocity.y = - player.jump_impulse_run
 		get_node("../../snd_walk").stop()
 		get_node("../../snd_jump").play()
-		#get_node("../../AnimationPlayer").stop()
-		get_node("../../AnimationPlayer").play("jump")
-		player.Foot_R.rotation = deg_to_rad(85)
-		player.Foot_L.rotation = deg_to_rad(85)
-				
+		anim_player.play("jump")
+	
+	player.Foot_R.rotation = deg_to_rad(85)
+	player.Foot_L.rotation = deg_to_rad(65)
+	print("Player: Air run")
 		
 func physics_update(delta: float) -> void:
 	
@@ -25,19 +24,27 @@ func physics_update(delta: float) -> void:
 			return	
 	
 	if Input.is_action_pressed("ui_right"):
-		#gv.Player_direction = Vector2.RIGHT
 		player.velocity.x = player.speed_run
 	
 	if Input.is_action_pressed("ui_left"):
-		#gv.Player_direction = Vector2.LEFT
 		player.velocity.x = -player.speed_run	
 	
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
+
+	if player.SlopeRayCast.is_colliding():
+		player.Foot_R.rotation = deg_to_rad(0)
+		player.Foot_L.rotation = deg_to_rad(0)			
+	else:
+		player.Foot_R.rotation = deg_to_rad(85)
+		player.Foot_L.rotation = deg_to_rad(65)	
 		
 	if player.is_on_floor() == true:
 		anim_player.play("touch_down")
-		#get_node("../../snd_fall").play()
-		state_machine.transition_to("Idle")
+		player.velocity = Vector2.ZERO
 		snd_fall.play()
 				
+func _on_animation_player_animation_finished(anim_name:StringName) -> void:
+	if anim_name == "touch_down":
+		state_machine.transition_to("Idle")
+	

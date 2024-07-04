@@ -21,7 +21,7 @@ var floor_normal:Vector2
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
-	get_node("../../snd_fall").stop()
+	#get_node("../../snd_fall").stop()
 	
 	if anim_player.current_animation != "touch_down":
 		anim_player.play("idle")
@@ -32,10 +32,11 @@ func enter(_msg := {}) -> void:
 
 	print("Player: idle")
 
-func _on_animation_player_2_animation_finished(anim_name:StringName):
+func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "touch_down":
 		anim_player.play("idle")
-	
+		#print("Player: XXXXXXXXX")
+
 # Exit state:	
 func exit(_msg := {}) -> void:
 	pass
@@ -48,6 +49,37 @@ func physics_update(delta: float) -> void:
 		
 	if gv.Player_is_paused == true:	
 		return
+
+	player.velocity.y += player.gravity * delta
+	player.move_and_slide()
+	
+	# Rotate foot to match slope angle:
+	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
+		slope_angle = rad_to_deg(acos(player.get_floor_normal().dot(Vector2(0, -1))))
+		offset = deg_to_rad(90)
+		ray_normal =  player.SlopeRayCast.get_collision_normal()
+				
+		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+
+		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
+		
+		# No slope:
+		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
+			if anim_player.get_current_animation() != "idle":
+				anim_player.play("idle")
+				#print("Player: XAAAAAAAAAAAA!!!")
+				anim_player.seek(0.3,true)
+			get_node("../../CollisionShape2D").shape.height = 700	
+		# Slope:
+		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
+			if anim_player.get_current_animation() != "idle_tilt":
+				anim_player.play("idle_tilt")
+				pass	
+			#print( "Slope angle: " + str(slope_angle))
+			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
+			get_node("../../CollisionShape2D").shape.height = 600
+
 
 	# if gv.Player_current_weapon != 0:
 	# GO --> Switch weapon	
@@ -101,46 +133,18 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("run_left")
 			player.scale.x = player.scale.y * -1	
 					
-	# TO AIM:	
+	# TARGET UP:	
 	if Input.is_action_just_pressed("Target"):
 		state_machine.transition_to("target_up")
 		#player.scale.x = player.scale.y * 1
 		#gv.hero_sprite.set_flip_h(false) 
-		
-	# SIT DOWN:	
+			
+
+	# TARGET DOWN:	
 	if Input.is_action_just_pressed("ui_down"):
 		state_machine.transition_to("target_down")
 		#player.scale.x = player.scale.y * 1
 		#gv.hero_sprite.set_flip_h(false)
-
-	player.velocity.y += player.gravity * delta
-	player.move_and_slide()
-	
-	# Rotate foot to match slope angle:
-	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
-		slope_angle = rad_to_deg(acos(player.get_floor_normal().dot(Vector2(0, -1))))
-		offset = deg_to_rad(90)
-		ray_normal =  player.SlopeRayCast.get_collision_normal()
-				
-		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
-		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-
-		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
-		
-		# No slope:
-		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
-			if anim_player.get_current_animation() != "idle":
-				anim_player.play("idle")
-				anim_player.seek(0.3,true)
-			get_node("../../CollisionShape2D").shape.height = 700	
-		# Slope:
-		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
-			if anim_player.get_current_animation() != "idle_tilt":
-				anim_player.play("idle_tilt")	
-			#print( "Slope angle: " + str(slope_angle))
-			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
-			get_node("../../CollisionShape2D").shape.height = 600
-
 
 		#print( "XXXXXXXX: " + str(rad_to_deg(ray_normal.angle() + offset ) * -1 ) )  
 
@@ -293,3 +297,5 @@ func _on_gun_2_fire() -> void:
 
 	#var laserOrigin = to_local(Ray.global_position)		
 		
+
+

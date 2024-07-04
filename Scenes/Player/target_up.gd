@@ -1,7 +1,7 @@
 extends PlayerState
 
-var walk = false
-var walk_speed  
+var walk:bool = false
+var walk_speed:float  
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 
@@ -25,6 +25,7 @@ func enter(_msg := {}) -> void:
 	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Player_weapon.connect("fire", _on_gun_2_fire)
 		
+	print("Player: Target up")	
 #func _on_fire_finished() -> void:
 	#get_node("../../AnimationPlayer").play("target_up")
 
