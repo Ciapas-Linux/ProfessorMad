@@ -7,7 +7,6 @@ extends PlayerState
 var floor_normal:Vector2
 var ray_normal:Vector2
 var offset: float
-# var tilt:float = 0.0
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 

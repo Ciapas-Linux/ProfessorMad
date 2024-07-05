@@ -5,6 +5,8 @@ extends PlayerState
 
 # AIR RUN
 
+#var from_run:bool = false
+
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
 		player.velocity.y = - player.jump_impulse_run
@@ -15,6 +17,11 @@ func enter(msg := {}) -> void:
 	player.Foot_R.rotation = deg_to_rad(85)
 	player.Foot_L.rotation = deg_to_rad(65)
 	print("Player: Air run")
+
+	# if gv.fsm.previous_state == "run_right":
+	# 	from_run = true
+	# 	print("Player: Jump from run ")
+
 		
 func physics_update(delta: float) -> void:
 	
@@ -42,7 +49,8 @@ func physics_update(delta: float) -> void:
 	if player.is_on_floor() == true:
 		anim_player.play("touch_down")
 		player.velocity = Vector2.ZERO
-		snd_fall.play()
+		#state_machine.transition_to("Idle")
+		snd_fall.play() 	
 				
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "touch_down":
