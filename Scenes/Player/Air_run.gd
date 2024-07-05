@@ -7,6 +7,10 @@ extends PlayerState
 
 #var from_run:bool = false
 
+var ray_normal:Vector2
+var floor_normal:Vector2
+
+
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
 		player.velocity.y = - player.jump_impulse_run
@@ -40,8 +44,9 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 
 	if player.SlopeRayCast.is_colliding():
-		player.Foot_R.rotation = deg_to_rad(0)
-		player.Foot_L.rotation = deg_to_rad(0)			
+		ray_normal =  player.SlopeRayCast.get_collision_normal()
+		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)	
 	else:
 		player.Foot_R.rotation = deg_to_rad(85)
 		player.Foot_L.rotation = deg_to_rad(65)	
