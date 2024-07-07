@@ -184,9 +184,9 @@ text = "Tilt:"
 script = ExtResource("16_xkvpp")
 
 [node name="animation" type="Label" parent="."]
-offset_left = 1537.0
+offset_left = 1536.0
 offset_top = 166.0
-offset_right = 1594.0
+offset_right = 1593.0
 offset_bottom = 194.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
