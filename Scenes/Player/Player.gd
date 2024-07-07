@@ -40,6 +40,7 @@ var Player_on_screen:bool = true
 var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3}
 var Player_current_weapon:int = Player_guns["ak_47"]
 var Player_weapon:Sprite2D
+var Player_up_down:String = "flat" # up down flat
 
 signal bomb_hit_me
 

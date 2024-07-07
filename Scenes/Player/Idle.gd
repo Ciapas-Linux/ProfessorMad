@@ -59,7 +59,8 @@ func physics_update(delta: float) -> void:
 				anim_player.play("idle")
 				anim_player.seek(0.3,true)
 			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
-			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)	
+			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Player_up_down = "flat"	
 			get_node("../../CollisionShape2D").shape.height = 700	
 		
 		# Slope:
@@ -71,17 +72,21 @@ func physics_update(delta: float) -> void:
 				if gv.Player.Player_direction == Vector2.RIGHT: # going DOWN:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Player_up_down = "down"
 				if gv.Player.Player_direction == Vector2.LEFT: # going UP:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Player_up_down = "up"
 
 			if gv.Player.Player_tilt > 0:
 				if gv.Player.Player_direction == Vector2.RIGHT: # going UP:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Player_up_down = "up"
 				if gv.Player.Player_direction == Vector2.LEFT: # going DOWN:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Player_up_down = "down"
 
 
 			#print( "Slope angle: " + str(slope_angle))

@@ -1,8 +1,11 @@
+extends Area2D
+
+
 # ##########################
 # # Box_3             .SCRIPT #
 # ##########################
 
-extends Area2D
+
 
 @onready var tween: Tween
 var hit_count:int

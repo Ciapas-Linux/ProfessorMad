@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbf5db237usnf"]
+[gd_scene load_steps=27 format=3 uid="uid://bbf5db237usnf"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_ce2dp"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="1_hb5a1"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="17_m2q8c"]
 [ext_resource type="Script" path="res://Scenes/HUD/animation.gd" id="17_xpw0c"]
 [ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="18_nafme"]
+[ext_resource type="Script" path="res://Scenes/HUD/go_dir.gd" id="18_s4g5u"]
 [ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="19_ai2io"]
 [ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="20_5ffjx"]
 [ext_resource type="AudioStream" uid="uid://bb0nnwrfynduf" path="res://Assets/Sounds/Sfx/object.wav" id="23_u2b6s"]
@@ -75,7 +76,7 @@ text = "0"
 script = ExtResource("7_o7pps")
 
 [node name="Panel_1" type="Sprite2D" parent="."]
-position = Vector2(1714, 105)
+position = Vector2(1718, 152)
 texture = ExtResource("8_ws27l")
 
 [node name="pos" type="Label" parent="."]
@@ -194,6 +195,17 @@ theme_override_font_sizes/font_size = 20
 text = "Anim:"
 script = ExtResource("17_xpw0c")
 
+[node name="go_dir" type="Label" parent="."]
+offset_left = 1535.0
+offset_top = 190.0
+offset_right = 1575.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Go: "
+script = ExtResource("18_s4g5u")
+
 [node name="img_heart" type="Sprite2D" parent="."]
 position = Vector2(19, 58)
 scale = Vector2(0.0855846, 0.0776065)
@@ -210,10 +222,10 @@ scale = Vector2(0.359971, 0.359971)
 texture = ExtResource("16_0xe1c")
 
 [node name="Quit" type="TextureButton" parent="."]
-offset_left = 1816.0
-offset_top = 136.0
-offset_right = 1916.0
-offset_bottom = 186.0
+offset_left = 1821.0
+offset_top = 238.0
+offset_right = 1921.0
+offset_bottom = 288.0
 texture_normal = ExtResource("17_m2q8c")
 texture_pressed = ExtResource("18_nafme")
 texture_hover = ExtResource("19_ai2io")
