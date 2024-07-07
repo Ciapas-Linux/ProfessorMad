@@ -5,7 +5,8 @@ var walk_speed:float
  
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
-
+var ray_normal:Vector2
+var floor_normal:Vector2
 
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
@@ -18,7 +19,7 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_fall").stop()
 	
 	#anim_player.stop()
-	#anim_player.set_blend_time("idle", "target_down",0.5)
+	anim_player.set_blend_time("idle", "target_down",0.6)
 	anim_player.play("target_down")
 	
 	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
@@ -36,14 +37,11 @@ func physics_update(delta: float) -> void:
 		return		
 
 	if Input.is_action_pressed("ui_right"):
-		gv.Player_direction = Vector2.RIGHT
 		player.velocity.x = walk_speed
 		walk = true
-		#print_debug(walk) 
-	
+		
 	# walk backward
 	if Input.is_action_pressed("ui_left"):
-		#gv.Player_direction = Vector2.LEFT
 		player.velocity.x = -walk_speed
 		walk = true	
 	
@@ -52,9 +50,7 @@ func physics_update(delta: float) -> void:
 		player.velocity.x = 0
 		anim_player.stop()
 		get_node("../../snd_walk").stop()	
-		#print_debug(walk) 
-		#print_debug("release key right") 
-		
+				
 	if Input.is_action_just_released("ui_left"):		
 		walk = false
 		player.velocity.x = 0
@@ -69,6 +65,32 @@ func physics_update(delta: float) -> void:
 	
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
+
+	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
+		ray_normal =  player.SlopeRayCast.get_collision_normal()
+		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + deg_to_rad(90) ) * -1)
+		
+		# No slope:
+		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
+			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+		# Slope:
+		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
+			if gv.Player_tilt < 0:
+				if gv.Player_direction == Vector2.RIGHT: # going DOWN:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+				if gv.Player_direction == Vector2.LEFT: # going UP:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+
+			if gv.Player_tilt > 0:
+				if gv.Player_direction == Vector2.RIGHT: # going UP:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+				if gv.Player_direction == Vector2.LEFT: # going DOWN:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
 
 	
 	if Input.is_action_just_pressed("ui_up"):

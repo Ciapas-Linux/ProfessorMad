@@ -59,8 +59,8 @@ func physics_update(delta: float) -> void:
 		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
 				
-		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
-		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+		# player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+		# player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
 
 		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
@@ -70,12 +70,32 @@ func physics_update(delta: float) -> void:
 				anim_player.play("idle")
 				#print("Player: XAAAAAAAAAAAA!!!")
 				anim_player.seek(0.3,true)
+			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)	
 			get_node("../../CollisionShape2D").shape.height = 700	
+		
 		# Slope:
 		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
 			if anim_player.get_current_animation() != "idle_tilt":
 				anim_player.play("idle_tilt")
-				pass	
+
+			if gv.Player_tilt < 0:
+				if gv.Player_direction == Vector2.RIGHT: # going DOWN:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+				if gv.Player_direction == Vector2.LEFT: # going UP:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+
+			if gv.Player_tilt > 0:
+				if gv.Player_direction == Vector2.RIGHT: # going UP:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+				if gv.Player_direction == Vector2.LEFT: # going DOWN:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+
+
 			#print( "Slope angle: " + str(slope_angle))
 			#get_node("../../Skeleton2D/Base/Leg_L").position.y += 60
 			get_node("../../CollisionShape2D").shape.height = 600

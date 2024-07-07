@@ -3,7 +3,7 @@ extends PlayerState
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 @onready var snd_fall : AudioStreamPlayer = get_node("../../snd_fall")
 
-# AIR RUN
+# AIR from RUN
 
 #var from_run:bool = false
 

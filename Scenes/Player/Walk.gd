@@ -4,7 +4,7 @@ extends PlayerState
 #. WALK 🌟🌟🌟#>
 #.#############>
 
-var floor_normal:Vector2
+
 var ray_normal:Vector2
 var offset: float
 
@@ -29,21 +29,19 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
-		floor_normal = player.get_floor_normal()
 		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
-				
-		player.Foot_R.rotation = ray_normal.angle() + offset
-		player.Foot_L.rotation = ray_normal.angle() + offset
-				
 		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
-		# No slope:
+		# No slope tilt < 10 as no slope:
 		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
 			if anim_player.get_current_animation() != "walkx":
 				anim_player.play("walkx")		
 				anim_player.seek(0.3,true)
-			get_node("../../CollisionShape2D").shape.height = 700	
+			get_node("../../CollisionShape2D").shape.height = 700
+			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)	
+		
 		# Slope:
 		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
 			if anim_player.get_current_animation() != "target_up_walk":
@@ -51,6 +49,23 @@ func physics_update(delta: float) -> void:
 				anim_player.seek(0.3,true)
 			get_node("../../CollisionShape2D").shape.height = 600	
 				
+			
+			if gv.Player_tilt < 0:
+				if gv.Player_direction == Vector2.RIGHT: # going DOWN:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+				if gv.Player_direction == Vector2.LEFT: # going UP:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+
+			if gv.Player_tilt > 0:
+				if gv.Player_direction == Vector2.RIGHT: # going UP:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+				if gv.Player_direction == Vector2.LEFT: # going DOWN:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+
 
 	if Input.is_action_just_pressed("ui_up"):
 		state_machine.transition_to("Air", {do_jump = true})

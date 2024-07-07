@@ -4,6 +4,9 @@ var walk:bool = false
 var walk_speed:float  
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
+var ray_normal:Vector2
+var floor_normal:Vector2
+
 
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
@@ -15,19 +18,15 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	
-	#anim_player.stop()
 	if gv.Player_current_weapon == 2:
 		anim_player.play("target_up_rpg")
 	else:
 		anim_player.play("target_up")
-	#get_node("../../AnimationPlayer").connect("finished",_on_fire_finished)
-
+	
 	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		gv.Player_weapon.connect("fire", _on_gun_2_fire)
 		
 	print("Player: Target up")	
-#func _on_fire_finished() -> void:
-	#get_node("../../AnimationPlayer").play("target_up")
 
 
 func physics_update(delta: float) -> void:
@@ -47,11 +46,9 @@ func physics_update(delta: float) -> void:
 		gv.Player_direction = Vector2.RIGHT
 		player.velocity.x = walk_speed
 		walk = true
-		#print_debug(walk) 
 	
 	# walk backward
 	if Input.is_action_pressed("ui_left"):
-		#gv.Player_direction = Vector2.LEFT
 		player.velocity.x = -walk_speed
 		walk = true	
 	
@@ -60,8 +57,6 @@ func physics_update(delta: float) -> void:
 		player.velocity.x = 0
 		anim_player.stop()
 		get_node("../../snd_walk").stop()
-		#print_debug(walk) 
-		#print_debug("release key right") 
 		
 	if Input.is_action_just_released("ui_left"):		
 		walk = false
@@ -84,6 +79,13 @@ func physics_update(delta: float) -> void:
 
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
+
+	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
+		ray_normal =  player.SlopeRayCast.get_collision_normal()
+		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + deg_to_rad(90) ) * -1)
+
 
 
 func _on_gun_2_fire() -> void:
