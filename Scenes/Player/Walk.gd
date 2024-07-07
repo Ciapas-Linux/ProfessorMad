@@ -16,7 +16,6 @@ func enter(_msg := {}) -> void:
 
 	anim_player.stop()
 	print("Player: walk")
-	#anim_player.play("walkx")		
 	
 func physics_update(delta: float) -> void:
 		

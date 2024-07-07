@@ -69,7 +69,6 @@ func _physics_process(delta) -> void:
 		MOVE_TO_TARGET:
 			_process_on_state_move(delta)				
 	
-	gv.Cam1_global_position = position
 	
 	#position.x += 10
 	#print("mx: " + str(get_viewport().get_mouse_position().x) + "   " + "my :" + str(get_viewport().get_mouse_position().y))

@@ -44,15 +44,15 @@ func physics_update(delta: float) -> void:
 	# TURN LEFT: player is on left side
 	# if gv.Hero_global_position.x + rysiek.change_direction_distance < rysiek.global_position.x:
 	if gv.Player.global_position.x < rysiek.global_position.x:
-		if rysiek.rysiek_direction == Vector2.RIGHT:	
+		if rysiek.Enemy_direction == Vector2.RIGHT:	
 			rysiek.scale.x = rysiek.scale.y * 1
-			rysiek.rysiek_direction = Vector2.LEFT
+			rysiek.Enemy_direction = Vector2.LEFT
 	
 	# TURN RIGHT: player is on right side
 	if gv.Player.global_position.x > rysiek.global_position.x:
-		if rysiek.rysiek_direction == Vector2.LEFT:
+		if rysiek.Enemy_direction == Vector2.LEFT:
 			rysiek.scale.x = rysiek.scale.y * -1
-			rysiek.rysiek_direction = Vector2.RIGHT
+			rysiek.Enemy_direction = Vector2.RIGHT
 	
 	# SEE PLAYER:					
 	if 	rysiek.see_Player == true:		

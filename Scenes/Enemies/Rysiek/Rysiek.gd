@@ -38,15 +38,14 @@ var chat_instance:Node2D
 var screen_size : Vector2
 var gun_fire:bool = false
 
-#var direction:String = "L"
-var rysiek_direction:Vector2 = Vector2.LEFT
 var move_left:bool = false
 var move_right:bool = false
 
 var weapon : Sprite2D
 var previous_state : String
-var health:int = 100
-const health_max:int = 100
+var Rysiek_health:float = 100
+const Rysiek_health_max:float = 100
+var Enemy_direction:Vector2 = Vector2.LEFT
 var gold_amount:int = 0
 
 var on_screen:bool = false
@@ -68,7 +67,7 @@ var head:Node
 
 signal somebody_hitme
 signal enemy2_death
-var player_collision_point:Vector2
+#var player_collision_point:Vector2
 
 var drone:CharacterBody2D
 
@@ -82,16 +81,15 @@ func _ready():
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	
 	gv.rysiek_fsm = $RysiekStateMachine
+	gv.EnemyRysiek = self
 	
 	#drone = get_parent().get_node("Flying_drone")
 	screen_size = get_viewport_rect().size
 	gold_amount = randi_range(1,1125)
 	head = get_node("CanvasGroup/Torso/Head")
 	previous_state = ""
-	gv.Enemy_position = position
-	gv.Enemy_global_position = global_position
 	scale.x = scale.y * 1
-	rysiek_direction = Vector2.LEFT
+	Enemy_direction = Vector2.LEFT
 	print("Enemy: ready ...")
 	print("Enemy: distance to Hero: " + str(int(position.distance_to(gv.Player.global_position))))
 	#print("Enemy state:" + gv.enemy_fsm.estate.name)
@@ -112,7 +110,7 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if gv.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -171,8 +169,7 @@ func _drone_on_me_position():
 
 
 func _process(_delta: float) -> void:
-	gv.Enemy_position = position
-	gv.Enemy_global_position = global_position
+	pass
 	
 
 func _physics_process(_delta):
@@ -198,7 +195,7 @@ func rpg_hit():
 	$snd_splash_1.play()
 	head.texture = Head_death_img
 	get_tree().current_scene.add_child(_particle)
-	health = 0
+	Rysiek_health = 0
 	gv.rysiek_fsm.transition_to("Hit_rpg")
 	#emit_signal("enemy2_death")
 	#queue_free() 
@@ -217,23 +214,23 @@ func hit():
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
 		
-	if rysiek_direction == Vector2.LEFT:
+	if Enemy_direction == Vector2.LEFT:
 		position.x += 30
-	if rysiek_direction == Vector2.RIGHT:
+	if Enemy_direction == Vector2.RIGHT:
 		position.x -= 30	
-	if health > 0:
-		health -= 10 # DAMAGE RATE   
-	if health <= 0:
+	if Rysiek_health > 0:
+		Rysiek_health -= 10 # DAMAGE RATE   
+	if Rysiek_health <= 0:
 		emit_signal("enemy2_death")
 		queue_free()  		
 
-	if health in range(50,71):
+	if Rysiek_health in range(50,71):
 		if texture_nr != 2:
 			head.texture = Head_hit2_img
 			texture_nr = 2
 			speed = max_speed * 0.7
 	
-	if health in range(0,49):
+	if Rysiek_health in range(0,49):
 		if texture_nr != 3:
 			head.texture = Head_hit3_img
 			texture_nr = 3
@@ -243,21 +240,21 @@ func hit():
 
 	
 func _on_recover_health_timeout() -> void:
-	if health < 100:
-		health += 1
-	if health > 97:
+	if Rysiek_health < 100:
+		Rysiek_health += 1
+	if Rysiek_health > 97:
 		head.texture = Head_hit1_img
 		texture_nr = 1
 		speed = max_speed
 		$Recover_Health.stop()
 	
-	if health in range(50,71):
+	if Rysiek_health in range(50,71):
 		if texture_nr != 2:
 			head.texture = Head_hit2_img
 			texture_nr = 2
 			speed = max_speed * 0.7	
 	
-	if health in range(0,49):
+	if Rysiek_health in range(0,49):
 		if texture_nr != 3:
 			head.texture = Head_hit3_img
 			texture_nr = 3

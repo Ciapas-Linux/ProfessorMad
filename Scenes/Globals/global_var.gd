@@ -39,24 +39,14 @@ var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 # var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
 
 
-# HERO
+# PLAYER HERO:
 @onready var fsm:StateMachine
 var Player:Hero
-
-
-
-# 0 no weapon
-# 1 ak_47
-# 2 rpg_7
-# 3 rocket_4 
-# 4 ?
-
-
 # Player global signals:
 signal player_bullet_ready
-
 signal s_mouse_enter_node(node :Node2D)
 var mouse_enter_node:Node2D
+
 
 # GUI signals:
 # var pop_up_2D:Resource = preload("res://Scenes/UI/PopUp_2D.tscn")
@@ -65,11 +55,7 @@ var mouse_enter_node:Node2D
 
 # ENEMY FIRST BOSS WREDNY RYSIEK
 @onready var rysiek_fsm:RysiekStateMachine
-var Enemy_position:Vector2
-var Enemy_global_position:Vector2
-var Enemy_direction:Vector2 = Vector2.RIGHT
-
-
+@onready var EnemyRysiek:Rysiek
 
 # 2.5D experimentos
 @onready var player25D_fsm:P25StateMachine
@@ -78,9 +64,7 @@ var Player25_global_position:Vector3
 var Player25_direction:Vector2 = Vector2.RIGHT
 
 # CAMERA
-var Cam1_global_position:Vector2
 var Cam1:Camera2D
-
 
 # system info
 var platform:String

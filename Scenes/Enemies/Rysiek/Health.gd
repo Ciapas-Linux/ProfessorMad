@@ -1,18 +1,14 @@
 extends TextureProgressBar
 
-var rysiek:Rysiek
 
 func _ready():
-	rysiek = get_parent()
-	value = rysiek.health
-	position.x = gv.Enemy_position.x - 20
-	position.y = gv.Enemy_position.y - 200
-	
+	if is_instance_valid(gv.EnemyRysiek):
+		value = gv.EnemyRysiek.Rysiek_health
+		position.x = gv.EnemyRysiek.position.x - 20
+		position.y = gv.EnemyRysiek.position.y - 200
 
-@warning_ignore("unused_parameter")
-func _physics_process(delta):
-	value = rysiek.health
-	position.x = gv.Enemy_position.x - 20
-	position.y = gv.Enemy_position.y - 200
+func _physics_process(_delta):
+	value = gv.EnemyRysiek.Rysiek_health
+	position.x = gv.EnemyRysiek.position.x - 20
+	position.y = gv.EnemyRysiek.position.y - 200
 	
-

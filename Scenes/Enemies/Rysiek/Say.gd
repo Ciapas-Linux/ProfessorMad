@@ -21,8 +21,8 @@ func _ready():
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
-	position.x = gv.Enemy_position.x - shift_x
-	position.y = gv.Enemy_position.y - shift_y
+	position.x = gv.EnemyRysiek.position.x - shift_x
+	position.y = gv.EnemyRysiek.position.y - shift_y
 
 func _timer_timeout():
 	var tween:Tween = create_tween()
