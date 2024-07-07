@@ -56,7 +56,7 @@ func _physics_process(_delta) -> void:
 			_process_on_state_move_left(_delta)
 
 func _unhandled_input(event):
-	if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
+	if gv.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self

@@ -20,21 +20,21 @@ func enter(_msg := {}) -> void:
 	
 func physics_update(delta: float) -> void:
 		
-	if gv.Player_is_paused == true:
+	if gv.Player.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return	
 		
-	player.velocity.x = player.speed * gv.Player_direction.x
+	player.velocity.x = player.speed * gv.Player.Player_direction.x
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
-		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
+		gv.Player.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
 		# No slope tilt < 10 as no slope:
-		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
+		if gv.Player.Player_tilt < 10 and gv.Player.Player_tilt > -10:
 			if anim_player.get_current_animation() != "walkx":
 				anim_player.play("walkx")		
 				anim_player.seek(0.3,true)
@@ -43,26 +43,26 @@ func physics_update(delta: float) -> void:
 			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)	
 		
 		# Slope:
-		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
+		elif gv.Player.Player_tilt > 10 or gv.Player.Player_tilt < -10:
 			if anim_player.get_current_animation() != "target_up_walk":
 				anim_player.play("target_up_walk")
 				anim_player.seek(0.3,true)
 			get_node("../../CollisionShape2D").shape.height = 600	
 				
 			
-			if gv.Player_tilt < 0:
-				if gv.Player_direction == Vector2.RIGHT: # going DOWN:
+			if gv.Player.Player_tilt < 0:
+				if gv.Player.Player_direction == Vector2.RIGHT: # going DOWN:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-				if gv.Player_direction == Vector2.LEFT: # going UP:
+				if gv.Player.Player_direction == Vector2.LEFT: # going UP:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
 
-			if gv.Player_tilt > 0:
-				if gv.Player_direction == Vector2.RIGHT: # going UP:
+			if gv.Player.Player_tilt > 0:
+				if gv.Player.Player_direction == Vector2.RIGHT: # going UP:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-				if gv.Player_direction == Vector2.LEFT: # going DOWN:
+				if gv.Player.Player_direction == Vector2.LEFT: # going DOWN:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
 

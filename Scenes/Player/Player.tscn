@@ -4622,7 +4622,7 @@ texture = ExtResource("8_3wmc7")
 offset = Vector2(58.5516, 32.5195)
 
 [node name="ForeArm_R" type="Sprite2D" parent="Body_parts/Arm_R"]
-position = Vector2(8.99152, 147.35)
+position = Vector2(8.99153, 147.35)
 rotation = -0.87154
 scale = Vector2(0.800019, 0.800019)
 texture = ExtResource("4_5bscy")

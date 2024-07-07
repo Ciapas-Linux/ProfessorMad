@@ -25,4 +25,4 @@ func _on_timer_timeout() -> void:
 	# else:
 	# 	weapon = get_node(spawn_node_path).get_child(0)	
 
-	text = "%s" % gv.Player_weapon.ammo 
+	text = "%s" % gv.Player.Player_weapon.ammo 

@@ -51,11 +51,9 @@ func physics_update(delta: float) -> void:
 		
 		MOVE_UP:
 			if Input.is_action_pressed("ui_right"):
-				# gv.Player_direction = Vector2.RIGHT
 				player.velocity.x = player.speed
 		
 			if Input.is_action_pressed("ui_left"):
-				# gv.Player_direction = Vector2.LEFT
 				player.velocity.x = -player.speed	
 			
 			
@@ -69,11 +67,9 @@ func physics_update(delta: float) -> void:
 		
 		FALL_DOWN:
 			if Input.is_action_pressed("ui_right"):
-				# gv.Player_direction = Vector2.RIGHT
 				player.velocity.x = player.speed
 		
 			if Input.is_action_pressed("ui_left"):
-				# gv.Player_direction = Vector2.LEFT
 				player.velocity.x = -player.speed	
 			
 			player.velocity.y += player.gravity * delta

@@ -28,7 +28,7 @@ func _timer_timeout():
 	var tween:Tween = create_tween()
 	tween.tween_property(self, "modulate", Color(255,255,255,0), 3)
 	await get_tree().create_timer(3).timeout
-	gv.Player_is_paused = false
+	gv.Player.Player_is_paused = false
 	self.visible = false
 	# emit_signal("it_was_shown")
 		
@@ -41,7 +41,6 @@ func turn_red():
 func first_time_catch_profesor():
 	$SayTextLabel.text = "Eeeee ty \ncwaniaczku!"
 	self.visible = true
-	# gv.Player_is_paused = true
 	var tween:Tween = create_tween()
 	tween.parallel().tween_property(self, "scale", Vector2.ONE * 1, 0.5)
 	tween.parallel().tween_property(self, "position", Vector2(position.x - shift_x,position.y - shift_y), 0.5)

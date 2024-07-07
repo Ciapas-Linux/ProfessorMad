@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bbf5db237usnf"]
+[gd_scene load_steps=26 format=3 uid="uid://bbf5db237usnf"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_ce2dp"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="1_hb5a1"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://o6f64ndd6abn" path="res://Assets/Objects/coin_5.png" id="16_0xe1c"]
 [ext_resource type="Script" path="res://Scenes/HUD/tilt.gd" id="16_xkvpp"]
 [ext_resource type="Texture2D" uid="uid://bm4suxtr5oyxu" path="res://Assets/UI/quit_normal.png" id="17_m2q8c"]
+[ext_resource type="Script" path="res://Scenes/HUD/animation.gd" id="17_xpw0c"]
 [ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="18_nafme"]
 [ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="19_ai2io"]
 [ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="20_5ffjx"]
@@ -91,9 +92,9 @@ script = ExtResource("9_5cyg4")
 
 [node name="state" type="Label" parent="."]
 offset_left = 1536.0
-offset_top = 29.0
+offset_top = 18.0
 offset_right = 1600.0
-offset_bottom = 57.0
+offset_bottom = 46.0
 scale = Vector2(0.873, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -181,6 +182,17 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Tilt:"
 script = ExtResource("16_xkvpp")
+
+[node name="animation" type="Label" parent="."]
+offset_left = 1537.0
+offset_top = 166.0
+offset_right = 1594.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Anim:"
+script = ExtResource("17_xpw0c")
 
 [node name="img_heart" type="Sprite2D" parent="."]
 position = Vector2(19, 58)

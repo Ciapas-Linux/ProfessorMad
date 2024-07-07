@@ -6,13 +6,9 @@ extends PlayerState
 #.#############>
 
 
-#signal turn(value)
-
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
 
-#var floor_normal:Vector2
 var ray_normal:Vector2
-var slope_angle:float
 var offset: float
 var floor_normal:Vector2
 
@@ -21,21 +17,19 @@ var floor_normal:Vector2
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
-	#get_node("../../snd_fall").stop()
-	
+		
 	if anim_player.current_animation != "touch_down":
 		anim_player.play("idle")
 		anim_player.seek(0.1)
 
-	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
-		gv.Player_weapon.connect("fire", _on_gun_2_fire)
+	if gv.Player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+		gv.Player.Player_weapon.connect("fire", _on_gun_2_fire)
 
 	print("Player: idle")
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "touch_down":
 		anim_player.play("idle")
-		#print("Player: XXXXXXXXX")
 
 # Exit state:	
 func exit(_msg := {}) -> void:
@@ -47,7 +41,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 		
-	if gv.Player_is_paused == true:	
+	if gv.Player.Player_is_paused == true:	
 		return
 
 	player.velocity.y += player.gravity * delta
@@ -55,43 +49,37 @@ func physics_update(delta: float) -> void:
 	
 	# Rotate foot to match slope angle:
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
-		slope_angle = rad_to_deg(acos(player.get_floor_normal().dot(Vector2(0, -1))))
 		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
-				
-		# player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
-		# player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-
-		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
+		gv.Player.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
 		
 		# No slope:
-		if gv.Player_tilt < 10 and gv.Player_tilt > -10:
+		if gv.Player.Player_tilt < 10 and gv.Player.Player_tilt > -10:
 			if anim_player.get_current_animation() != "idle":
 				anim_player.play("idle")
-				#print("Player: XAAAAAAAAAAAA!!!")
 				anim_player.seek(0.3,true)
 			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)	
 			get_node("../../CollisionShape2D").shape.height = 700	
 		
 		# Slope:
-		elif gv.Player_tilt > 10 or gv.Player_tilt < -10:
+		elif gv.Player.Player_tilt > 10 or gv.Player.Player_tilt < -10:
 			if anim_player.get_current_animation() != "idle_tilt":
 				anim_player.play("idle_tilt")
 
-			if gv.Player_tilt < 0:
-				if gv.Player_direction == Vector2.RIGHT: # going DOWN:
+			if gv.Player.Player_tilt < 0:
+				if gv.Player.Player_direction == Vector2.RIGHT: # going DOWN:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-				if gv.Player_direction == Vector2.LEFT: # going UP:
+				if gv.Player.Player_direction == Vector2.LEFT: # going UP:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
 
-			if gv.Player_tilt > 0:
-				if gv.Player_direction == Vector2.RIGHT: # going UP:
+			if gv.Player.Player_tilt > 0:
+				if gv.Player.Player_direction == Vector2.RIGHT: # going UP:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-				if gv.Player_direction == Vector2.LEFT: # going DOWN:
+				if gv.Player.Player_direction == Vector2.LEFT: # going DOWN:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
 
@@ -129,50 +117,40 @@ func physics_update(delta: float) -> void:
 			
 	# GO --> Walk left
 	if Input.is_action_pressed("ui_left"):
-		if gv.Player_is_paused == false:
+		if gv.Player.Player_is_paused == false:
 			player.scale.x = player.scale.y * -1
-			gv.Player_direction = Vector2.LEFT
+			gv.Player.Player_direction = Vector2.LEFT
 			state_machine.transition_to("Walk")
-			#turn.emit(false)  
 	
 	# GO --> Walk right
 	if Input.is_action_pressed("ui_right"):
-		if gv.Player_is_paused == false:
-			gv.Player_direction = Vector2.RIGHT
+		if gv.Player.Player_is_paused == false:
+			gv.Player.Player_direction = Vector2.RIGHT
 			player.scale.x = player.scale.y * 1
 			state_machine.transition_to("Walk")
-			#turn.emit(true)
 				
 	# GO --> RUN:	
 	if Input.is_action_pressed("run"):
-		if gv.Player_direction == Vector2.RIGHT: 
+		if gv.Player.Player_direction == Vector2.RIGHT: 
 			state_machine.transition_to("run_right")
 			player.scale.x = player.scale.y * 1
 			
-		if gv.Player_direction == Vector2.LEFT: 
+		if gv.Player.Player_direction == Vector2.LEFT: 
 			state_machine.transition_to("run_left")
 			player.scale.x = player.scale.y * -1	
 					
 	# TARGET UP:	
 	if Input.is_action_just_pressed("Target"):
 		state_machine.transition_to("target_up")
-		#player.scale.x = player.scale.y * 1
-		#gv.hero_sprite.set_flip_h(false) 
-			
+					
 
 	# TARGET DOWN:	
 	if Input.is_action_just_pressed("ui_down"):
 		state_machine.transition_to("target_down")
-		#player.scale.x = player.scale.y * 1
-		#gv.hero_sprite.set_flip_h(false)
-
-		#print( "XXXXXXXX: " + str(rad_to_deg(ray_normal.angle() + offset ) * -1 ) )  
-
-
+		
+		
 func _on_gun_2_fire() -> void:
 	if gv.fsm.state.name == "Idle":
-		#get_node("../../AnimationPlayer").stop()
-		#get_node("../../AnimationPlayer").play("RESET")
 		if player.turn == true:
 			player.position.x -= 3
 		else:	

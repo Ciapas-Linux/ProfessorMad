@@ -18,13 +18,13 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 	get_node("../../snd_fall").stop()
 	
-	if gv.Player_current_weapon == 2:
+	if gv.Player.Player_current_weapon == 2:
 		anim_player.play("target_up_rpg")
 	else:
 		anim_player.play("target_up")
 	
-	if gv.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
-		gv.Player_weapon.connect("fire", _on_gun_2_fire)
+	if gv.Player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+		gv.Player.Player_weapon.connect("fire", _on_gun_2_fire)
 		
 	print("Player: Target up")	
 
@@ -34,16 +34,16 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 	
-	if gv.Player_is_paused == true:
+	if gv.Player.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return
 
 	if Input.is_action_just_pressed("Reload"):
-		gv.Player_weapon.reload()
+		gv.Player.Player_weapon.reload()
 		print("Player: reload weapon")			
 				
 	if Input.is_action_pressed("ui_right"):
-		gv.Player_direction = Vector2.RIGHT
+		gv.Player.Player_direction = Vector2.RIGHT
 		player.velocity.x = walk_speed
 		walk = true
 	
@@ -84,7 +84,7 @@ func physics_update(delta: float) -> void:
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
 		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
-		gv.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + deg_to_rad(90) ) * -1)
+		gv.Player.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + deg_to_rad(90) ) * -1)
 
 
 
@@ -124,4 +124,3 @@ func _on_gun_2_fire() -> void:
 	print("timer start")
 	await get_tree().create_timer(1.0).timeout
 	print("timer end") """
-

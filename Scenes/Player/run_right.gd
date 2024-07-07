@@ -15,11 +15,11 @@ func physics_update(delta: float) -> void:
 				anim_player.play("run")
 				anim_player.seek(0.3)	
 
-	if gv.Player_is_paused == true:
+	if gv.Player.Player_is_paused == true:
 		state_machine.transition_to("Idle")
 		return		
 	
-	player.velocity.x = player.speed_run * gv.Player_direction.x
+	player.velocity.x = player.speed_run * gv.Player.Player_direction.x
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	

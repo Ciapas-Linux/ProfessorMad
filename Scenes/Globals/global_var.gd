@@ -42,15 +42,8 @@ var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 # HERO
 @onready var fsm:StateMachine
 var Player:Hero
-var Player_tilt:int = 0
-var Player_gold:int = 0
-var Player_direction:Vector2 = Vector2.RIGHT
-var Player_is_paused:bool = false
-var Player_level:int = 1
-var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3}
-var Player_current_weapon:int = Player_guns["ak_47"]
-var Player_weapon:Sprite2D
-var Player_on_screen:bool = true
+
+
 
 # 0 no weapon
 # 1 ak_47
@@ -156,17 +149,17 @@ func set_cursor_red() -> void:
 
 func save_player_data() -> void:
 	var file = FileAccess.open("user://game.dat", FileAccess.WRITE)
-	file.store_32(Player_level)
-	file.store_32(Player_current_weapon)
-	file.store_32(Player_gold)
+	file.store_32(Player.Player_level)
+	file.store_32(Player.Player_current_weapon)
+	file.store_32(Player.Player_gold)
 	
 	
 
 func load_player_data() -> void:
 	var file = FileAccess.open("user://game.dat", FileAccess.READ)
-	Player_level = file.get_32()
-	Player_current_weapon = file.get_32()
-	Player_gold = file.get_32()
+	Player.Player_level = file.get_32()
+	Player.Player_current_weapon = file.get_32()
+	Player.Player_gold = file.get_32()
 	#print("Level: " + str(file.get_32()))
 	#print("Weapon: " + str(file.get_32()))
 	#print("Gold: " + str(file.get_32()))
