@@ -64,7 +64,6 @@ func physics_update(delta: float) -> void:
 		anim_player.stop()
 		get_node("../../snd_walk").stop()		
 
-#	
 	if walk == true:
 		anim_player.play("target_up_walk")
 		if get_node("../../snd_walk").playing != true:
@@ -82,15 +81,39 @@ func physics_update(delta: float) -> void:
 
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
-		player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
-		player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
 		gv.Player.Player_tilt = (int)(rad_to_deg(ray_normal.angle() + deg_to_rad(90) ) * -1)
+		
+		# No slope:
+		if gv.Player.Player_tilt < 10 and gv.Player.Player_tilt > -10:
+			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Player_up_down = 0	# flat = 0	
+		
+		# Slope:
+		elif gv.Player.Player_tilt > 10 or gv.Player.Player_tilt < -10:
+			if gv.Player.Player_tilt < 0:
+				if gv.Player.Player_direction == Vector2.RIGHT: # going DOWN:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Player_up_down = 2	# down = 2
+				if gv.Player.Player_direction == Vector2.LEFT: # going UP:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Player_up_down = 1	# up = 1
 
-
+			if gv.Player.Player_tilt > 0:
+				if gv.Player.Player_direction == Vector2.RIGHT: # going UP:
+					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Player_up_down = 1	# up = 1
+				if gv.Player.Player_direction == Vector2.LEFT: # going DOWN:
+					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Player_up_down = 2	# down = 2
 
 func _on_gun_2_fire() -> void:
 	if gv.fsm.state.name == "target_up":
-		if player.turn == true:
+		if gv.Player.Player_direction == Vector2.RIGHT:
 			player.position.x -= 3
 		else:	
 			player.position.x += 3

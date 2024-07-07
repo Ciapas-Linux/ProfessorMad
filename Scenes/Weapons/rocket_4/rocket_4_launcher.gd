@@ -21,13 +21,18 @@ signal fire
 
 
 func _ready():
-	global_rotation = rad_to_deg(-0.003)
-	
+	if gv.Player.Player_direction == Vector2.RIGHT:
+		global_rotation = deg_to_rad(45)
+	if gv.Player.Player_direction == Vector2.LEFT:
+		global_rotation = deg_to_rad(-45)
 		
 func _process(_delta: float) -> void:
 	# look_at(get_global_mouse_position())
-	# $RayCast2D.target_position = get_local_mouse_position()
-	global_rotation = rad_to_deg(-0.003)
+	
+	if gv.Player.Player_direction == Vector2.RIGHT:
+		global_rotation = deg_to_rad(-20)
+	if gv.Player.Player_direction == Vector2.LEFT:
+		global_rotation = deg_to_rad(190)
 
 	if Input.is_action_just_pressed("Fire"):
 		if gv.fsm.state.name == "target_up" or gv.fsm.state.name == "target_down":

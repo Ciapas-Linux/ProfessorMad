@@ -74,23 +74,29 @@ func physics_update(delta: float) -> void:
 		if gv.Player.Player_tilt < 10 and gv.Player.Player_tilt > -10:
 			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+			player.Player_up_down = 0	# flat = 0	
+		
 		# Slope:
 		elif gv.Player.Player_tilt > 10 or gv.Player.Player_tilt < -10:
 			if gv.Player.Player_tilt < 0:
 				if gv.Player.Player_direction == Vector2.RIGHT: # going DOWN:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Player_up_down = 2	# down = 2
 				if gv.Player.Player_direction == Vector2.LEFT: # going UP:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Player_up_down = 1	# up = 1
 
-			if gv.Player_tilt > 0:
+			if gv.Player.Player_tilt > 0:
 				if gv.Player.Player_direction == Vector2.RIGHT: # going UP:
 					player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 					player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
+					player.Player_up_down = 1	# up = 1
 				if gv.Player.Player_direction == Vector2.LEFT: # going DOWN:
 					player.Foot_R.rotation = -(ray_normal.angle() + deg_to_rad(90))
 					player.Foot_L.rotation = -(ray_normal.angle() + deg_to_rad(90))
+					player.Player_up_down = 2	# down = 2
 
 	
 	if Input.is_action_just_pressed("ui_up"):
@@ -98,7 +104,7 @@ func physics_update(delta: float) -> void:
 	
 func _on_gun_2_fire() -> void:
 	if gv.fsm.state.name == "target_down":
-		if player.turn == true:
+		if gv.Player.Player_direction == Vector2.RIGHT:
 			player.position.x -= 3
 		else:	
 			player.position.x += 3

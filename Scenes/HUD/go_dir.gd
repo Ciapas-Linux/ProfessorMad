@@ -2,5 +2,13 @@ extends Label
 
 
 func _process(_delta):
-	text = "Go: " + gv.Player.Player_up_down
+	match gv.Player.Player_up_down:
+		0:
+			text = "Go: flat"
+		1:
+			text = "Go: up"
+		2:
+			text = "Go: down"
+	
+	
 	
