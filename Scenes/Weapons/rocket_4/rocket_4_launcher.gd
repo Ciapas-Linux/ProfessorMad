@@ -1,11 +1,8 @@
-
+extends Sprite2D
 
 # ########################
 # ROCKET_4_LAUNCHER.SCRIPT
 # ########################
-
-extends Sprite2D
-
 
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 
@@ -22,9 +19,9 @@ signal fire
 
 func _ready():
 	if gv.Player.Player_direction == Vector2.RIGHT:
-		global_rotation = deg_to_rad(45)
+		global_rotation = deg_to_rad(-20)
 	if gv.Player.Player_direction == Vector2.LEFT:
-		global_rotation = deg_to_rad(-45)
+		global_rotation = deg_to_rad(190)
 		
 func _process(_delta: float) -> void:
 	# look_at(get_global_mouse_position())

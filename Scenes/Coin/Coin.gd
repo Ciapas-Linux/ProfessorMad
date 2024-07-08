@@ -44,7 +44,7 @@ func _on_coin_img_animation_finished() -> void:
 	if $coin_img.animation == "fadein":
 		$coin_img.play("idle")
 	if hit == true:
-		gv.Hero_gold += amount
+		gv.Player.Player_gold += amount
 		print("Coin: Hero grab " + str(amount) + " gold coin")
 		queue_free()
 	
@@ -63,6 +63,3 @@ func _on_coin_img_animation_finished() -> void:
 #tween.tween_property($coin_img,"modulate", Color(0.0, 1.0, 0.0), 1)
 #tween.tween_property($coin_img, "position", Vector2(500, 0), 3).as_relative()
 #tween.tween_property($coin_img, "rotation", PI, 1)
-
-
-

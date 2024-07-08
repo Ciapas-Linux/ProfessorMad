@@ -27,6 +27,7 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 
+	# Detect slopes:
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		offset = deg_to_rad(90)
 		ray_normal =  player.SlopeRayCast.get_collision_normal()
@@ -89,12 +90,7 @@ func physics_update(delta: float) -> void:
 
 
 
-
-
-
-
-
-
+# TRASH:
 
 
 #var collision:KinematicCollision2D

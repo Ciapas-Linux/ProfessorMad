@@ -160,7 +160,7 @@ func physics_update(delta: float) -> void:
 		
 func _on_gun_2_fire() -> void:
 	if gv.fsm.state.name == "Idle":
-		if player.turn == true:
+		if player.Player_direction == Vector2.RIGHT:
 			player.position.x -= 3
 		else:	
 			player.position.x += 3

@@ -93,5 +93,3 @@ func _on_fade_animation_finished(anim_name: StringName) -> void:
 #fade_in.tween_property(self, "modulate", Color(255,255,255,0), 3)
 	#fade_in.tween_property(self, "modulate", Color(255,255,255,0), 0.1)
 	
-
-
