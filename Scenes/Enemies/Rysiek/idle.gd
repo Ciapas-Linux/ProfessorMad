@@ -28,7 +28,7 @@ func physics_update(delta: float) -> void:
 	
 	
 	if not rysiek.is_on_floor():
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
+		#rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("Air")
 		return
 		

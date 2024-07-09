@@ -1,8 +1,10 @@
+extends Area2D
+
 # #################
 # # BOX2  .SCRIPT #
 # #################
 
-extends Area2D
+
 
 @onready var tween: Tween
 
@@ -25,14 +27,14 @@ func _process(_delta) -> void:
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
-	if gv.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		gv.set_cursor_green()
 	#$object_spr.visible = false
 	
 
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
-	if gv.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		gv.set_cursor_orange()
 	#$object_spr.visible = true
 

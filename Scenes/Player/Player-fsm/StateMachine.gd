@@ -7,7 +7,6 @@ extends Node
 signal transitioned(state_name)
 
 @export var initial_state := NodePath()
-
 @onready var state: State = get_node(initial_state)
 
 var previous_state:String

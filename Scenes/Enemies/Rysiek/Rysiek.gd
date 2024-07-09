@@ -42,7 +42,7 @@ var move_left:bool = false
 var move_right:bool = false
 
 var weapon : Sprite2D
-var previous_state : String
+#var previous_state : String
 var Rysiek_health:float = 100
 const Rysiek_health_max:float = 100
 var Enemy_direction:Vector2 = Vector2.LEFT
@@ -87,7 +87,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	gold_amount = randi_range(1,1125)
 	head = get_node("CanvasGroup/Torso/Head")
-	previous_state = ""
+	#previous_state = ""
 	scale.x = scale.y * 1
 	Enemy_direction = Vector2.LEFT
 	print("Enemy: ready ...")
@@ -105,6 +105,9 @@ func _ready():
 	#gv.enemy_fsm.transition_to("Release_drone")
 	#print("Drone2: ready " + Drone2.name)
 	
+
+	# ACTIONS START:
+	# ==============	
 	# Start releasing drones:
 	# $CreateDrone.start()
 
@@ -138,7 +141,7 @@ func _on_create_drone_timeout():
 	Drone2.connect('on_boss_position', _drone_on_me_position)
 	Drone2.connect('on_kill', _drone_on_kill)
 	Drone2.visible = true
-	previous_state = gv.rysiek_fsm.rstate.name
+	#previous_state = gv.rysiek_fsm.rstate.name
 	gv.rysiek_fsm.transition_to("Release_drone")
 	print("Drone2: ready " + Drone2.name)
 
@@ -158,7 +161,7 @@ func _drone_on_kill():
 
 func _drone_on_me_position():
 	if (gv.rysiek_fsm.rstate.name != "Air") and (gv.rysiek_fsm.rstate.name and "Jump_right") and (gv.rysiek_fsm.rstate.name != "Jump_left"): 
-		previous_state = gv.rysiek_fsm.rstate.name
+		#previous_state = gv.rysiek_fsm.rstate.name
 		gv.rysiek_fsm.transition_to("Reload_bomb")
 		#velocity = Vector2.ZERO
 		#get_node("../../AnimationPlayer").stop()

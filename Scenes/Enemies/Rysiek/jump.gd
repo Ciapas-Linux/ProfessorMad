@@ -20,6 +20,6 @@ func physics_update(delta: float) -> void:
 	rysiek.move_and_slide()
 
 	if rysiek.is_on_floor():
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
+		#rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("idle")
 		get_node("../../snd_fall").play()

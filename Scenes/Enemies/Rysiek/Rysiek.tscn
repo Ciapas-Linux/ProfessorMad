@@ -1035,6 +1035,31 @@ script = ExtResource("1_ea6gb")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
+[node name="Noga_L" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(-14, 113)
+rotation = 0.0270725
+scale = Vector2(0.2682, 0.2682)
+texture = ExtResource("5_wrhox")
+offset = Vector2(-21.2144, 145.47)
+
+[node name="But_L" type="Sprite2D" parent="CanvasGroup/Noga_L"]
+position = Vector2(6.86318, 253.449)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_06gb8")
+offset = Vector2(-30.0655, -1.18695)
+
+[node name="Noga_P" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(-1, 106.529)
+rotation = -0.0302793
+scale = Vector2(0.285138, 0.285138)
+texture = ExtResource("7_3sjdu")
+offset = Vector2(-17.0368, 150.492)
+
+[node name="But_P" type="Sprite2D" parent="CanvasGroup/Noga_P"]
+position = Vector2(-53.4781, 259.675)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_06gb8")
+
 [node name="Torso" type="Sprite2D" parent="CanvasGroup"]
 position = Vector2(-5, 68)
 rotation = -0.0352773
@@ -1064,33 +1089,6 @@ rotation = -0.227963
 scale = Vector2(1.26599, 1.26599)
 texture = ExtResource("4_60k1i")
 offset = Vector2(-95.329, 48.1856)
-
-[node name="Noga_L" type="Sprite2D" parent="CanvasGroup"]
-z_index = -1
-position = Vector2(-14, 113)
-rotation = 0.0270725
-scale = Vector2(0.2682, 0.2682)
-texture = ExtResource("5_wrhox")
-offset = Vector2(-21.2144, 145.47)
-
-[node name="But_L" type="Sprite2D" parent="CanvasGroup/Noga_L"]
-position = Vector2(6.86318, 253.449)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("6_06gb8")
-offset = Vector2(-30.0655, -1.18695)
-
-[node name="Noga_P" type="Sprite2D" parent="CanvasGroup"]
-z_index = -1
-position = Vector2(-1, 106.529)
-rotation = -0.0302793
-scale = Vector2(0.285138, 0.285138)
-texture = ExtResource("7_3sjdu")
-offset = Vector2(-17.0368, 150.492)
-
-[node name="But_P" type="Sprite2D" parent="CanvasGroup/Noga_P"]
-position = Vector2(-53.4781, 259.675)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("6_06gb8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

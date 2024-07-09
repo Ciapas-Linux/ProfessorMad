@@ -5,9 +5,11 @@ extends Node
 
 # Emitted when transitioning to a new state.
 signal transitioned(rstate_name)
+
 @export var rinitial_state := NodePath()
 @onready var rstate: RState = get_node(rinitial_state)
 
+var previous_state:String
 
 func _ready() -> void:
 	await owner.ready
@@ -33,6 +35,8 @@ func _physics_process(delta: float) -> void:
 func transition_to(rtarget_state_name: String, msg: Dictionary = {}) -> void:
 	if not has_node(rtarget_state_name):
 		return
+
+	previous_state = str(rstate.name)
 
 	rstate.exit()
 	rstate = get_node(rtarget_state_name)

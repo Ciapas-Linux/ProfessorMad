@@ -111,7 +111,7 @@ func _process_on_state_move_left(_delta: float) -> void:
 	player_distance = global_position.distance_to(gv.Hero_global_position)
 	#move_and_slide()				
 
-func _integrate_forces(state):
+func _integrate_forces(_state):
 	pass
 	#add_constant_force( Vector2(1000, 0), Vector2(0, 0) )
 
