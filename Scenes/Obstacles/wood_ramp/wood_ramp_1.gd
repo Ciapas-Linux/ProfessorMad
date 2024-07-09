@@ -1,7 +1,8 @@
+extends StaticBody2D
 
 # WOOD RAMP TEST OBJECT
 
-extends StaticBody2D
+
 
 var mouse_enter:bool = false
 

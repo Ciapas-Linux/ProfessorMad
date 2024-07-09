@@ -112,7 +112,7 @@ func _explode():
 
 func on_tween_finished():
 	#if anim_name == "Bomb_hit_me":
-	gv.Player_weapon.visible = true
+	player.Player_weapon.visible = true
 	player.fade_in()
 	state_machine.transition_to("Idle")
 

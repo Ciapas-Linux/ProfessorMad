@@ -30,7 +30,7 @@ func enter(msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	
 	if player.is_on_floor():
-		if gv.Player.Player_is_paused == true:
+		if player.Player_is_paused == true:
 			state_machine.transition_to("Idle")
 			return	
 	

@@ -16,7 +16,7 @@ func enter(msg := {}) -> void:
 		anim_player.play("shockwave_left")
 		player.velocity.x = -player.speed			
 
-	gv.Player_weapon.visible = false
+	player.Player_weapon.visible = false
 		
 	get_node("../../snd_hit2").play()
 	get_node("../../snd_body_fall").play()
@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "shockwave_back" or anim_name == "shockwave_right":
-		gv.Player_weapon.visible = true
+		player.Player_weapon.visible = true
 		#player.fade_in()
 		player.velocity.x = 0
 		await get_tree().create_timer(1.6).timeout

@@ -26,8 +26,8 @@ func _ready() -> void:
 		
 
 func _process(_delta: float) -> void:
-	global_position.x = gv.Enemy_global_position.x
-	global_position.y = gv.Enemy_global_position.y - shift_y
+	global_position.x = gv.EnemyRysiek.global_position.x
+	global_position.y = gv.EnemyRysiek.global_position.y - shift_y
 	
 
 func Say(text: String,timeout:int,shiftx:int,shifty:int ):
