@@ -28,7 +28,7 @@ func _on_Area2D_mouse_entered() -> void:
 	if gv.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		gv.set_cursor_green()
 	#$object_spr.visible = false
-    
+	
 
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
@@ -132,12 +132,3 @@ func on_tween_finished():
 #				$Sprite.play("explode")
 #				$snd_explode.play()
 #				ShakeScreen.shake(10,0.5)
-
-
-
-
-
-
-
-
-
