@@ -36,7 +36,8 @@ func transition_to(rtarget_state_name: String, msg: Dictionary = {}) -> void:
 	if not has_node(rtarget_state_name):
 		return
 
-	previous_state = str(rstate.name)
+	#previous_state = str(rstate.name)
+	#print("Rysiek FSM previous_state: " + previous_state)
 
 	rstate.exit()
 	rstate = get_node(rtarget_state_name)

@@ -4,8 +4,14 @@ extends RysiekState
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
 	get_node("../../AnimationPlayer").play("Hit_rpg")
-	print("Enemy: enter state machine hit rpg!")
+	print("Rysiek state: Hit_rpg")
 		
+
+# Exit state:	
+func exit() -> void:
+	gv.rysiek_fsm.previous_state = "Hit_rpg"
+
+
 func physics_update(delta: float) -> void:
 	rysiek.velocity.y += rysiek.gravity * delta
 	if rysiek.Enemy_direction == Vector2.LEFT:

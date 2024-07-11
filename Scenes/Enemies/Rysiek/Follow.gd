@@ -13,8 +13,12 @@ func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
 	rysiek.scale.x = rysiek.scale.y * 1
 	get_node("../../AnimationPlayer").play("walk")
-	print("enemy fsm: FOLLOW LEFT")
+	print("Rysiek state: Follow")
 	pass
+
+# Exit state:	
+func exit() -> void:
+	gv.rysiek_fsm.previous_state = "Follow"
 
 func _process(_delta: float) -> void:
 	pass
@@ -31,8 +35,7 @@ func physics_update(delta: float) -> void:
 	rysiek.velocity.y += rysiek.gravity * delta
 	
 	rysiek.move_and_slide()
-	
-	
+		
 	if ray_cast.is_colliding():
 		if ray_cast.get_collider().name == "Player":
 			print("rysiek: ray hit Player")
@@ -41,7 +44,7 @@ func physics_update(delta: float) -> void:
 			str(int(rysiek.position.distance_to
 			(rysiek.player_collision_point))))
 			
-			rysiek.previous_state = gv.rysiek_fsm.rstate.name
+			#rysiek.previous_state = gv.rysiek_fsm.rstate.name
 			get_node("../../AnimationPlayer").stop()
 			if rysiek.first_hero_catch == false:
 				emit_signal("first_hero_catch")
@@ -53,22 +56,16 @@ func physics_update(delta: float) -> void:
 						
 		else:
 			print("rysiek: ray hit --> " + ray_cast.get_collider().name)	
-		
-		
-				
+						
 	if rysiek.is_on_wall():	
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		get_node("../../AnimationPlayer").stop()
 		print("enemy2: stop on wall going left")
 		rstate_machine.transition_to("Jump_left")		
-		
-		
 			
-	
 func _on_enemy_somebody_hitme() -> void:
-	if gv.rysiek_fsm.rstate.name != "Hit":
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
-		rstate_machine.transition_to("Hit")
+	if gv.rysiek_fsm.rstate.name == "Follow_left":
+		if gv.rysiek_fsm.rstate.name != "Hit":
+			rstate_machine.transition_to("Hit")
 
 
 

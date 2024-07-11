@@ -43,8 +43,8 @@ var move_right:bool = false
 
 var weapon : Sprite2D
 #var previous_state : String
-var Rysiek_health:float = 100
-const Rysiek_health_max:float = 100
+var Rysiek_health:int = 100
+const Rysiek_health_max:int = 100
 var Enemy_direction:Vector2 = Vector2.LEFT
 var gold_amount:int = 0
 
@@ -87,7 +87,6 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	gold_amount = randi_range(1,1125)
 	head = get_node("CanvasGroup/Torso/Head")
-	#previous_state = ""
 	scale.x = scale.y * 1
 	Enemy_direction = Vector2.LEFT
 	print("Enemy: ready ...")
@@ -204,7 +203,7 @@ func rpg_hit():
 	#queue_free() 
 
 func hit():
-	print("enemy: somebody hit me by bullet!")
+	print("Rysiek: somebody hit me by bullet!")
 	emit_signal("somebody_hitme")
 	
 	if $Recover_Health.is_stopped() == true:

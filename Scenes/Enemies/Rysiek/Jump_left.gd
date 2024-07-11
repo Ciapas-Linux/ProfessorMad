@@ -12,8 +12,12 @@ func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").play("Jump")
 	if get_node("../../snd_jump").playing != true:
 		get_node("../../snd_jump").play()
-	print("rysiek fsm: JUMP LEFT")
+	print("Rysiek state: Jump_left")
 	
+# Exit state:	
+func exit() -> void:
+	gv.rysiek_fsm.previous_state = "Jump_left"
+
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:
 
@@ -34,7 +38,7 @@ func physics_update(delta: float) -> void:
 		get_node("../../AnimationPlayer").play("idle")	
 		print("rysiek: Jump_left to floor")
 		# await get_tree().create_timer(0.1).timeout
-		rysiek.previous_state = gv.enemy_fsm.estate.name
+		#rysiek.previous_state = gv.enemy_fsm.estate.name
 		rstate_machine.transition_to("idle")
 	
 	

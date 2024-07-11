@@ -32,7 +32,7 @@ func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 		anim_player.play("idle")
 
 # Exit state:	
-func exit(_msg := {}) -> void:
+func exit() -> void:
 	pass
 
 func physics_update(delta: float) -> void:

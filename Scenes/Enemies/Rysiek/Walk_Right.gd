@@ -19,8 +19,12 @@ func enter(_msg := {}) -> void:
 	#timer.set_one_shot(true)
 	#timer.set_wait_time(1)
 	#timer.connect("timeout",  _timer_timeout)
-	print("rysiek fsm: WALK RIGHT")
+	print("Rysiek state: Walk_right")
 	
+# Exit state:	
+func exit() -> void:
+	gv.rysiek_fsm.previous_state = "Walk_right"
+
 func _timer_timeout():
 	pass
 
@@ -28,7 +32,7 @@ func _timer_timeout():
 func physics_update(delta: float) -> void:
 	rysiek.velocity.x = rysiek.speed
 	rysiek.velocity.y += rysiek.gravity * delta
-	player_distance = rysiek.global_position.distance_to(gv.Hero_global_position)
+	player_distance = rysiek.global_position.distance_to(gv.Player.global_position)
 
 	# GAME PAUSE:
 	""" if gv.Game_pause == true:
@@ -55,27 +59,22 @@ func physics_update(delta: float) -> void:
 		# 	rysiek.direction = "R"
 
 		get_node("../../AnimationPlayer").stop()
-		rysiek.previous_state = gv.rysiek_fsm.estate.name
+		#rysiek.previous_state = gv.rysiek_fsm.estate.name
 		rstate_machine.transition_to("idle")	
-
-
 			
 	rysiek.move_and_slide()		
 
 	if rysiek.is_on_wall():
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		get_node("../../AnimationPlayer").stop()
 		print("enemy2: stop on wall going right")
 		rstate_machine.transition_to("Jump_right")
 
 	if rysiek.is_on_floor() == false:
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("Air")			
 
 func _on_enemy_somebody_hitme() -> void:
-	if gv.rysiek_fsm.rstate.name != "Hit":
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
-	rstate_machine.transition_to("Hit")
+	if gv.rysiek_fsm.rstate.name == "Walk_Right":
+		rstate_machine.transition_to("Hit")
 	
 	
 	

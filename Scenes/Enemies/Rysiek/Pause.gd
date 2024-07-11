@@ -5,7 +5,11 @@ extends RysiekState
 # ####################
 
 func enter(_msg := {}) -> void:
-	print("enemy fsm: PAUSE")
+	print("Rysiek state: Pause")
+
+# Exit state:	
+func exit() -> void:
+	gv.rysiek_fsm.previous_state = "Pause"
 
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:

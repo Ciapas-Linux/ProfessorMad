@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Jump_right.gd" id="11_kd86f"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Jump_left.gd" id="12_m0388"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Death.gd" id="13_aunfr"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/jump.gd" id="14_86mds"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Air.gd" id="14_86mds"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Atack.gd" id="15_5y8fn"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Hit.gd" id="16_xefwx"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Follow.gd" id="17_scqo6"]
@@ -1102,7 +1102,7 @@ shape = SubResource("CapsuleShape2D_2v0ca")
 
 [node name="RysiekStateMachine" type="Node" parent="."]
 script = ExtResource("7_jy4yv")
-rinitial_state = NodePath("idle")
+rinitial_state = NodePath("Air")
 
 [node name="idle" type="Node" parent="RysiekStateMachine"]
 script = ExtResource("8_n4uo6")
@@ -1244,8 +1244,7 @@ volume_db = 8.0
 pitch_scale = 0.78
 
 [node name="hurt_player" type="AudioStreamPlayer2D" parent="."]
-volume_db = 5.0
-pitch_scale = 1.29
+volume_db = 8.0
 
 [node name="snd_rpg_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_bik5d")
@@ -1254,7 +1253,7 @@ pitch_scale = 0.9
 
 [node name="snd_pain_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_4u3cp")
-volume_db = 3.0
+volume_db = 4.0
 
 [node name="snd_splash_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_fvx3e")
@@ -1268,7 +1267,6 @@ pitch_scale = 1.4
 
 [connection signal="somebody_hitme" from="." to="RysiekStateMachine/idle" method="_on_enemy_somebody_hitme"]
 [connection signal="somebody_hitme" from="." to="RysiekStateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]
-[connection signal="somebody_hitme" from="." to="RysiekStateMachine/Hit" method="_on_enemy_somebody_hitme"]
 [connection signal="somebody_hitme" from="." to="RysiekStateMachine/Follow_left" method="_on_enemy_somebody_hitme"]
 [connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Hit" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Release_drone" method="_on_animation_player_animation_finished"]

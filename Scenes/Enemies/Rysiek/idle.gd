@@ -17,10 +17,18 @@ func enter(_msg := {}) -> void:
 	#get_node("../../snd_fall").stop()
 	get_node("../../AnimationPlayer").stop()
 	get_node("../../AnimationPlayer").play("idle")
-	print("rysiek fsm: IDLE")
+	
+	print("Rysiek enter state: Idle")
+	print("Rysiek previous state: " + gv.rysiek_fsm.previous_state)
+	
 		
  
-@warning_ignore("unused_parameter")	
+# Exit state:	
+func exit() -> void:
+	gv.rysiek_fsm.previous_state = "idle"
+	print("Rysiek state: Exit idle state")
+	pass
+
 func physics_update(delta: float) -> void:
 	
 	rysiek.velocity.y += rysiek.gravity * delta
@@ -112,9 +120,10 @@ func physics_update(delta: float) -> void:
 
 	
 func _on_enemy_somebody_hitme() -> void:
-	if gv.rysiek_fsm.rstate.name != "Hit":
-		rysiek.previous_state = gv.rysiek_fsm.rstate.name
-	rstate_machine.transition_to("Hit")
+	if gv.rysiek_fsm.rstate.name == "idle":
+	# if gv.rysiek_fsm.rstate.name != "Hit":
+	# 	rysiek.previous_state = gv.rysiek_fsm.rstate.name
+		rstate_machine.transition_to("Hit")
 		
 
 
