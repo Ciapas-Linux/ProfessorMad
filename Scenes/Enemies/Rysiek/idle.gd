@@ -5,9 +5,10 @@ extends RysiekState
 # #################
 
 @onready var ray_cast:RayCast2D = get_node("../../PlayerCast2D")
-@onready var But_L_spr:Sprite2D = get_node("../../CanvasGroup/Noga_L/But_L")
-@onready var But_P_spr:Sprite2D = get_node("../../CanvasGroup/Noga_P/But_P")
 
+var ray_normal:Vector2
+var offset: float
+var floor_normal:Vector2
 
 signal first_hero_catch
 
@@ -15,13 +16,12 @@ func enter(_msg := {}) -> void:
 	rysiek.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
 	#get_node("../../snd_fall").stop()
-	get_node("../../AnimationPlayer").stop()
-	get_node("../../AnimationPlayer").play("idle")
-	
+	rysiek.anim_player.stop()
+	rysiek.anim_player.play("idle")
+
 	print("Rysiek enter state: Idle")
 	print("Rysiek previous state: " + gv.rysiek_fsm.previous_state)
-	
-		
+			
  
 # Exit state:	
 func exit() -> void:
@@ -114,9 +114,60 @@ func physics_update(delta: float) -> void:
 		
 	
 	rysiek.move_and_slide()
+
+	# Rotate foot to match slope angle:
+	if rysiek.is_on_floor() and rysiek.SlopeRayCast.is_colliding():
+		offset = deg_to_rad(90)
+		ray_normal =  rysiek.SlopeRayCast.get_collision_normal()
+		rysiek.Rysiek_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
+		
+		print("enemy2 tilt:" + str(rysiek.Rysiek_tilt))	
+
+		# No slope:
+		if rysiek.Rysiek_tilt < 10 and rysiek.Rysiek_tilt > -10:
+			if rysiek.anim_player.get_current_animation() != "idle":
+				rysiek.anim_player.play("idle")
+				rysiek.anim_player.seek(0.3,true)
+			rysiek.But_R_spr.rotation = ray_normal.angle() + offset
+			rysiek.But_L_spr.rotation = ray_normal.angle() + offset
+			rysiek.Rysiek_up_down = 0	# flat = 0
+			#get_node("../../CollisionShape2D").shape.height = 700	
+		
+		# Slope:
+		elif rysiek.Rysiek_tilt > 10 or rysiek.Rysiek_tilt < -10:
+			if rysiek.anim_player.get_current_animation() != "idle_tilt":
+				rysiek.anim_player.play("idle_tilt")
+
+			
+
+			if rysiek.Rysiek_tilt < 0:
+				if rysiek.Enemy_direction == Vector2.RIGHT: # going DOWN: 2
+					rysiek.But_R_spr.rotation = ray_normal.angle() + offset
+					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
+					#get_node("../../CollisionShape2D").shape.height = 730
+					rysiek.Rysiek_up_down = 2
+				if rysiek.Enemy_direction == Vector2.LEFT: # going UP: 1
+					rysiek.But_R_spr.rotation = -(ray_normal.angle() + offset)
+					rysiek.But_L_spr.rotation = -(ray_normal.angle() + offset)
+					#get_node("../../CollisionShape2D").shape.height = 600	
+					rysiek.Rysiek_up_down = 1
+
+			if rysiek.Rysiek_tilt > 0:
+				if rysiek.Enemy_direction == Vector2.RIGHT: # going UP:
+					rysiek.But_R_spr.rotation = ray_normal.angle() + offset
+					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
+					#get_node("../../CollisionShape2D").shape.height = 600	
+					rysiek.Rysiek_up_down = 1
+				if rysiek.Enemy_direction == Vector2.LEFT: # going DOWN:
+					rysiek.But_R_spr.rotation = -(ray_normal.angle() + offset)
+					rysiek.But_L_spr.rotation = -(ray_normal.angle() + offset)
+					#get_node("../../CollisionShape2D").shape.height = 730	
+					rysiek.Rysiek_up_down = 2
+
+
 	
-	But_L_spr.rotation = rysiek.get_floor_angle()
-	But_P_spr.rotation = rysiek.get_floor_angle()
+	#But_L_spr.rotation = rysiek.get_floor_angle()
+	#But_P_spr.rotation = rysiek.get_floor_angle()
 
 	
 func _on_enemy_somebody_hitme() -> void:

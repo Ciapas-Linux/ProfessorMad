@@ -34,6 +34,14 @@ var texture_nr:int = 0
 @onready var Chat:PackedScene = preload("res://Scenes/CloudChat/Chat.tscn")
 var chat_instance:Node2D
 
+@onready var But_L_spr:Sprite2D = get_node("CanvasGroup/Noga_L/But_L")
+@onready var But_R_spr:Sprite2D = get_node("CanvasGroup/Noga_P/But_P")
+
+
+@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
+
+
+@onready var SlopeRayCast:RayCast2D = get_node("RayCast2D")
 
 var screen_size : Vector2
 var gun_fire:bool = false
@@ -46,6 +54,7 @@ var weapon : Sprite2D
 var Rysiek_health:int = 100
 const Rysiek_health_max:int = 100
 var Enemy_direction:Vector2 = Vector2.LEFT
+var Rysiek_up_down:int = 0 # 0:flat 1:up 2:down
 var gold_amount:int = 0
 
 var on_screen:bool = false
@@ -73,7 +82,7 @@ var drone:CharacterBody2D
 
 var mouse_enter:bool = false
 
-
+var Rysiek_tilt:int = 0
 
 func _ready():
 	self.input_pickable = true
