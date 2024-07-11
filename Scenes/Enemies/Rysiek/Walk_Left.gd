@@ -12,7 +12,7 @@ var player_distance:float
 func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").stop()
 	rysiek.scale.x = rysiek.scale.y * 1
-	rysiek.rysiek_direction = Vector2.LEFT
+	rysiek.Enemy_direction = Vector2.LEFT
 	get_node("../../AnimationPlayer").play("walk")
 	print("Rysiek state: Walk_left")
 	

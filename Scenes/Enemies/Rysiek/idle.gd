@@ -30,15 +30,69 @@ func exit() -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	
-	rysiek.velocity.y += rysiek.gravity * delta
-	
-	
-	
+
 	if not rysiek.is_on_floor():
-		#rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("Air")
 		return
+	
+	rysiek.velocity.y += rysiek.gravity * delta
+	rysiek.move_and_slide()
+
+	# Rotate foot to match slope angle:
+	if rysiek.is_on_floor() and rysiek.SlopeRayCast.is_colliding():
+		offset = deg_to_rad(90)
+		ray_normal =  rysiek.SlopeRayCast.get_collision_normal()
+		rysiek.Rysiek_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
+		
+		#print("Rysiek tilt:" + str(rysiek.Rysiek_tilt))	
+
+		# No slope:
+		if rysiek.Rysiek_tilt < 10 and rysiek.Rysiek_tilt > -10:
+			if rysiek.anim_player.get_current_animation() != "idle":
+				rysiek.anim_player.play("idle")
+				rysiek.anim_player.seek(0.3,true)
+			rysiek.But_R_spr.rotation = ray_normal.angle() + offset
+			rysiek.But_L_spr.rotation = ray_normal.angle() + offset
+			rysiek.Rysiek_up_down = 0	# flat = 0
+			#get_node("../../CollisionShape2D").shape.height = 700	
+		
+		# Slope:
+		elif rysiek.Rysiek_tilt > 10 or rysiek.Rysiek_tilt < -10:
+			if rysiek.anim_player.get_current_animation() != "idle":
+				rysiek.anim_player.play("idle")
+
+			if rysiek.Rysiek_tilt < 0:
+				if rysiek.Enemy_direction == Vector2.RIGHT: # going DOWN: 2
+					rysiek.But_R_spr.rotation = ray_normal.angle() + offset
+					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
+					#get_node("../../CollisionShape2D").shape.height = 730
+					rysiek.Rysiek_up_down = 2
+				if rysiek.Enemy_direction == Vector2.LEFT: # going UP: 1
+					rysiek.But_R_spr.rotation = -(ray_normal.angle() + offset)
+					rysiek.But_L_spr.rotation = -(ray_normal.angle() + offset)
+					#get_node("../../CollisionShape2D").shape.height = 600	
+					rysiek.Rysiek_up_down = 1
+
+			if rysiek.Rysiek_tilt > 0:
+				if rysiek.Enemy_direction == Vector2.RIGHT: # going UP:
+					rysiek.But_R_spr.rotation = -(ray_normal.angle() + offset)
+					rysiek.But_L_spr.rotation = -(ray_normal.angle() + offset)
+					#get_node("../../CollisionShape2D").shape.height = 600	
+					rysiek.Rysiek_up_down = 1
+				if rysiek.Enemy_direction == Vector2.LEFT: # going DOWN:
+					# print("Rysiek tilt:" + str(rysiek.Rysiek_tilt))
+					rysiek.But_R_spr.rotation = ray_normal.angle() + offset
+					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
+					# get_node("../../CollisionShape2D").shape.height = 730	
+					rysiek.Rysiek_up_down = 2
+
+
+	
+	#But_L_spr.rotation = rysiek.get_floor_angle()
+	#But_P_spr.rotation = rysiek.get_floor_angle()
+	
+	
+	
 		
 	# GAME PAUSE:
 	""" if gv.Game_pause == true:
@@ -102,80 +156,33 @@ func physics_update(delta: float) -> void:
 			print("enemy2: Atack jump left")
 			estate_machine.transition_to("Jump_left")	 """		
 					
-	# WALK LEFT				
-	# if rysiek.global_position.distance_to(gv.Hero_global_position) >= rysiek.follow_distance:
-	# 	#if get_node("../../Say").visible == false:
-	# 	if rysiek.direction == "R":
-	# 		rysiek.previous_state = gv.enemy_fsm.estate.name
-	# 		estate_machine.transition_to("Walk_Right")
-	# 	if rysiek.direction == "L":
-	# 		rysiek.previous_state = gv.enemy_fsm.estate.name
-	# 		estate_machine.transition_to("Walk_Left")
-		
-	
-	rysiek.move_and_slide()
-
-	# Rotate foot to match slope angle:
-	if rysiek.is_on_floor() and rysiek.SlopeRayCast.is_colliding():
-		offset = deg_to_rad(90)
-		ray_normal =  rysiek.SlopeRayCast.get_collision_normal()
-		rysiek.Rysiek_tilt = (int)(rad_to_deg(ray_normal.angle() + offset ) * -1)
-		
-		print("enemy2 tilt:" + str(rysiek.Rysiek_tilt))	
-
-		# No slope:
-		if rysiek.Rysiek_tilt < 10 and rysiek.Rysiek_tilt > -10:
-			if rysiek.anim_player.get_current_animation() != "idle":
-				rysiek.anim_player.play("idle")
-				rysiek.anim_player.seek(0.3,true)
-			rysiek.But_R_spr.rotation = ray_normal.angle() + offset
-			rysiek.But_L_spr.rotation = ray_normal.angle() + offset
-			rysiek.Rysiek_up_down = 0	# flat = 0
-			#get_node("../../CollisionShape2D").shape.height = 700	
-		
-		# Slope:
-		elif rysiek.Rysiek_tilt > 10 or rysiek.Rysiek_tilt < -10:
-			if rysiek.anim_player.get_current_animation() != "idle_tilt":
-				rysiek.anim_player.play("idle_tilt")
-
+	# WALK LEFT:				
+	if rysiek.global_position.distance_to(gv.Player.global_position) >= rysiek.follow_distance:
+		#if get_node("../../Say").visible == false:
+		if rysiek.Enemy_direction == Vector2.RIGHT:
+			rstate_machine.transition_to("Walk_Right")
+		if rysiek.Enemy_direction == Vector2.LEFT:
+			rstate_machine.transition_to("Walk_Left")
 			
-
-			if rysiek.Rysiek_tilt < 0:
-				if rysiek.Enemy_direction == Vector2.RIGHT: # going DOWN: 2
-					rysiek.But_R_spr.rotation = ray_normal.angle() + offset
-					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
-					#get_node("../../CollisionShape2D").shape.height = 730
-					rysiek.Rysiek_up_down = 2
-				if rysiek.Enemy_direction == Vector2.LEFT: # going UP: 1
-					rysiek.But_R_spr.rotation = -(ray_normal.angle() + offset)
-					rysiek.But_L_spr.rotation = -(ray_normal.angle() + offset)
-					#get_node("../../CollisionShape2D").shape.height = 600	
-					rysiek.Rysiek_up_down = 1
-
-			if rysiek.Rysiek_tilt > 0:
-				if rysiek.Enemy_direction == Vector2.RIGHT: # going UP:
-					rysiek.But_R_spr.rotation = ray_normal.angle() + offset
-					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
-					#get_node("../../CollisionShape2D").shape.height = 600	
-					rysiek.Rysiek_up_down = 1
-				if rysiek.Enemy_direction == Vector2.LEFT: # going DOWN:
-					rysiek.But_R_spr.rotation = -(ray_normal.angle() + offset)
-					rysiek.But_L_spr.rotation = -(ray_normal.angle() + offset)
-					#get_node("../../CollisionShape2D").shape.height = 730	
-					rysiek.Rysiek_up_down = 2
-
-
-	
-	#But_L_spr.rotation = rysiek.get_floor_angle()
-	#But_P_spr.rotation = rysiek.get_floor_angle()
-
-	
 func _on_enemy_somebody_hitme() -> void:
 	if gv.rysiek_fsm.rstate.name == "idle":
 	# if gv.rysiek_fsm.rstate.name != "Hit":
 	# 	rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("Hit")
 		
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	##################### :)

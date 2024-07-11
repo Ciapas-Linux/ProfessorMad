@@ -186,8 +186,8 @@ region_rect = Rect2(0, 0, 20000, 62)
 [node name="Moon1" parent="." instance=ExtResource("15_wr0vy")]
 
 [node name="Rysiek" parent="." instance=ExtResource("16_3duc2")]
-position = Vector2(1835, -383)
+position = Vector2(12740, -383)
 collision_mask = 51
 
 [node name="Gorka" parent="." instance=ExtResource("16_gudwx")]
-position = Vector2(1552, 695)
+position = Vector2(2110, 695)
