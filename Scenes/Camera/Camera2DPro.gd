@@ -95,11 +95,11 @@ func _process_on_state_idle(_delta):
 
 func _process_on_state_follow(_delta):
 	if get_viewport().get_mouse_position().x > gv.SWidth - 50:
-		position.x += 30
+		position.x += 20
 		return
 	else:
 		if get_viewport().get_mouse_position().x <  100:
-			position.x -= 30	
+			position.x -= 20	
 		else:
 			if gv.Player.Player_on_screen == true:
 				position.x = follow_node.global_position.x

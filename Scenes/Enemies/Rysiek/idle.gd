@@ -27,8 +27,7 @@ func enter(_msg := {}) -> void:
 func exit() -> void:
 	gv.rysiek_fsm.previous_state = "idle"
 	print("Rysiek state: Exit idle state")
-	pass
-
+	
 func physics_update(delta: float) -> void:
 
 	if not rysiek.is_on_floor():
@@ -38,6 +37,7 @@ func physics_update(delta: float) -> void:
 	rysiek.velocity.y += rysiek.gravity * delta
 	rysiek.move_and_slide()
 
+	# -= AHTUNG =- !!! :
 	# Rotate foot to match slope angle:
 	if rysiek.is_on_floor() and rysiek.SlopeRayCast.is_colliding():
 		offset = deg_to_rad(90)
@@ -85,12 +85,6 @@ func physics_update(delta: float) -> void:
 					rysiek.But_L_spr.rotation = ray_normal.angle() + offset
 					# get_node("../../CollisionShape2D").shape.height = 730	
 					rysiek.Rysiek_up_down = 2
-
-
-	
-	#But_L_spr.rotation = rysiek.get_floor_angle()
-	#But_P_spr.rotation = rysiek.get_floor_angle()
-	
 	
 	
 		
@@ -103,18 +97,16 @@ func physics_update(delta: float) -> void:
 	# print("XXXXXXXXX: " + str(int(rysiek.global_position.distance_to(gv.Hero_global_position))))
 		
 
-	# TURN LEFT: player is on left side
+	# TURN LEFT: if player is on left side
 	# if gv.Hero_global_position.x + rysiek.change_direction_distance < rysiek.global_position.x:
 	if gv.Player.global_position.x < rysiek.global_position.x:
 		if rysiek.Enemy_direction == Vector2.RIGHT:	
-			rysiek.scale.x = rysiek.scale.y * 1
-			rysiek.Enemy_direction = Vector2.LEFT
+			rysiek.turn_left()
 	
-	# TURN RIGHT: player is on right side
+	# TURN RIGHT: if player is on right side
 	if gv.Player.global_position.x > rysiek.global_position.x:
 		if rysiek.Enemy_direction == Vector2.LEFT:
-			rysiek.scale.x = rysiek.scale.y * -1
-			rysiek.Enemy_direction = Vector2.RIGHT
+			rysiek.turn_right()
 	
 	# SEE PLAYER:					
 	if 	rysiek.see_Player == true:		

@@ -10,10 +10,9 @@ var player_distance:float
 var stop:bool = false
 
 func enter(_msg := {}) -> void:
-	get_node("../../AnimationPlayer").stop()
-	rysiek.scale.x = rysiek.scale.y * -1
-	rysiek.rysiek_direction = Vector2.RIGHT
-	get_node("../../AnimationPlayer").play("walk")
+	rysiek.anim_player.stop()
+	rysiek.turn_right()
+	rysiek.anim_player.play("walk")
 	#timer = Timer.new()
 	#add_child(timer)
 	#timer.set_one_shot(true)
@@ -24,6 +23,7 @@ func enter(_msg := {}) -> void:
 # Exit state:	
 func exit() -> void:
 	gv.rysiek_fsm.previous_state = "Walk_right"
+	print("Rysiek state: Exit Walk_right state")
 
 func _timer_timeout():
 	pass
@@ -50,7 +50,7 @@ func physics_update(delta: float) -> void:
 		#timer.start()
 		#if gv.Enemy_direction == Vector2.RIGHT:
 		#if is_equal_approx(player_distance, rysiek.contact_distance):
-	if player_distance > rysiek.contact_distance + 500:
+	if player_distance > rysiek.contact_distance * 5:
 		# if gv.Hero_pos_x + rysiek.change_direction_distance < rysiek.position.x:
 		# 	rysiek.scale.x = rysiek.scale.y * 1
 		# 	rysiek.direction = "L"
@@ -58,14 +58,14 @@ func physics_update(delta: float) -> void:
 		# 	rysiek.scale.x = rysiek.scale.y * -1
 		# 	rysiek.direction = "R"
 
-		get_node("../../AnimationPlayer").stop()
+		rysiek.anim_player.stop()
 		#rysiek.previous_state = gv.rysiek_fsm.estate.name
 		rstate_machine.transition_to("idle")	
 			
 	rysiek.move_and_slide()		
 
 	if rysiek.is_on_wall():
-		get_node("../../AnimationPlayer").stop()
+		rysiek.anim_player.stop()
 		print("enemy2: stop on wall going right")
 		rstate_machine.transition_to("Jump_right")
 

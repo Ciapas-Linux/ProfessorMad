@@ -37,10 +37,7 @@ var chat_instance:Node2D
 @onready var But_L_spr:Sprite2D = get_node("CanvasGroup/Noga_L/But_L")
 @onready var But_R_spr:Sprite2D = get_node("CanvasGroup/Noga_P/But_P")
 
-
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
-
-
 @onready var SlopeRayCast:RayCast2D = get_node("RayCast2D")
 
 var screen_size : Vector2
@@ -60,11 +57,10 @@ var gold_amount:int = 0
 var on_screen:bool = false
 var see_Player:bool = false
 
-const contact_distance:float = 1100.0
-
 # Atack1:
 const Atack1_distance:float = 800.0
 
+const contact_distance:float = 2100.0
 const follow_distance:float = 2000.0
 const change_direction_distance:float = 200.0
 
@@ -72,16 +68,12 @@ var first_hero_catch:bool = false
 
 var head:Node
 
-#var collision:KinematicCollision2D 
-
 signal somebody_hitme
 signal enemy2_death
 #var player_collision_point:Vector2
 
 var drone:CharacterBody2D
-
 var mouse_enter:bool = false
-
 var Rysiek_tilt:int = 0
 
 func _ready():
@@ -119,7 +111,6 @@ func _ready():
 	# Start releasing drones:
 	# $CreateDrone.start()
 
-
 func _unhandled_input(event):
 	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
@@ -135,7 +126,6 @@ func _unhandled_input(event):
 			var out = space_state.intersect_point(params)
 			for node in out:
 				print(node.collider.name)
-
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
@@ -166,7 +156,6 @@ func _drone_on_kill():
 	print("Next Drone: ready " + Drone2.name) """
 	$CreateDrone.start()
 	
-
 func _drone_on_me_position():
 	if (gv.rysiek_fsm.rstate.name != "Air") and (gv.rysiek_fsm.rstate.name and "Jump_right") and (gv.rysiek_fsm.rstate.name != "Jump_left"): 
 		#previous_state = gv.rysiek_fsm.rstate.name
@@ -177,12 +166,9 @@ func _drone_on_me_position():
 		#get_node("../../snd_release_drone").play()
 		print("Enemy: reload drone bomb")
 	
-
-
 func _process(_delta: float) -> void:
 	pass
 	
-
 func _physics_process(_delta):
 	#gv.Enemy_position = position
 	#gv.Enemy_global_position = global_position
@@ -190,7 +176,6 @@ func _physics_process(_delta):
 			
 func PlayerActivity():
 	pass			
-
 
 # gv.enemy_fsm.transition_to("Hit_rpg")
 
@@ -246,10 +231,7 @@ func hit():
 			head.texture = Head_hit3_img
 			texture_nr = 3
 			speed = max_speed * 0.4			
-			
-		
-
-	
+				
 func _on_recover_health_timeout() -> void:
 	if Rysiek_health < 100:
 		Rysiek_health += 1
@@ -287,8 +269,13 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	on_screen = false
 
+func turn_right() -> void:
+	scale.x = scale.y * -1
+	Enemy_direction = Vector2.RIGHT
 
-
+func turn_left() -> void:
+	scale.x = scale.y * 1
+	Enemy_direction = Vector2.LEFT	
 
 
 

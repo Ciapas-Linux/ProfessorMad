@@ -1,9 +1,9 @@
 extends PlayerState
 
 
-#.#############>
-#. IDLE 🌟🌟🌟#>
-#.#############>
+#.######################>
+#. PROFESOR IDLE 🌟🌟🌟#>
+#.######################>
 
 
 @onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
