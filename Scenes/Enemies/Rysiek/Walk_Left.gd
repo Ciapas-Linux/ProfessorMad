@@ -1,9 +1,7 @@
 extends RysiekState
-
 # #####################
 # # WALK LEFT.SCRIPT  #
 # #####################
-
 
 var distance_to_Player:float
 
@@ -18,12 +16,10 @@ func enter(_msg := {}) -> void:
 	rysiek.anim_player.play("walk")
 	print("Rysiek state: Walk_left")
 	
-
 # Exit state:	
 func exit() -> void:
 	print("Rysiek state: Exit Walk_left state")
 	gv.rysiek_fsm.previous_state = "Walk_left"
-
 
 #@warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:
@@ -74,7 +70,7 @@ func physics_update(delta: float) -> void:
 		#print("Rysiek tilt:" + str(rysiek.Rysiek_tilt))	
 
 		# No slope:
-		if rysiek.Rysiek_tilt < 10 and rysiek.Rysiek_tilt > -10:
+		if rysiek.Rysiek_tilt < rysiek.slope_angle and rysiek.Rysiek_tilt > -rysiek.slope_angle:
 			if rysiek.anim_player.get_current_animation() != "walk":
 				rysiek.anim_player.play("walk")
 				rysiek.anim_player.seek(0.3,true)
@@ -84,7 +80,7 @@ func physics_update(delta: float) -> void:
 			#get_node("../../CollisionShape2D").shape.height = 700	
 		
 		# Slope:
-		elif rysiek.Rysiek_tilt > 10 or rysiek.Rysiek_tilt < -10:
+		elif rysiek.Rysiek_tilt > rysiek.slope_angle or rysiek.Rysiek_tilt < -rysiek.slope_angle:
 			if rysiek.anim_player.get_current_animation() != "walk":
 				rysiek.anim_player.play("walk")
 
@@ -123,5 +119,5 @@ func physics_update(delta: float) -> void:
 		print("Rysiek: trying jump over wall")
 		rstate_machine.transition_to("Jump_left")
 
-	if rysiek.is_on_floor() == false:
-		rstate_machine.transition_to("Air")		
+	# if rysiek.is_on_floor() == false:
+	# 	rstate_machine.transition_to("Air")		

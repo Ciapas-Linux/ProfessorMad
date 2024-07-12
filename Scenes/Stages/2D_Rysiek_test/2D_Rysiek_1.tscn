@@ -188,6 +188,7 @@ region_rect = Rect2(0, 0, 20000, 62)
 [node name="Rysiek" parent="." instance=ExtResource("16_3duc2")]
 position = Vector2(7487, -383)
 collision_mask = 51
+speed = 300.0
 
 [node name="Gorka" parent="." instance=ExtResource("16_gudwx")]
 position = Vector2(2110, 695)

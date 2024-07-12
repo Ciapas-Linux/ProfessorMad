@@ -7,7 +7,7 @@ class_name Rysiek
 extends CharacterBody2D
 
 # Horizontal speed in pixels per second.
-const max_speed:float = 300.0
+const max_speed:float = 200.0
 @export var speed:float = max_speed
 # Vertical acceleration in pixel per second squared.
 @export var gravity:float = 2000.0
@@ -75,6 +75,7 @@ signal enemy2_death
 var drone:CharacterBody2D
 var mouse_enter:bool = false
 var Rysiek_tilt:int = 0
+const slope_angle:int = 5
 
 func _ready():
 	self.input_pickable = true
@@ -139,7 +140,6 @@ func _on_create_drone_timeout():
 	Drone2.connect('on_boss_position', _drone_on_me_position)
 	Drone2.connect('on_kill', _drone_on_kill)
 	Drone2.visible = true
-	#previous_state = gv.rysiek_fsm.rstate.name
 	gv.rysiek_fsm.transition_to("Release_drone")
 	print("Drone2: ready " + Drone2.name)
 
@@ -170,14 +170,10 @@ func _process(_delta: float) -> void:
 	pass
 	
 func _physics_process(_delta):
-	#gv.Enemy_position = position
-	#gv.Enemy_global_position = global_position
 	pass
 			
 func PlayerActivity():
 	pass			
-
-# gv.enemy_fsm.transition_to("Hit_rpg")
 
 func rpg_hit():
 	gv.mouse_enter_node = null
@@ -193,9 +189,7 @@ func rpg_hit():
 	get_tree().current_scene.add_child(_particle)
 	Rysiek_health = 0
 	gv.rysiek_fsm.transition_to("Hit_rpg")
-	#emit_signal("enemy2_death")
-	#queue_free() 
-
+	
 func hit():
 	print("Rysiek: somebody hit me by bullet!")
 	emit_signal("somebody_hitme")
@@ -217,8 +211,7 @@ func hit():
 	if Rysiek_health > 0:
 		Rysiek_health -= 10 # DAMAGE RATE   
 	if Rysiek_health <= 0:
-		emit_signal("enemy2_death")
-		queue_free()  		
+		rysiek_death()  		
 
 	if Rysiek_health in range(50,71):
 		if texture_nr != 2:
@@ -277,6 +270,10 @@ func turn_left() -> void:
 	scale.x = scale.y * 1
 	Enemy_direction = Vector2.LEFT	
 
+func rysiek_death():
+	emit_signal("enemy2_death")
+	print("Rysiek: I'm completely dead!")
+	queue_free()  		
 
 
 #if $SeeCast2D.is_colliding():

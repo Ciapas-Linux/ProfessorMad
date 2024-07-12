@@ -8,8 +8,8 @@ var stop:bool = false
 
 func enter(_msg := {}) -> void:
 	rysiek.velocity.y = - rysiek.jump_impulse
-	get_node("../../AnimationPlayer").stop()
-	get_node("../../AnimationPlayer").play("Jump")
+	rysiek.anim_player.stop()
+	rysiek.anim_player.play("Jump")
 	if get_node("../../snd_jump").playing != true:
 		get_node("../../snd_jump").play()
 	print("Rysiek state: Jump_right")
@@ -17,8 +17,8 @@ func enter(_msg := {}) -> void:
 # Exit state:	
 func exit() -> void:
 	gv.rysiek_fsm.previous_state = "Jump_right"
+	print("Rysiek state: Exit Jump_right state")
 
-@warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:
 
 	# GAME PAUSE:
@@ -32,15 +32,13 @@ func physics_update(delta: float) -> void:
 	#if stop == false:
 	rysiek.move_and_slide()
 		
-	if rysiek.is_on_floor_only():
+	if rysiek.is_on_floor():
 	#if stop == false:
 		if get_node("../../snd_fall").playing != true:
 			get_node("../../snd_fall").play()
-		get_node("../../AnimationPlayer").stop()
-		get_node("../../AnimationPlayer").play("idle")	
-		print("rysiek: Jump_right to floor")
+		rysiek.anim_player.stop()
+		rysiek.anim_player.play("idle")	
 		# await get_tree().create_timer(0.5).timeout
-		#rysiek.previous_state = gv.enemy_fsm.estate.name
 		rstate_machine.transition_to("idle")
 	
 	
