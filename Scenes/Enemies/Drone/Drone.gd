@@ -41,10 +41,8 @@ signal on_kill
 
 @onready var bomb:Resource = preload("res://Scenes/Enemies/Drone/Bomb2.tscn")
 
-
-var rysiek:Rysiek
+#var rysiek:Rysiek
 var boom:Area2D
-
 var mouse_enter:bool = false
 
 func _ready():
@@ -58,16 +56,16 @@ func _ready():
 	$Drone_explosion.visible = false
 	#screen_size = get_viewport_rect().size
 	# enemy2 = get_parent().get_node("Enemy")
-	rysiek = get_tree().root.get_node("Stage1/Rysiek")
+	#rysiek = get_tree().root.get_node("Stage1/Rysiek")
 	$drone_snd.play()
-	position.x = rysiek.global_position.x
-	position.y = rysiek.global_position.y - 200
+	position.x = gv.EnemyRysiek.global_position.x
+	position.y = gv.EnemyRysiek.global_position.y - 200
 	#$Health.visible = true
 	$DroneSprite.play("flying")
 	print("Flying drone: ready ...") 
 
 func _unhandled_input(event):
-	if gv.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -148,7 +146,7 @@ func _on_timer_no_boss_timeout() -> void:
 
 @warning_ignore("unused_parameter")
 func _process_on_state_go_boss(delta: float) -> void:
-	distance_vector_boss = global_position  - gv.Enemy_global_position
+	distance_vector_boss = global_position  - gv.EnemyRysiek.global_position
 	x_distance_to_boss = abs(distance_vector_boss.x)
 	y_distance_to_boss = abs(distance_vector_boss.y)
 		
@@ -175,10 +173,10 @@ func _process_on_state_go_boss(delta: float) -> void:
 		
 	if x_distance_to_boss > 80:
 		on_boss_position_X = false
-		if gv.Enemy_global_position.x < global_position.x:
+		if gv.EnemyRysiek.global_position.x < global_position.x:
 			scale.x = scale.y * 1
 			velocity.x = -speed
-		if gv.Enemy_global_position.x > global_position.x:
+		if gv.EnemyRysiek.global_position.x > global_position.x:
 			scale.x = scale.y * -1
 			velocity.x = speed
 	
@@ -187,7 +185,7 @@ func _process_on_state_go_boss(delta: float) -> void:
 
 @warning_ignore("unused_parameter")
 func _process_on_state_find_hero(delta: float) -> void:
-	distance_vector = global_position - gv.Hero_global_position
+	distance_vector = global_position - gv.Player.global_position
 	x_distance_to_hero = abs(distance_vector.x)
 	y_distance_to_hero = abs(distance_vector.y)
 	#print(x_distance_to_hero) 
@@ -204,10 +202,10 @@ func _process_on_state_find_hero(delta: float) -> void:
 		move = true	
 	
 	if move == true:
-		if gv.Hero_global_position.x < global_position.x:
+		if gv.Player.global_position.x < global_position.x:
 			scale.x = scale.y * 1
 			velocity.x = -speed
-		if gv.Hero_global_position.x > global_position.x:
+		if gv.Player.global_position.x > global_position.x:
 			scale.x = scale.y * -1
 			velocity.x = speed	
 	
@@ -347,24 +345,3 @@ func _on_enemy_enemy_2_death() -> void:
 #
 #	#player_distance = global_position.distance_to(gv.Hero_global_position)
 #	move_and_slide()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

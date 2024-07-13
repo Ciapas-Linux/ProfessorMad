@@ -7,7 +7,7 @@ func _ready():
 	text = str(Drone.Drone_health)
 	#position.x = Drone.position.x
 	#position.y = Drone.position.y - 130
-	position = gv.Enemy_global_position
+	position = gv.EnemyRysiek.global_position
 		
 
 @warning_ignore("unused_parameter")
