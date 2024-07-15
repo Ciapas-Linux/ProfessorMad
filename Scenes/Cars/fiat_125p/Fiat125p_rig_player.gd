@@ -1,9 +1,9 @@
-extends RigidBody2D
+class_name Hero extends RigidBody2D
 
 ##############################################
 # GDscript:									 #
 # Fiat125p rigid body version				 #
-# ENEMIES car converted into combat          #
+# Player car converted into combat           #
 #											 #	
 ##############################################
 
@@ -32,15 +32,27 @@ var current_state : int = STOP
   	load("res://Assets/Sounds/pisk_opon2.wav"),
   	load("res://Assets/Sounds/pisk_opon3.wav")]
 	
+var Player_health:int = 100
+const Player_health_max:int = 100
+var Player_tilt:int = 0
+var Player_gold:int = 0
+var Player_direction:Vector2 = Vector2.RIGHT
+var Player_on_screen:bool = true	
+var Player_state:String = "Drive"
+var Player_up_down:int = 0 # 0:flat 1:up 2:down
+var Player_weapon:Sprite2D
 
-var wheels:Array[RigidBody2D] = []	
+
+var wheels:Array[RigidBody2D] = []
+
+@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 	
 func _ready() -> void:
+	gv.Player = self
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_mouse_entered)
 	self.connect("mouse_exited", _on_mouse_exited)
 	$BigExplosion.visible = false
-	print("Car Fiat125p_R start x: " + str(global_position.x))
 	#apply_impulse(Vector2(12.0, 0).rotated(rotation))
 	#apply_central_force(Vector2(10, 0) * 1)
 	#apply_central_impulse(Vector2(0, -100))
@@ -54,10 +66,15 @@ func _ready() -> void:
 	wheels.append($WheelHolder2.get_node("Wheel")) 
 	#start_drive(MOVE_RIGHT)
 	$smoke_particles.emitting = true
+	#$smoke_particles.gravity = Vector2(100.0, 2.0)
 	get_node("snd_engine").play()
-	#$Driver.scale.x = $Driver.scale.y * -1
+	get_node("snd_engine").set_volume_db(10)
 	$Driver/AnimationPlayer.play("head_rotate")
-	#turn_right()
+	Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
+	print("Player car Fiat125p rigid start x: " + str(global_position.x))
+
+	# turn_right()
+	# flip_v(true)
 		
 
 func _process(_delta: float) -> void:
@@ -73,7 +90,7 @@ func _physics_process(_delta) -> void:
 			_process_on_state_move_left(_delta)
 
 func _unhandled_input(event):
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	#if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -93,7 +110,11 @@ func _process_on_state_stop(delta) -> void:
 	 	#$snd_click.play()
 		for wheel in wheels:
 			wheel.apply_torque_impulse(speed * delta * 60)
-	pass
+	if Input.is_action_pressed("ui_left"):
+	 	#$snd_click.play()
+		for wheel in wheels:
+			wheel.apply_torque_impulse(-speed * delta * 60)
+
 
 func _process_on_state_move_right(_delta: float) -> void:
 	#velocity.x = speed
@@ -137,7 +158,14 @@ func _integrate_forces(_state):
 	# state.apply_torque(rotation_direction * torque)
 
 
-	
+func is_on_floor():
+	return true
+
+func is_on_wall():
+	return true
+
+func get_velocity():
+	return get_linear_velocity()	
 
 func _on_mouse_entered() -> void:
 	mouse_enter = true
@@ -211,7 +239,7 @@ func bomb_explode():
 
 func hit()-> void:
 	if hit_count > 0:
-		print("Fiat125p: dostałem " + "hits: " + str(hit_count))
+		print("Player Fiat125p: got hit " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		hit_count -= 1
 		
@@ -234,6 +262,10 @@ func hit()-> void:
 func flip_h(flip:bool):
 	var x_axis = global_transform.x
 	global_transform.x.x = (-1 if flip else 1) * abs(x_axis.x)
+
+func flip_v(flip:bool):
+	var y_axis = global_transform.y
+	global_transform.y.y = (-1 if flip else 1) * abs(y_axis.y)	
 
 func flip_child():
 	for child in get_children():
@@ -321,7 +353,7 @@ func _on_timer_timeout() -> void:
 	
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, hit area: " + area.name)
+	print("Fiat125p, front hit area: " + area.name)
 	$snd_hit.play()
 	# match current_state:
 	# 	STOP:
@@ -332,7 +364,15 @@ func _on_front_contact_area_entered(area:Area2D) -> void:
 	# 		turn_right()
 
 func _on_front_contact_body_entered(body:Node2D) -> void:
-	print("Fiat125p, hit body: " + body.name)
+	print("Fiat125p, front hit body: " + body.name)
+	$snd_hit.play()
+
+func _on_back_contact_area_entered(area:Area2D) -> void:
+	print("Fiat125p, back hit area: " + area.name)
+	$snd_hit.play()
+
+func _on_back_contact_body_entered(body:Node2D) -> void:
+	print("Fiat125p, back hit body: " + body.name)
 	$snd_hit.play()
 
 
@@ -342,12 +382,12 @@ func _on_big_explosion_finished() -> void:
 	queue_free() 
 
 
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	Player_on_screen = true
 
 
-
-
-
-
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	Player_on_screen = false
 
 
 

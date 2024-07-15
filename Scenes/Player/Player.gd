@@ -41,11 +41,13 @@ var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3}
 var Player_current_weapon:int = Player_guns["ak_47"]
 var Player_weapon:Sprite2D
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
-
+var Player_state:String
+var Player_fsm:StateMachine
 
 signal bomb_hit_me
 
 var eyes_rnd_blink_timer:Timer
+
 
 
 # Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D
@@ -58,6 +60,7 @@ var eyes_rnd_blink_timer:Timer
 
 func _ready():
 	gv.fsm = $StateMachine
+	Player_fsm = get_node("StateMachine")
 	$BloodSplash.visible = false
 	set_process(true)
 	set_process_input(true)
@@ -231,6 +234,8 @@ func _process(_delta: float) -> void:
 	if global_position.x < left_walk_limit:
 		global_position.x = spawn_point
 		gv.fsm.transition_to("Idle")
+
+	Player_state = Player_fsm.state.name
 	
 
 func _on_gun_2_fire() -> void:

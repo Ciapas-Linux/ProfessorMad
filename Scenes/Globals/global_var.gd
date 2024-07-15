@@ -47,7 +47,6 @@ signal player_bullet_ready
 signal s_mouse_enter_node(node :Node2D)
 var mouse_enter_node:Node2D
 
-
 # GUI signals:
 # var pop_up_2D:Resource = preload("res://Scenes/UI/PopUp_2D.tscn")
 # signal popup_2D_dialog
@@ -152,6 +151,9 @@ func load_player_data() -> void:
 
 
 func _ready():
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 	platform = OS.get_name()

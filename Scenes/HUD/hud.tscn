@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bbf5db237usnf"]
+[gd_scene load_steps=29 format=3 uid="uid://bbf5db237usnf"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_ce2dp"]
 [ext_resource type="FontFile" uid="uid://c3tuiwbbnpnhu" path="res://Assets/Fonts/digital-7.ttf" id="1_hb5a1"]
@@ -23,8 +23,10 @@
 [ext_resource type="Script" path="res://Scenes/HUD/animation.gd" id="17_xpw0c"]
 [ext_resource type="Texture2D" uid="uid://c7u2frbinndp2" path="res://Assets/UI/quit_pressed.png" id="18_nafme"]
 [ext_resource type="Script" path="res://Scenes/HUD/go_dir.gd" id="18_s4g5u"]
+[ext_resource type="Script" path="res://Scenes/HUD/mouse.gd" id="19_35w1h"]
 [ext_resource type="Texture2D" uid="uid://dvgp7kmqg0w8x" path="res://Assets/UI/quit_hover.png" id="19_ai2io"]
 [ext_resource type="AudioStream" uid="uid://n3injj6yls16" path="res://Assets/Sounds/Sfx/sci-fi-bleep.mp3" id="20_5ffjx"]
+[ext_resource type="Script" path="res://Scenes/HUD/velocity.gd" id="20_6ki1a"]
 [ext_resource type="AudioStream" uid="uid://bb0nnwrfynduf" path="res://Assets/Sounds/Sfx/object.wav" id="23_u2b6s"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -205,6 +207,28 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Go: "
 script = ExtResource("18_s4g5u")
+
+[node name="mouse" type="Label" parent="."]
+offset_left = 1537.0
+offset_top = 212.0
+offset_right = 1608.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "mouse:"
+script = ExtResource("19_35w1h")
+
+[node name="velocity" type="Label" parent="."]
+offset_left = 1537.0
+offset_top = 234.0
+offset_right = 1617.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "velocity:"
+script = ExtResource("20_6ki1a")
 
 [node name="img_heart" type="Sprite2D" parent="."]
 position = Vector2(19, 58)

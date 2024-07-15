@@ -5,8 +5,6 @@ extends CharacterBody2D
 # #####################
 
 
-
-
 var x_distance_to_hero:float = 0
 var y_distance_to_hero:float = 0
 var x_distance_to_boss:float = 0
