@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ep7nieffwhma"]
+[gd_scene load_steps=23 format=4 uid="uid://ep7nieffwhma"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/2D_Player_test_drive/player_test_drive.gd" id="1_ox0ga"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_5ghoj"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b1n6twuv5ahxy" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.tscn" id="16_7aedm"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="16_mxfbl"]
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="18_744sl"]
+[ext_resource type="PackedScene" uid="uid://42qfhl6s3nfp" path="res://Scenes/Obstacles/brick_pillar/Brick_pillar.tscn" id="18_o70wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
 size = Vector2(20060, 200)
@@ -68,8 +69,6 @@ script = ExtResource("1_ox0ga")
 
 [node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
 position = Vector2(1048, 0)
-hit_count = 12
-speed = 60000.0
 
 [node name="Camera2DPro" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -189,3 +188,6 @@ scale = Vector2(1.6, 1.6)
 
 [node name="Gorka" parent="." instance=ExtResource("18_744sl")]
 position = Vector2(3874, 772)
+
+[node name="BrickPillar" parent="." instance=ExtResource("18_o70wf")]
+position = Vector2(2322, 510)

@@ -322,7 +322,6 @@ colors = PackedColorArray(0.276065, 0.276065, 0.276065, 1, 1, 1, 1, 0)
 collision_layer = 32
 collision_mask = 63
 mass = 50.0
-gravity_scale = 5.0
 script = ExtResource("1_f1xke")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
