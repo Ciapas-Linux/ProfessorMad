@@ -365,7 +365,7 @@ func _on_front_contact_area_entered(area:Area2D) -> void:
 
 func _on_front_contact_body_entered(body:Node2D) -> void:
 	print("Fiat125p, front hit body: " + body.name)
-	$snd_hit.play()
+	$snd_hit2.play()
 
 func _on_back_contact_area_entered(area:Area2D) -> void:
 	print("Fiat125p, back hit area: " + area.name)
@@ -374,6 +374,14 @@ func _on_back_contact_area_entered(area:Area2D) -> void:
 func _on_back_contact_body_entered(body:Node2D) -> void:
 	print("Fiat125p, back hit body: " + body.name)
 	$snd_hit.play()
+
+func _on_floor_contact_area_entered(area:Area2D) -> void:
+	print("Fiat125p, floor contact area: " + area.name)
+	$snd_touch_ground.play()
+
+func _on_floor_contact_body_entered(body:Node2D) -> void:
+	print("Fiat125p, floor contact body: " + body.name)
+	$snd_touch_ground.play()
 
 
 func _on_big_explosion_finished() -> void:
@@ -388,6 +396,10 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	Player_on_screen = false
+
+
+
+
 
 
 

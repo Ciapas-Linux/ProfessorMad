@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b1n6twuv5ahxy"]
+[gd_scene load_steps=49 format=3 uid="uid://b1n6twuv5ahxy"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.gd" id="1_f1xke"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="2_ieu6u"]
@@ -28,6 +28,8 @@
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="25_du7cd"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="26_eeef0"]
 [ext_resource type="AudioStream" uid="uid://bd8rnsf4mod6d" path="res://Assets/Sounds/Hero/stukot1.wav" id="27_swoio"]
+[ext_resource type="AudioStream" uid="uid://cxcfnuc3rojwe" path="res://Assets/Sounds/Impact/impact_1.wav" id="29_riqcd"]
+[ext_resource type="AudioStream" uid="uid://b5nco5e6h7kwq" path="res://Assets/Sounds/Impact/impact_2.wav" id="29_xi277"]
 
 [sub_resource type="Animation" id="Animation_e8m2p"]
 length = 0.001
@@ -315,6 +317,9 @@ size = Vector2(150, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gb30b"]
 size = Vector2(114, 90)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8epx1"]
+size = Vector2(200, 40)
+
 [sub_resource type="Gradient" id="Gradient_44n6n"]
 colors = PackedColorArray(0.276065, 0.276065, 0.276065, 1, 1, 1, 1, 0)
 
@@ -494,6 +499,14 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="back_contact"]
 shape = SubResource("RectangleShape2D_gb30b")
 
+[node name="floor_contact" type="Area2D" parent="."]
+position = Vector2(0, 74)
+collision_mask = 39
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor_contact"]
+shape = SubResource("RectangleShape2D_8epx1")
+
 [node name="Bullet_holes" parent="." instance=ExtResource("22_60l6i")]
 min_size = 0.3
 max_size = 1.0
@@ -531,6 +544,15 @@ stream = ExtResource("27_swoio")
 volume_db = 4.0
 pitch_scale = 1.26
 
+[node name="snd_hit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_xi277")
+pitch_scale = 1.2
+
+[node name="snd_touch_ground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_riqcd")
+volume_db = 2.0
+pitch_scale = 0.6
+
 [node name="Front_RayCast2D" type="RayCast2D" parent="."]
 enabled = false
 target_position = Vector2(-1500, 0)
@@ -543,6 +565,8 @@ target_position = Vector2(-1500, 0)
 [connection signal="body_entered" from="front_contact" to="." method="_on_front_contact_body_entered"]
 [connection signal="area_entered" from="back_contact" to="." method="_on_back_contact_area_entered"]
 [connection signal="body_entered" from="back_contact" to="." method="_on_back_contact_body_entered"]
+[connection signal="area_entered" from="floor_contact" to="." method="_on_floor_contact_area_entered"]
+[connection signal="body_entered" from="floor_contact" to="." method="_on_floor_contact_body_entered"]
 [connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
