@@ -13,7 +13,6 @@ size = Vector2(135, 40)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
-contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_7lvy4")
 
@@ -30,7 +29,6 @@ position = Vector2(134, 0)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
-contact_monitor = true
 max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_2"]
@@ -45,7 +43,6 @@ position = Vector2(0, 40)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
-contact_monitor = true
 max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_3"]
@@ -61,7 +58,6 @@ position = Vector2(134, 41)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
-contact_monitor = true
 max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_4"]
@@ -97,6 +93,61 @@ texture = ExtResource("2_uecxj")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_6"]
+visible = false
+shape = SubResource("RectangleShape2D_4ormr")
+
+[node name="Brick_7" type="RigidBody2D" parent="."]
+position = Vector2(0, 120)
+collision_layer = 2
+collision_mask = 63
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Brick_7"]
+texture = ExtResource("2_uecxj")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_7"]
+visible = false
+shape = SubResource("RectangleShape2D_4ormr")
+
+[node name="Brick_8" type="RigidBody2D" parent="."]
+position = Vector2(135, 120)
+collision_layer = 2
+collision_mask = 63
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Brick_8"]
+texture = ExtResource("2_uecxj")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_8"]
+visible = false
+shape = SubResource("RectangleShape2D_4ormr")
+
+[node name="Brick_9" type="RigidBody2D" parent="."]
+position = Vector2(-2, 160)
+collision_layer = 2
+collision_mask = 63
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Brick_9"]
+texture = ExtResource("2_uecxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_9"]
+visible = false
+shape = SubResource("RectangleShape2D_4ormr")
+
+[node name="Brick_10" type="RigidBody2D" parent="."]
+position = Vector2(133, 160)
+collision_layer = 2
+collision_mask = 63
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Brick_10"]
+texture = ExtResource("2_uecxj")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_10"]
 visible = false
 shape = SubResource("RectangleShape2D_4ormr")
 

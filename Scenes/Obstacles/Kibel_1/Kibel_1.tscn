@@ -4,7 +4,7 @@
 
 [node name="Kibel1" type="StaticBody2D"]
 collision_layer = 2
-collision_mask = 61
+collision_mask = 125
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -13,8 +13,12 @@ polygon = PackedVector2Array(133, -179, 116, 177, -93, 188, -114, 144, -112, -18
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_aadap")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="KibelArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 117
+monitoring = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KibelArea2D"]
 visible = false
 polygon = PackedVector2Array(133, -179, 116, 177, -93, 188, -114, 144, -112, -181)
+disabled = true

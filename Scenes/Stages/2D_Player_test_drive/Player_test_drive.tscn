@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ep7nieffwhma"]
+[gd_scene load_steps=22 format=4 uid="uid://ep7nieffwhma"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/2D_Player_test_drive/player_test_drive.gd" id="1_ox0ga"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_5ghoj"]
@@ -8,34 +8,15 @@
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="7_0c2e8"]
 [ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="8_yosod"]
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="9_by663"]
-[ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="10_jhlpm"]
-[ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="11_xqamo"]
 [ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="12_oytvl"]
 [ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="13_nhqf3"]
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="14_87qon"]
+[ext_resource type="PackedScene" uid="uid://fusvokqh37g3" path="res://Scenes/Nature/Moon/Moon_1.tscn" id="15_x78c7"]
 [ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="15_ypdyl"]
 [ext_resource type="PackedScene" uid="uid://b1n6twuv5ahxy" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.tscn" id="16_7aedm"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="16_mxfbl"]
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="18_744sl"]
-[ext_resource type="PackedScene" uid="uid://42qfhl6s3nfp" path="res://Scenes/Obstacles/brick_pillar/Brick_pillar.tscn" id="18_o70wf"]
 [ext_resource type="PackedScene" uid="uid://8nlipuu0ceal" path="res://Scenes/Characters/Robot_3D/robot_3d.tscn" id="19_ebrlf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
-size = Vector2(20060, 200)
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_gwivr"]
-_surfaces = [{
-"2d": true,
-"aabb": AABB(-128, -128, 0, 256, 256, 0),
-"attribute_data": PackedByteArray("AAA3P2Zm1jwAADc/zcwsPQAAZj8zMy8+AABmP83MQD4AAH4/ZmauPgAAfj8AALw+AACAP83M2z4AAIA/AAAYP83MZj8AAFg/zUxiPwAAWD/NTCw/AACAPwAArj4AAIA/AACuPjOzfT8AAPA9M7NbPwAA8D3NTFY/AAAAAGZmGj8AAAAAZmb6PmZmxjwAAJY+mpkxPQAAlj5mZlg+AACYPZqZbT4AAJg9ZmbjPgAAAACamRI/AAAAAA=="),
-"format": 34393296913,
-"index_count": 63,
-"index_data": PackedByteArray("FgAAAAEAAQACAAMAAwAEAAUABQAGAAcABwAIAAkACQAKAAsADAANAA4ADgAPABAAEAARABIAEgATABQAFAAVABYAFgABAAMAAwAFAAcABwAJAAsADAAOABAAEAASABQAFAAWAAMAAwAHAAsADAAQABQAAwALAAwADAAUAAMA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 23,
-"vertex_data": PackedByteArray("AABcQpqZ8sIAAFxCZmbqwgAAzEJmZqjCAADMQpqZn8IAAPxCNDMjwgAA/EIAAAjCAAAAQ8zMkMEAAABDAADAQZqZzUIAALBCmpnEQgAAsEI0MzFCAAAAQwAAJMIAAABDAAAkwmZm+0IAAMTCZma3QgAAxMKamaxCAAAAwzAz00EAAADDQDMzwJqZ88IAAFTCzczpwgAAVMLNzJPCAADawjMzicIAANrC0MxkwQAAAMPQzJRBAAAAww==")
-}]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ms7f"]
 _surfaces = [{
@@ -65,63 +46,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
+size = Vector2(20060, 200)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_ebbpm"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_ox0ga")
-
-[node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
-position = Vector2(1048, 0)
-
-[node name="Camera2DPro" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.5
-drag_top_margin = 0.0
-drag_right_margin = 0.0
-drag_bottom_margin = 0.0
-script = ExtResource("3_5ghoj")
-
-[node name="Grunt" type="Node2D" parent="."]
-z_index = -1
-position = Vector2(-70, 53)
-
-[node name="GruntBody2D" type="StaticBody2D" parent="Grunt"]
-collision_layer = 2
-collision_mask = 31
-
-[node name="Road" type="Sprite2D" parent="Grunt/GruntBody2D"]
-texture_repeat = 2
-position = Vector2(8500, 510)
-texture = ExtResource("4_dy6c1")
-region_enabled = true
-region_rect = Rect2(0, 0, 20000, 339)
-
-[node name="Flowers" type="Sprite2D" parent="Grunt/GruntBody2D"]
-visible = false
-position = Vector2(2803, 97)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Grunt/GruntBody2D"]
-position = Vector2(8482, 727)
-shape = SubResource("RectangleShape2D_fmhf3")
-
-[node name="Deep" type="Sprite2D" parent="Grunt/GruntBody2D"]
-z_index = -1
-texture_repeat = 2
-position = Vector2(8000, 1430)
-texture = ExtResource("5_uansd")
-region_enabled = true
-region_rect = Rect2(0, 0, 20000, 1500)
-
-[node name="HUD" parent="." instance=ExtResource("6_guv0v")]
-
-[node name="PlayerEnemyRay" type="Node2D" parent="."]
-visible = false
-script = ExtResource("7_0c2e8")
 
 [node name="SkyCanvas" type="CanvasLayer" parent="."]
 layer = -3
@@ -146,14 +78,6 @@ region_rect = Rect2(0, 0, 20000, 1500)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 
-[node name="MoonLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Moon_img" type="MeshInstance2D" parent="ParallaxBackground/MoonLayer"]
-position = Vector2(0, -268)
-mesh = SubResource("ArrayMesh_gwivr")
-texture = ExtResource("10_jhlpm")
-script = ExtResource("11_xqamo")
-
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(0, 191)
 motion_scale = Vector2(0.5, 0.5)
@@ -174,6 +98,53 @@ position = Vector2(1816, 64)
 mesh = SubResource("ArrayMesh_7k65n")
 texture = ExtResource("13_nhqf3")
 
+[node name="GruntBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-70, 53)
+collision_layer = 2
+collision_mask = 127
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GruntBody2D"]
+position = Vector2(8482, 727)
+shape = SubResource("RectangleShape2D_fmhf3")
+
+[node name="Road" type="Sprite2D" parent="GruntBody2D"]
+texture_repeat = 2
+position = Vector2(8500, 510)
+texture = ExtResource("4_dy6c1")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 339)
+
+[node name="Flowers" type="Sprite2D" parent="GruntBody2D"]
+visible = false
+position = Vector2(2803, 97)
+
+[node name="Deep" type="Sprite2D" parent="GruntBody2D"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(8000, 1430)
+texture = ExtResource("5_uansd")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 1500)
+
+[node name="Camera2DPro" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+script = ExtResource("3_5ghoj")
+
+[node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
+position = Vector2(1048, 0)
+
+[node name="PlayerEnemyRay" type="Node2D" parent="."]
+visible = false
+script = ExtResource("7_0c2e8")
+
 [node name="Trawka_1" type="Sprite2D" parent="."]
 z_index = 2
 texture_repeat = 2
@@ -187,20 +158,21 @@ position = Vector2(14092, 531)
 scale = Vector2(2.5, 2.5)
 
 [node name="Kibel1" parent="." instance=ExtResource("16_mxfbl")]
-position = Vector2(17656, 377)
+position = Vector2(17513, 377)
 scale = Vector2(1.6, 1.6)
 
 [node name="Gorka" parent="." instance=ExtResource("18_744sl")]
 position = Vector2(3874, 772)
 
-[node name="BrickPillar" parent="." instance=ExtResource("18_o70wf")]
-position = Vector2(2322, 578)
+[node name="Moon1" parent="." instance=ExtResource("15_x78c7")]
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 
 [node name="Robot3D" parent="SubViewport" instance=ExtResource("19_ebrlf")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Robot" type="Sprite2D" parent="."]
 position = Vector2(525, 518)
 texture = SubResource("ViewportTexture_ebbpm")
+
+[node name="HUD" parent="." instance=ExtResource("6_guv0v")]

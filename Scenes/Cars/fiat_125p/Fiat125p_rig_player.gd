@@ -353,35 +353,36 @@ func _on_timer_timeout() -> void:
 	
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, front hit area: " + area.name)
+	print("Fiat125p, front contact area: " + area.name)
 	$snd_hit.play()
-	# match current_state:
-	# 	STOP:
-	# 		pass
-	# 	MOVE_RIGHT:
-	# 		turn_left()
-	# 	MOVE_LEFT:
-	# 		turn_right()
-
+	
 func _on_front_contact_body_entered(body:Node2D) -> void:
-	print("Fiat125p, front hit body: " + body.name)
-	$snd_hit2.play()
+	if body.name != "Fiat125p_rigid" and body.name != "Wheel":
+		$snd_hit2.play()
+		print("Fiat125p, front contact body: " + body.name)
 
 func _on_back_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, back hit area: " + area.name)
+	print("Fiat125p, back contact area: " + area.name)
 	$snd_hit.play()
 
 func _on_back_contact_body_entered(body:Node2D) -> void:
-	print("Fiat125p, back hit body: " + body.name)
-	$snd_hit.play()
+	if body.name != "Fiat125p_rigid":	
+		$snd_hit.play()
+		print("Fiat125p, back contact body: " + body.name)
 
 func _on_floor_contact_area_entered(area:Area2D) -> void:
 	print("Fiat125p, floor contact area: " + area.name)
 	$snd_touch_ground.play()
 
 func _on_floor_contact_body_entered(body:Node2D) -> void:
-	print("Fiat125p, floor contact body: " + body.name)
-	$snd_touch_ground.play()
+	if body.name != "Fiat125p_rigid":
+		$snd_touch_ground.play()
+		print("Fiat125p, floor contact body: " + body.name)
+
+func _on_top_contact_body_entered(body:Node2D) -> void:
+	if body.name != "Fiat125p_rigid":
+		$snd_touch_ground.play()
+		print("Fiat125p, top contact body: " + body.name)
 
 
 func _on_big_explosion_finished() -> void:
@@ -396,6 +397,8 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	Player_on_screen = false
+
+
 
 
 

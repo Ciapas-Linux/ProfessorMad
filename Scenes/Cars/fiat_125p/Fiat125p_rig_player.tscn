@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://b1n6twuv5ahxy"]
+[gd_scene load_steps=50 format=3 uid="uid://b1n6twuv5ahxy"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.gd" id="1_f1xke"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="2_ieu6u"]
@@ -312,12 +312,15 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwuyi"]
-size = Vector2(150, 90)
+size = Vector2(50, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gb30b"]
 size = Vector2(114, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8epx1"]
+size = Vector2(200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clb6g"]
 size = Vector2(200, 40)
 
 [sub_resource type="Gradient" id="Gradient_44n6n"]
@@ -328,12 +331,6 @@ collision_layer = 32
 collision_mask = 63
 mass = 50.0
 script = ExtResource("1_f1xke")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-z_index = 1
-scale = Vector2(1.4, 1.4)
-polygon = PackedVector2Array(100, -106.429, 166.429, -35.7143, 263.571, -24.2857, 332.857, -13.5714, 346.429, 7.14286, 325.714, 47.8571, 47.8571, 51.4286, -195.714, 36.4286, -313.571, 20, -342.143, 11.4286, -334.286, -15, -317.857, -25, -285, -30, -217.857, -33.5714, -197.143, -47.8571, -162.143, -90.7143, -135.714, -106.429, 33, -109)
 
 [node name="WheelHolder" type="PinJoint2D" parent="."]
 position = Vector2(-248, 100)
@@ -484,28 +481,42 @@ libraries = {
 }
 
 [node name="front_contact" type="Area2D" parent="."]
-position = Vector2(412, 34)
-collision_layer = 32
-collision_mask = 15
-monitorable = false
+position = Vector2(462, 29)
+collision_layer = 64
+collision_mask = 47
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="front_contact"]
 shape = SubResource("RectangleShape2D_qwuyi")
 
 [node name="back_contact" type="Area2D" parent="."]
-position = Vector2(-416, 18)
-monitorable = false
+position = Vector2(-431, 18)
+collision_layer = 64
+collision_mask = 47
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="back_contact"]
 shape = SubResource("RectangleShape2D_gb30b")
 
 [node name="floor_contact" type="Area2D" parent="."]
-position = Vector2(0, 74)
+position = Vector2(0, 96)
+collision_layer = 64
 collision_mask = 39
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor_contact"]
 shape = SubResource("RectangleShape2D_8epx1")
+
+[node name="top_contact" type="Area2D" parent="."]
+position = Vector2(0, -135)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_contact"]
+shape = SubResource("RectangleShape2D_clb6g")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(1.4, 1.4)
+polygon = PackedVector2Array(100, -106.429, 166.429, -35.7143, 263.571, -24.2857, 332.857, -13.5714, 338.571, 9.28571, 325.714, 47.8571, 47.8571, 51.4286, -195.714, 36.4286, -313.571, 20, -334.286, 9.28571, -332.143, -14.2857, -317.857, -25, -285, -30, -217.857, -33.5714, -197.143, -47.8571, -162.143, -90.7143, -135.714, -106.429, 33, -109)
 
 [node name="Bullet_holes" parent="." instance=ExtResource("22_60l6i")]
 min_size = 0.3
@@ -567,6 +578,7 @@ target_position = Vector2(-1500, 0)
 [connection signal="body_entered" from="back_contact" to="." method="_on_back_contact_body_entered"]
 [connection signal="area_entered" from="floor_contact" to="." method="_on_floor_contact_area_entered"]
 [connection signal="body_entered" from="floor_contact" to="." method="_on_floor_contact_body_entered"]
+[connection signal="body_entered" from="top_contact" to="." method="_on_top_contact_body_entered"]
 [connection signal="finished" from="BigExplosion" to="." method="_on_big_explosion_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
