@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://42qfhl6s3nfp"]
+[gd_scene load_steps=4 format=3 uid="uid://42qfhl6s3nfp"]
 
-[ext_resource type="Texture2D" uid="uid://db4pybu1rpbdo" path="res://Assets/Buildings/Brick_1.png" id="1_e0ams"]
+[ext_resource type="Texture2D" uid="uid://dlov5ldl3eao7" path="res://Assets/Buildings/Brick_2.png" id="1_ajsou"]
+[ext_resource type="Texture2D" uid="uid://cponqv7gh4uah" path="res://Assets/Buildings/Brick_3.png" id="2_uecxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ormr"]
-size = Vector2(195, 110)
+size = Vector2(135, 40)
 
 [node name="BrickPillar" type="Node2D"]
 
@@ -13,47 +14,78 @@ collision_mask = 63
 mass = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_1"]
-texture = ExtResource("1_e0ams")
+texture = ExtResource("1_ajsou")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_1"]
 visible = false
 shape = SubResource("RectangleShape2D_4ormr")
 
 [node name="Brick_2" type="RigidBody2D" parent="."]
-position = Vector2(189, 0)
+position = Vector2(134, 0)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_2"]
-texture = ExtResource("1_e0ams")
+texture = ExtResource("2_uecxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_2"]
 visible = false
 shape = SubResource("RectangleShape2D_4ormr")
 
 [node name="Brick_3" type="RigidBody2D" parent="."]
-position = Vector2(-4, 112)
+position = Vector2(0, 40)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_3"]
-texture = ExtResource("1_e0ams")
+texture = ExtResource("1_ajsou")
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_3"]
 visible = false
 shape = SubResource("RectangleShape2D_4ormr")
 
 [node name="Brick_4" type="RigidBody2D" parent="."]
-position = Vector2(183, 112)
+position = Vector2(134, 41)
 collision_layer = 2
 collision_mask = 63
 mass = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Brick_4"]
-texture = ExtResource("1_e0ams")
+texture = ExtResource("2_uecxj")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_4"]
+visible = false
+shape = SubResource("RectangleShape2D_4ormr")
+
+[node name="Brick_5" type="RigidBody2D" parent="."]
+position = Vector2(133, 80)
+collision_layer = 2
+collision_mask = 63
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Brick_5"]
+texture = ExtResource("1_ajsou")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_5"]
+visible = false
+shape = SubResource("RectangleShape2D_4ormr")
+
+[node name="Brick_6" type="RigidBody2D" parent="."]
+position = Vector2(0, 80)
+collision_layer = 2
+collision_mask = 63
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Brick_6"]
+texture = ExtResource("2_uecxj")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_6"]
 visible = false
 shape = SubResource("RectangleShape2D_4ormr")
