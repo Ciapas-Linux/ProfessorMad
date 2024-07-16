@@ -6,7 +6,6 @@ class_name Hero extends CharacterBody2D
 
 
 
-
 # Horizontal walk speed in pixels per second.
 @export var speed :float = 250.0
 

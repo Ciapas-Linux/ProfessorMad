@@ -1,4 +1,4 @@
-class_name Hero extends RigidBody2D
+extends RigidBody2D
 
 ##############################################
 # GDscript:									 #

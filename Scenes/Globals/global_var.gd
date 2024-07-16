@@ -39,9 +39,9 @@ var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 # var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
 
 
-# PLAYER HERO:
+# PLAYER:
 @onready var fsm:StateMachine
-var Player:Hero
+var Player
 # Player global signals:
 signal player_bullet_ready
 signal s_mouse_enter_node(node :Node2D)
