@@ -59,8 +59,6 @@ func _ready():
 	gv.fsm = $StateMachine
 	Player_fsm = get_node("StateMachine")
 	$BloodSplash.visible = false
-	set_process(true)
-	set_process_input(true)
 	gv.Player = self
 
 	$Body_parts/Head/powieka_P.visible = false
@@ -71,13 +69,7 @@ func _ready():
 	else:
 		gv.load_player_data()	
 	
-	print("")  
-	print("Player level: " + str(Player_level)) 
-	print("Player current weapon: " + str(Player_current_weapon))
-	print("Player money: " + str(Player_gold))
-	print("Player state: " + gv.fsm.state.name)  
-	print("")  
-
+	
 	############################ !!!!!!!!!!!!!!!!	
 	Player_current_weapon = 0
 	############################ !!!!!!!!!!!!!!!!
@@ -90,9 +82,15 @@ func _ready():
 	eyes_rnd_blink_timer.one_shot = true
 	eyes_rnd_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
 	eyes_rnd_blink_timer.start(randf_range(1.0,10.0))
-		
-	print("Hero: ready ...") 
-	
+
+	print("")  
+	print("Player level: " + str(Player_level)) 
+	print("Player current weapon: " + str(Player_current_weapon))
+	print("Player money: " + str(Player_gold))
+	print("Player state: " + gv.fsm.state.name)  
+	print("Player start x: " + str(global_position.x))	
+	print("Player ready: ready ...") 
+	print("")  	
 
 func fade_in():
 	$Body_parts/Arm_L.self_modulate = Color(1, 1, 1, 1)
@@ -203,6 +201,8 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			gv.set_cursor_green()
 			Player_weapon.transform = get_node("Body_parts/weapon_spawn/rocket_4").transform
 			Player_weapon.scale = Vector2(3,3)		
+
+	print("Player inventory loaded")
 
 func load_next_weapon():
 	print(str(Player_guns.size()))

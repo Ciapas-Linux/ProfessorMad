@@ -1,8 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://b1n6twuv5ahxy"]
+[gd_scene load_steps=53 format=3 uid="uid://b1n6twuv5ahxy"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.gd" id="1_f1xke"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="2_ieu6u"]
 [ext_resource type="Texture2D" uid="uid://cenxci6tto20a" path="res://Assets/Cars/fiat125/fiat_125_body.png" id="3_14mxo"]
+[ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="4_kynl8"]
 [ext_resource type="Texture2D" uid="uid://ctq5jgwdibvw5" path="res://Assets/Player/BodyParts/głowa8.png" id="4_ys8xm"]
 [ext_resource type="Texture2D" uid="uid://cuck4e418m28k" path="res://Assets/Cars/fiat125/fiat_125_body_2.png" id="5_5je73"]
 [ext_resource type="Texture2D" uid="uid://43oi7qc4m4en" path="res://Assets/Player/BodyParts/Hand_R.png" id="5_jfu52"]
@@ -23,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://crlqmbd4wl30a" path="res://Assets/Cars/fiat125/dach.png" id="20_yrfma"]
 [ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Cars/fiat125/fiat_125_kolo.png" id="21_xbhir"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="22_60l6i"]
+[ext_resource type="Texture2D" uid="uid://cjyv01a887bvn" path="res://Assets/Player/BodyParts/Arm_R_3.png" id="23_8o82p"]
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="23_b7d51"]
+[ext_resource type="Texture2D" uid="uid://cpl4scn85w4k5" path="res://Assets/Player/BodyParts/ForeArm_R_2.png" id="24_awxm3"]
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="24_oxv8s"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="25_du7cd"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="26_eeef0"]
@@ -43,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-46.081, -30.3063)]
+"values": [Vector2(80, -63)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -353,10 +356,15 @@ visible = false
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_14mxo")
 
+[node name="Belly" type="Sprite2D" parent="."]
+position = Vector2(79, 0.999999)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_kynl8")
+
 [node name="Driver" type="Sprite2D" parent="."]
-position = Vector2(-46.081, -30.3063)
+position = Vector2(80, -63)
 rotation = -0.261916
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_ys8xm")
 offset = Vector2(-3.54091, -66.6797)
 
@@ -480,6 +488,26 @@ libraries = {
 "": SubResource("AnimationLibrary_7pgsx")
 }
 
+[node name="Driver_arm" type="Sprite2D" parent="."]
+position = Vector2(65, -41)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("23_8o82p")
+offset = Vector2(10, 68)
+
+[node name="hand" type="Sprite2D" parent="Driver_arm"]
+position = Vector2(94, 216)
+rotation = 0.159498
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_jfu52")
+offset = Vector2(51.1458, 34.396)
+
+[node name="fore_arm" type="Sprite2D" parent="Driver_arm"]
+position = Vector2(2.00001, 124)
+rotation = -0.844903
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("24_awxm3")
+offset = Vector2(-2, 88)
+
 [node name="front_contact" type="Area2D" parent="."]
 position = Vector2(462, 29)
 collision_layer = 64
@@ -571,6 +599,16 @@ target_position = Vector2(-1500, 0)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="weapon_spawn" type="Marker2D" parent="."]
+
+[node name="ak-47" type="Marker2D" parent="weapon_spawn"]
+
+[node name="rpg_7" type="Marker2D" parent="weapon_spawn"]
+
+[node name="rocket_4" type="Marker2D" parent="weapon_spawn"]
+
+[node name="empty" type="Marker2D" parent="weapon_spawn"]
 
 [connection signal="area_entered" from="front_contact" to="." method="_on_front_contact_area_entered"]
 [connection signal="body_entered" from="front_contact" to="." method="_on_front_contact_body_entered"]

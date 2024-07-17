@@ -131,7 +131,7 @@ func set_cursor_red() -> void:
 
 
 func save_player_data() -> void:
-	var file = FileAccess.open("user://game.dat", FileAccess.WRITE)
+	var file:FileAccess = FileAccess.open("user://game.dat", FileAccess.WRITE)
 	file.store_32(Player.Player_level)
 	file.store_32(Player.Player_current_weapon)
 	file.store_32(Player.Player_gold)
@@ -139,7 +139,7 @@ func save_player_data() -> void:
 	
 
 func load_player_data() -> void:
-	var file = FileAccess.open("user://game.dat", FileAccess.READ)
+	var file:FileAccess = FileAccess.open("user://game.dat", FileAccess.READ)
 	Player.Player_level = file.get_32()
 	Player.Player_current_weapon = file.get_32()
 	Player.Player_gold = file.get_32()

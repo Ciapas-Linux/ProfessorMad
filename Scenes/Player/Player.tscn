@@ -4653,6 +4653,7 @@ gizmo_extents = 33.0
 
 [node name="ak-47" type="Marker2D" parent="Body_parts/weapon_spawn"]
 position = Vector2(-3.82164, -2.6437)
+gizmo_extents = 20.0
 
 [node name="rpg_7" type="Marker2D" parent="Body_parts/weapon_spawn"]
 position = Vector2(15.4601, 11.8629)

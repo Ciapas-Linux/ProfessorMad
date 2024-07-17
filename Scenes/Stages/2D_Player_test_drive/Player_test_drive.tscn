@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ep7nieffwhma"]
+[gd_scene load_steps=24 format=4 uid="uid://ep7nieffwhma"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/2D_Player_test_drive/player_test_drive.gd" id="1_ox0ga"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_5ghoj"]
@@ -16,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://b1n6twuv5ahxy" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.tscn" id="16_7aedm"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="16_mxfbl"]
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="18_744sl"]
+[ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/barell_1.tscn" id="18_dgcab"]
 [ext_resource type="PackedScene" uid="uid://8nlipuu0ceal" path="res://Scenes/Characters/Robot_3D/robot_3d.tscn" id="19_ebrlf"]
+[ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="19_iiwhm"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ms7f"]
 _surfaces = [{
@@ -98,25 +100,22 @@ position = Vector2(1816, 64)
 mesh = SubResource("ArrayMesh_7k65n")
 texture = ExtResource("13_nhqf3")
 
+[node name="Road" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(8430, 563)
+texture = ExtResource("4_dy6c1")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 339)
+
 [node name="GruntBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-70, 53)
 collision_layer = 2
 collision_mask = 127
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GruntBody2D"]
-position = Vector2(8482, 727)
-shape = SubResource("RectangleShape2D_fmhf3")
-
-[node name="Road" type="Sprite2D" parent="GruntBody2D"]
-texture_repeat = 2
-position = Vector2(8500, 510)
-texture = ExtResource("4_dy6c1")
-region_enabled = true
-region_rect = Rect2(0, 0, 20000, 339)
-
-[node name="Flowers" type="Sprite2D" parent="GruntBody2D"]
 visible = false
-position = Vector2(2803, 97)
+position = Vector2(8482, 780)
+shape = SubResource("RectangleShape2D_fmhf3")
 
 [node name="Deep" type="Sprite2D" parent="GruntBody2D"]
 z_index = -1
@@ -127,6 +126,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
 [node name="Camera2DPro" type="Camera2D" parent="."]
+offset = Vector2(0, -300)
 zoom = Vector2(0.5, 0.5)
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -137,6 +137,7 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 script = ExtResource("3_5ghoj")
+cam_Y_offset = 0.0
 
 [node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
 position = Vector2(1048, 0)
@@ -176,3 +177,10 @@ position = Vector2(525, 518)
 texture = SubResource("ViewportTexture_ebbpm")
 
 [node name="HUD" parent="." instance=ExtResource("6_guv0v")]
+
+[node name="Barell_1" parent="." instance=ExtResource("18_dgcab")]
+position = Vector2(2670, 613)
+scale = Vector2(0.6, 0.6)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("19_iiwhm")

@@ -11,10 +11,7 @@ extends RigidBody2D
 
 @export var hit_count:int = 12
 @export var speed:float = 60000
-#@export var spin_power = 10000
 
-#var thrust = Vector2(0, -250)
-#var torque = 20000
 
 @onready var tween: Tween
 
@@ -32,6 +29,7 @@ var current_state : int = STOP
   	load("res://Assets/Sounds/pisk_opon2.wav"),
   	load("res://Assets/Sounds/pisk_opon3.wav")]
 	
+var Player_level:int = 1	
 var Player_health:int = 100
 const Player_health_max:int = 100
 var Player_tilt:int = 0
@@ -41,6 +39,8 @@ var Player_on_screen:bool = true
 var Player_state:String = "Drive"
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
 var Player_weapon:Sprite2D
+var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3}
+var Player_current_weapon:int = Player_guns["ak_47"]
 
 
 var wheels:Array[RigidBody2D] = []
@@ -53,24 +53,20 @@ func _ready() -> void:
 	self.connect("mouse_entered", _on_mouse_entered)
 	self.connect("mouse_exited", _on_mouse_exited)
 	$BigExplosion.visible = false
-	#apply_impulse(Vector2(12.0, 0).rotated(rotation))
-	#apply_central_force(Vector2(10, 0) * 1)
-	#apply_central_impulse(Vector2(0, -100))
-	#apply_force(get_local_mouse_position().normalized() * 20)
-	#apply_central_impulse(Vector2(0, -100))
-	#add_constant_force( Vector2(1000, 0), Vector2(0, 0) )
-	#wheels = get_tree().get_nodes_in_group(
-	#wheels = $WheelHolder/Wheel.get_tree().get_nodes_in_group("wheel")
-	#wheels[0] = $WheelHolder.get_node("Wheel")
 	wheels.append($WheelHolder.get_node("Wheel"))
 	wheels.append($WheelHolder2.get_node("Wheel")) 
-	#start_drive(MOVE_RIGHT)
 	$smoke_particles.emitting = true
-	#$smoke_particles.gravity = Vector2(100.0, 2.0)
 	get_node("snd_engine").play()
 	get_node("snd_engine").set_volume_db(10)
 	$Driver/AnimationPlayer.play("head_rotate")
-	Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
+	#Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
+	
+	############################ !!!!!!!!!!!!!!!!	
+	Player_current_weapon = 0
+	############################ !!!!!!!!!!!!!!!!
+
+	load_inventory()
+
 	print("Player car Fiat125p rigid start x: " + str(global_position.x))
 
 	# turn_right()
@@ -90,7 +86,7 @@ func _physics_process(_delta) -> void:
 			_process_on_state_move_left(_delta)
 
 func _unhandled_input(event):
-	#if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -156,6 +152,66 @@ func _integrate_forces(_state):
 	# if Input.is_action_pressed("ui_left"):
 	# 	rotation_direction -= 1
 	# state.apply_torque(rotation_direction * torque)
+
+func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
+						# Torso/arm_r/weapon_spawn
+						# Torso/arm_r
+	
+	#var spawn_node_path:String = "Body_parts/weapon_spawn"
+	#var marker_node_path:String = "Body_parts/weapon_spawn"
+	
+	match Player_current_weapon:
+		0: # Empty weapon = none
+			if get_node("weapon_spawn/rocket_4").get_child_count() > 0:
+				get_node("weapon_spawn/rocket_4").get_child(0).queue_free()
+			Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
+			if get_node("weapon_spawn/empty").get_child_count() > 0:
+				get_node("weapon_spawn/empty").get_child(0).queue_free()
+			get_node("weapon_spawn/empty").add_child(Player_weapon)
+			gv.set_cursor_orange()	
+		
+		1: # AK-47 
+			get_node("weapon_spawn/empty").get_child(0).queue_free()
+			Player_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
+			if get_node("weapon_spawn/ak-47").get_child_count() > 0:
+				get_node("weapon_spawn/ak-47").get_child(0).queue_free()
+			get_node("weapon_spawn/ak-47").add_child(Player_weapon)
+			gv.set_cursor_orange()
+			Player_weapon.transform = get_node("weapon_spawn/ak-47").transform
+			Player_weapon.scale = Vector2(3,3)
+		
+		2: # RPG-7 Grenade launcher
+			get_node("weapon_spawn/ak-47").get_child(0).queue_free()
+			Player_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
+			if get_node("weapon_spawn/rpg_7").get_child_count() > 0:
+				get_node("weapon_spawn/rpg_7").get_child(0).queue_free()
+			get_node("weapon_spawn/rpg_7").add_child(Player_weapon)
+			gv.set_cursor_orange()
+			Player_weapon.transform = get_node("weapon_spawn/rpg_7").transform
+			Player_weapon.scale = Vector2(5,7)	
+
+		3: # Home misille rocket launcher
+			get_node("weapon_spawn/rpg_7").get_child(0).queue_free()
+			Player_weapon = load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn").instantiate()
+			if get_node("weapon_spawn/rocket_4").get_child_count() > 0:
+				get_node("weapon_spawn/rocket_4").get_child(0).queue_free()
+			get_node("weapon_spawn/rocket_4").add_child(Player_weapon)
+			gv.set_cursor_green()
+			Player_weapon.transform = get_node("weapon_spawn/rocket_4").transform
+			Player_weapon.scale = Vector2(3,3)
+
+	print("Player car inventory loaded")
+				
+
+func load_next_weapon():
+	print(str(Player_guns.size()))
+	if Player_guns.size() > Player_current_weapon:
+		Player_current_weapon += 1
+		load_inventory()
+		# Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2 }
+	if Player_guns.size() == Player_current_weapon:
+		Player_current_weapon = 0
+		load_inventory()
 
 
 func is_on_floor():
@@ -397,13 +453,3 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	Player_on_screen = false
-
-
-
-
-
-
-
-
-
-
