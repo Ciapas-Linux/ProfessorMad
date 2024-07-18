@@ -185,7 +185,7 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			get_node("weapon_spawn/ak-47").add_child(Player_weapon)
 			gv.set_cursor_orange()
 			Player_weapon.transform = get_node("weapon_spawn/ak-47").transform
-			Player_weapon.scale = Vector2(0.5,0.5)
+			Player_weapon.scale = Vector2(3.0,3.0)
 		
 		2: # RPG-7 Grenade launcher
 			get_node("weapon_spawn/ak-47").get_child(0).queue_free()
