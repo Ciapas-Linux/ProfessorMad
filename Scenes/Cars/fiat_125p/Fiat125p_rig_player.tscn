@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b1n6twuv5ahxy"]
+[gd_scene load_steps=54 format=3 uid="uid://b1n6twuv5ahxy"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/fiat_125p/Fiat125p_rig_player.gd" id="1_f1xke"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="2_ieu6u"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://bd8rnsf4mod6d" path="res://Assets/Sounds/Hero/stukot1.wav" id="27_swoio"]
 [ext_resource type="AudioStream" uid="uid://cxcfnuc3rojwe" path="res://Assets/Sounds/Impact/impact_1.wav" id="29_riqcd"]
 [ext_resource type="AudioStream" uid="uid://b5nco5e6h7kwq" path="res://Assets/Sounds/Impact/impact_2.wav" id="29_xi277"]
+[ext_resource type="AudioStream" uid="uid://bb0nnwrfynduf" path="res://Assets/Sounds/Sfx/object.wav" id="34_361nd"]
 
 [sub_resource type="Animation" id="Animation_e8m2p"]
 length = 0.001
@@ -591,6 +592,9 @@ pitch_scale = 1.2
 stream = ExtResource("29_riqcd")
 volume_db = 2.0
 pitch_scale = 0.6
+
+[node name="snd_switch_weapon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_361nd")
 
 [node name="Front_RayCast2D" type="RayCast2D" parent="."]
 enabled = false

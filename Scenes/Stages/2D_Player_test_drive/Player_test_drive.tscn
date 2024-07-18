@@ -77,8 +77,14 @@ texture = ExtResource("9_by663")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
+[node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
+z_index = 1
+position = Vector2(1048, 0)
+
+[node name="Moon1" parent="." instance=ExtResource("15_x78c7")]
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -1
+layer = 0
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(0, 191)
@@ -126,7 +132,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
 [node name="Camera2DPro" type="Camera2D" parent="."]
-offset = Vector2(0, -300)
 zoom = Vector2(0.5, 0.5)
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -137,10 +142,6 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 script = ExtResource("3_5ghoj")
-cam_Y_offset = 0.0
-
-[node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
-position = Vector2(1048, 0)
 
 [node name="PlayerEnemyRay" type="Node2D" parent="."]
 visible = false
@@ -165,8 +166,6 @@ scale = Vector2(1.6, 1.6)
 [node name="Gorka" parent="." instance=ExtResource("18_744sl")]
 position = Vector2(3874, 772)
 
-[node name="Moon1" parent="." instance=ExtResource("15_x78c7")]
-
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 
@@ -183,4 +182,7 @@ position = Vector2(2670, 613)
 scale = Vector2(0.6, 0.6)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1191, 515)
+color = Color(1, 0.34902, 0, 1)
 texture = ExtResource("19_iiwhm")
+texture_scale = 7.0

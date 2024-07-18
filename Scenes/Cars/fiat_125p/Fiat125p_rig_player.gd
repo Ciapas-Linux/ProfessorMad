@@ -111,6 +111,13 @@ func _process_on_state_stop(delta) -> void:
 		for wheel in wheels:
 			wheel.apply_torque_impulse(-speed * delta * 60)
 
+	# if gv.Player_current_weapon != 0:
+	# GO --> Switch weapon	
+	if Input.is_action_just_pressed("Weapon"):
+			get_node("snd_switch_weapon").play()
+			load_next_weapon()
+			print("Player: switch weapon")		
+
 
 func _process_on_state_move_right(_delta: float) -> void:
 	#velocity.x = speed
@@ -178,7 +185,7 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			get_node("weapon_spawn/ak-47").add_child(Player_weapon)
 			gv.set_cursor_orange()
 			Player_weapon.transform = get_node("weapon_spawn/ak-47").transform
-			Player_weapon.scale = Vector2(3,3)
+			Player_weapon.scale = Vector2(0.5,0.5)
 		
 		2: # RPG-7 Grenade launcher
 			get_node("weapon_spawn/ak-47").get_child(0).queue_free()
@@ -408,32 +415,40 @@ func _on_timer_timeout() -> void:
 	#$body_parts/Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
 	
 
-func _on_front_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, front contact area: " + area.name)
-	$snd_hit.play()
+func _on_front_contact_area_entered(_area:Area2D) -> void:
+	# print("Fiat125p, front contact area: " + area.name)
+	# $snd_hit.play()
+	pass
 	
 func _on_front_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid" and body.name != "Wheel":
+		if body.get_parent().has_method("hit"):
+			body.get_parent().hit()
 		$snd_hit2.play()
 		print("Fiat125p, front contact body: " + body.name)
 
-func _on_back_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, back contact area: " + area.name)
-	$snd_hit.play()
+
+func _on_back_contact_area_entered(_area:Area2D) -> void:
+	# print("Fiat125p, back contact area: " + area.name)
+	# $snd_hit.play()
+	pass
 
 func _on_back_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid":	
 		$snd_hit.play()
 		print("Fiat125p, back contact body: " + body.name)
 
-func _on_floor_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, floor contact area: " + area.name)
-	$snd_touch_ground.play()
+
+func _on_floor_contact_area_entered(_area:Area2D) -> void:
+	# print("Fiat125p, floor contact area: " + area.name)
+	# $snd_touch_ground.play()
+	pass
 
 func _on_floor_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid":
 		$snd_touch_ground.play()
 		print("Fiat125p, floor contact body: " + body.name)
+
 
 func _on_top_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid":
