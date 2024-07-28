@@ -11,7 +11,7 @@ extends PlayerState
 var ray_normal:Vector2
 var offset: float
 var floor_normal:Vector2
-
+#var node_enter:int = 0
 
 # Enter state:
 func enter(_msg := {}) -> void:
@@ -22,22 +22,30 @@ func enter(_msg := {}) -> void:
 		anim_player.play("idle")
 		anim_player.seek(0.1)
 
-	if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
-		player.Player_weapon.connect("fire", _on_gun_2_fire)
+	# if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+	# 	print("Player: XXXXXXXXXXXXXXXXXXXXXX")
+	# 	player.Player_weapon.connect("fire", _on_gun_2_fire)
+	# 	if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
+	# 		print("Player: XXXXXXXXXXXXXXXXXXXXXX")
 
-	print("Player: idle")
+	print("Player: state Idle")
+	#node_enter+=1
+	#print("Player: Idle enter nr: " + str(node_enter))
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if anim_name == "touch_down":
-		anim_player.play("idle")
+	if gv.fsm.state.name == "Idle":
+		if anim_name == "touch_down":
+			anim_player.play("idle")
 
 # Exit state:	
 func exit() -> void:
+	print("Player: exit state Idle")
 	pass
 
 func physics_update(delta: float) -> void:
 
 	if not player.is_on_floor():
+		print("Player: Idle to air")
 		state_machine.transition_to("Air")
 		return
 		
@@ -157,14 +165,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_down"):
 		state_machine.transition_to("target_down")
 		
-		
-func _on_gun_2_fire() -> void:
-	if gv.fsm.state.name == "Idle":
-		if player.Player_direction == Vector2.RIGHT:
-			player.position.x -= 3
-		else:	
-			player.position.x += 3
-
+	
 
 
 

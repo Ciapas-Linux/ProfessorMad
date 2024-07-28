@@ -103,11 +103,9 @@ func _unhandled_input(event):
 
 func _process_on_state_stop(delta) -> void:
 	if Input.is_action_pressed("ui_right"):
-	 	#$snd_click.play()
 		for wheel in wheels:
 			wheel.apply_torque_impulse(speed * delta * 60)
 	if Input.is_action_pressed("ui_left"):
-	 	#$snd_click.play()
 		for wheel in wheels:
 			wheel.apply_torque_impulse(-speed * delta * 60)
 
@@ -116,7 +114,7 @@ func _process_on_state_stop(delta) -> void:
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("snd_switch_weapon").play()
 			load_next_weapon()
-			print("Player: switch weapon")		
+			print("Player Car: switch weapon")		
 
 
 func _process_on_state_move_right(_delta: float) -> void:

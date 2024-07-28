@@ -89,7 +89,7 @@ func _ready():
 	print("Player money: " + str(Player_gold))
 	print("Player state: " + gv.fsm.state.name)  
 	print("Player start x: " + str(global_position.x))	
-	print("Player ready: ready ...") 
+	print("Player ready: Yes ...") 
 	print("")  	
 
 func fade_in():
@@ -202,10 +202,10 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			Player_weapon.transform = get_node("Body_parts/weapon_spawn/rocket_4").transform
 			Player_weapon.scale = Vector2(3,3)		
 
-	print("Player inventory loaded")
+	print("Player: inventory loaded")
 
 func load_next_weapon():
-	print(str(Player_guns.size()))
+	# print("Weapons: " + str(Player_guns.size()))
 	if Player_guns.size() > Player_current_weapon:
 		Player_current_weapon += 1
 		load_inventory()
@@ -234,11 +234,13 @@ func _process(_delta: float) -> void:
 
 	Player_state = Player_fsm.state.name
 	
-
-func _on_gun_2_fire() -> void:
-	print("Hero: me shooting")
-		
-
+func on_gun_fire() -> void:
+	if Player_direction == Vector2.RIGHT:
+		position.x -= 3
+	else:	
+		position.x += 3
+	#print("Player: Shooting ...")
+	
 func hit():
 	print("Hero: enemies hit me by bullet!") 
 	if Player_health > 0:
@@ -268,7 +270,6 @@ func _on_left_area_2d_body_entered(body:Node2D) -> void:
 
 func _on_right_area_2d_body_entered(body:Node2D) -> void:
 	print("Right PlayerArea enter body: " + body.name) 
-
 
 func bomb_explode():
 	if Player_health > 0:

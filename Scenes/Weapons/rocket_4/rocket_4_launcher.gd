@@ -129,7 +129,3 @@ func _on_timer_timeout() -> void:
 #global_rotation = rad_to_deg(global_position.angle_to(get_global_mouse_position()))/2
 #global_rotation = position.angle_to_point(get_global_mouse_position())
 #print_debug(get_global_mouse_position())	
-
-
-
-

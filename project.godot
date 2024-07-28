@@ -52,7 +52,7 @@ project/assembly_name="Prof.ysolek"
 [editor]
 
 movie_writer/mjpeg_quality=1.0
-movie_writer/movie_file="/home/ciapas/gra/videos/video9.avi"
+movie_writer/movie_file="/home/ciapas/gra/videos/video10.avi"
 movie_writer/disable_vsync=true
 
 [filesystem]

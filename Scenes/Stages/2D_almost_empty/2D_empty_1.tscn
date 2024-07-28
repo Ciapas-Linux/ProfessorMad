@@ -68,7 +68,7 @@ script = ExtResource("1_yuv4n")
 [node name="Player" parent="." instance=ExtResource("2_0mqdr")]
 visibility_layer = 2
 z_index = 1
-position = Vector2(173, 413)
+position = Vector2(173, 282)
 scale = Vector2(0.261768, 0.261768)
 
 [node name="Camera2DPro" type="Camera2D" parent="."]

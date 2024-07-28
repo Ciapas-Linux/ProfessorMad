@@ -1,8 +1,9 @@
+extends Sprite2D
 
 # ############
 # RPG_7.SCRIPT
 # ############
-extends Sprite2D
+
 
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 
@@ -108,7 +109,3 @@ func shoot():
 #global_rotation = rad_to_deg(global_position.angle_to(get_global_mouse_position()))/2
 #global_rotation = position.angle_to_point(get_global_mouse_position())
 #print_debug(get_global_mouse_position())	
-
-
-
-

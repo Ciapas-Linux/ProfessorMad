@@ -9,6 +9,7 @@ var delay_timer : Timer
 var ray_normal:Vector2
 var floor_normal:Vector2
 var start_check_floor : bool = false
+var touch_ground:bool = false 
 
 func enter(msg := {}) -> void:
 	
@@ -26,8 +27,6 @@ func enter(msg := {}) -> void:
 		player.Foot_L.rotation = deg_to_rad(65)
 		anim_player.play("jump")
 	
-	start_check_floor = false
-
 	delay_timer = Timer.new()
 	add_child(delay_timer)
 	delay_timer.wait_time = 0.3
@@ -35,17 +34,25 @@ func enter(msg := {}) -> void:
 	delay_timer.connect("timeout", _on_timer_timeout)
 	delay_timer.start()
 	
-	print("Player: Air")
+	print("Player: state Air")
+
+# Exit state:	
+func exit() -> void:
+	print("Player: exit state Air")
+	pass
 
 func _on_timer_timeout():
 	start_check_floor = true	
 
 func physics_update(delta: float) -> void:
+
+	if touch_ground == true:
+		return
 	
-	if player.is_on_floor():
-		if player.Player_is_paused == true:
-			state_machine.transition_to("Idle")
-			return
+	# if player.Player_is_paused == true:
+	# 	if player.is_on_floor():
+	# 		state_machine.transition_to("Idle")
+	# 		return
 	
 	if Input.is_action_pressed("ui_right"):
 		player.velocity.x = player.speed
@@ -66,15 +73,19 @@ func physics_update(delta: float) -> void:
 
 	if start_check_floor == true:
 		if player.is_on_floor() == true:
+			touch_ground = true
+			print("Player: Air tuch down")
 			anim_player.play("touch_down")
 			player.velocity = Vector2.ZERO
 			snd_fall.play()
 					
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if anim_name == "touch_down":
-		state_machine.transition_to("Idle")
-	if anim_name == "jump_start":
-		player.velocity.y = - player.jump_impulse
-		anim_player.play("jump")
+	if gv.fsm.state.name == "Air":
+		if anim_name == "touch_down":
+			#print("Player: Air to Idle")
+			state_machine.transition_to("Idle")
+		if anim_name == "jump_start":
+			player.velocity.y = - player.jump_impulse
+			anim_player.play("jump")
 		
 	

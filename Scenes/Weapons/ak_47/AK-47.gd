@@ -78,10 +78,12 @@ func shoot():
 	$snd_fire1.play()
 	$FiringSprite.visible = true
 	$FiringSprite.play("fire")
-	fire.emit()
+	# fire.emit()
 	# $Bullet_shell.restart()
 	# $Bullet_shell.emiting(true)
 	
+	gv.Player.on_gun_fire()
+
 
 func _on_firing_sprite_animation_finished() -> void:
 	$FiringSprite.visible = false

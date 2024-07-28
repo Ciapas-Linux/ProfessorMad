@@ -29,12 +29,13 @@ func physics_update(delta: float) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if anim_name == "shockwave_back" or anim_name == "shockwave_right":
-		player.Player_weapon.visible = true
-		#player.fade_in()
-		player.velocity.x = 0
-		await get_tree().create_timer(1.6).timeout
-		state_machine.transition_to("Idle")
+	if gv.fsm.state.name == "Shockvawe":
+		if anim_name == "shockwave_back" or anim_name == "shockwave_right":
+			player.Player_weapon.visible = true
+			#player.fade_in()
+			player.velocity.x = 0
+			await get_tree().create_timer(1.6).timeout
+			state_machine.transition_to("Idle")
 
 	
 

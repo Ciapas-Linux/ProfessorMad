@@ -9,7 +9,7 @@ extends PlayerState
 
 var ray_normal:Vector2
 var floor_normal:Vector2
-
+var touch_ground:bool = false 
 
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
@@ -20,7 +20,7 @@ func enter(msg := {}) -> void:
 	
 	player.Foot_R.rotation = deg_to_rad(85)
 	player.Foot_L.rotation = deg_to_rad(65)
-	print("Player: Air run")
+	print("Player: state Air_run")
 
 	# if gv.fsm.previous_state == "run_right":
 	# 	from_run = true
@@ -29,10 +29,10 @@ func enter(msg := {}) -> void:
 		
 func physics_update(delta: float) -> void:
 	
-	if player.is_on_floor():
-		if player.Player_is_paused == true:
-			state_machine.transition_to("Idle")
-			return	
+	# if player.is_on_floor():
+	# 	if player.Player_is_paused == true:
+	# 		state_machine.transition_to("Idle")
+	# 		return	
 	
 	if Input.is_action_pressed("ui_right"):
 		player.velocity.x = player.speed_run
@@ -52,12 +52,15 @@ func physics_update(delta: float) -> void:
 		player.Foot_L.rotation = deg_to_rad(65)	
 		
 	if player.is_on_floor() == true:
-		anim_player.play("touch_down")
-		player.velocity = Vector2.ZERO
-		#state_machine.transition_to("Idle")
-		snd_fall.play() 	
+		if touch_ground == false:
+			touch_ground = true
+			anim_player.play("touch_down")
+			player.velocity = Vector2.ZERO
+			#state_machine.transition_to("Idle")
+			snd_fall.play() 	
 				
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if anim_name == "touch_down":
-		state_machine.transition_to("Idle")
+	if gv.fsm.state.name == "Air_run":
+		if anim_name == "touch_down":
+			state_machine.transition_to("Idle")
 	
