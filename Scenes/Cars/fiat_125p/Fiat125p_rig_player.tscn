@@ -490,12 +490,14 @@ libraries = {
 }
 
 [node name="Driver_arm" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(65, -41)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("23_8o82p")
 offset = Vector2(10, 68)
 
 [node name="hand" type="Sprite2D" parent="Driver_arm"]
+z_index = 1
 position = Vector2(94, 216)
 rotation = 0.159498
 scale = Vector2(0.8, 0.8)
@@ -507,6 +509,7 @@ position = Vector2(71.7477, 31.5047)
 remote_path = NodePath("../../../weapon_spawn")
 
 [node name="fore_arm" type="Sprite2D" parent="Driver_arm"]
+z_index = 1
 position = Vector2(2.00001, 124)
 rotation = -0.844903
 scale = Vector2(0.8, 0.8)

@@ -300,7 +300,7 @@ func bomb_explode():
 
 func hit()-> void:
 	if hit_count > 0:
-		print("Player Fiat125p: got hit " + "hits: " + str(hit_count))
+		print("Player Car: got hit " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		hit_count -= 1
 		

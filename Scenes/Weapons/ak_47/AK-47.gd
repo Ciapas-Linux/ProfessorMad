@@ -82,7 +82,8 @@ func shoot():
 	# $Bullet_shell.restart()
 	# $Bullet_shell.emiting(true)
 	
-	gv.Player.on_gun_fire()
+	if gv.Player.has_method("on_gun_fire"):
+		gv.Player.on_gun_fire()
 
 
 func _on_firing_sprite_animation_finished() -> void:
