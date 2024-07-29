@@ -32,8 +32,13 @@ func _process(_delta: float) -> void:
 		global_rotation = deg_to_rad(190)
 
 	if Input.is_action_just_pressed("Fire"):
-		if gv.Player.Player_fsm.state.name == "target_up" or gv.Player.Player_fsm.state.name == "target_down":
-			shoot()
+		match gv.Player.get_state():
+			"target_up":
+				shoot()
+			"target_down":
+				shoot()
+			"Drive":
+				shoot()
 			
 			
 func reload():
