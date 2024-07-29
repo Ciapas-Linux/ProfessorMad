@@ -25,7 +25,7 @@ class_name Hero extends CharacterBody2D
 
 @export var spawn_point :float = -500.0
 
-
+@onready var Player_fsm:StateMachine
 var Player_level:int = 1
 var Player_health:int = 100
 const Player_health_max:int = 100
@@ -39,7 +39,7 @@ var Player_current_weapon:int = Player_guns["ak_47"]
 var Player_weapon:Sprite2D
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
 var Player_state:String
-var Player_fsm:StateMachine
+#var Player_fsm:StateMachine
 
 signal bomb_hit_me
 
@@ -56,7 +56,7 @@ var eyes_rnd_blink_timer:Timer
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 
 func _ready():
-	gv.fsm = $StateMachine
+	#gv.fsm = $StateMachine
 	Player_fsm = get_node("StateMachine")
 	$BloodSplash.visible = false
 	gv.Player = self
@@ -87,7 +87,7 @@ func _ready():
 	print("Player level: " + str(Player_level)) 
 	print("Player current weapon: " + str(Player_current_weapon))
 	print("Player money: " + str(Player_gold))
-	print("Player state: " + gv.fsm.state.name)  
+	print("Player state: " + Player_fsm.state.name)  
 	print("Player start x: " + str(global_position.x))	
 	print("Player ready: Yes ...") 
 	print("")  	
@@ -230,10 +230,13 @@ func load_next_weapon():
 func _process(_delta: float) -> void:
 	if global_position.x < left_walk_limit:
 		global_position.x = spawn_point
-		gv.fsm.transition_to("Idle")
+		Player_fsm.transition_to("Idle")
 
-	Player_state = Player_fsm.state.name
-	
+	#Player_state = Player_fsm.state.name
+
+func get_state():
+	return Player_fsm.state.name
+
 func on_gun_fire() -> void:
 	if Player_direction == Vector2.RIGHT:
 		position.x -= 3
@@ -255,13 +258,13 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_left_area_2d_area_entered(area:Area2D) -> void:
 	if area.name == "Bomb2":
 		Player_health -= 25
-		gv.fsm.transition_to("Shockwave", {back_area = true}) 	
+		Player_fsm.transition_to("Shockwave", {back_area = true}) 	
 		print("Left PlayerArea2D hit by: " + area.name) 
 
 func _on_right_area_2d_area_entered(area:Area2D) -> void:
 	if area.name == "Bomb2":
 		Player_health -= 25
-		gv.fsm.transition_to("Shockwave", {front_area = true}) 
+		Player_fsm.transition_to("Shockwave", {front_area = true}) 
 		print("Right PlayerArea2D hit by: " + area.name)
 
 func _on_left_area_2d_body_entered(body:Node2D) -> void:
@@ -275,7 +278,7 @@ func bomb_explode():
 	if Player_health > 0:
 		Player_health -= 25	
 	print("Hero: enemies hit me by drone big bomb!")
-	gv.fsm.transition_to("Hit_bomb")
+	Player_fsm.transition_to("Hit_bomb")
 
 
 

@@ -15,7 +15,9 @@ func enter(_msg := {}) -> void:
 			get_node("../../snd_walk").play()
 
 	anim_player.stop()
-	print("Player: walk")
+	
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player: state Walk")
 	
 func physics_update(delta: float) -> void:
 		

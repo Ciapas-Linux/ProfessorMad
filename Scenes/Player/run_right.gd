@@ -7,7 +7,7 @@ func enter(_msg := {}) -> void:
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
 	anim_player.stop()		
-	print("Player: run right")		
+	print("Player: state run_right")		
 	
 func physics_update(delta: float) -> void:
 	

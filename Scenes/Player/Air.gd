@@ -20,6 +20,7 @@ func enter(msg := {}) -> void:
 		get_node("../../snd_jump").play()
 		#anim_player.set_blend_time("idle", "jump_start",0.6)
 		anim_player.play("jump_start")
+		print("Player: state Jump start")
 
 	# Falling down when start from Air:
 	if msg.is_empty():		
@@ -38,6 +39,8 @@ func enter(msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
+	touch_ground = false
+	start_check_floor = false 
 	print("Player: exit state Air")
 	pass
 
@@ -80,7 +83,7 @@ func physics_update(delta: float) -> void:
 			snd_fall.play()
 					
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if gv.fsm.state.name == "Air":
+	if player.Player_fsm.state.name == "Air":
 		if anim_name == "touch_down":
 			#print("Player: Air to Idle")
 			state_machine.transition_to("Idle")

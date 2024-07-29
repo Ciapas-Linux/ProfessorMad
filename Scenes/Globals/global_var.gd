@@ -40,7 +40,7 @@ var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 
 
 # PLAYER:
-@onready var fsm:StateMachine
+#@onready var fsm:StateMachine
 var Player
 # Player global signals:
 signal player_bullet_ready

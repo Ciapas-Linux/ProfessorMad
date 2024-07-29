@@ -29,7 +29,7 @@ func physics_update(delta: float) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if gv.fsm.state.name == "Shockvawe":
+	if player.Player_fsm.state.name == "Shockvawe":
 		if anim_name == "shockwave_back" or anim_name == "shockwave_right":
 			player.Player_weapon.visible = true
 			#player.fade_in()

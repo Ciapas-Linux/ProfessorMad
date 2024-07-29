@@ -28,12 +28,13 @@ func enter(_msg := {}) -> void:
 	# 	if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
 	# 		print("Player: XXXXXXXXXXXXXXXXXXXXXX")
 
+	print("Player: previous state " + player.Player_fsm.previous_state)
 	print("Player: state Idle")
 	#node_enter+=1
 	#print("Player: Idle enter nr: " + str(node_enter))
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if gv.fsm.state.name == "Idle":
+	if player.Player_fsm.state.name == "Idle":
 		if anim_name == "touch_down":
 			anim_player.play("idle")
 
@@ -305,5 +306,3 @@ func physics_update(delta: float) -> void:
 
 	#var laserOrigin = to_local(Ray.global_position)		
 		
-
-

@@ -26,7 +26,12 @@ func enter(msg := {}) -> void:
 	# 	from_run = true
 	# 	print("Player: Jump from run ")
 
-		
+# Exit state:	
+func exit() -> void:
+	touch_ground = false 
+	print("Player: exit state Air_run")
+	pass
+
 func physics_update(delta: float) -> void:
 	
 	# if player.is_on_floor():
@@ -60,7 +65,7 @@ func physics_update(delta: float) -> void:
 			snd_fall.play() 	
 				
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
-	if gv.fsm.state.name == "Air_run":
+	if player.Player_fsm.state.name == "Air_run":
 		if anim_name == "touch_down":
 			state_machine.transition_to("Idle")
 	

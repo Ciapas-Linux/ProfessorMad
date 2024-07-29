@@ -25,6 +25,7 @@ const STOP: int = 2
 var mouse_enter:bool = false
 var current_state : int = STOP
 	
+	
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
   	load("res://Assets/Sounds/pisk_opon2.wav"),
   	load("res://Assets/Sounds/pisk_opon3.wav")]
@@ -71,7 +72,9 @@ func _ready() -> void:
 
 	# turn_right()
 	# flip_v(true)
-		
+
+func get_state():
+	return Player_state		
 
 func _process(_delta: float) -> void:
 	pass	
@@ -320,6 +323,10 @@ func hit()-> void:
 			gv.Cam1.ScreenShake(30,0.5)
 			#queue_free()	
 
+func on_gun_fire() -> void:
+	anim_player.play("shoot")
+	$Driver/AnimationPlayer.play("shoot")
+
 func flip_h(flip:bool):
 	var x_axis = global_transform.x
 	global_transform.x.x = (-1 if flip else 1) * abs(x_axis.x)
@@ -466,3 +473,6 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	Player_on_screen = false
+
+func _on_animation_player_animation_finished(_anim_name:StringName) -> void:
+	$Driver/AnimationPlayer.play("head_rotate")

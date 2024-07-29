@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 	#$RayCast2D.target_position = get_local_mouse_position()			
 
 	if Input.is_action_just_pressed("Fire"):
-		if gv.fsm.state.name == "target_up" or gv.fsm.state.name == "target_down":
+		if gv.Player.Player_fsm.state.name == "target_up" or gv.Player.Player_fsm.state.name == "target_down":
 			shoot()
 			
 			

@@ -49,7 +49,7 @@ _surfaces = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
-size = Vector2(20060, 200)
+size = Vector2(80060, 200)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ebbpm"]
 viewport_path = NodePath("SubViewport")
@@ -108,10 +108,10 @@ texture = ExtResource("13_nhqf3")
 
 [node name="Road" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(8430, 563)
+position = Vector2(35836, 563)
 texture = ExtResource("4_dy6c1")
 region_enabled = true
-region_rect = Rect2(0, 0, 20000, 339)
+region_rect = Rect2(0, 0, 80000, 339)
 
 [node name="GruntBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-70, 53)
@@ -119,8 +119,7 @@ collision_layer = 2
 collision_mask = 127
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GruntBody2D"]
-visible = false
-position = Vector2(8482, 780)
+position = Vector2(36298, 780)
 shape = SubResource("RectangleShape2D_fmhf3")
 
 [node name="Deep" type="Sprite2D" parent="GruntBody2D"]
@@ -160,7 +159,7 @@ position = Vector2(14092, 531)
 scale = Vector2(2.5, 2.5)
 
 [node name="Kibel1" parent="." instance=ExtResource("16_mxfbl")]
-position = Vector2(17513, 377)
+position = Vector2(17513, -505)
 scale = Vector2(1.6, 1.6)
 
 [node name="Gorka" parent="." instance=ExtResource("18_744sl")]
