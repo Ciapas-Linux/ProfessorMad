@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ctdq6ddl0la1t"]
+[gd_scene load_steps=23 format=4 uid="uid://ctdq6ddl0la1t"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/2D_almost_empty/2D_empty_1.gd" id="1_yuv4n"]
 [ext_resource type="PackedScene" uid="uid://c44bp5cutt8em" path="res://Scenes/Player/Player.tscn" id="2_0mqdr"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://1s83i5lxhkdf" path="res://Assets/Ground/Grunt_1.jpg" id="5_c8kwp"]
 [ext_resource type="PackedScene" uid="uid://fusvokqh37g3" path="res://Scenes/Nature/Moon/Moon_1.tscn" id="15_3rlrq"]
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="16_6ra8s"]
+[ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barell_1.tscn" id="17_kedut"]
+[ext_resource type="PackedScene" uid="uid://bcr5pp44qvg4y" path="res://Scenes/Explosives/Barrel_2/barell_2.tscn" id="18_dgo0j"]
 [ext_resource type="Script" path="res://Scenes/Stages/PlayerEnemyRay.gd" id="26_8t44r"]
 [ext_resource type="Texture2D" uid="uid://dv25xkx3r11pe" path="res://Assets/Skies/sky1.png" id="27_ikcvc"]
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="28_iufa5"]
@@ -185,4 +187,12 @@ region_rect = Rect2(0, 0, 20000, 62)
 [node name="Moon1" parent="." instance=ExtResource("15_3rlrq")]
 
 [node name="Gorka" parent="." instance=ExtResource("16_6ra8s")]
-position = Vector2(1552, 695)
+position = Vector2(3278, 695)
+
+[node name="Barell_1" parent="." instance=ExtResource("17_kedut")]
+position = Vector2(589, 531)
+scale = Vector2(0.7, 0.7)
+
+[node name="Barell_2" parent="." instance=ExtResource("18_dgo0j")]
+position = Vector2(1338, 532)
+scale = Vector2(0.7, 0.7)

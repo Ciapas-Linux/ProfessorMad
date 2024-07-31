@@ -4550,7 +4550,7 @@ texture = ExtResource("6_sh2oj")
 offset = Vector2(43.5112, 80.9778)
 
 [node name="ForeArm_L" type="Sprite2D" parent="Body_parts/Hand_L"]
-position = Vector2(-97.4562, -112.953)
+position = Vector2(-97.4561, -112.953)
 rotation = -0.64475
 scale = Vector2(0.833333, 0.833333)
 texture = ExtResource("2_hi5ps")
@@ -4610,7 +4610,7 @@ offset = Vector2(0, -147)
 z_index = 1
 position = Vector2(-29.2564, -274.584)
 rotation = 0.149461
-scale = Vector2(0.799899, 0.799899)
+scale = Vector2(0.799898, 0.799898)
 texture = ExtResource("2_a310c")
 offset = Vector2(11.7867, 73.2179)
 
@@ -4646,8 +4646,8 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_hfn3g")
 
 [node name="weapon_spawn" type="Marker2D" parent="Body_parts"]
-position = Vector2(106.986, -37.8676)
-rotation = 0.0594909
+position = Vector2(106.986, -37.8677)
+rotation = 0.059491
 scale = Vector2(1.08789, 1.08789)
 gizmo_extents = 33.0
 

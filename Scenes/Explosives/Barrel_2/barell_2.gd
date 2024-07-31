@@ -1,8 +1,10 @@
+extends StaticBody2D
+
 # #################
-# # Barell_1 SCRIPT #
+# # Barell_2 SCRIPT #
 # #################
 
-extends Area2D
+
 
 var hit_count: int
 signal explode
@@ -56,16 +58,16 @@ func _process(_delta) -> void:
 func _timer_timeout():
 	position.y += 20
 
-@warning_ignore("unused_parameter") func _on_area_entered(area):
-	pass
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("Barrel_2: area hit me " + area.name)
 
-@warning_ignore("unused_parameter") func _on_body_entered(body: Node2D) -> void:
-	pass
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("Barrel_2: body hit me " + body.name)
 
 func hit():
 	if hit_count > 0:
 		hit_count -= 1
-		print("barell_1: dostałam ! " + "hits: " + str(hit_count))
+		print("barell_2: dostałam ! " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		position.y -= 20
 		timer.start()
@@ -89,7 +91,7 @@ func hit():
 			$object_spr.texture = Barrel_hit_tex
 
 func _on_bodies_collision_hit_me() -> void:
-	print("Barrel_1: some bodies hits me")
+	print("Barrel_2: some bodies hits me")
 
 func rpg_hit():
 	$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
@@ -108,7 +110,7 @@ func rpg_hit():
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 2.1)
 	$object_spr.texture = Barrel_hit_tex
 	gv.Cam1.ScreenShake(30, 0.5)
-	print("Coin Barell: enemies hit me by rpg!")
+	print("Barell_2: enemies hit me by rpg!")
 
 func bomb_explode():
 	$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
@@ -126,7 +128,7 @@ func bomb_explode():
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
 	$object_spr.texture = Barrel_hit_tex
 	gv.Cam1.ScreenShake(30, 0.5)
-	print("Coin Barell: enemies hit me by drone big bomb!")
+	print("Barell_2: enemies hit me by drone big bomb!")
 
 func _on_explosion_spr_animation_finished() -> void:
 	#emit_signal("explode")
@@ -164,3 +166,5 @@ func on_tween_finished():
 #				$Sprite.play("explode")
 #				$snd_explode.play()
 #				ShakeScreen.shake(10,0.5)
+
+

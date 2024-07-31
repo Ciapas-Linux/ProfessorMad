@@ -39,7 +39,6 @@ var Player_current_weapon:int = Player_guns["ak_47"]
 var Player_weapon:Sprite2D
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
 var Player_state:String
-#var Player_fsm:StateMachine
 
 signal bomb_hit_me
 
@@ -214,25 +213,11 @@ func load_next_weapon():
 		Player_current_weapon = 0
 		load_inventory()
 
-	#gv.Hero_global_position = global_position
-	#gv.Hero_local_position = position
 	
-	# if global_position.x < -1500:
-	# 	global_position.x = -500
-	# 	gv.fsm.transition_to("Idle")
-	
-	# if is_on_wall():
-	# 	gv.Hero_is_on_wall = true
-	# else:
-	# 	gv.Hero_is_on_wall = false
-
-
 func _process(_delta: float) -> void:
 	if global_position.x < left_walk_limit:
 		global_position.x = spawn_point
 		Player_fsm.transition_to("Idle")
-
-	#Player_state = Player_fsm.state.name
 
 func get_state():
 	return Player_fsm.state.name

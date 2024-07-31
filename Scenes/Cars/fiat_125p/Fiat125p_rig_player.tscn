@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Cars/fiat125/fiat_125_kolo.png" id="21_xbhir"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="22_60l6i"]
 [ext_resource type="Texture2D" uid="uid://cjyv01a887bvn" path="res://Assets/Player/BodyParts/Arm_R_3.png" id="23_8o82p"]
-[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="23_b7d51"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/Big_explosion/big_explosion.tscn" id="23_b7d51"]
 [ext_resource type="Texture2D" uid="uid://cpl4scn85w4k5" path="res://Assets/Player/BodyParts/ForeArm_R_2.png" id="24_awxm3"]
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="24_oxv8s"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="25_du7cd"]
@@ -655,12 +655,12 @@ color_ramp = SubResource("Gradient_44n6n")
 wait_time = 2.0
 autostart = true
 
-[node name="snd_engine" type="AudioStreamPlayer2D" parent="."]
+[node name="snd_engine" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_du7cd")
 volume_db = 6.0
 pitch_scale = 0.7
 
-[node name="snd_player" type="AudioStreamPlayer2D" parent="."]
+[node name="snd_player" type="AudioStreamPlayer" parent="."]
 
 [node name="snd_click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_eeef0")

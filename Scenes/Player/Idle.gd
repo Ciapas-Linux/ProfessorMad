@@ -56,6 +56,8 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	
+	# if player.SlopeRayCast.is_colliding():
+
 	# Rotate foot to match slope angle:
 	if player.is_on_floor() and player.SlopeRayCast.is_colliding():
 		offset = deg_to_rad(90)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Explosives/CoinBox.gd" id="1_g6smj"]
 [ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="2_wvn0k"]
-[ext_resource type="PackedScene" uid="uid://snylmrdcnykp" path="res://Scenes/Explosives/box2.tscn" id="3_icvo6"]
+[ext_resource type="PackedScene" uid="uid://snylmrdcnykp" path="res://Scenes/Explosives/Box_2/box2.tscn" id="3_icvo6"]
 
 [node name="CoinBox" type="Node2D"]
 script = ExtResource("1_g6smj")

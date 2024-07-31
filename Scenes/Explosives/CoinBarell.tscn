@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Explosives/CoinBarell.gd" id="1_r0216"]
 [ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="2_4e5on"]
-[ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/barell_1.tscn" id="3_aj3kb"]
+[ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barell_1.tscn" id="3_aj3kb"]
 
 [node name="CoinBarell" type="Node2D"]
 script = ExtResource("1_r0216")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dssc8fnnc4mtn" path="res://Assets/Cars/polonez_red/polonez1.png" id="1_ia8tm"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="3_p6sby"]
 [ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="4_8hgn6"]
-[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="6_wjsii"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/Big_explosion/big_explosion.tscn" id="6_wjsii"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="6_wmrx5"]
 
 [node name="Polonez1" type="RigidBody2D"]

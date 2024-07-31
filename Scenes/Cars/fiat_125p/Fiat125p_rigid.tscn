@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://crlqmbd4wl30a" path="res://Assets/Cars/fiat125/dach.png" id="19_6fc03"]
 [ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Cars/fiat125/fiat_125_kolo.png" id="20_crhiu"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="21_r0h17"]
-[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="22_0kfhm"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/Big_explosion/big_explosion.tscn" id="22_0kfhm"]
 [ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="23_eg2uo"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="26_kc0ge"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="26_odadu"]

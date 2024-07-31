@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c608lt4nvlyeh" path="res://Assets/Cars/maluch_seledyn/cicias1/kot2_03.png" id="7_v8bhq"]
 [ext_resource type="Texture2D" uid="uid://b1anr1u0mgf2v" path="res://Assets/Cars/maluch_seledyn/cicias1/kot2_04.png" id="8_thutg"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="12_6iota"]
-[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/big_explosion.tscn" id="13_rm1xg"]
+[ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/Big_explosion/big_explosion.tscn" id="13_rm1xg"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="14_nybt4"]
 
 [sub_resource type="Animation" id="Animation_vv5q0"]

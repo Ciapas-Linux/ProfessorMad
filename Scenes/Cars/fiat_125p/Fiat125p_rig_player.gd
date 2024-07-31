@@ -18,13 +18,9 @@ extends RigidBody2D
 var local_cursor_position:Vector2
 var player_distance:float
 
-const MOVE_RIGHT: int = 0
-const MOVE_LEFT: int = 1
-const STOP: int = 2
 
 var mouse_enter:bool = false
-var current_state : int = STOP
-	
+
 	
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
   	load("res://Assets/Sounds/pisk_opon2.wav"),
@@ -79,14 +75,26 @@ func get_state():
 func _process(_delta: float) -> void:
 	pass	
 
-func _physics_process(_delta) -> void:
-	match current_state:
-		STOP:
-			_process_on_state_stop(_delta)
-		MOVE_RIGHT:
-			_process_on_state_move_right(_delta)
-		MOVE_LEFT:
-			_process_on_state_move_left(_delta)
+func _physics_process(delta) -> void:
+	if Input.is_action_pressed("ui_right"):
+		for wheel in wheels:
+			wheel.apply_torque_impulse(speed * delta * 60)
+	if Input.is_action_pressed("ui_left"):
+		for wheel in wheels:
+			wheel.apply_torque_impulse(-speed * delta * 60)
+		
+		
+	# ARROW-> DOWN:	
+	if Input.is_action_pressed("ui_down"):
+		apply_impulse(Vector2(120, 6210),Vector2(0,0))
+
+	# if gv.Player_current_weapon != 0:
+	# GO --> Switch weapon	
+	if Input.is_action_just_pressed("Weapon"):
+			get_node("snd_switch_weapon").play()
+			load_next_weapon()
+			print("Player Car: switch weapon")
+					
 
 func _unhandled_input(event):
 	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
@@ -104,38 +112,6 @@ func _unhandled_input(event):
 			for node in out:
 				print(node.collider.name)
 
-func _process_on_state_stop(delta) -> void:
-	if Input.is_action_pressed("ui_right"):
-		for wheel in wheels:
-			wheel.apply_torque_impulse(speed * delta * 60)
-	if Input.is_action_pressed("ui_left"):
-		for wheel in wheels:
-			wheel.apply_torque_impulse(-speed * delta * 60)
-
-	# if gv.Player_current_weapon != 0:
-	# GO --> Switch weapon	
-	if Input.is_action_just_pressed("Weapon"):
-			get_node("snd_switch_weapon").play()
-			load_next_weapon()
-			print("Player Car: switch weapon")		
-
-
-func _process_on_state_move_right(_delta: float) -> void:
-	#velocity.x = speed
-	#velocity.y += gravity * delta
-	#constant_force = Vector2.RIGHT
-	#constant_torque = 12.0
-	#apply_central_impulse(Vector2(0, -10))
-	#apply_torque_impulse(-100)
-	player_distance = global_position.distance_to(gv.Hero_global_position)
-	#move_and_slide()
-	
-
-func _process_on_state_move_left(_delta: float) -> void:
-	#velocity.x = -speed
-	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
-	#move_and_slide()				
 
 func _integrate_forces(_state):
 	pass
@@ -237,7 +213,6 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_enter = false
 
-
 func _tween():
 	tween = get_tree().create_tween()
 	#tween.set_ease(Tween.EASE_OUT)
@@ -269,8 +244,6 @@ func _tween():
 	tween.tween_property($Driver, "rotation", randf_range(-3.5, 3.5), 1.0)
 	tween.tween_property($Driver, "self_modulate", Color(1, 1, 1, 0), 1.0)
 
-	
-
 func rpg_hit():
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
@@ -281,12 +254,9 @@ func rpg_hit():
 	_tween()
 	await get_tree().create_timer(0.3).timeout
 	$Bullet_holes.vanish()
-	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
 	
-
-
 func bomb_explode():
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
@@ -296,7 +266,6 @@ func bomb_explode():
 	$smoke_particles.visible = false
 	await get_tree().create_timer(0.3).timeout
 	$Bullet_holes.vanish()
-	current_state = STOP
 	get_node("snd_engine").stop()
 	$snd_player.stop()
 	_tween()
@@ -316,7 +285,6 @@ func hit()-> void:
 			$smoke_particles.visible = false
 			await get_tree().create_timer(0.3).timeout
 			$Bullet_holes.vanish()
-			current_state = STOP
 			get_node("snd_engine").stop()
 			$snd_player.stop()
 			_tween()
@@ -326,6 +294,7 @@ func hit()-> void:
 func on_gun_fire() -> void:
 	anim_player.play("shoot")
 	$Driver/AnimationPlayer.play("shoot")
+	apply_impulse(Vector2(-2120, 0),Vector2(0,0))
 
 func flip_h(flip:bool):
 	var x_axis = global_transform.x
@@ -346,8 +315,6 @@ func turn_left() -> void:
 	$kolo_l_CollisionPolygon2D.scale.x = scale.y * 1
 	$kolo_p_CollisionPolygon2D.scale.x = scale.y * 1
 	$smoke_particles.gravity = Vector2(-100.0, 2.0)
-	current_state = MOVE_LEFT
-
 
 func turn_right() -> void:
 	$body_parts.scale.x = $body_parts.scale.y * -1
@@ -363,63 +330,7 @@ func turn_right() -> void:
 	#$smoke_particles.amount = 20
 	#current_state = MOVE_RIGHT	
 
-func stop_drive() -> void:
-		current_state = STOP
-		$body_parts/Kolo_l/AnimationPlayer.stop(true)
-		$body_parts/Kolo_p/AnimationPlayer.stop(true)
-		$body_parts/Driver/AnimationPlayer.play("RESET")
-		#$Boss/AnimationPlayer.play("RESET")
-		get_node("snd_engine").stop()
-
-func start_drive(car_direction:int) -> void:
-	if $smoke_particles.emitting == false:
-			$smoke_particles.emitting = true
 	
-	if $body_parts/Kolo_l/AnimationPlayer.is_playing() == false:
-		$body_parts/Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
-			
-	if $body_parts/Kolo_p/AnimationPlayer.is_playing() == false:
-		$body_parts/Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
-	
-	if $body_parts/Driver/AnimationPlayer.is_playing() == false:
-		$body_parts/Driver/AnimationPlayer.play("head_rotate")
-		
-	#if $Boss/AnimationPlayer.is_playing() == false:
-		#$Boss/AnimationPlayer.play("rotate")	
-		
-	if get_node("snd_engine").playing != true:
-			get_node("snd_engine").play()
-
-	match car_direction:
-		MOVE_RIGHT:
-			turn_right()
-				
-		MOVE_LEFT:
-			turn_left()	
-
-	current_state = car_direction		
-
-func start_talk():
-	if $Driver.is_playing() == false:
-		$Driver.play("talk")
-
-
-func stop_talk():
-	$Driver.stop()
-
-
-func _on_timer_timeout() -> void:
-	if current_state == STOP:
-		return
-	speed = randf_range(10.0,800.0)
-	if speed < 50 or speed > 300:
-		$snd_player.stream = sounds[randi() % len(sounds)]
-		if $snd_player.playing != true:
-			$snd_player.play()
-	#$body_parts/Kolo_l/AnimationPlayer.play("rotate",-1,speed*0.001,false)
-	#$body_parts/Kolo_p/AnimationPlayer.play("rotate",-1,speed*0.001,false)
-	
-
 func _on_front_contact_area_entered(_area:Area2D) -> void:
 	# print("Fiat125p, front contact area: " + area.name)
 	# $snd_hit.play()
