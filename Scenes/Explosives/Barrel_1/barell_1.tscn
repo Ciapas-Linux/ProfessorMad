@@ -197,8 +197,8 @@ animations = [{
 size = Vector2(230, 418)
 
 [node name="Barell_1" type="Area2D"]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 10
+collision_mask = 117
 script = ExtResource("1_tstty")
 
 [node name="BulletCollision" type="CollisionShape2D" parent="."]
@@ -220,8 +220,8 @@ offset = Vector2(3, -8)
 texture = ExtResource("77_es713")
 
 [node name="BarellBodyCollision" type="StaticBody2D" parent="."]
-collision_layer = 8
-collision_mask = 115
+collision_layer = 10
+collision_mask = 117
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarellBodyCollision"]
 position = Vector2(0, 12)

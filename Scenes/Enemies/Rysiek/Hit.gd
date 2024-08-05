@@ -15,11 +15,11 @@ func enter(_msg := {}) -> void:
 	snd_player.play()	
 		
 	print("Rysiek enter state: Hit")
-	print("Rysiek previous state: " + gv.rysiek_fsm.previous_state)
+	print("Rysiek previous state: " + rysiek.Rysiek_fsm.previous_state)
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Hit"
+	#gv.rysiek_fsm.previous_state = "Hit"
 	print("Rysiek state: Exit Hit state")
 
 @warning_ignore("unused_parameter")	
@@ -32,6 +32,6 @@ func physics_update(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hitme":
-		gv.rysiek_fsm.transition_to("idle")
+		rysiek.Rysiek_fsm.transition_to("idle")
 		
 		

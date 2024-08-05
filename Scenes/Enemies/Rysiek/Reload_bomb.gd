@@ -15,7 +15,8 @@ func enter(_msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Reload_bomb"
+	#gv.rysiek_fsm.previous_state = "Reload_bomb"
+	pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "reload_bomb":

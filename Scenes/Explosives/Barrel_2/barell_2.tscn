@@ -195,7 +195,7 @@ animations = [{
 }]
 
 [node name="Barell_2" type="StaticBody2D"]
-collision_layer = 8
+collision_layer = 10
 collision_mask = 117
 script = ExtResource("1_d6n14")
 
@@ -205,8 +205,8 @@ position = Vector2(4, 9.5)
 shape = SubResource("CapsuleShape2D_ls4e1")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 125
+collision_layer = 10
+collision_mask = 117
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 1

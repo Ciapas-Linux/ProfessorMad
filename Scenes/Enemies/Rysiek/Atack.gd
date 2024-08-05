@@ -16,7 +16,8 @@ func enter(_msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Atack"
+	#gv.rysiek_fsm.previous_state = "Atack"
+	pass
 
 func physics_update(_delta: float) -> void:
 	pass	

@@ -55,7 +55,6 @@ var eyes_rnd_blink_timer:Timer
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 
 func _ready():
-	#gv.fsm = $StateMachine
 	Player_fsm = get_node("StateMachine")
 	$BloodSplash.visible = false
 	gv.Player = self

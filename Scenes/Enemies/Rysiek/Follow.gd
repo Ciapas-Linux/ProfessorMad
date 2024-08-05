@@ -18,7 +18,8 @@ func enter(_msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Follow"
+	#gv.rysiek_fsm.previous_state = "Follow"
+	pass
 
 func _process(_delta: float) -> void:
 	pass
@@ -63,8 +64,8 @@ func physics_update(delta: float) -> void:
 		rstate_machine.transition_to("Jump_left")		
 			
 func _on_enemy_somebody_hitme() -> void:
-	if gv.rysiek_fsm.rstate.name == "Follow_left":
-		if gv.rysiek_fsm.rstate.name != "Hit":
+	if rysiek.Rysiek_fsm.rstate.name == "Follow_left":
+		if rysiek.Rysiek_fsm.rstate.name != "Hit":
 			rstate_machine.transition_to("Hit")
 
 

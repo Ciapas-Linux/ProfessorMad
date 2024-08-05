@@ -56,6 +56,7 @@ size = Vector2(80060, 200)
 viewport_path = NodePath("SubViewport")
 
 [node name="Stage" type="Node2D"]
+position = Vector2(2, 0)
 script = ExtResource("1_ox0ga")
 
 [node name="SkyCanvas" type="CanvasLayer" parent="."]
@@ -178,13 +179,16 @@ texture = SubResource("ViewportTexture_ebbpm")
 [node name="HUD" parent="." instance=ExtResource("6_guv0v")]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(1191, 515)
 color = Color(1, 0.34902, 0, 1)
 texture = ExtResource("19_iiwhm")
 texture_scale = 7.0
 
 [node name="Barell_2" parent="." instance=ExtResource("20_xsrdu")]
-position = Vector2(3503, 520)
+position = Vector2(2283, 582)
+scale = Vector2(0.7, 0.7)
 
 [node name="Barell_1" parent="." instance=ExtResource("20_0i127")]
-position = Vector2(2631, 512)
+position = Vector2(3236, 589)
+scale = Vector2(0.7, 0.7)

@@ -9,7 +9,8 @@ func enter(_msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Pause"
+	#gv.rysiek_fsm.previous_state = "Pause"
+	pass
 
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:

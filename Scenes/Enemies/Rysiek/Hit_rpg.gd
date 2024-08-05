@@ -8,7 +8,8 @@ func enter(_msg := {}) -> void:
 		
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Hit_rpg"
+	#gv.rysiek_fsm.previous_state = "Hit_rpg"
+	pass
 
 func physics_update(delta: float) -> void:
 	rysiek.velocity.y += rysiek.gravity * delta

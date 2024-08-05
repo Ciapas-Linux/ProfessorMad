@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnf5waeilny8y"]
+[gd_scene load_steps=16 format=3 uid="uid://bnf5waeilny8y"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/Camera.gd" id="2_pmb5e"]
 [ext_resource type="PackedScene" uid="uid://b52diux3ykntq" path="res://Scenes/Player25D/player_25D.tscn" id="3_v37f7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="5_gj7c5"]
 [ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/label_state.gd" id="6_khqjm"]
 [ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="6_p7kuu"]
+[ext_resource type="PackedScene" uid="uid://bb0s7v6tqdf70" path="res://Assets/Characters/Test/dziadyga4.blend" id="8_5nk8q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21dkf"]
 
@@ -42,7 +43,7 @@ transform = Transform3D(-1, 4.9391e-08, -7.21337e-08, 0, 0.825113, 0.564967, 8.7
 light_energy = 0.3
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 1.77282e-08, -8.56064e-08, 0, 0.979223, 0.202787, 8.74228e-08, 0.202787, -0.979223, 0, 2.5985, -11.1689)
+transform = Transform3D(-1, 1.77282e-08, -8.56064e-08, 0, 0.979223, 0.202787, 8.74228e-08, 0.202787, -0.979223, 0, -0.278036, -6.91691)
 current = true
 fov = 37.8493
 script = ExtResource("2_pmb5e")
@@ -120,3 +121,8 @@ texture = ExtResource("5_gj7c5")
 position = Vector2(30, 91)
 scale = Vector2(0.172173, 0.172173)
 texture = ExtResource("6_p7kuu")
+
+[node name="dziadyga4" parent="." instance=ExtResource("8_5nk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189459, -2.14876, -3.39953)
+
+[editable path="dziadyga4"]

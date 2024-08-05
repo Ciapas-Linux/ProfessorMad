@@ -20,12 +20,12 @@ func enter(_msg := {}) -> void:
 	rysiek.anim_player.play("idle")
 
 	print("Rysiek enter state: Idle")
-	print("Rysiek previous state: " + gv.rysiek_fsm.previous_state)
+	print("Rysiek previous state: " + rysiek.Rysiek_fsm.previous_state)
 			
  
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "idle"
+	#gv.rysiek_fsm.previous_state = "idle"
 	print("Rysiek state: Exit idle state")
 	
 func physics_update(delta: float) -> void:
@@ -157,7 +157,7 @@ func physics_update(delta: float) -> void:
 			rstate_machine.transition_to("Walk_Left")
 			
 func _on_enemy_somebody_hitme() -> void:
-	if gv.rysiek_fsm.rstate.name == "idle":
+	if rysiek.Rysiek_fsm.rstate.name == "idle":
 	# if gv.rysiek_fsm.rstate.name != "Hit":
 	# 	rysiek.previous_state = gv.rysiek_fsm.rstate.name
 		rstate_machine.transition_to("Hit")

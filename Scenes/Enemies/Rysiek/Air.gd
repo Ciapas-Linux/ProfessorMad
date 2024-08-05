@@ -10,7 +10,7 @@ func enter(_msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Air"
+	#gv.rysiek_fsm.previous_state = "Air"
 	print("Rysiek state: Exit Air state")
 
 @warning_ignore("unused_parameter")	

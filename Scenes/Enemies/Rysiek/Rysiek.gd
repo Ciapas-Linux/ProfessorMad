@@ -77,13 +77,17 @@ var mouse_enter:bool = false
 var Rysiek_tilt:int = 0
 const slope_angle:int = 5
 
+@onready var Rysiek_fsm:RysiekStateMachine
+
 func _ready():
+	gv.EnemyRysiek = self
+	Rysiek_fsm = get_node("RysiekStateMachine")
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	
-	gv.rysiek_fsm = $RysiekStateMachine
-	gv.EnemyRysiek = self
+	#gv.rysiek_fsm = $RysiekStateMachine
+	
 	
 	#drone = get_parent().get_node("Flying_drone")
 	screen_size = get_viewport_rect().size
@@ -140,7 +144,7 @@ func _on_create_drone_timeout():
 	Drone2.connect('on_boss_position', _drone_on_me_position)
 	Drone2.connect('on_kill', _drone_on_kill)
 	Drone2.visible = true
-	gv.rysiek_fsm.transition_to("Release_drone")
+	Rysiek_fsm.transition_to("Release_drone")
 	print("Drone2: ready " + Drone2.name)
 
 func _drone_on_kill():
@@ -157,9 +161,9 @@ func _drone_on_kill():
 	$CreateDrone.start()
 	
 func _drone_on_me_position():
-	if (gv.rysiek_fsm.rstate.name != "Air") and (gv.rysiek_fsm.rstate.name and "Jump_right") and (gv.rysiek_fsm.rstate.name != "Jump_left"): 
+	if (Rysiek_fsm.rstate.name != "Air") and (Rysiek_fsm.rstate.name and "Jump_right") and (Rysiek_fsm.rstate.name != "Jump_left"): 
 		#previous_state = gv.rysiek_fsm.rstate.name
-		gv.rysiek_fsm.transition_to("Reload_bomb")
+		Rysiek_fsm.transition_to("Reload_bomb")
 		#velocity = Vector2.ZERO
 		#get_node("../../AnimationPlayer").stop()
 		#get_node("../../AnimationPlayer").play("release_drone")
@@ -188,7 +192,7 @@ func rpg_hit():
 	head.texture = Head_death_img
 	get_tree().current_scene.add_child(_particle)
 	Rysiek_health = 0
-	gv.rysiek_fsm.transition_to("Hit_rpg")
+	Rysiek_fsm.transition_to("Hit_rpg")
 	
 func hit():
 	print("Rysiek: somebody hit me by bullet!")

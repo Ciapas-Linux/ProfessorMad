@@ -10,7 +10,8 @@ func enter(_msg := {}) -> void:
 
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Death"
+	#gv.rysiek_fsm.previous_state = "Death"
+	pass
 
 @warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:

@@ -338,10 +338,19 @@ func _on_front_contact_area_entered(_area:Area2D) -> void:
 	
 func _on_front_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid" and body.name != "Wheel":
-		if body.get_parent().has_method("hit"):
-			body.get_parent().hit()
+	# 	if body.get_parent().has_method("hit"):
+	# 		body.get_parent().hit()
+
+		match str(body.name):
+			"Barell_2":
+				body.hit()
+		# 		print("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQ")
+
+		# if body.name == "Barrel_2":Barell_2
+		# 	body.hit()
+
 		$snd_hit2.play()
-		print("Fiat125p, front contact body: " + body.name)
+		print("Fiat125p, front contact Area2D hit body: " + body.name)
 
 
 func _on_back_contact_area_entered(_area:Area2D) -> void:

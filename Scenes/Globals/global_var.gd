@@ -52,8 +52,8 @@ var mouse_enter_node:Node2D
 
 
 # ENEMY FIRST BOSS WREDNY RYSIEK
-@onready var rysiek_fsm:RysiekStateMachine
 @onready var EnemyRysiek:Rysiek
+
 
 # 2.5D experimentos
 @onready var player25D_fsm:P25StateMachine

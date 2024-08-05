@@ -166,5 +166,3 @@ func on_tween_finished():
 #				$Sprite.play("explode")
 #				$snd_explode.play()
 #				ShakeScreen.shake(10,0.5)
-
-

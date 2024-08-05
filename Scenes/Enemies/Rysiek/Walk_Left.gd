@@ -19,7 +19,7 @@ func enter(_msg := {}) -> void:
 # Exit state:	
 func exit() -> void:
 	print("Rysiek state: Exit Walk_left state")
-	gv.rysiek_fsm.previous_state = "Walk_left"
+	#rysiek.Rysiek_fsm.previous_state = "Walk_left"
 
 #@warning_ignore("unused_parameter")	
 func physics_update(delta: float) -> void:

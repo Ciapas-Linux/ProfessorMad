@@ -26,7 +26,7 @@ func enter(_msg := {}) -> void:
 	
 # Exit state:	
 func exit() -> void:
-	gv.rysiek_fsm.previous_state = "Walk_right"
+	#gv.rysiek_fsm.previous_state = "Walk_right"
 	print("Rysiek state: Exit Walk_right state")
 
 func _timer_timeout():
@@ -129,7 +129,7 @@ func physics_update(delta: float) -> void:
 	# 	rstate_machine.transition_to("Air")			
 
 func _on_enemy_somebody_hitme() -> void:
-	if gv.rysiek_fsm.rstate.name == "Walk_Right":
+	if rysiek.Rysiek_fsm.rstate.name == "Walk_Right":
 		rstate_machine.transition_to("Hit")
 	
 	
