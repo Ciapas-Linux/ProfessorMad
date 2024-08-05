@@ -342,8 +342,11 @@ func _on_front_contact_body_entered(body:Node2D) -> void:
 	# 		body.get_parent().hit()
 
 		match str(body.name):
-			"Barell_2":
+			"BarellBodyCollision":
+				body.get_parent().hit()
+			"Barrel_2":
 				body.hit()
+			
 		# 		print("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQ")
 
 		# if body.name == "Barrel_2":Barell_2

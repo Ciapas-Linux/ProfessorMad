@@ -95,8 +95,8 @@ func _ready():
 	head = get_node("CanvasGroup/Torso/Head")
 	scale.x = scale.y * 1
 	Enemy_direction = Vector2.LEFT
-	print("Enemy: ready ...")
-	print("Enemy: distance to Hero: " + str(int(position.distance_to(gv.Player.global_position))))
+	print("Node ready:" + self.name)
+	print("Rysiek: distance to Player: " + str(int(position.distance_to(gv.Player.global_position))))
 	#print("Enemy state:" + gv.enemy_fsm.estate.name)
 	#$Say.visible = false
 	#var Drone2:CharacterBody2D = flying_drone.instantiate()

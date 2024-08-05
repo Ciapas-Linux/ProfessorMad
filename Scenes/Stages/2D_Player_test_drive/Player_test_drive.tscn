@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="18_744sl"]
 [ext_resource type="PackedScene" uid="uid://8nlipuu0ceal" path="res://Scenes/Characters/Robot_3D/robot_3d.tscn" id="19_ebrlf"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="19_iiwhm"]
-[ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barell_1.tscn" id="20_0i127"]
-[ext_resource type="PackedScene" uid="uid://bcr5pp44qvg4y" path="res://Scenes/Explosives/Barrel_2/barell_2.tscn" id="20_xsrdu"]
+[ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barrel_1.tscn" id="20_0i127"]
+[ext_resource type="PackedScene" uid="uid://bcr5pp44qvg4y" path="res://Scenes/Explosives/Barrel_2/barrel_2.tscn" id="20_xsrdu"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ms7f"]
 _surfaces = [{
@@ -185,10 +185,10 @@ color = Color(1, 0.34902, 0, 1)
 texture = ExtResource("19_iiwhm")
 texture_scale = 7.0
 
-[node name="Barell_2" parent="." instance=ExtResource("20_xsrdu")]
+[node name="Barrel_2" parent="." instance=ExtResource("20_xsrdu")]
 position = Vector2(2283, 582)
 scale = Vector2(0.7, 0.7)
 
-[node name="Barell_1" parent="." instance=ExtResource("20_0i127")]
+[node name="Barrel_1" parent="." instance=ExtResource("20_0i127")]
 position = Vector2(3236, 589)
 scale = Vector2(0.7, 0.7)

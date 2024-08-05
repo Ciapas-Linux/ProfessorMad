@@ -1,7 +1,7 @@
-extends Area2D
+extends StaticBody2D
 
 # #################
-# # Barell_1 SCRIPT #
+# # Barell_2 SCRIPT #
 # #################
 
 
@@ -28,6 +28,7 @@ func _ready():
 	timer.set_one_shot(true)
 	timer.set_wait_time(0.2)
 	timer.connect("timeout", _timer_timeout)
+	print("Node ready:" + self.name)
 
 func _unhandled_input(event):
 	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
@@ -58,23 +59,23 @@ func _process(_delta) -> void:
 func _timer_timeout():
 	position.y += 20
 
-func _on_area_entered(_area):
-	pass
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("Barrel_2: area hit me " + area.name)
 
-func _on_body_entered(body: Node2D) -> void:
-	print("Barrel_1: body hit me " + body.name)
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("Barrel_2: body hit me " + body.name)
 
 func hit():
 	if hit_count > 0:
 		hit_count -= 1
-		print("barell_1: dostałam ! " + "hits: " + str(hit_count))
+		print("barell_2: dostałam ! " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		position.y -= 20
 		timer.start()
 		$Hitpoints.text = str(hit_count)
 		if hit_count == 0:
-			$BulletCollision.set_deferred("disabled", true)
-			$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
+			$Area2D/CollisionShape2D.set_deferred("disabled", true)
+			$CollisionShape2D.set_deferred("disabled", true)
 			$Bullet_holes.vanish()
 			$explosion_spr.visible = true
 			$explosion_spr.play("explode")
@@ -91,10 +92,10 @@ func hit():
 			$object_spr.texture = Barrel_hit_tex
 
 func _on_bodies_collision_hit_me() -> void:
-	print("Barrel_1: some bodies hits me")
+	print("Barrel_2: some bodies hits me")
 
 func rpg_hit():
-	$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
 	gv.mouse_enter_node = null
 	$Bullet_holes.vanish()
 	$explosion_spr.visible = true
@@ -110,10 +111,10 @@ func rpg_hit():
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 2.1)
 	$object_spr.texture = Barrel_hit_tex
 	gv.Cam1.ScreenShake(30, 0.5)
-	print("Barrel_1: enemies hit me by rpg!")
+	print("Barell_2: enemies hit me by rpg!")
 
 func bomb_explode():
-	$BarellBodyCollision/CollisionShape2D.set_deferred("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
 	$explosion_spr.visible = true
 	$explosion_spr.play("explode")
@@ -128,7 +129,7 @@ func bomb_explode():
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
 	$object_spr.texture = Barrel_hit_tex
 	gv.Cam1.ScreenShake(30, 0.5)
-	print("Barrel_1: enemies hit me by drone big bomb!")
+	print("Barell_2: enemies hit me by drone big bomb!")
 
 func _on_explosion_spr_animation_finished() -> void:
 	#emit_signal("explode")
