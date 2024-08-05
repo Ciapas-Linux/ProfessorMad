@@ -21,6 +21,7 @@ func _ready() -> void:
 	timer.set_one_shot(true)
 	timer.set_wait_time(0.2)
 	timer.connect("timeout", _timer_timeout)
+	print("Node ready:" + self.name)
 
 func _process(_delta: float) -> void:
 	pass

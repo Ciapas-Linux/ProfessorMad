@@ -81,7 +81,8 @@ func _ready():
 	eyes_rnd_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
 	eyes_rnd_blink_timer.start(randf_range(1.0,10.0))
 
-	print("")  
+	print("")
+	print("Node ready:" + self.name)  
 	print("Player level: " + str(Player_level)) 
 	print("Player current weapon: " + str(Player_current_weapon))
 	print("Player money: " + str(Player_gold))

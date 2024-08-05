@@ -38,6 +38,7 @@ func _ready() -> void:
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
 	$BigExplosion.visible = false
+	print("Node ready:" + self.name)
 	print("car maluch start x: " + str(global_position.x))
 	
 

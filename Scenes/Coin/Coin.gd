@@ -15,6 +15,7 @@ func _ready():
 	#$coin_img/Rotation.play("rotate")
 	amount = randi_range(1,25)
 	$amount.text = "%s" % [amount]
+	print("Node ready:" + self.name)
 	
 @warning_ignore("unused_parameter")	
 func _process(delta):

@@ -12,6 +12,7 @@ func _ready() -> void:
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)
+	print("Node ready:" + self.name)
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true

@@ -27,6 +27,7 @@ func _ready():
 	$explosion_spr.visible = false
 	$Hitpoints.text = str(hit_count)
 	$object_spr.visible = true
+	print("Node ready:" + self.name)
 	
 func _process(_delta) -> void:
 	pass

@@ -64,6 +64,7 @@ func _ready() -> void:
 
 	load_inventory()
 
+	print("Node ready:" + self.name)
 	print("Player car Fiat125p rigid start x: " + str(global_position.x))
 
 	# turn_right()
