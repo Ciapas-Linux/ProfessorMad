@@ -5,17 +5,21 @@ class_name StateMachine2
 # State Machine scripts Credits:
 # From: https://github.com/addmix/godot_utils
 
-var states := {}
-@export var current_state := "":
+var states :Dictionary = {}
+
+@export var current_state : String = "":
 	set(x):
 		current_state = x
+
 var state : State2
 
+# is : , or is of a given built-in type.
+# !x = not x  
 func _ready() -> void:
-	var children := get_children()
-	for x in children:
+	var children : Array[Node] = get_children()
+	for x:Node in children:
 		var child : State2
-		if !x is State2:
+		if !x is State2: # if Node x not extend State2 then continue ...
 			continue
 		child = x
 		states[child.name] = child

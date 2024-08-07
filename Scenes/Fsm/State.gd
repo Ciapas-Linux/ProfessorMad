@@ -3,7 +3,7 @@ class_name State
 extends Node
 
 # We store a reference to the state machine to call its `transition_to()` method directly.
-var state_machine = null
+var state_machine: StateMachine = null
 
 
 # All methods below are virtual and called by the state machine.
@@ -23,7 +23,7 @@ func physics_update(_delta: float) -> void:
 
 # Called by the state machine upon changing the active state. The `msg` parameter
 # is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(_msg := {}) -> void:
+func enter(_msg :Dictionary = {}) -> void:
 	pass
 
 

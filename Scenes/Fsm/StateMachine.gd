@@ -14,8 +14,10 @@ var previous_state:String
 func _ready() -> void:
 	await owner.ready
 	# The state machine assigns itself to the State objects' state_machine property.
-	for child in get_children():
+	for child:Node in get_children():
 		child.state_machine = self
+		child.set_process_mode(Node.PROCESS_MODE_DISABLED)
+	state.set_process_mode(Node.PROCESS_MODE_INHERIT)
 	state.enter()
 
 
@@ -37,9 +39,11 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 		return
 
 	previous_state = str(state.name)
-
+	state.set_process_mode(Node.PROCESS_MODE_DISABLED)
+	
 	state.exit()
 	state = get_node(target_state_name)
+	state.set_process_mode(Node.PROCESS_MODE_INHERIT)
 	state.enter(msg)
 	emit_signal("transitioned", state.name)
 	
