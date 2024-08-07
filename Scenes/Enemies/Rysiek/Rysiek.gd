@@ -161,7 +161,7 @@ func _drone_on_kill():
 	$CreateDrone.start()
 	
 func _drone_on_me_position():
-	if (Rysiek_fsm.rstate.name != "Air") and (Rysiek_fsm.rstate.name and "Jump_right") and (Rysiek_fsm.rstate.name != "Jump_left"): 
+	if (Rysiek_fsm.state.name != "Air") and (Rysiek_fsm.state.name and "Jump_right") and (Rysiek_fsm.state.name != "Jump_left"): 
 		#previous_state = gv.rysiek_fsm.rstate.name
 		Rysiek_fsm.transition_to("Reload_bomb")
 		#velocity = Vector2.ZERO

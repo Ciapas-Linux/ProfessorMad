@@ -129,7 +129,7 @@ func physics_update(delta: float) -> void:
 	# 	rstate_machine.transition_to("Air")			
 
 func _on_enemy_somebody_hitme() -> void:
-	if rysiek.Rysiek_fsm.rstate.name == "Walk_Right":
+	if rysiek.Rysiek_fsm.state.name == "Walk_Right":
 		state_machine.transition_to("Hit")
 	
 	
