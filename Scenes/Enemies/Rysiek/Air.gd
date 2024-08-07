@@ -25,5 +25,5 @@ func physics_update(delta: float) -> void:
 	rysiek.move_and_slide()
 
 	if rysiek.is_on_floor():
-		rstate_machine.transition_to("idle")
+		state_machine.transition_to("idle")
 		get_node("../../snd_fall").play()

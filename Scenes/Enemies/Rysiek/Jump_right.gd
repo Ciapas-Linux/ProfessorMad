@@ -39,6 +39,6 @@ func physics_update(delta: float) -> void:
 		rysiek.anim_player.stop()
 		rysiek.anim_player.play("idle")	
 		# await get_tree().create_timer(0.5).timeout
-		rstate_machine.transition_to("idle")
+		state_machine.transition_to("idle")
 	
 	

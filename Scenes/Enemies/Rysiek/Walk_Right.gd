@@ -63,7 +63,7 @@ func physics_update(delta: float) -> void:
 
 		rysiek.anim_player.stop()
 		#rysiek.previous_state = gv.rysiek_fsm.estate.name
-		rstate_machine.transition_to("idle")	
+		state_machine.transition_to("idle")	
 			
 	rysiek.move_and_slide()
 
@@ -123,14 +123,14 @@ func physics_update(delta: float) -> void:
 	if rysiek.is_on_wall():
 		rysiek.anim_player.stop()
 		print("enemy2: stop on wall going right")
-		rstate_machine.transition_to("Jump_right")
+		state_machine.transition_to("Jump_right")
 
 	# if rysiek.is_on_floor() == false:
 	# 	rstate_machine.transition_to("Air")			
 
 func _on_enemy_somebody_hitme() -> void:
 	if rysiek.Rysiek_fsm.rstate.name == "Walk_Right":
-		rstate_machine.transition_to("Hit")
+		state_machine.transition_to("Hit")
 	
 	
 	

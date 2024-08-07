@@ -20,5 +20,5 @@ func exit() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "release_drone":
 		#rysiek.previous_state = gv.rysiek_fsm.rstate.name
-		rstate_machine.transition_to("idle")
+		state_machine.transition_to("idle")
 		

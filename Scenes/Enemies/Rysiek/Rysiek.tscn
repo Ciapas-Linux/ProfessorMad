@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dald3r8q0a3so" path="res://Assets/Enemy/Rysiek/enemy_noga_L_2.png" id="5_wrhox"]
 [ext_resource type="Texture2D" uid="uid://chmoss01r3yrf" path="res://Assets/Enemy/Rysiek/But_1.png" id="6_06gb8"]
 [ext_resource type="Texture2D" uid="uid://b8kjn7sdrhq8w" path="res://Assets/Enemy/Rysiek/enemy_noga_P_2.png" id="7_3sjdu"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Rysiek-fsm/RysiekStateMachine.gd" id="7_jy4yv"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/idle.gd" id="8_n4uo6"]
+[ext_resource type="Script" path="res://Scenes/Fsm/StateMachine.gd" id="8_rfv28"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Walk_Left.gd" id="9_i622y"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Walk_Right.gd" id="10_axbmg"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Rysiek/Jump_right.gd" id="11_kd86f"]
@@ -1173,50 +1173,50 @@ z_index = 1
 position = Vector2(-5.43185, 40.5)
 shape = SubResource("CapsuleShape2D_2v0ca")
 
-[node name="RysiekStateMachine" type="Node" parent="."]
-script = ExtResource("7_jy4yv")
-rinitial_state = NodePath("Air")
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("8_rfv28")
+initial_state = NodePath("Air")
 
-[node name="idle" type="Node" parent="RysiekStateMachine"]
+[node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("8_n4uo6")
 
-[node name="Walk_Left" type="Node" parent="RysiekStateMachine"]
+[node name="Walk_Left" type="Node" parent="StateMachine"]
 script = ExtResource("9_i622y")
 
-[node name="Walk_Right" type="Node" parent="RysiekStateMachine"]
+[node name="Walk_Right" type="Node" parent="StateMachine"]
 script = ExtResource("10_axbmg")
 
-[node name="Jump_right" type="Node" parent="RysiekStateMachine"]
+[node name="Jump_right" type="Node" parent="StateMachine"]
 script = ExtResource("11_kd86f")
 
-[node name="Jump_left" type="Node" parent="RysiekStateMachine"]
+[node name="Jump_left" type="Node" parent="StateMachine"]
 script = ExtResource("12_m0388")
 
-[node name="Death" type="Node" parent="RysiekStateMachine"]
+[node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("13_aunfr")
 
-[node name="Air" type="Node" parent="RysiekStateMachine"]
+[node name="Air" type="Node" parent="StateMachine"]
 script = ExtResource("14_86mds")
 
-[node name="Atack" type="Node" parent="RysiekStateMachine"]
+[node name="Atack" type="Node" parent="StateMachine"]
 script = ExtResource("15_5y8fn")
 
-[node name="Hit" type="Node" parent="RysiekStateMachine"]
+[node name="Hit" type="Node" parent="StateMachine"]
 script = ExtResource("16_xefwx")
 
-[node name="Follow_left" type="Node" parent="RysiekStateMachine"]
+[node name="Follow_left" type="Node" parent="StateMachine"]
 script = ExtResource("17_scqo6")
 
-[node name="Release_drone" type="Node" parent="RysiekStateMachine"]
+[node name="Release_drone" type="Node" parent="StateMachine"]
 script = ExtResource("18_0b351")
 
-[node name="Pause" type="Node" parent="RysiekStateMachine"]
+[node name="Pause" type="Node" parent="StateMachine"]
 script = ExtResource("19_wtpt7")
 
-[node name="Reload_bomb" type="Node" parent="RysiekStateMachine"]
+[node name="Reload_bomb" type="Node" parent="StateMachine"]
 script = ExtResource("20_ovpjw")
 
-[node name="Hit_rpg" type="Node" parent="RysiekStateMachine"]
+[node name="Hit_rpg" type="Node" parent="StateMachine"]
 script = ExtResource("21_io7a4")
 
 [node name="Health" type="TextureProgressBar" parent="."]
@@ -1342,13 +1342,13 @@ pitch_scale = 1.4
 target_position = Vector2(0, 250)
 collision_mask = 2
 
-[connection signal="somebody_hitme" from="." to="RysiekStateMachine/idle" method="_on_enemy_somebody_hitme"]
-[connection signal="somebody_hitme" from="." to="RysiekStateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]
-[connection signal="somebody_hitme" from="." to="RysiekStateMachine/Follow_left" method="_on_enemy_somebody_hitme"]
-[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Hit" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Release_drone" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Reload_bomb" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="RysiekStateMachine/Hit_rpg" method="_on_animation_player_animation_finished"]
+[connection signal="somebody_hitme" from="." to="StateMachine/idle" method="_on_enemy_somebody_hitme"]
+[connection signal="somebody_hitme" from="." to="StateMachine/Walk_Right" method="_on_enemy_somebody_hitme"]
+[connection signal="somebody_hitme" from="." to="StateMachine/Follow_left" method="_on_enemy_somebody_hitme"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Hit" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Release_drone" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Reload_bomb" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Hit_rpg" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Recover_Health" to="." method="_on_recover_health_timeout"]
 [connection signal="body_entered" from="EyesRange" to="." method="_on_eyes_range_body_entered"]
 [connection signal="body_exited" from="EyesRange" to="." method="_on_eyes_range_body_exited"]

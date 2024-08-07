@@ -31,7 +31,7 @@ func exit() -> void:
 func physics_update(delta: float) -> void:
 
 	if not rysiek.is_on_floor():
-		rstate_machine.transition_to("Air")
+		state_machine.transition_to("Air")
 		return
 	
 	rysiek.velocity.y += rysiek.gravity * delta
@@ -152,15 +152,15 @@ func physics_update(delta: float) -> void:
 	if rysiek.global_position.distance_to(gv.Player.global_position) >= rysiek.follow_distance:
 		#if get_node("../../Say").visible == false:
 		if rysiek.Enemy_direction == Vector2.RIGHT:
-			rstate_machine.transition_to("Walk_Right")
+			state_machine.transition_to("Walk_Right")
 		if rysiek.Enemy_direction == Vector2.LEFT:
-			rstate_machine.transition_to("Walk_Left")
+			state_machine.transition_to("Walk_Left")
 			
 func _on_enemy_somebody_hitme() -> void:
 	if rysiek.Rysiek_fsm.rstate.name == "idle":
 	# if gv.rysiek_fsm.rstate.name != "Hit":
 	# 	rysiek.previous_state = gv.rysiek_fsm.rstate.name
-		rstate_machine.transition_to("Hit")
+		state_machine.transition_to("Hit")
 		
 
 

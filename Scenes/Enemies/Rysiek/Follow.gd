@@ -53,7 +53,7 @@ func physics_update(delta: float) -> void:
 				print("rysiek: First time see profesor")
 			else:
 				print("rysiek: me see profesor")	
-			rstate_machine.transition_to("idle")
+			state_machine.transition_to("idle")
 						
 		else:
 			print("rysiek: ray hit --> " + ray_cast.get_collider().name)	
@@ -61,12 +61,12 @@ func physics_update(delta: float) -> void:
 	if rysiek.is_on_wall():	
 		get_node("../../AnimationPlayer").stop()
 		print("enemy2: stop on wall going left")
-		rstate_machine.transition_to("Jump_left")		
+		state_machine.transition_to("Jump_left")		
 			
 func _on_enemy_somebody_hitme() -> void:
 	if rysiek.Rysiek_fsm.rstate.name == "Follow_left":
 		if rysiek.Rysiek_fsm.rstate.name != "Hit":
-			rstate_machine.transition_to("Hit")
+			state_machine.transition_to("Hit")
 
 
 

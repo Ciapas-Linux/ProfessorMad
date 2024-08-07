@@ -1,4 +1,4 @@
-extends P25State
+extends State
 
 # ####################
 # # IDLE     .SCRIPT #

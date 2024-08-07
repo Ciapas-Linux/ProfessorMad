@@ -18,5 +18,5 @@ func physics_update(delta: float) -> void:
 
 	if gv.Game_pause == false:
 		#rysiek.previous_state = gv.rysiek_fsm.rstate.name
-		rstate_machine.transition_to(rysiek.previous_state)
+		state_machine.transition_to(rysiek.previous_state)
 		

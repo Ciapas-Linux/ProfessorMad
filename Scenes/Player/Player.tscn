@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://43oi7qc4m4en" path="res://Assets/Player/BodyParts/Hand_R.png" id="8_3wmc7"]
 [ext_resource type="Texture2D" uid="uid://lqgplkfcomic" path="res://Assets/Player/BodyParts/Noga_P_Udo_1.png" id="8_abub0"]
 [ext_resource type="Texture2D" uid="uid://ddxig3k1b7b6m" path="res://Assets/Player/BodyParts/Noga_P_Lydka_1.png" id="9_tlemh"]
-[ext_resource type="Script" path="res://Scenes/Player/Player-fsm/StateMachine.gd" id="9_vrxjr"]
+[ext_resource type="Script" path="res://Scenes/Fsm/StateMachine.gd" id="9_vrxjr"]
 [ext_resource type="Script" path="res://Scenes/Player/Idle.gd" id="10_i3ph1"]
 [ext_resource type="Texture2D" uid="uid://ctq5jgwdibvw5" path="res://Assets/Player/BodyParts/głowa8.png" id="10_udm5j"]
 [ext_resource type="Script" path="res://Scenes/Player/Air.gd" id="11_0d1mc"]

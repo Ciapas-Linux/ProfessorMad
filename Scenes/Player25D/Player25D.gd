@@ -8,8 +8,10 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+#@onready var Player25D_fsm:StateMachine
+
 func _ready():
-	gv.player25D_fsm = $P25StateMachine
+	gv.player25D_fsm = $StateMachine
 	gv.Player25_position = position
 	gv.Player25_global_position = global_position
 	print("Player25D ready ...")

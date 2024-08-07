@@ -56,7 +56,7 @@ var mouse_enter_node:Node2D
 
 
 # 2.5D experimentos
-@onready var player25D_fsm:P25StateMachine
+#@onready var player25D_fsm:P25StateMachine
 var Player25_position:Vector3
 var Player25_global_position:Vector3
 var Player25_direction:Vector2 = Vector2.RIGHT

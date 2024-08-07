@@ -77,11 +77,11 @@ var mouse_enter:bool = false
 var Rysiek_tilt:int = 0
 const slope_angle:int = 5
 
-@onready var Rysiek_fsm:RysiekStateMachine
+@onready var Rysiek_fsm:StateMachine
 
 func _ready():
 	gv.EnemyRysiek = self
-	Rysiek_fsm = get_node("RysiekStateMachine")
+	Rysiek_fsm = get_node("StateMachine")
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
 	self.connect("mouse_exited", _on_Area2D_mouse_exited)

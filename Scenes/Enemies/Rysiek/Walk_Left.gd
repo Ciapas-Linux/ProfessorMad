@@ -45,7 +45,7 @@ func physics_update(delta: float) -> void:
 
 		rysiek.anim_player.stop()
 		#rysiek.previous_state = gv.enemy_fsm.estate.name
-		rstate_machine.transition_to("Walk_Right")		
+		state_machine.transition_to("Walk_Right")		
 
 #	if rysiek.see_Player == true:
 #		get_node("../../AnimationPlayer").stop()
@@ -117,7 +117,7 @@ func physics_update(delta: float) -> void:
 		rysiek.anim_player.stop()
 		print("Rysiek: stop on wall going left")
 		print("Rysiek: trying jump over wall")
-		rstate_machine.transition_to("Jump_left")
+		state_machine.transition_to("Jump_left")
 
 	# if rysiek.is_on_floor() == false:
 	# 	rstate_machine.transition_to("Air")		
