@@ -14,17 +14,22 @@ func change_state(new_state : StringName) -> void:
 func _ready() -> void:
 	pass
 #virtual
+@warning_ignore("unused_parameter")
 func _process(delta : float) -> void:
 	pass
 #virtual
+@warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
 	pass
 #virtual
+@warning_ignore("unused_parameter")
 func _unhandled_input(event : InputEvent) -> void:
 	pass
 #virtual
+@warning_ignore("unused_parameter")
 func _enter(from : StringName) -> void:
 	pass
 #virtual
+@warning_ignore("unused_parameter")
 func _exit(to : StringName) -> void:
 	pass

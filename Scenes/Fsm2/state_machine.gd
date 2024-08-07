@@ -1,5 +1,6 @@
-class_name StateMachine2
 extends Node
+class_name StateMachine2
+
 
 # State Machine scripts Credits:
 # From: https://github.com/addmix/godot_utils
@@ -8,13 +9,13 @@ var states := {}
 @export var current_state := "":
 	set(x):
 		current_state = x
-var state : State
+var state : State2
 
 func _ready() -> void:
 	var children := get_children()
 	for x in children:
-		var child : State
-		if !x is State:
+		var child : State2
+		if !x is State2:
 			continue
 		child = x
 		states[child.name] = child

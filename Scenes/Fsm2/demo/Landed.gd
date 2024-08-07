@@ -5,6 +5,7 @@ extends State2
 
 @onready var player = $"../../"
 
+@warning_ignore("unused_parameter")
 func _enter(from : StringName) -> void:
 	player.movement_enabled = false
 	#when the player's velocity is greater than 0, and not on the floor, we can
