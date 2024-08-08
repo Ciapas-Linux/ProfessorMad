@@ -15,7 +15,7 @@ sky = SubResource("Sky_10hs1")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wg0i0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_us4s6"]
-size = Vector3(20, 0.2, 20)
+size = Vector3(320, 0.2, 31)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voyuk"]
 albedo_color = Color(0.227451, 0.384314, 0.203922, 1)
@@ -25,7 +25,7 @@ emission = Color(1, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_2eqnb"]
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_voyuk")
-size = Vector2(30, 2)
+size = Vector2(30, 3)
 
 [node name="Stage2" type="Node3D"]
 
@@ -34,22 +34,25 @@ environment = SubResource("Environment_w3ufc")
 camera_attributes = SubResource("CameraAttributesPractical_wg0i0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.894459, 0.0865229, -0.4387, -0.0428264, 0.960014, 0.276658, 0.445095, 0.266247, -0.854987, -5.04275, 2.25205, -9.02319)
+transform = Transform3D(1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 3.04905, 2.46429, 5.71183)
 light_energy = 0.3
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 1.77282e-08, -8.56064e-08, 0, 0.979223, 0.202787, 8.74228e-08, 0.202787, -0.979223, 0, -0.278036, -4.45153)
+transform = Transform3D(1, 0, 0, 0, 0.98908, 0.147378, 0, -0.147378, 0.98908, 0, 0.572222, 3.589)
+current = true
 fov = 37.8493
 script = ExtResource("2_pmb5e")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.19, 0, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.24876, 0)
 shape = SubResource("BoxShape3D_us4s6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(10.3999, 0, 0, 0, 10.3999, 0, 0, 0, 10.3999, -102.492, -2.27736, 0)
+transform = Transform3D(10.3999, 0, 0, 0, 10.3999, 0, 0, 0, 10.3999, 0, 0, 0)
 mesh = SubResource("PlaneMesh_2eqnb")
 
 [node name="Player_3D" parent="." instance=ExtResource("2_20gm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406178, 0)
