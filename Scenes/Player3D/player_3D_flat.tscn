@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://w2m47f1dmu0e"]
+
+[ext_resource type="Script" path="res://Scenes/Player3D/Player_3D.gd" id="1_4mrpp"]
+[ext_resource type="Script" path="res://Scenes/Fsm/StateMachine.gd" id="4_f2wt1"]
+[ext_resource type="PackedScene" uid="uid://dx1u3w0mmvyfo" path="res://Scenes/Player3D/player_3D_1.tscn" id="4_hg5pv"]
+[ext_resource type="Script" path="res://Scenes/Player25D/idle.gd" id="5_vn43i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6dtpo"]
+
+[node name="Player_3D" type="CharacterBody3D"]
+script = ExtResource("1_4mrpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.342419, 0)
+shape = SubResource("BoxShape3D_6dtpo")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_f2wt1")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_vn43i")
+
+[node name="player_3D_1" parent="." instance=ExtResource("4_hg5pv")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 1.58729, 3.98092)
+current = true

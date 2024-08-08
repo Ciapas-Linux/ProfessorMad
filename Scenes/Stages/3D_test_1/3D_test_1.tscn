@@ -1,13 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnf5waeilny8y"]
+[gd_scene load_steps=10 format=3 uid="uid://bnf5waeilny8y"]
 
+[ext_resource type="PackedScene" uid="uid://w2m47f1dmu0e" path="res://Scenes/Player3D/player_3D_flat.tscn" id="2_20gm2"]
 [ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/Camera.gd" id="2_pmb5e"]
-[ext_resource type="PackedScene" uid="uid://b52diux3ykntq" path="res://Scenes/Player25D/player_25D.tscn" id="3_v37f7"]
-[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/HUD.gd" id="4_imecl"]
-[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/label_position.gd" id="5_6gk77"]
-[ext_resource type="Texture2D" uid="uid://bjbklfaxfotve" path="res://Assets/Weapons/bullet1.png" id="5_gj7c5"]
-[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/hud/label_state.gd" id="6_khqjm"]
-[ext_resource type="Texture2D" uid="uid://4vso7pmvmemd" path="res://Assets/Objects/heart.png" id="6_p7kuu"]
-[ext_resource type="PackedScene" uid="uid://bb0s7v6tqdf70" path="res://Assets/Characters/Test/dziadyga4.blend" id="8_5nk8q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21dkf"]
 
@@ -31,6 +25,7 @@ emission = Color(1, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_2eqnb"]
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_voyuk")
+size = Vector2(30, 2)
 
 [node name="Stage2" type="Node3D"]
 
@@ -39,12 +34,11 @@ environment = SubResource("Environment_w3ufc")
 camera_attributes = SubResource("CameraAttributesPractical_wg0i0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1, 4.9391e-08, -7.21337e-08, 0, 0.825113, 0.564967, 8.74228e-08, 0.564967, -0.825113, 0, 8.40389, -16.6746)
+transform = Transform3D(-0.894459, 0.0865229, -0.4387, -0.0428264, 0.960014, 0.276658, 0.445095, 0.266247, -0.854987, -5.04275, 2.25205, -9.02319)
 light_energy = 0.3
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 1.77282e-08, -8.56064e-08, 0, 0.979223, 0.202787, 8.74228e-08, 0.202787, -0.979223, 0, -0.278036, -6.91691)
-current = true
+transform = Transform3D(-1, 1.77282e-08, -8.56064e-08, 0, 0.979223, 0.202787, 8.74228e-08, 0.202787, -0.979223, 0, -0.278036, -4.45153)
 fov = 37.8493
 script = ExtResource("2_pmb5e")
 
@@ -55,74 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.24876, 0)
 shape = SubResource("BoxShape3D_us4s6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(10.3999, 0, 0, 0, 10.3999, 0, 0, 0, 10.3999, 0, -2.27736, 0)
+transform = Transform3D(10.3999, 0, 0, 0, 10.3999, 0, 0, 0, 10.3999, -102.492, -2.27736, 0)
 mesh = SubResource("PlaneMesh_2eqnb")
 
-[node name="Player25D" parent="." instance=ExtResource("3_v37f7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0504333, -2, 0)
-script = null
-
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("4_imecl")
-
-[node name="label_position" type="Label" parent="HUD"]
-offset_left = 919.0
-offset_top = 4.0
-offset_right = 966.0
-offset_bottom = 30.0
-scale = Vector2(1.62388, 1.48981)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "x: y: z:"
-script = ExtResource("5_6gk77")
-
-[node name="label_state" type="Label" parent="HUD"]
-offset_left = 920.0
-offset_top = 33.0
-offset_right = 971.0
-offset_bottom = 59.0
-scale = Vector2(1.29168, 1.29168)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "STATE:"
-script = ExtResource("6_khqjm")
-
-[node name="label_health" type="Label" parent="HUD"]
-offset_left = 66.0
-offset_top = 67.0
-offset_right = 106.0
-offset_bottom = 93.0
-scale = Vector2(1.80022, 1.80022)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "0"
-
-[node name="label_ammo" type="Label" parent="HUD"]
-offset_left = 66.0
-offset_top = 26.0
-offset_right = 106.0
-offset_bottom = 52.0
-scale = Vector2(1.67993, 1.67993)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "0"
-
-[node name="label_direction" type="Label" parent="HUD"]
-offset_left = 921.0
-offset_top = 61.0
-offset_right = 961.0
-offset_bottom = 87.0
-scale = Vector2(1.0695, 1.0695)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "Dir: "
-
-[node name="ammo_img" type="Sprite2D" parent="HUD"]
-position = Vector2(30, 43)
-scale = Vector2(0.288384, 0.288384)
-texture = ExtResource("5_gj7c5")
-
-[node name="health_img" type="Sprite2D" parent="HUD"]
-position = Vector2(30, 91)
-scale = Vector2(0.172173, 0.172173)
-texture = ExtResource("6_p7kuu")
-
-[node name="dziadyga4" parent="." instance=ExtResource("8_5nk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189459, -2.14876, -3.39953)
-
-[editable path="dziadyga4"]
+[node name="Player_3D" parent="." instance=ExtResource("2_20gm2")]

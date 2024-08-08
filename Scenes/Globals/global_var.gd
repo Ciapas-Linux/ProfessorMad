@@ -55,11 +55,12 @@ var mouse_enter_node:Node2D
 @onready var EnemyRysiek:Rysiek
 
 
+# 3D experimentos
+@onready var Player3d:Player3D
+
 # 2.5D experimentos
-#@onready var player25D_fsm:P25StateMachine
-var Player25_position:Vector3
-var Player25_global_position:Vector3
-var Player25_direction:Vector2 = Vector2.RIGHT
+@onready var Player25d:Player25D
+
 
 # CAMERA
 var Cam1:Camera2D

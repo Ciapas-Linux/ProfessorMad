@@ -50,6 +50,7 @@ mesh = SubResource("PlaneMesh_l53mg")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_4lk6a")
+initial_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_rr5pk")

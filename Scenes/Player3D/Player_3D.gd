@@ -1,4 +1,4 @@
-class_name Player25D
+class_name Player3D
 extends CharacterBody3D
 
 
@@ -8,14 +8,16 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-#@onready var Player25D_fsm:StateMachine
-var Player25d_direction:Vector2 = Vector2.RIGHT
+@onready var anim_player : AnimationPlayer = get_node("player_3D_1/AnimationPlayer")
 
-@onready var Player25d_fsm:StateMachine
+var Player3d_direction:Vector2 = Vector2.RIGHT
+
+@onready var Player3d_fsm:StateMachine
 
 func _ready():
-	gv.Player25d = self
-	Player25d_fsm = $StateMachine
+	gv.Player3d = self
+	Player3d_fsm = $StateMachine
+	anim_player.play("walk_1")
 	print("Node ready: " + self.name)
 	
 
@@ -43,3 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func get_state():
+	return Player3d_fsm.state.name
