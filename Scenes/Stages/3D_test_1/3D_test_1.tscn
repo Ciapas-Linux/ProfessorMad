@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnf5waeilny8y"]
 
-[ext_resource type="PackedScene" uid="uid://w2m47f1dmu0e" path="res://Scenes/Player3D/player_3D_flat.tscn" id="2_20gm2"]
-[ext_resource type="Script" path="res://Scenes/Stages/3D_test_1/Camera.gd" id="2_pmb5e"]
+[ext_resource type="Script" path="res://Scenes/Camera/Camera3DPro.gd" id="1_emtpv"]
+[ext_resource type="PackedScene" uid="uid://w2m47f1dmu0e" path="res://Scenes/Player3D/player_3D.tscn" id="2_20gm2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21dkf"]
 
@@ -40,8 +40,7 @@ light_energy = 0.3
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.98908, 0.147378, 0, -0.147378, 0.98908, 0, 0.572222, 3.589)
 current = true
-fov = 37.8493
-script = ExtResource("2_pmb5e")
+script = ExtResource("1_emtpv")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.19, 0, 0)
@@ -55,4 +54,4 @@ transform = Transform3D(10.3999, 0, 0, 0, 10.3999, 0, 0, 0, 10.3999, 0, 0, 0)
 mesh = SubResource("PlaneMesh_2eqnb")
 
 [node name="Player_3D" parent="." instance=ExtResource("2_20gm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406178, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.640018, 0)
