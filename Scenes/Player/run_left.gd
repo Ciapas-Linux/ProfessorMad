@@ -8,8 +8,9 @@ func enter(_msg := {}) -> void:
 	get_node("../../AnimationPlayer").seek(0.3)
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
-	anim_player.stop()			
-	print("Player: state run_left")		
+	anim_player.stop()
+	print("Player: previous state " + player.Player_fsm.previous_state)			
+	print("Player state: " + self.name)
 
 func physics_update(delta: float) -> void:
 	if anim_player.get_current_animation() != "run":

@@ -21,7 +21,8 @@ func enter(msg := {}) -> void:
 	get_node("../../snd_hit2").play()
 	get_node("../../snd_body_fall").play()
 	
-	print("Player: enter state machine shockwave!")
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player state: " + self.name)
 
 func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta	

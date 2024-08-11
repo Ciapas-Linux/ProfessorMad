@@ -35,7 +35,8 @@ func enter(msg := {}) -> void:
 	delay_timer.connect("timeout", _on_timer_timeout)
 	delay_timer.start()
 	
-	print("Player: state Air")
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player state: " + self.name)
 
 # Exit state:	
 func exit() -> void:

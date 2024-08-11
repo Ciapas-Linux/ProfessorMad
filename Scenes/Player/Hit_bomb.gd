@@ -8,11 +8,12 @@ func enter(_msg := {}) -> void:
 	gv.Player_weapon.visible = false
 	#anim_player.stop()
 	#anim_player.play("Bomb_hit_me")
-	print("Hero: enter state machine hit bomb!")
 	get_node("../../BloodSplash").visible = true
 	get_node("../../BloodSplash").emitting = true
 	get_node("../../snd_splash_1").play()
 	get_node("../../snd_hit1").play()
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player state: " + self.name)
 	_explode()
 
 @warning_ignore("unused_parameter")

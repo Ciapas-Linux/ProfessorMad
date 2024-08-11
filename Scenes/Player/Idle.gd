@@ -19,8 +19,7 @@ func enter(_msg := {}) -> void:
 	get_node("../../snd_walk").stop()
 		
 	if anim_player.current_animation != "touch_down":
-		anim_player.play("idle")
-		anim_player.seek(0.1)
+		select_animation()
 
 	# if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
 	# 	print("Player: XXXXXXXXXXXXXXXXXXXXXX")
@@ -29,19 +28,19 @@ func enter(_msg := {}) -> void:
 	# 		print("Player: XXXXXXXXXXXXXXXXXXXXXX")
 
 	print("Player: previous state " + player.Player_fsm.previous_state)
-	print("Player: state Idle")
+	print("Player state: " + self.name)
 	#node_enter+=1
 	#print("Player: Idle enter nr: " + str(node_enter))
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	if player.Player_fsm.state.name == "Idle":
 		if anim_name == "touch_down":
-			anim_player.play("idle")
+			select_animation()
 
 # Exit state:	
 func exit() -> void:
-	print("Player: exit state Idle")
-	pass
+	print("Player exit state: " + self.name)
+	
 
 func physics_update(delta: float) -> void:
 
@@ -67,8 +66,7 @@ func physics_update(delta: float) -> void:
 		# No slope:
 		if player.Player_tilt < 10 and player.Player_tilt > -10:
 			if anim_player.get_current_animation() != "idle":
-				anim_player.play("idle")
-				anim_player.seek(0.3,true)
+				select_animation()
 			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
 			player.Player_up_down = 0	# flat = 0
@@ -114,6 +112,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("../../snd_switch_weapon").play()
 			player.load_next_weapon()
+			select_animation()
 			print("Player: switch weapon")
 
 	# Show Help information	
@@ -169,8 +168,13 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("target_down")
 		
 	
-
-
+func select_animation() -> void:
+	if player.Player_current_weapon == 4:
+		anim_player.play("idle_tt_gun")
+		anim_player.seek(0.1)
+	else:
+		anim_player.play("idle")	
+		anim_player.seek(0.1)
 
 
 

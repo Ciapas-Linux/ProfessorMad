@@ -20,7 +20,8 @@ func enter(msg := {}) -> void:
 	
 	player.Foot_R.rotation = deg_to_rad(85)
 	player.Foot_L.rotation = deg_to_rad(65)
-	print("Player: state Air_run")
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player state: " + self.name)
 
 	# if gv.fsm.previous_state == "run_right":
 	# 	from_run = true

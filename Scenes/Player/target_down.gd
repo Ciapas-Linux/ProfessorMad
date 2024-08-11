@@ -25,7 +25,8 @@ func enter(_msg := {}) -> void:
 	if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
 		player.Player_weapon.connect("fire", _on_gun_2_fire)
 		
-	print("Player: Target down")	
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player state: " + self.name)	
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():

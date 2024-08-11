@@ -6,8 +6,10 @@ extends PlayerState
 func enter(_msg := {}) -> void:
 	if get_node("../../snd_walk").playing != true:
 			get_node("../../snd_walk").play()
-	anim_player.stop()		
-	print("Player: state run_right")		
+	anim_player.stop()
+	
+	print("Player: previous state " + player.Player_fsm.previous_state)
+	print("Player state: " + self.name)		
 	
 func physics_update(delta: float) -> void:
 	
