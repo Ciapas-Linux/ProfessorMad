@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://6nqelg3184dc"]
 
-[ext_resource type="Script" path="res://Scenes/Explosives/CoinBarell.gd" id="1_r0216"]
+[ext_resource type="Script" path="res://Scenes/Explosives/CoinBarrel/CoinBarrel.gd" id="1_r0216"]
 [ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="2_4e5on"]
 [ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barrel_1.tscn" id="3_aj3kb"]
 

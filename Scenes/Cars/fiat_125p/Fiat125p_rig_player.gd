@@ -36,7 +36,7 @@ var Player_on_screen:bool = true
 var Player_state:String = "Drive"
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
 var Player_weapon:Sprite2D
-var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3}
+var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3,"tt_gun": 4}
 var Player_current_weapon:int = Player_guns["ak_47"]
 
 
@@ -184,6 +184,16 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			gv.set_cursor_green()
 			Player_weapon.transform = get_node("weapon_spawn/rocket_4").transform
 			Player_weapon.scale = Vector2(3,3)
+
+		4: # TT tokarev hand gun
+			get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
+			Player_weapon = load("res://Scenes/Weapons/tt_gun/tt_gun.tscn").instantiate()
+			if get_node("Body_parts/weapon_spawn/tt_gun").get_child_count() > 0:
+				get_node("Body_parts/weapon_spawn/tt_gun").get_child(0).queue_free()
+			get_node("Body_parts/weapon_spawn/tt_gun").add_child(Player_weapon)
+			gv.set_cursor_orange()
+			Player_weapon.transform = get_node("Body_parts/weapon_spawn/tt_gun").transform
+			Player_weapon.scale = Vector2(1.5,1.5)			
 
 	print("Player car inventory loaded")
 				

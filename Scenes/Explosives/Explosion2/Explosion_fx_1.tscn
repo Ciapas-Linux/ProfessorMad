@@ -99,7 +99,7 @@
 [ext_resource type="Texture2D" uid="uid://ctw6mgjw4nvpl" path="res://Assets/Explosions/explosion3/explosion00-frame097.png" id="98_v8j3v"]
 [ext_resource type="Texture2D" uid="uid://cbf37cn7io0pv" path="res://Assets/Explosions/explosion3/explosion00-frame098.png" id="99_50tw1"]
 [ext_resource type="Texture2D" uid="uid://clbrb28cry2pq" path="res://Assets/Explosions/explosion3/explosion00-frame099.png" id="100_njhdh"]
-[ext_resource type="Script" path="res://Scenes/Explosives/Explosion_fx_1.gd" id="101_7uxg8"]
+[ext_resource type="Script" path="res://Scenes/Explosives/Explosion2/Explosion_fx_1.gd" id="101_7uxg8"]
 [ext_resource type="Texture2D" uid="uid://dhexvsk2pnlja" path="res://Assets/Explosions/explosion3/explosion00-frame100.png" id="101_ausf1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpbfh"]

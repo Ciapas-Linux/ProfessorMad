@@ -4662,6 +4662,9 @@ position = Vector2(15.4601, 11.8629)
 
 [node name="empty" type="Marker2D" parent="Body_parts/weapon_spawn"]
 
+[node name="tt_gun" type="Marker2D" parent="Body_parts/weapon_spawn"]
+position = Vector2(-6.6357, -3.40997)
+
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 position = Vector2(-86, -207)
 modification_stack = SubResource("SkeletonModificationStack2D_pdllx")

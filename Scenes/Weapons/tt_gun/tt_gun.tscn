@@ -1,0 +1,126 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx6lu46jxma3u"]
+
+[ext_resource type="Texture2D" uid="uid://dp5qfp00rm2ib" path="res://Assets/Weapons/tt_pistol/tt_pistol.png" id="1_w1ami"]
+[ext_resource type="Script" path="res://Scenes/Weapons/tt_gun/tt_gun.gd" id="2_yp268"]
+[ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="3_a07fx"]
+[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="4_dibnt"]
+[ext_resource type="Texture2D" uid="uid://x2ibakeuf7v1" path="res://Assets/Explosions/gun_fire/gun_fire1.png" id="5_2lfhu"]
+[ext_resource type="Texture2D" uid="uid://b7ln2qljat8ku" path="res://Assets/Explosions/gun_fire/gun_fire2.png" id="6_xokqq"]
+[ext_resource type="Texture2D" uid="uid://c3vmigwrt1efy" path="res://Assets/Explosions/gun_fire/gun_fire3.png" id="7_ur11s"]
+
+[sub_resource type="Animation" id="Animation_mw7bc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(75, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_6uch2"]
+resource_name = "shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(75, 30), Vector2(30, 30), Vector2(75, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_npcpi"]
+_data = {
+"RESET": SubResource("Animation_mw7bc"),
+"shoot": SubResource("Animation_6uch2")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0vnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2lfhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xokqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ur11s")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}]
+
+[node name="tt_gun" type="Sprite2D"]
+position = Vector2(-40, 117)
+texture = ExtResource("1_w1ami")
+offset = Vector2(75, 30)
+script = ExtResource("2_yp268")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_npcpi")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.33
+one_shot = true
+
+[node name="BulletsSpawn" type="Marker2D" parent="."]
+position = Vector2(297, -47)
+scale = Vector2(0.574951, 0.574951)
+gizmo_extents = 61.1
+
+[node name="SpawnMarker" type="Sprite2D" parent="BulletsSpawn"]
+visible = false
+texture = ExtResource("3_a07fx")
+
+[node name="HandMarker" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("3_a07fx")
+
+[node name="snd_fire1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dibnt")
+volume_db = 10.0
+pitch_scale = 0.8
+
+[node name="Shells_spawn" type="Marker2D" parent="."]
+position = Vector2(125, -51)
+gizmo_extents = 25.5
+
+[node name="FiringSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(298, -49)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_q0vnt")
+animation = &"fire"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(152, -49)
+target_position = Vector2(0, 0)
+collision_mask = 47
+collide_with_areas = true
+
+[node name="ammo" type="Label" parent="."]
+visible = false
+offset_left = 113.0
+offset_right = 153.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 42
+text = "0"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="FiringSprite" to="." method="_on_firing_sprite_animation_finished"]
