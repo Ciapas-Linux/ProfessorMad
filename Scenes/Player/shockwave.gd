@@ -24,6 +24,10 @@ func enter(msg := {}) -> void:
 	print("Player: previous state " + player.Player_fsm.previous_state)
 	print("Player state: " + self.name)
 
+# Exit state:	
+func exit() -> void:
+	print("Player exit state: " + self.name)
+
 func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta	
 	player.move_and_slide()

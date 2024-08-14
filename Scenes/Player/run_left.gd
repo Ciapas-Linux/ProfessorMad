@@ -12,6 +12,10 @@ func enter(_msg := {}) -> void:
 	print("Player: previous state " + player.Player_fsm.previous_state)			
 	print("Player state: " + self.name)
 
+# Exit state:	
+func exit() -> void:
+	print("Player exit state: " + self.name)
+	
 func physics_update(delta: float) -> void:
 	if anim_player.get_current_animation() != "run":
 				anim_player.play("run")

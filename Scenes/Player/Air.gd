@@ -42,8 +42,7 @@ func enter(msg := {}) -> void:
 func exit() -> void:
 	touch_ground = false
 	start_check_floor = false 
-	print("Player: exit state Air")
-	pass
+	print("Player exit state: " + self.name)
 
 func _on_timer_timeout():
 	start_check_floor = true	

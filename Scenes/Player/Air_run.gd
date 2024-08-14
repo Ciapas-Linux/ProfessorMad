@@ -30,8 +30,7 @@ func enter(msg := {}) -> void:
 # Exit state:	
 func exit() -> void:
 	touch_ground = false 
-	print("Player: exit state Air_run")
-	pass
+	print("Player exit state: " + self.name)
 
 func physics_update(delta: float) -> void:
 	

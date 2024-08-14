@@ -4504,7 +4504,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.44762]
+"values": [1.26063]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -4747,15 +4747,15 @@ libraries = {
 [node name="Body_parts" type="Node2D" parent="."]
 
 [node name="Arm_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-21.7561, -270.642)
-rotation = -0.460444
+position = Vector2(-23.0577, -270.39)
+rotation = -0.600847
 scale = Vector2(0.799897, 0.799897)
 texture = ExtResource("2_a310c")
 offset = Vector2(7.82233, 62.8831)
 
 [node name="Hand_L" type="Sprite2D" parent="Body_parts"]
-position = Vector2(139.246, -190.199)
-rotation = -1.03401
+position = Vector2(147.617, -213.269)
+rotation = -1.17441
 scale = Vector2(0.767902, 0.767902)
 texture = ExtResource("6_sh2oj")
 offset = Vector2(43.5112, 80.9778)
@@ -4770,7 +4770,7 @@ flip_h = true
 
 [node name="Leg_L" type="Sprite2D" parent="Body_parts"]
 position = Vector2(11.9986, -50.0004)
-rotation = -0.115919
+rotation = -0.114266
 scale = Vector2(0.699869, 0.699869)
 texture = ExtResource("11_8mg4h")
 offset = Vector2(1, 80)
@@ -4812,15 +4812,15 @@ offset = Vector2(-0.104025, 1.08356)
 
 [node name="Body" type="Sprite2D" parent="Body_parts"]
 position = Vector2(-38, -39.0007)
-rotation = 0.203841
+rotation = 0.196552
 scale = Vector2(0.99981, 0.99981)
 texture = ExtResource("2_81kcy")
 offset = Vector2(0, -147)
 
 [node name="Arm_R" type="Sprite2D" parent="Body_parts"]
 z_index = 1
-position = Vector2(-19.0341, -273.982)
-rotation = -1.26112
+position = Vector2(-20.7474, -274.114)
+rotation = -1.4554
 scale = Vector2(0.799897, 0.799897)
 texture = ExtResource("2_a310c")
 offset = Vector2(11.7867, 73.2179)
@@ -4835,13 +4835,13 @@ offset = Vector2(58.5516, 32.5195)
 [node name="ForeArm_R" type="Sprite2D" parent="Body_parts/Arm_R"]
 position = Vector2(8.62897, 148.119)
 rotation = -0.171094
-scale = Vector2(0.800019, 0.800019)
+scale = Vector2(0.80002, 0.80002)
 texture = ExtResource("4_5bscy")
 offset = Vector2(-1.67987, 86.6881)
 
 [node name="Head" type="Sprite2D" parent="Body_parts"]
-position = Vector2(-2.09859, -346.031)
-rotation = 0.612127
+position = Vector2(-4.33762, -346.285)
+rotation = 0.580764
 scale = Vector2(2.49961, 2.49961)
 texture = ExtResource("10_udm5j")
 offset = Vector2(-21, -97)
@@ -4857,8 +4857,8 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_hfn3g")
 
 [node name="weapon_spawn" type="Marker2D" parent="Body_parts"]
-position = Vector2(284.779, -249.768)
-rotation = -0.650641
+position = Vector2(282.025, -309.011)
+rotation = -0.844925
 scale = Vector2(1.08789, 1.08789)
 gizmo_extents = 33.0
 
@@ -4897,7 +4897,7 @@ remote_path = NodePath("../../../../Body_parts/Body")
 [node name="Head" type="Bone2D" parent="Skeleton2D/Base/Body"]
 position = Vector2(-27, -308)
 rotation = 0.262802
-scale = Vector2(2.50009, 2.50009)
+scale = Vector2(2.50008, 2.50008)
 rest = Transform2D(2.12444, 0.571527, -0.571527, 2.12444, -27, -308)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5018,7 +5018,7 @@ remote_path = NodePath("../../../../../../footR_CollisionShape2D")
 [node name="Leg_L" type="Bone2D" parent="Skeleton2D/Base"]
 position = Vector2(50, 19)
 rotation = 6.20689
-scale = Vector2(0.999843, 0.999843)
+scale = Vector2(0.999842, 0.999842)
 rest = Transform2D(0.999476, 0.0275072, -0.0275072, 0.999476, 50, 19)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Base/Leg_L"]
@@ -5136,8 +5136,8 @@ debug_color = Color(0.691652, 0.412921, 0.722655, 0.42)
 
 [node name="footL_CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(34.0799, 279.132)
-rotation = 0.00916506
+position = Vector2(33.5359, 279.168)
+rotation = 0.0108178
 scale = Vector2(1.53966, 1.53966)
 shape = SubResource("CircleShape2D_vjavp")
 disabled = true

@@ -16,6 +16,10 @@ func enter(_msg := {}) -> void:
 	print("Player state: " + self.name)
 	_explode()
 
+# Exit state:	
+func exit() -> void:
+	print("Player exit state: " + self.name)
+
 @warning_ignore("unused_parameter")
 func physics_update(delta: float) -> void:
 	pass
