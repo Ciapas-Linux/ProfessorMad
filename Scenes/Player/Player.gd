@@ -163,8 +163,8 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 	
 	match Player_current_weapon:
 		0: # Empty weapon = none
-			if get_node("Body_parts/weapon_spawn/rocket_4").get_child_count() > 0:
-				get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
+			if get_node("Body_parts/weapon_spawn/tt_gun").get_child_count() > 0:
+				get_node("Body_parts/weapon_spawn/tt_gun").get_child(0).queue_free()
 			Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
 			if get_node("Body_parts/weapon_spawn/empty").get_child_count() > 0:
 				get_node("Body_parts/weapon_spawn/empty").get_child(0).queue_free()
@@ -211,7 +211,7 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			Player_weapon.transform = get_node("Body_parts/weapon_spawn/tt_gun").transform
 			Player_weapon.scale = Vector2(1.5,1.5)			
 
-	print("Player2D: inventory loaded")
+	print(self.name + ": inventory loaded")
 
 func load_next_weapon():
 	# print("Weapons: " + str(Player_guns.size()))
