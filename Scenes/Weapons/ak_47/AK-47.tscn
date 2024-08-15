@@ -64,6 +64,7 @@ animations = [{
 }]
 
 [node name="AK-47" type="Sprite2D"]
+z_index = 1
 texture = ExtResource("1_7u0r0")
 offset = Vector2(75, 30)
 script = ExtResource("2_ryoe4")

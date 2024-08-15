@@ -4701,6 +4701,26 @@ floor_snap_length = 15.0
 safe_margin = 0.1
 script = ExtResource("1_qy254")
 
+[node name="weapon_spawn" type="Marker2D" parent="."]
+position = Vector2(106.985, -37.8675)
+rotation = 0.0594909
+scale = Vector2(1.08789, 1.08789)
+gizmo_extents = 33.0
+
+[node name="ak-47" type="Marker2D" parent="weapon_spawn"]
+position = Vector2(-3.82164, -2.6437)
+gizmo_extents = 20.0
+
+[node name="rpg_7" type="Marker2D" parent="weapon_spawn"]
+position = Vector2(15.4601, 11.8629)
+
+[node name="rocket_4" type="Marker2D" parent="weapon_spawn"]
+
+[node name="empty" type="Marker2D" parent="weapon_spawn"]
+
+[node name="tt_gun" type="Marker2D" parent="weapon_spawn"]
+position = Vector2(-6.6357, -3.40997)
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("9_vrxjr")
 initial_state = NodePath("Air")
@@ -4856,26 +4876,6 @@ position = Vector2(42.8697, -117.878)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_hfn3g")
 
-[node name="weapon_spawn" type="Marker2D" parent="Body_parts"]
-position = Vector2(106.985, -37.8675)
-rotation = 0.0594909
-scale = Vector2(1.08789, 1.08789)
-gizmo_extents = 33.0
-
-[node name="ak-47" type="Marker2D" parent="Body_parts/weapon_spawn"]
-position = Vector2(-3.82164, -2.6437)
-gizmo_extents = 20.0
-
-[node name="rpg_7" type="Marker2D" parent="Body_parts/weapon_spawn"]
-position = Vector2(15.4601, 11.8629)
-
-[node name="rocket_4" type="Marker2D" parent="Body_parts/weapon_spawn"]
-
-[node name="empty" type="Marker2D" parent="Body_parts/weapon_spawn"]
-
-[node name="tt_gun" type="Marker2D" parent="Body_parts/weapon_spawn"]
-position = Vector2(-6.6357, -3.40997)
-
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 position = Vector2(-86, -207)
 modification_stack = SubResource("SkeletonModificationStack2D_pdllx")
@@ -4977,7 +4977,7 @@ remote_path = NodePath("../../../../../../../Body_parts/Arm_R/Hand_R")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Skeleton2D/Base/Body/Arm_R/ForeArm_R/Hand_R"]
 position = Vector2(74.1952, 25.3286)
-remote_path = NodePath("../../../../../../../Body_parts/weapon_spawn")
+remote_path = NodePath("../../../../../../../weapon_spawn")
 
 [node name="Leg_R" type="Bone2D" parent="Skeleton2D/Base"]
 position = Vector2(-31, 30)

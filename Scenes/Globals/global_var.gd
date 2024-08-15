@@ -99,53 +99,53 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 	
 	match Player.Player_current_weapon:
 		0: # Empty weapon = none
-			if Player.get_node("Body_parts/weapon_spawn/tt_gun").get_child_count() > 0:
-				Player.get_node("Body_parts/weapon_spawn/tt_gun").get_child(0).queue_free()
+			if Player.get_node("weapon_spawn/tt_gun").get_child_count() > 0:
+				Player.get_node("weapon_spawn/tt_gun").get_child(0).queue_free()
 			Player.Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
-			if Player.get_node("Body_parts/weapon_spawn/empty").get_child_count() > 0:
-				Player.get_node("Body_parts/weapon_spawn/empty").get_child(0).queue_free()
-			Player.get_node("Body_parts/weapon_spawn/empty").add_child(Player.Player_weapon)
+			if Player.get_node("weapon_spawn/empty").get_child_count() > 0:
+				Player.get_node("weapon_spawn/empty").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/empty").add_child(Player.Player_weapon)
 			set_cursor_orange()	
 		
 		1: # AK-47 
-			Player.get_node("Body_parts/weapon_spawn/empty").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/empty").get_child(0).queue_free()
 			Player.Player_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
-			if Player.get_node("Body_parts/weapon_spawn/ak-47").get_child_count() > 0:
-				Player.get_node("Body_parts/weapon_spawn/ak-47").get_child(0).queue_free()
-			Player.get_node("Body_parts/weapon_spawn/ak-47").add_child(Player.Player_weapon)
+			if Player.get_node("weapon_spawn/ak-47").get_child_count() > 0:
+				Player.get_node("weapon_spawn/ak-47").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/ak-47").add_child(Player.Player_weapon)
 			set_cursor_orange()
-			Player.Player_weapon.transform = Player.get_node("Body_parts/weapon_spawn/ak-47").transform
+			Player.Player_weapon.transform = Player.get_node("weapon_spawn/ak-47").transform
 			Player.Player_weapon.scale = Vector2(3,3)
 		
 		2: # RPG-7 Grenade launcher
-			Player.get_node("Body_parts/weapon_spawn/ak-47").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/ak-47").get_child(0).queue_free()
 			Player.Player_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
-			if Player.get_node("Body_parts/weapon_spawn/rpg_7").get_child_count() > 0:
-				Player.get_node("Body_parts/weapon_spawn/rpg_7").get_child(0).queue_free()
-			Player.get_node("Body_parts/weapon_spawn/rpg_7").add_child(Player.Player_weapon)
+			if Player.get_node("weapon_spawn/rpg_7").get_child_count() > 0:
+				Player.get_node("weapon_spawn/rpg_7").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/rpg_7").add_child(Player.Player_weapon)
 			set_cursor_orange()
-			Player.Player_weapon.transform = Player.get_node("Body_parts/weapon_spawn/rpg_7").transform
+			Player.Player_weapon.transform = Player.get_node("weapon_spawn/rpg_7").transform
 			Player.Player_weapon.scale = Vector2(5,7)	
 
 		3: # Home misille rocket launcher
-			Player.get_node("Body_parts/weapon_spawn/rpg_7").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/rpg_7").get_child(0).queue_free()
 			Player.Player_weapon = load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn").instantiate()
-			if Player.get_node("Body_parts/weapon_spawn/rocket_4").get_child_count() > 0:
-				Player.get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
-			Player.get_node("Body_parts/weapon_spawn/rocket_4").add_child(Player.Player_weapon)
+			if Player.get_node("weapon_spawn/rocket_4").get_child_count() > 0:
+				Player.get_node("weapon_spawn/rocket_4").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/rocket_4").add_child(Player.Player_weapon)
 			set_cursor_green()
-			Player.Player_weapon.transform = Player.get_node("Body_parts/weapon_spawn/rocket_4").transform
+			Player.Player_weapon.transform = Player.get_node("weapon_spawn/rocket_4").transform
 			Player.Player_weapon.scale = Vector2(3,3)
 
 		4: # TT tokarev hand gun
-			Player.get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/rocket_4").get_child(0).queue_free()
 			Player.Player_weapon = load("res://Scenes/Weapons/tt_gun/tt_gun.tscn").instantiate()
-			if Player.get_node("Body_parts/weapon_spawn/tt_gun").get_child_count() > 0:
-				Player.get_node("Body_parts/weapon_spawn/tt_gun").get_child(0).queue_free()
-			Player.get_node("Body_parts/weapon_spawn/tt_gun").add_child(Player.Player_weapon)
+			if Player.get_node("weapon_spawn/tt_gun").get_child_count() > 0:
+				Player.get_node("weapon_spawn/tt_gun").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/tt_gun").add_child(Player.Player_weapon)
 			set_cursor_orange()
-			Player.Player_weapon.transform = Player.get_node("Body_parts/weapon_spawn/tt_gun").transform
-			Player.Player_weapon.scale = Vector2(1.5,1.5)			
+			Player.Player_weapon.transform = Player.get_node("weapon_spawn/tt_gun").transform
+			Player.Player_weapon.scale = Vector2(2,2)			
 
 	print(Player.name + ": inventory loaded")
 
