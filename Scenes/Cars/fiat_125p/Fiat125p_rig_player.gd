@@ -62,7 +62,7 @@ func _ready() -> void:
 	Player_current_weapon = 0
 	############################ !!!!!!!!!!!!!!!!
 
-	load_inventory()
+	gv.load_inventory()
 
 	print("Node ready:" + self.name)
 	print("Player car Fiat125p rigid start x: " + str(global_position.x))
@@ -93,7 +93,7 @@ func _physics_process(delta) -> void:
 	# GO --> Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("snd_switch_weapon").play()
-			load_next_weapon()
+			gv.load_next_weapon()
 			print("Player Car: switch weapon")
 					
 
@@ -116,99 +116,7 @@ func _unhandled_input(event):
 
 func _integrate_forces(_state):
 	pass
-	#add_constant_force( Vector2(1000, 0), Vector2(0, 0) )
-
-	# if Input.is_action_just_pressed("ui_up"):
-	# 	$snd_click.play()
-
-
-		#state.apply_force(thrust.rotated(rotation))
-		#apply_impulse(Vector2(0, 0),Vector2(100,0))
-		#apply_force(-transform.y, transform.origin + Vector2.DOWN * 0.5)
-		#apply_central_impulse(Vector2(100, 0))
-		
-		#set_linear_velocity(Vector2(1500,0))
-
-	# else:
-	# 	state.apply_force(Vector2())
-	# var rotation_direction = 0
-	# if Input.is_action_pressed("ui_right"):
-	# 	rotation_direction += 1
-	# if Input.is_action_pressed("ui_left"):
-	# 	rotation_direction -= 1
-	# state.apply_torque(rotation_direction * torque)
-
-func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
-						# Torso/arm_r/weapon_spawn
-						# Torso/arm_r
 	
-	#var spawn_node_path:String = "Body_parts/weapon_spawn"
-	#var marker_node_path:String = "Body_parts/weapon_spawn"
-	
-	match Player_current_weapon:
-		0: # Empty weapon = none
-			if get_node("weapon_spawn/tt_gun").get_child_count() > 0:
-				get_node("weapon_spawn/tt_gun").get_child(0).queue_free()
-			Player_weapon = load("res://Scenes/Weapons/Empty/Empty_gun.tscn").instantiate()
-			if get_node("weapon_spawn/empty").get_child_count() > 0:
-				get_node("weapon_spawn/empty").get_child(0).queue_free()
-			get_node("weapon_spawn/empty").add_child(Player_weapon)
-			gv.set_cursor_orange()	
-		
-		1: # AK-47 
-			get_node("weapon_spawn/empty").get_child(0).queue_free()
-			Player_weapon = load("res://Scenes/Weapons/ak_47/AK-47.tscn").instantiate()
-			if get_node("weapon_spawn/ak-47").get_child_count() > 0:
-				get_node("weapon_spawn/ak-47").get_child(0).queue_free()
-			get_node("weapon_spawn/ak-47").add_child(Player_weapon)
-			gv.set_cursor_orange()
-			Player_weapon.transform = get_node("weapon_spawn/ak-47").transform
-			Player_weapon.scale = Vector2(3.0,3.0)
-		
-		2: # RPG-7 Grenade launcher
-			get_node("weapon_spawn/ak-47").get_child(0).queue_free()
-			Player_weapon = load("res://Scenes/Weapons/rpg_7/rpg_7.tscn").instantiate()
-			if get_node("weapon_spawn/rpg_7").get_child_count() > 0:
-				get_node("weapon_spawn/rpg_7").get_child(0).queue_free()
-			get_node("weapon_spawn/rpg_7").add_child(Player_weapon)
-			gv.set_cursor_orange()
-			Player_weapon.transform = get_node("weapon_spawn/rpg_7").transform
-			Player_weapon.scale = Vector2(5,7)	
-
-		3: # Home misille rocket launcher
-			get_node("weapon_spawn/rpg_7").get_child(0).queue_free()
-			Player_weapon = load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn").instantiate()
-			if get_node("weapon_spawn/rocket_4").get_child_count() > 0:
-				get_node("weapon_spawn/rocket_4").get_child(0).queue_free()
-			get_node("weapon_spawn/rocket_4").add_child(Player_weapon)
-			gv.set_cursor_green()
-			Player_weapon.transform = get_node("weapon_spawn/rocket_4").transform
-			Player_weapon.scale = Vector2(3,3)
-
-		4: # TT tokarev hand gun
-			get_node("Body_parts/weapon_spawn/rocket_4").get_child(0).queue_free()
-			Player_weapon = load("res://Scenes/Weapons/tt_gun/tt_gun.tscn").instantiate()
-			if get_node("Body_parts/weapon_spawn/tt_gun").get_child_count() > 0:
-				get_node("Body_parts/weapon_spawn/tt_gun").get_child(0).queue_free()
-			get_node("Body_parts/weapon_spawn/tt_gun").add_child(Player_weapon)
-			gv.set_cursor_orange()
-			Player_weapon.transform = get_node("Body_parts/weapon_spawn/tt_gun").transform
-			Player_weapon.scale = Vector2(1.5,1.5)			
-
-	print(self.name + ": inventory loaded")
-				
-
-func load_next_weapon():
-	print(str(Player_guns.size()))
-	if Player_guns.size() > Player_current_weapon:
-		Player_current_weapon += 1
-		load_inventory()
-		# Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2 }
-	if Player_guns.size() == Player_current_weapon:
-		Player_current_weapon = 0
-		load_inventory()
-
-
 func is_on_floor():
 	return true
 

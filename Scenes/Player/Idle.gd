@@ -111,7 +111,7 @@ func physics_update(delta: float) -> void:
 	# GO --> Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("../../snd_switch_weapon").play()
-			player.load_next_weapon()
+			gv.load_next_weapon()
 			select_animation()
 			print("Player: switch weapon")
 
