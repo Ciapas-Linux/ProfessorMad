@@ -102,14 +102,14 @@ func _process_on_state_move_right(_delta: float) -> void:
 	#constant_torque = 12.0
 	#apply_central_impulse(Vector2(0, -10))
 	#apply_torque_impulse(-100)
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	#move_and_slide()
 	
 
 func _process_on_state_move_left(_delta: float) -> void:
 	#velocity.x = -speed
 	#velocity.y += gravity * delta
-	player_distance = global_position.distance_to(gv.Hero_global_position)
+	player_distance = global_position.distance_to(gv.Player.global_position)
 	#move_and_slide()				
 
 func _integrate_forces(_state):

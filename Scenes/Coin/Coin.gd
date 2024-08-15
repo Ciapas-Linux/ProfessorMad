@@ -46,7 +46,7 @@ func _on_coin_img_animation_finished() -> void:
 		$coin_img.play("idle")
 	if hit == true:
 		gv.Player.Player_gold += amount
-		print("Coin: Hero grab " + str(amount) + " gold coin")
+		print("Coin: Player grab " + str(amount) + " gold coin")
 		queue_free()
 	
 

@@ -94,9 +94,7 @@ func physics_update(delta: float) -> void:
 		estate_machine.transition_to("Pause") """
 
 
-	# print("XXXXXXXXX: " + str(int(rysiek.global_position.distance_to(gv.Hero_global_position))))
-		
-
+	
 	# TURN LEFT: if player is on left side
 	# if gv.Hero_global_position.x + rysiek.change_direction_distance < rysiek.global_position.x:
 	if gv.Player.global_position.x < rysiek.global_position.x:
