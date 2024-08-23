@@ -45,8 +45,6 @@ The main branch is a development version and is constantly changing, so it may b
 <BR>
 <BR><BR>
 To test different scenes you need to go to the ProfessorMad/Scenes/Stages folder and load then run the scene.
-<BR><BR>
-
 
 <BR><BR>
 :floppy_disk: DOWNLOAD PROJECT:
