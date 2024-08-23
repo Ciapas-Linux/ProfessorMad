@@ -21,7 +21,7 @@ The main branch is a development version and is constantly changing, so it may b
 <BR>
 :+1: During the attack, bullet holes are created in enemy objects.
 <BR>
-:superhero: Very intelligent and characteristic opponents. First up is the nasty Rysiek sent by one of the minor bosses. They can use drones on the Professor.
+:superhero: Very intelligent and characteristic opponents. First up is the nasty Rysiek sent by one of the minor bosses. They can use drones to find and bomb the Professor.
 <BR>
 :superhero: Enemies can also drive cars equipped with some pretty cool weapons. 
 <BR>
