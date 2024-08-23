@@ -38,6 +38,9 @@ The main branch is a development version and is constantly changing, so it may b
 :+1: Quite precise shooting of the guns weapons, the bullet hits the place where the cursor is,     while maintaining the offset for moving objects
 <BR>
 :car: In some levels the player can drive old cars, as well as those adapted to combat. With the preservation of physics.
+<BR>
+:+1: Static variable typing and many optimizations in scripts.
+<BR>
 <BR><BR><BR><BR>
 
 
