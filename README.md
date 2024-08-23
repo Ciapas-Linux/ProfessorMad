@@ -17,7 +17,7 @@ The main branch is a development version and is constantly changing, so it may b
 
 **Features (to be continued ... ): :smiley:**
 
-:boom: Destructable enemy objects.
+:boom: Destructable enemy objects and some obstacles..
 <BR>
 :+1: During the attack, bullet holes are created in enemy objects.
 <BR>
