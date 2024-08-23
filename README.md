@@ -11,9 +11,10 @@ Inspiration and sample very small fragments come from free examples available on
 During his exciting adventures, the professor will perform missions, bravely face all obstacles, he will face a lot of secrets and many obstacles to overcome. There will be very strong bosses, rich global madmen who take away people's freedom and destroy the earth. Of course, all Professor actions are for the good of people, the earth, animals and plants, so the Hero will bring peace and prosperity to the earth.
 
 <BR><BR>
-<p style='color:red'>!!! WARNING !!!</p>
+$\color{green}{test}$
+**<p style='color:red'>!!! WARNING !!!</p>**
 The main branch is a development version and is constantly changing, so it may be unstable, maybe we will make a stable release in some time. For now project is converted to godot development version 4.4.dev from master branch, for testing new godot features.
-<BR><BR>
+<BR><BR><BR>
 
 **Features (to be continued ... ): :smiley:**
 
