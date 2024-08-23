@@ -60,15 +60,16 @@ func _timer_timeout():
 	position.y += 20
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("Barrel_2: area hit me " + area.name)
+	print(name + ": body hit me " + area.name)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Barrel_2: body hit me " + body.name)
+	hit()
+	print(name + ": body hit me " + body.name)
 
 func hit():
 	if hit_count > 0:
 		hit_count -= 1
-		print("barell_2: dostałam ! " + "hits: " + str(hit_count))
+		print(name + ":  dostałam ! " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		position.y -= 20
 		timer.start()
@@ -92,7 +93,7 @@ func hit():
 			$object_spr.texture = Barrel_hit_tex
 
 func _on_bodies_collision_hit_me() -> void:
-	print("Barrel_2: some bodies hits me")
+	print(name + ":  some bodies hits me")
 
 func rpg_hit():
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -111,7 +112,7 @@ func rpg_hit():
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 2.1)
 	$object_spr.texture = Barrel_hit_tex
 	gv.Cam1.ScreenShake(30, 0.5)
-	print("Barell_2: enemies hit me by rpg!")
+	print(name + ":  enemies hit me by rpg!")
 
 func bomb_explode():
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -129,7 +130,7 @@ func bomb_explode():
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
 	$object_spr.texture = Barrel_hit_tex
 	gv.Cam1.ScreenShake(30, 0.5)
-	print("Barell_2: enemies hit me by drone big bomb!")
+	print(name + ": enemies hit me by drone big bomb!")
 
 func _on_explosion_spr_animation_finished() -> void:
 	#emit_signal("explode")

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dmwma5u47md1e" path="res://Assets/Skies/Blue_Nebula_02-512x512.png" id="34_augbo"]
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="35_8plis"]
 [ext_resource type="Script" path="res://Scenes/Nature/Moon/Moon.gd" id="36_8kwsa"]
-[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.tscn" id="36_kb37b"]
+[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/Fiat_125p_rigid/Fiat125p_rigid.tscn" id="36_kb37b"]
 [ext_resource type="Texture2D" uid="uid://bhpmg40s2q1rr" path="res://Assets/Clouds/chmury2b.png" id="37_060mj"]
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="37_kjkaq"]
 [ext_resource type="Texture2D" uid="uid://dwatcolf5nna3" path="res://Assets/Backgrounds/background2.png" id="38_kj7ay"]

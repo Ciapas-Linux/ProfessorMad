@@ -63,7 +63,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(name + ": area hit me " + area.name)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	hit()
 	print(name + ": body hit me " + body.name)
+	
 
 func hit():
 	if hit_count > 0:

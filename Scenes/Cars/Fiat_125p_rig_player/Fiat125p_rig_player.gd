@@ -260,11 +260,11 @@ func _on_front_contact_body_entered(body:Node2D) -> void:
 	# 	if body.get_parent().has_method("hit"):
 	# 		body.get_parent().hit()
 
-		match str(body.name):
-			"BarellBodyCollision":
-				body.get_parent().hit()
-			"Barrel_2":
-				body.hit()
+		# match str(body.name):
+		# 	"BarellBodyCollision":
+		# 		body.get_parent().hit()
+			# "Barrel_2":
+			# 	body.hit()
 			
 		# 		print("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQ")
 

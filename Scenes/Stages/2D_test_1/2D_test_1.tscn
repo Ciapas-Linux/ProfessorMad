@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cdnlw84tvum1f" path="res://Scenes/Cars/tarpan/tarpan.tscn" id="43_jmlqg"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="44_3xj1c"]
 [ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="44_xxdy7"]
-[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/fiat_125p/Fiat125p_rigid.tscn" id="48_4igoq"]
+[ext_resource type="PackedScene" uid="uid://bykqjn8n5jcgh" path="res://Scenes/Cars/Fiat_125p_rigid/Fiat125p_rigid.tscn" id="48_4igoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmhf3"]
 size = Vector2(20060, 200)
