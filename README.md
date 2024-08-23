@@ -49,6 +49,7 @@ To test different scenes you need to go to the ProfessorMad/Scenes/Stages folder
 :floppy_disk: DOWNLOAD PROJECT:
 <BR>
 Use command line git application:  ```git clone https://github.com/Ciapas-Linux/ProfessorMad.git```
+or download project zip by pressing green button
 <BR><BR>
 
 
