@@ -15,7 +15,7 @@ $\color{red}{WARNING !!!}$
 The main branch is a development version and is constantly changing, so it may be unstable, maybe we will make a stable release in some time. For now project is converted to godot development version 4.4.dev from master branch, for testing new godot features.
 <BR><BR><BR>
 
-**Features (to be continued ... ): :smiley:**
+**Features (most of this complete and to be continued ... ): :smiley:**
 
 :boom: Destructable enemy objects and some obstacles..
 <BR>
