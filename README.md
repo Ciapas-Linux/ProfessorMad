@@ -24,7 +24,7 @@ During his exciting adventures, the professor will perform missions, bravely fac
 <BR>
 :superhero: Enemies can also drive cars equipped with some pretty cool weapons. 
 <BR>
-:rocket: Nice guided missiles. Lock target and fire.
+:rocket: Nice guided missiles. Lock target, track and destroy target with big explosion.
 <BR>
 :rocket: Nice classic RPG missiles.
 <BR>
