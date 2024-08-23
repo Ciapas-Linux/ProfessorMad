@@ -2,7 +2,7 @@
 # ProfessorMad : Adventures of Professor Łysolek
 
 **ProfessorMad** The open source prototype of the game titled the Adventures of Professor Łysolek (eng: Ysolek) made using the godot the latest possible version 2D/3D game engine.
-We learn and test new engine functionalities. We want the gameplay to be mixed depending on the level, sometimes 2D, sometimes 3D and 2.5D, also top down and more styles mixing together, cinematic cutscenes.
+We learn and test new engine functionalities. We want the gameplay to be mixed depending on the level, sometimes 2D, sometimes 3D and 2.5D, also top down and more styles mixing together,    :tv:cinematic cutscenes.
 
 For prototyping , i downloaded some assets from itch.io and opengameart.org under free licenses and some i created myself in blender and gimp. I am slowly replacing assets with mine as much as I can. 
 
