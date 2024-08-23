@@ -189,7 +189,6 @@ texture_scale = 7.0
 
 [node name="Barrel_2" parent="." instance=ExtResource("20_xsrdu")]
 position = Vector2(5562, 582)
-scale = Vector2(0.7, 0.7)
 
 [node name="Barrel_1" parent="." instance=ExtResource("20_0i127")]
 position = Vector2(12136, 589)

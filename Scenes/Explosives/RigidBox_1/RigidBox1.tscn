@@ -235,11 +235,11 @@ shape = SubResource("RectangleShape2D_rurmd")
 disabled = true
 
 [node name="Hitpoints" type="Label" parent="."]
-offset_left = -98.0
-offset_top = -144.0
-offset_right = -58.0
-offset_bottom = -86.0
-theme_override_font_sizes/font_size = 25
+offset_left = -105.0
+offset_top = -165.0
+offset_right = -65.0
+offset_bottom = -102.0
+theme_override_font_sizes/font_size = 45
 text = "0"
 
 [node name="Bullet_holes" parent="." instance=ExtResource("5_mcc1j")]

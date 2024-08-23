@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="6_o7uui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ls4e1"]
-radius = 163.0
-height = 451.0
+radius = 112.0
+height = 307.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwv6t"]
 atlas = ExtResource("2_8vkr2")
@@ -223,6 +223,7 @@ animation = &"explode"
 offset = Vector2(3, -8)
 
 [node name="object_spr" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_xvy3g")
 
 [node name="snd_explode" type="AudioStreamPlayer" parent="."]
@@ -230,21 +231,20 @@ stream = ExtResource("4_kbgcu")
 volume_db = 4.0
 pitch_scale = 0.59
 
-[node name="Hitpoints" type="Label" parent="."]
-offset_left = -130.0
-offset_top = -299.0
-offset_right = -90.0
-offset_bottom = -268.0
-scale = Vector2(3.32322, 3.25553)
-theme_override_font_sizes/font_size = 20
-text = "0"
-
 [node name="Bullet_holes" parent="." instance=ExtResource("5_abswd")]
 
 [node name="snd_click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_o7uui")
 volume_db = 2.0
 pitch_scale = 1.4
+
+[node name="Hitpoints" type="Label" parent="."]
+offset_left = -100.0
+offset_top = -203.0
+offset_right = -60.0
+offset_bottom = -120.0
+theme_override_font_sizes/font_size = 45
+text = "0"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

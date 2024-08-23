@@ -240,11 +240,11 @@ volume_db = 2.0
 pitch_scale = 1.4
 
 [node name="Hitpoints" type="Label" parent="."]
-offset_left = -87.0
-offset_top = -180.0
-offset_right = -47.0
-offset_bottom = -145.0
-theme_override_font_sizes/font_size = 25
+offset_left = -95.0
+offset_top = -207.0
+offset_right = -55.0
+offset_bottom = -144.0
+theme_override_font_sizes/font_size = 45
 text = "0"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
