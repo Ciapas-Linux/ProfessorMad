@@ -16,21 +16,21 @@ During his exciting adventures, the professor will perform missions, bravely fac
 
 **Features (to be continued ... ): :smiley:**
 
-☢ Destructable enemy objects.
+:boom: Destructable enemy objects.
 <BR>
-☢ During the attack, bullet holes are created in enemy objects.
+:+1: During the attack, bullet holes are created in enemy objects.
 <BR>
-☢ Very intelligent and characteristic opponents. First up is the nasty Rysiek sent by one of the minor bosses. 
+:superhero: Very intelligent and characteristic opponents. First up is the nasty Rysiek sent by one of the minor bosses. 
 <BR>
-☢ Nice guided missiles. Lock target and fire.
+:rocket: Nice guided missiles. Lock target and fire.
 <BR>
-☢ Autonomous drones attacking with bombs.
+:small_airplane: Autonomous drones attacking with bombs.
 <BR>
-☢ Player sprite: Cut out body parts + 2D skeleton animation system used.
+:disguised_face: Player sprite: Cut out body parts + 2D skeleton animation system used.
 <BR>
-☢ Quite precise shooting of the guns weapons, the bullet hits the place where the cursor is,     while maintaining the offset for moving objects
+:+1: Quite precise shooting of the guns weapons, the bullet hits the place where the cursor is,     while maintaining the offset for moving objects
 <BR>
-☢ In some levels the player can drive old cars, as well as those adapted to combat. With the preservation of physics.
+:car: In some levels the player can drive old cars, as well as those adapted to combat. With the preservation of physics.
 <BR><BR><BR><BR>
 
 
