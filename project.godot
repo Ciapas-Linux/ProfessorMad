@@ -57,6 +57,7 @@ movie_writer/disable_vsync=true
 
 [filesystem]
 
+import/fbx2gltf/enabled=false
 import/blender/enabled.web=true
 
 [input]

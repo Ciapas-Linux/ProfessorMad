@@ -18,7 +18,7 @@ func _input(event):
 			
 			if !click_all and !ignore_unclickable:
 				break # Thus stops on the first shape
-			print(node.collider.name)
+			print("Global clicker: " + node.collider.name)
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ep7nieffwhma"]
+[gd_scene load_steps=27 format=4 uid="uid://ep7nieffwhma"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/2D_Player_test_drive/player_test_drive.gd" id="1_ox0ga"]
 [ext_resource type="Script" path="res://Scenes/Camera/Camera2DPro.gd" id="3_5ghoj"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="19_iiwhm"]
 [ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barrel_1.tscn" id="20_0i127"]
 [ext_resource type="PackedScene" uid="uid://bcr5pp44qvg4y" path="res://Scenes/Explosives/Barrel_2/barrel_2.tscn" id="20_xsrdu"]
+[ext_resource type="PackedScene" uid="uid://1xe0a6ee4e2n" path="res://Scenes/Explosives/RigidBarrel/RigidBarrel_2.tscn" id="21_lmb23"]
+[ext_resource type="PackedScene" uid="uid://sf1vqf43ddkf" path="res://Scenes/Explosives/RigidBox_1/RigidBox1.tscn" id="22_1mggi"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ms7f"]
 _surfaces = [{
@@ -186,9 +188,16 @@ texture = ExtResource("19_iiwhm")
 texture_scale = 7.0
 
 [node name="Barrel_2" parent="." instance=ExtResource("20_xsrdu")]
-position = Vector2(2283, 582)
+position = Vector2(5562, 582)
 scale = Vector2(0.7, 0.7)
 
 [node name="Barrel_1" parent="." instance=ExtResource("20_0i127")]
-position = Vector2(3236, 589)
+position = Vector2(12136, 589)
 scale = Vector2(0.7, 0.7)
+
+[node name="RigidBarrel_2" parent="." instance=ExtResource("21_lmb23")]
+position = Vector2(2590, 584)
+mass = 60.0
+
+[node name="RigidBox1" parent="." instance=ExtResource("22_1mggi")]
+position = Vector2(3045, 633)
