@@ -44,12 +44,12 @@ The main branch is a development version and is constantly changing, so it may b
 :+1: Static variable typing and many optimizations in scripts.
 <BR>
 <BR><BR>
-To test different test scenes you need to go to the Professor Mad/Scenes/Stages folder and load and run the scene.
+To test different scenes you need to go to the ProfessorMad/Scenes/Stages folder and load then run the scene.
 <BR><BR>
 
 
 <BR><BR>
-DOWNLOAD PROJECT:
+:floppy_disk: DOWNLOAD PROJECT:
 <BR>
 Use command line git application:  ```git clone https://github.com/Ciapas-Linux/ProfessorMad.git```
 <BR><BR>
