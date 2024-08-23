@@ -12,7 +12,7 @@ class_name Hero extends CharacterBody2D
 # run speed
 @export var speed_run :float = 600.0
 
-# run jump impulse
+# run jump impulse ...
 @export var jump_impulse_run :float = 1700.0
 
 # Vertical acceleration in pixel per second squared.
