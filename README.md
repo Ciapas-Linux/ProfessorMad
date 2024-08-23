@@ -11,23 +11,26 @@ Inspiration and sample very small fragments come from free examples available on
 During his exciting adventures, the professor will perform missions, bravely face all obstacles, he will face a lot of secrets and many obstacles to overcome. There will be very strong bosses, rich global madmen who take away people's freedom and destroy the earth. Of course, all for the good of people and animals.
 
 <BR><BR>
-Attention! The main branch is a development version and is constantly changing, so it may be unstable, maybe we will make a stable release in some time.
+**Attention !!!** The main branch is a development version and is constantly changing, so it may be unstable, maybe we will make a stable release in some time. For now project is converted to godot development version 4.4.dev from master branch, for testing new godot features.
 <BR><BR>
 
-Features (to be continued ... ):
+**Features (to be continued ... ):**
 
 ☢ Destructable enemy objects.
 <BR>
 ☢ During the attack, bullet holes are created in enemy objects.
 <BR>
-☢ Nice guided missiles.
+☢ Very intelligent and characteristic opponents. First up is the nasty Rysiek sent by one of the minor bosses. 
+<BR>
+☢ Nice guided missiles. Lock target and fire.
 <BR>
 ☢ Autonomous drones attacking with bombs.
 <BR>
 ☢ Player sprite: Cut out body parts + 2D skeleton animation system used.
 <BR>
 ☢ Quite precise shooting of the guns weapons, the bullet hits the place where the cursor is,     while maintaining the offset for moving objects
-
+<BR>
+☢ In some levels the player can drive old cars, as well as those adapted to combat. With the preservation of physics.
 <BR><BR><BR><BR>
 
 
