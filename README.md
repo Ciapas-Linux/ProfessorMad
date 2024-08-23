@@ -51,7 +51,7 @@ To test different test scenes you need to go to the Professor Mad/Scenes/Stages 
 <BR><BR>
 DOWNLOAD PROJECT:
 <BR>
-use command line git:  git clone https://github.com/Ciapas-Linux/ProfessorMad.git
+Use command line git application:  ```git clone https://github.com/Ciapas-Linux/ProfessorMad.git```
 <BR><BR>
 
 
