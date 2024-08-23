@@ -17,9 +17,9 @@ During his exciting adventures, the professor will perform missions, bravely fac
 **Features (to be continued ... ): :smiley:**
 
 :boom: Destructable enemy objects.
-<BR>
+<BR><BR>
 :+1: During the attack, bullet holes are created in enemy objects.
-<BR>
+<BR><BR>
 :superhero: Very intelligent and characteristic opponents. First up is the nasty Rysiek sent by one of the minor bosses. 
 <BR>
 :rocket: Nice guided missiles. Lock target and fire.
