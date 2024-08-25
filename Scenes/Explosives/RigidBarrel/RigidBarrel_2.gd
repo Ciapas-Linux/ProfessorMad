@@ -8,9 +8,13 @@ var hit_count: int
 signal explode
 @onready var tween: Tween
 var Barrel_hit_tex:CompressedTexture2D = preload("res://Assets/Objects/beczka_damaged.png")
-var timer: Timer
+#var timer: Timer
 
 var mouse_enter:bool = false
+
+var hit_anim_timer:Timer
+var hit_anim_impulse:bool = false
+var hit_anim_direction:Vector2 = Vector2.RIGHT
 
 func _ready():
 	self.input_pickable = true
@@ -21,12 +25,15 @@ func _ready():
 	$explosion_spr.visible = false
 	$explosion_spr.stop()
 	$object_spr.visible = true #head.texture = Head_hit1_img
-	timer = Timer.new()
-	add_child(timer)
-	timer.set_one_shot(true)
-	timer.set_wait_time(0.2)
-	timer.connect("timeout", _timer_timeout)
+	hit_anim_timer = Timer.new()
+	add_child(hit_anim_timer)
+	hit_anim_timer.wait_time = 0.15
+	hit_anim_timer.one_shot = true
+	hit_anim_timer.connect("timeout", hit_anim_timer_timeout)
 	print("Node ready:" + self.name)
+
+func hit_anim_timer_timeout():
+	hit_anim_impulse = false
 
 func _unhandled_input(event):
 	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
@@ -50,6 +57,10 @@ func _on_Area2D_mouse_entered() -> void:
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
 
+func _physics_process(_delta) -> void:
+	if hit_anim_impulse == true:
+		apply_impulse(Vector2(0, -3810),Vector2(randf_range(-45.0,45.0),randf_range(-45.0,45.0)))
+
 func _process(_delta) -> void:
 	pass
 
@@ -68,9 +79,10 @@ func hit():
 		hit_count -= 1
 		print(name + ": dostałam ! " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
-		position.y -= 30
-		timer.start()
 		$Hitpoints.text = str(hit_count)
+		hit_anim_timer.start()
+		hit_anim_impulse = true
+
 		if hit_count == 0:
 			barrel_explode(0)
 

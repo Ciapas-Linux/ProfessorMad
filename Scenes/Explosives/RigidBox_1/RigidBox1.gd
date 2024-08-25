@@ -10,6 +10,10 @@ var hit_count:int
 
 var mouse_enter:bool = false
 
+var hit_anim_timer:Timer
+var hit_anim_impulse:bool = false
+var hit_anim_direction:Vector2 = Vector2.RIGHT
+
 func _ready():
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_Area2D_mouse_entered)
@@ -19,10 +23,24 @@ func _ready():
 	$explode_spr.stop()
 	$Hitpoints.text = str(hit_count)
 	$object_spr.visible = true
+
+	hit_anim_timer = Timer.new()
+	add_child(hit_anim_timer)
+	hit_anim_timer.wait_time = 0.15
+	hit_anim_timer.one_shot = true
+	hit_anim_timer.connect("timeout", hit_anim_timer_timeout)
+
 	print("Node ready:" + self.name)
 	
+func hit_anim_timer_timeout():
+	hit_anim_impulse = false
+
 func _process(_delta) -> void:
 	pass
+
+func _physics_process(_delta) -> void:
+	if hit_anim_impulse == true:
+		apply_impulse(Vector2(0, randf_range(-1200.0,-800.0)),Vector2(randf_range(-45.0,45.0),randf_range(-45.0,45.0)))
 
 func _unhandled_input(event):
 	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
@@ -56,6 +74,7 @@ func _on_body_entered(body):
 	pass
 
 func rpg_hit():
+	$Hitpoints.visible = false
 	$Box1StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	gv.mouse_enter_node = null
 	$Bullet_holes.vanish()
@@ -77,8 +96,11 @@ func hit():
 		$Bullet_holes.hit()
 		hit_count -= 1
 		$Hitpoints.text = str(hit_count)
+		hit_anim_timer.start()
+		hit_anim_impulse = true
 
 		if hit_count == 0:
+			$Hitpoints.visible = false
 			$CollisionShape2D.set_deferred("disabled", true)
 			$Bullet_holes.vanish()
 			$explode_spr.visible = true
@@ -95,6 +117,7 @@ func hit():
 			print(name + ": enemies kill me by bullets!") 
 
 func bomb_explode():
+	$Hitpoints.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Box1StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
