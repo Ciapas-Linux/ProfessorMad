@@ -3,16 +3,11 @@ extends RigidBody2D
 # # RigidBox1           .SCRIPT #
 # ##########################
 
-
-
 @onready var tween: Tween
 var hit_count:int
-
 var mouse_enter:bool = false
-
 var hit_anim_timer:Timer
 var hit_anim_impulse:bool = false
-var hit_anim_direction:Vector2 = Vector2.RIGHT
 
 func _ready():
 	self.input_pickable = true
@@ -61,9 +56,12 @@ func _unhandled_input(event):
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
 	
-
 func _on_Area2D_mouse_exited() -> void:
 	mouse_enter = false
+
+func _on_area_2d_body_entered(body:Node2D) -> void:
+	hit()
+	print(name + ": body hit me " + body.name)
 
 @warning_ignore("unused_parameter")
 func _on_area_entered(area):
@@ -73,7 +71,16 @@ func _on_area_entered(area):
 func _on_body_entered(body):
 	pass
 
+func call_hit() -> void:
+	var nodes:Array[Node] = get_tree().get_nodes_in_group("shock_wave_hit")
+	for node in nodes:
+		#print(name + ": XXX:shock_wave_hit: " + node.name)
+		if node.has_method("shock_wave_hit"):
+			node.shock_wave_hit(self)
+		#get_tree().call_group("shock_wave_hit", "shock_wave_hit")
+
 func rpg_hit():
+	call_hit()
 	$Hitpoints.visible = false
 	$Box1StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	gv.mouse_enter_node = null
@@ -88,7 +95,7 @@ func rpg_hit():
 	tween.tween_property($object_spr, "global_rotation", randf_range(-5.0,5.0), 0.7)
 	tween.tween_property($object_spr, "global_position", Vector2(global_position.x, global_position.y - 195), 0.7)
 	tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
-	print(name + ": enemies hit me by rpg!") 
+	print(name + ": enemies finish me by rpg!") 
 
 func hit():
 	if hit_count > 0:
@@ -100,6 +107,7 @@ func hit():
 		hit_anim_impulse = true
 
 		if hit_count == 0:
+			call_hit()
 			$Hitpoints.visible = false
 			$CollisionShape2D.set_deferred("disabled", true)
 			$Bullet_holes.vanish()
@@ -117,6 +125,7 @@ func hit():
 			print(name + ": enemies kill me by bullets!") 
 
 func bomb_explode():
+	call_hit()
 	$Hitpoints.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Box1StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
@@ -137,57 +146,4 @@ func _on_explode_spr_animation_finished() -> void:
 		self.queue_free()
 
 
-	#if hit_count == 0 and $Sprite.is_playing() == false:
-		#self.queue_free()
-	#if Input.is_action_just_pressed("Fire"):
-		#local_cursor_position = get_local_mouse_position()	
-
-
-
-
-
-
-# Draw bullet holes
-		#$Sprite.sprite_frames.get_frame_texture ( "idle", 0 ).is_pixel_opaque()
-		#if $Sprite.sprite_frames.get_frame_texture( "default", 0 ).get_image.is_pixel_opaque(local_cursor_position) == true:
-		# var Bullet_sprite:Sprite2D = Sprite2D.new()
-		# Bullet_sprite.texture = gv.Bullet_hit1_texure
-		# var Sprite_scale:float = randf_range(0.3,1.1)
-		# Bullet_sprite.scale = Vector2(Sprite_scale,Sprite_scale)
-		# Bullet_sprite.position = local_cursor_position 
-		# add_child(Bullet_sprite)
-
-
-
-#print(area.name)
-	#  @Bullet@2
-	#var str_name:String = area.name
-	#str_name = str_name.lstrip()
-	#if area.name.find("@Bul") != -1:
-
-
-
-
-#if hit == true: return
-	#pass
-#	if area.name == "Bullet":
-#		if $Sprite.is_playing() == true:
-#			print("box1play: dostałam ! od: " + area.name + " hits: " + str(hit_count))
-#			hit_count -= 1
-#			return
-#		hit_count -= 1
-#		print("box1: dostałam ! od: " + area.name + " hits: " + str(hit_count))
-#		if hit_count == 0:
-#			$Sprite.play("explode")
-#			$snd_explode.play()
-	#self.queue_free()
 	
-#func _on_body_entered(body):
-#	if body.name == "Bullet":
-#		print("box1: dostałam od: " + body.name + " hits: " + str(hit_count))
-#		$BulletCrash.position = body.position
-#		$BulletCrash.play("hit_anim")
-#		hit_count -= 1
-#		$Sprite.play("explode")
-#		$snd_explode.play()
-	#pass # Replace with function body.

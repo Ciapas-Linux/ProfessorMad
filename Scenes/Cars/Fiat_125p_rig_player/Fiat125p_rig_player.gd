@@ -42,6 +42,7 @@ var Player_current_weapon:int = Player_guns["ak_47"]
 var shock_vave_timer:Timer
 var shock_vave_impulse:bool = false
 var shock_vave_direction:Vector2 = Vector2.RIGHT
+var shock_vave_power:Vector2 = Vector2(0,0)
 
 var wheels:Array[RigidBody2D] = []
 
@@ -82,19 +83,34 @@ func shock_vave_timer_timeout():
 	shock_vave_impulse = false
 
 func shock_wave_hit(node:Node)-> void:
-	print(name + ": explosion shock wave, hit by: " + node.name)
 	var distance : float = node.global_position.distance_to(global_position)
-	print(name + ": explosion distance: " + str(int(distance)))
 	
-	# explosion is on right Player side
+	# Too far from explosion blast wave....
+	if distance > 2000:
+		return
+	
+	print(name + ": explosion shock wave, hit by: " + node.name)
+	print(name + ": explosion distance: " + str(int(distance)))
+
+	# shockwave power based on distance:
+	if distance >= 0 and distance <= 600:
+		shock_vave_power = Vector2(-300, -6000)
+		shock_vave_timer.start(0.3)
+	if distance >= 600 and distance <= 1200:
+		shock_vave_power = Vector2(-600, -3000)
+		shock_vave_timer.start(0.2)
+	if distance >= 1200 and distance <= 1900:
+		shock_vave_power = Vector2(-1200, -2500)
+		shock_vave_timer.start(0.15)		
+
+	# explosion is on right Player side:
 	if global_position < node.global_position:
 		shock_vave_direction =  Vector2.LEFT
 	
-	# explosion is on left Player side
+	# explosion is on left Player side:
 	if global_position > node.global_position:
 		shock_vave_direction =  Vector2.RIGHT	
-	
-	shock_vave_timer.start()
+		
 	shock_vave_impulse = true
 
 func get_state():
@@ -113,13 +129,13 @@ func _physics_process(delta) -> void:
 		
 	if shock_vave_impulse == true:
 		if shock_vave_direction ==  Vector2.LEFT:
-			apply_impulse(Vector2(0, -6210),Vector2(300,0))
+			apply_impulse(shock_vave_power,Vector2(300,0))
 		elif shock_vave_direction ==  Vector2.LEFT:
-			apply_impulse(Vector2(0, -6210),Vector2(-300,0))
+			apply_impulse(shock_vave_power,Vector2(-300,0))
 
 
 	# ARROW-> DOWN:	
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_up"):
 		apply_impulse(Vector2(0, -6210),Vector2(300,0))
 		#apply_impulse(Vector2(120, 6210),Vector2(0,0))
 

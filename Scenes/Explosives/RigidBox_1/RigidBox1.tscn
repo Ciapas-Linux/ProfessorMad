@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://sf1vqf43ddkf"]
+[gd_scene load_steps=36 format=3 uid="uid://sf1vqf43ddkf"]
 
 [ext_resource type="Script" path="res://Scenes/Explosives/RigidBox_1/RigidBox1.gd" id="1_f5dlo"]
 [ext_resource type="Texture2D" uid="uid://bcrby7a04efk3" path="res://Assets/Explosions/Explosion1.png" id="2_7qecm"]
@@ -196,6 +196,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rurmd"]
 size = Vector2(70, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi4t1"]
+size = Vector2(190, 190)
+
 [node name="RigidBox1" type="RigidBody2D"]
 collision_layer = 10
 collision_mask = 119
@@ -251,5 +254,14 @@ stream = ExtResource("6_l6g83")
 volume_db = 2.0
 pitch_scale = 1.4
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 10
+collision_mask = 117
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xi4t1")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="explode_spr" to="." method="_on_explode_spr_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

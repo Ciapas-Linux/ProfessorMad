@@ -8,7 +8,6 @@ var hit_count: int
 signal explode
 @onready var tween: Tween
 var Barrel_hit_tex:CompressedTexture2D = preload("res://Assets/Objects/beczka_damaged.png")
-#var timer: Timer
 
 var mouse_enter:bool = false
 
@@ -49,7 +48,7 @@ func _unhandled_input(event):
 			params.position = get_global_mouse_position()
 			var out = space_state.intersect_point(params)
 			for node in out:
-				print(node.collider.name)
+				print("Mouse collision: " + node.collider.name)
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_enter = true
@@ -63,9 +62,6 @@ func _physics_process(_delta) -> void:
 
 func _process(_delta) -> void:
 	pass
-
-func _timer_timeout():
-	position.y += 20
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(name + ": area hit me " + area.name)
@@ -96,14 +92,6 @@ func _on_bodies_collision_hit_me() -> void:
 	print(name + ": some bodies hits me")
 
 func call_hit() -> void:
-	# for child in get_parent().get_children():
-	# 	if child is RigidBody2D:
-	# 		print(name + ": XXX:Rigid body: " + child.name)
-	# 		var distance : float = child.global_position.distance_to(global_position)
-	# 		print(name + ": XXX:distance: " + str(int(distance)))
-	# 		if child.has_method("rigid_barrel_explode"):
-	# 			child.rigid_barrel_explode()
-
 	var nodes:Array[Node] = get_tree().get_nodes_in_group("shock_wave_hit")
 	for node in nodes:
 		#print(name + ": XXX:shock_wave_hit: " + node.name)
