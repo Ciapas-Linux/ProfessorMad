@@ -40,7 +40,7 @@ func _ready() -> void:
 	self.connect("mouse_entered", _on_mouse_entered)
 	self.connect("mouse_exited", _on_mouse_exited)
 	$BigExplosion.visible = false
-	print("Car Fiat125p_R start x: " + str(global_position.x))
+	print(name + ": start x: " + str(global_position.x))
 	#apply_impulse(Vector2(12.0, 0).rotated(rotation))
 	#apply_central_force(Vector2(10, 0) * 1)
 	#apply_central_impulse(Vector2(0, -100))
@@ -211,7 +211,7 @@ func bomb_explode():
 
 func hit()-> void:
 	if hit_count > 0:
-		print("Fiat125p: dostałem " + "hits: " + str(hit_count))
+		print(name + ": dostałem " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		hit_count -= 1
 		
@@ -321,7 +321,7 @@ func _on_timer_timeout() -> void:
 	
 
 func _on_front_contact_area_entered(area:Area2D) -> void:
-	print("Fiat125p, hit area: " + area.name)
+	print(name + ": hit area: " + area.name)
 	$snd_hit.play()
 	# match current_state:
 	# 	STOP:
@@ -332,7 +332,7 @@ func _on_front_contact_area_entered(area:Area2D) -> void:
 	# 		turn_right()
 
 func _on_front_contact_body_entered(body:Node2D) -> void:
-	print("Fiat125p, hit body: " + body.name)
+	print(name + ": hit body: " + body.name)
 	$snd_hit.play()
 
 

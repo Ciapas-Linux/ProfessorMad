@@ -411,7 +411,7 @@ _data = {
 "shoot": SubResource("Animation_rjinv")
 }
 
-[node name="Fiat125p_rigid" type="RigidBody2D"]
+[node name="Fiat125p_rigid" type="RigidBody2D" groups=["shock_wave_hit"]]
 collision_layer = 32
 collision_mask = 63
 mass = 50.0

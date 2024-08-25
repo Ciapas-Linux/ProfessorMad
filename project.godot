@@ -60,6 +60,10 @@ movie_writer/disable_vsync=true
 import/fbx2gltf/enabled=false
 import/blender/enabled.web=true
 
+[global_group]
+
+shock_wave_hit="the object can be hit by the shock wave of the explosion"
+
 [input]
 
 run={

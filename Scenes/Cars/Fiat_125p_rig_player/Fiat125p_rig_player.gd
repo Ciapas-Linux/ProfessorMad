@@ -39,6 +39,8 @@ var Player_weapon:Sprite2D
 var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3,"tt_gun": 4}
 var Player_current_weapon:int = Player_guns["ak_47"]
 
+var shock_vave_timer:Timer
+var impulse:bool = false
 
 var wheels:Array[RigidBody2D] = []
 
@@ -64,11 +66,20 @@ func _ready() -> void:
 
 	gv.load_inventory()
 
+	shock_vave_timer = Timer.new()
+	add_child(shock_vave_timer)
+	shock_vave_timer.wait_time = 0.1
+	shock_vave_timer.one_shot = true
+	shock_vave_timer.connect("timeout", _shock_vave_timer_timeout)
+
 	print("Node ready:" + self.name)
-	print("Player car Fiat125p rigid start x: " + str(global_position.x))
+	print(self.name + " start x: " + str(global_position.x))
 
 	# turn_right()
 	# flip_v(true)
+
+func _shock_vave_timer_timeout():
+	impulse = false
 
 func get_state():
 	return Player_state		
@@ -84,17 +95,31 @@ func _physics_process(delta) -> void:
 		for wheel in wheels:
 			wheel.apply_torque_impulse(-speed * delta * 60)
 		
-		
+	if impulse == true:
+			apply_impulse(Vector2(0, -6210),Vector2(300,0))
+
+
 	# ARROW-> DOWN:	
 	if Input.is_action_pressed("ui_down"):
-		apply_impulse(Vector2(120, 6210),Vector2(0,0))
+		apply_impulse(Vector2(0, -6210),Vector2(300,0))
+		#apply_impulse(Vector2(120, 6210),Vector2(0,0))
 
 	# if gv.Player_current_weapon != 0:
 	# GO --> Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("snd_switch_weapon").play()
 			gv.load_next_weapon()
-			print("Player Car: switch weapon")
+			print(name + ": switch weapon")
+
+	# Show Help information	
+	if Input.is_action_just_pressed("Help"):
+			get_node("../HUD").show_help()
+			print(name + ": press Help key")
+
+	# Hide Help information	
+	if Input.is_action_just_released("Help"):
+			get_node("../HUD").hide_help()
+			print("Player: release Help key")				
 					
 
 func _unhandled_input(event):
@@ -163,7 +188,15 @@ func _tween():
 	tween.tween_property($Driver, "rotation", randf_range(-3.5, 3.5), 1.0)
 	tween.tween_property($Driver, "self_modulate", Color(1, 1, 1, 0), 1.0)
 
-func rpg_hit():
+func shock_wave_hit(node:Node)-> void:
+	print(name + ": explosion shock wave, hit by: " + node.name)
+	var distance : float = node.global_position.distance_to(global_position)
+	print(name + ": explosion distance: " + str(int(distance)))
+	shock_vave_timer.start()
+	impulse = true
+
+
+func rpg_hit()-> void:
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
 	$BigExplosion.visible = true
@@ -176,7 +209,7 @@ func rpg_hit():
 	get_node("snd_engine").stop()
 	$snd_player.stop()
 	
-func bomb_explode():
+func bomb_explode()-> void:
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	#$MaluchArea2D/CollisionPolygon2D.set_deferred("disabled", true)
 	$BigExplosion.visible = true
@@ -191,7 +224,7 @@ func bomb_explode():
 
 func hit()-> void:
 	if hit_count > 0:
-		print("Player Car: got hit " + "hits: " + str(hit_count))
+		print(name + ": got hit " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		hit_count -= 1
 		
@@ -272,7 +305,7 @@ func _on_front_contact_body_entered(body:Node2D) -> void:
 		# 	body.hit()
 
 		$snd_hit2.play()
-		print("Fiat125p, front contact Area2D hit body: " + body.name)
+		print(name + ": front contact Area2D hit body: " + body.name)
 
 
 func _on_back_contact_area_entered(_area:Area2D) -> void:
@@ -283,7 +316,7 @@ func _on_back_contact_area_entered(_area:Area2D) -> void:
 func _on_back_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid":	
 		$snd_hit.play()
-		print("Fiat125p, back contact body: " + body.name)
+		print(name + ": back contact body: " + body.name)
 
 
 func _on_floor_contact_area_entered(_area:Area2D) -> void:
@@ -294,13 +327,13 @@ func _on_floor_contact_area_entered(_area:Area2D) -> void:
 func _on_floor_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid":
 		$snd_touch_ground.play()
-		print("Fiat125p, floor contact body: " + body.name)
+		print(name + ": floor contact body: " + body.name)
 
 
 func _on_top_contact_body_entered(body:Node2D) -> void:
 	if body.name != "Fiat125p_rigid":
 		$snd_touch_ground.play()
-		print("Fiat125p, top contact body: " + body.name)
+		print(name + ": top contact body: " + body.name)
 
 
 func _on_big_explosion_finished() -> void:
