@@ -710,6 +710,10 @@ scale = Vector2(0.24, 0.24)
 
 [node name="tt_gun" type="Marker2D" parent="weapon_spawn"]
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 180)
+collision_mask = 34
+
 [connection signal="area_entered" from="front_contact" to="." method="_on_front_contact_area_entered"]
 [connection signal="body_entered" from="front_contact" to="." method="_on_front_contact_body_entered"]
 [connection signal="area_entered" from="back_contact" to="." method="_on_back_contact_area_entered"]

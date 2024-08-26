@@ -21,7 +21,9 @@ var player_distance:float
 
 var mouse_enter:bool = false
 
-	
+@onready var FloorRayCast:RayCast2D = get_node("RayCast2D")	
+var on_floor:bool = false
+
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
   	load("res://Assets/Sounds/pisk_opon2.wav"),
   	load("res://Assets/Sounds/pisk_opon3.wav")]
@@ -133,11 +135,25 @@ func _physics_process(delta) -> void:
 		elif shock_vave_direction ==  Vector2.LEFT:
 			apply_impulse(shock_vave_power,Vector2(-300,0))
 
-
-	# ARROW-> DOWN:	
+	# touch ground checking:
+	if FloorRayCast.is_colliding():
+		if on_floor == true:
+			pass
+		else:
+			$snd_hit2.play()
+			on_floor = true
+			print(name + ": On floor")
+	else:
+		if on_floor == false:
+			pass
+		else:
+			on_floor = false
+			print(name + ": Not on floor")
+		
+	# ARROW-> UP CAR JUMP:	
 	if Input.is_action_pressed("ui_up"):
-		apply_impulse(Vector2(0, -6210),Vector2(300,0))
-		#apply_impulse(Vector2(120, 6210),Vector2(0,0))
+		apply_impulse(Vector2(200, -3210),Vector2(300,0))
+		
 
 	# if gv.Player_current_weapon != 0:
 	# GO --> Switch weapon	

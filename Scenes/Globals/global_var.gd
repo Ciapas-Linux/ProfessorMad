@@ -218,6 +218,8 @@ func load_player_data() -> void:
 	#print("Gold: " + str(file.get_32()))
 
 
+func remap_range(value, InputA, InputB, OutputA, OutputB):
+	return(value - InputA) / (InputB - InputA) * (OutputB - OutputA) + OutputA
 
 
 func _ready():
