@@ -64,16 +64,20 @@ func _process(_delta) -> void:
 	pass
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(name + ": area hit me " + area.name)
+	print(name + ": area hit me: " + area.name)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	hit()
-	print(name + ": body hit me " + body.name)
+	print(name + ": body hit me: " + body.name)
 	
+func _on_body_entered(body:Node) -> void:
+	$snd_hit.play()
+	print(name + ": body entered: " + body.name)
+
 func hit():
 	if hit_count > 0:
 		hit_count -= 1
-		print(name + ": dostałam ! " + "hits: " + str(hit_count))
+		print(name + ": got hit " + "hits: " + str(hit_count))
 		$Bullet_holes.hit()
 		$Hitpoints.text = str(hit_count)
 		hit_anim_timer.start()
@@ -87,9 +91,6 @@ func rpg_hit():
 
 func bomb_explode():
 	barrel_explode(2)			
-
-func _on_bodies_collision_hit_me() -> void:
-	print(name + ": some bodies hits me")
 
 func call_hit() -> void:
 	var nodes:Array[Node] = get_tree().get_nodes_in_group("shock_wave_hit")
@@ -154,5 +155,7 @@ func _on_explosion_spr_animation_finished() -> void:
 func on_tween_finished():
 	emit_signal("explode")
 	self.queue_free()
+
+
 
 

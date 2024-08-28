@@ -9,8 +9,11 @@ extends RigidBody2D
 
 
 
-@export var hit_count:int = 12
-@export var speed:float = 60000
+@export var hit_count:int = 30
+@export var torqe_impulse:float = 60000
+@export var max_velocity:float = 2000
+
+var power:float = 0
 
 
 @onready var tween: Tween
@@ -21,8 +24,10 @@ var player_distance:float
 
 var mouse_enter:bool = false
 
-@onready var FloorRayCast:RayCast2D = get_node("RayCast2D")	
-var on_floor:bool = false
+@onready var FloorRayCast_R:RayCast2D = get_node("Right_ground_RayCast2D")
+@onready var FloorRayCast_L:RayCast2D = get_node("Left_ground_RayCast2D")		
+var on_floor_r:bool = false
+var on_floor_l:bool = false
 
 @onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
   	load("res://Assets/Sounds/pisk_opon2.wav"),
@@ -96,7 +101,7 @@ func shock_wave_hit(node:Node)-> void:
 
 	# shockwave power based on distance:
 	if distance >= 0 and distance <= 600:
-		shock_vave_power = Vector2(-300, -6000)
+		shock_vave_power = Vector2(-300, -4700)
 		shock_vave_timer.start(0.3)
 	if distance >= 600 and distance <= 1200:
 		shock_vave_power = Vector2(-600, -3000)
@@ -121,34 +126,55 @@ func get_state():
 func _process(_delta: float) -> void:
 	pass	
 
+
+# func _physics_process(delta):
+# 	if get_node("car/frontwheel").get_colliding_bodies().size() == 0 and get_node("car/backwheel").get_colliding_bodies().size() == 0:
+# 		if Input.is_action_pressed("ui_up"):
+# 			get_node("car").angular_velocity -= 0.3
+# 		if Input.is_action_pressed("ui_down"):
+# 			get_node("car").angular_velocity += 0.3
+# 	else:
+# 		if Input.is_action_pressed("ui_up"):
+# 			get_node("car/frontwheel").angular_velocity = 30
+# 			get_node("car/backwheel").angular_velocity = 30
+# 		if Input.is_action_pressed("ui_down"):
+# 			get_node("car/frontwheel").angular_velocity = 0
+# 			get_node("car/backwheel").angular_velocity = 0
+
 func _physics_process(delta) -> void:
+	#if linear_velocity.x > -1000 and linear_velocity.x < 1000:
 	if Input.is_action_pressed("ui_right"):
 		for wheel in wheels:
-			wheel.apply_torque_impulse(speed * delta * 60)
+			#wheel.angular_velocity = 30
+			if power <= 100:
+				power += 0.1
+				$Power.value = power
+			#wheel.apply_torque_impulse(torqe_impulse * delta * 60)
+			wheel.angular_velocity = power
+
+	if Input.is_action_just_released("ui_right"):
+		power = 0
+		$Power.value = power
+
+
 	if Input.is_action_pressed("ui_left"):
 		for wheel in wheels:
-			wheel.apply_torque_impulse(-speed * delta * 60)
+			wheel.angular_velocity = -30
+			power = 0
+			$Power.value = power
+			#wheel.apply_torque_impulse(-torqe_impulse * delta * 60)
 		
+	check_raycasts()
+
 	if shock_vave_impulse == true:
 		if shock_vave_direction ==  Vector2.LEFT:
 			apply_impulse(shock_vave_power,Vector2(300,0))
 		elif shock_vave_direction ==  Vector2.LEFT:
 			apply_impulse(shock_vave_power,Vector2(-300,0))
 
-	# touch ground checking:
-	if FloorRayCast.is_colliding():
-		if on_floor == true:
-			pass
-		else:
-			$snd_hit2.play()
-			on_floor = true
-			print(name + ": On floor")
-	else:
-		if on_floor == false:
-			pass
-		else:
-			on_floor = false
-			print(name + ": Not on floor")
+	# print(name + ": velocity x: " + str(int(linear_velocity.x)) )
+
+	
 		
 	# ARROW-> UP CAR JUMP:	
 	if Input.is_action_pressed("ui_up"):
@@ -189,6 +215,36 @@ func _unhandled_input(event):
 			for node in out:
 				print(node.collider.name)
 
+func check_raycasts() -> void:
+	# touch RIGHT wheel ground checking:
+	if FloorRayCast_R.is_colliding():
+		if on_floor_r == true:
+			pass
+		else:
+			$snd_hit2.play()
+			on_floor_r = true
+			print(name + ": On floor R")
+	else:
+		if on_floor_r == false:
+			pass
+		else:
+			on_floor_r = false
+			print(name + ": Not on floor R")
+
+	# touch LEFT wheel ground checking:
+	if FloorRayCast_L.is_colliding():
+		if on_floor_l == true:
+			pass
+		else:
+			$snd_hit2.play()
+			on_floor_l = true
+			print(name + ": On floor L")
+	else:
+		if on_floor_l == false:
+			pass
+		else:
+			on_floor_l = false
+			print(name + ": Not on floor L")		
 
 func _integrate_forces(_state):
 	pass

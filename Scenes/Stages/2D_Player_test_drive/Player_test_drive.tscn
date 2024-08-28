@@ -195,7 +195,7 @@ position = Vector2(12136, 589)
 scale = Vector2(0.7, 0.7)
 
 [node name="RigidBarrel_2" parent="." instance=ExtResource("21_lmb23")]
-position = Vector2(2590, 584)
+position = Vector2(2590, 523)
 mass = 60.0
 
 [node name="RigidBox1" parent="." instance=ExtResource("22_1mggi")]
