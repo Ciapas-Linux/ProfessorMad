@@ -143,6 +143,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta) -> void:
 	#if linear_velocity.x > -1000 and linear_velocity.x < 1000:
+	
 	if Input.is_action_pressed("ui_right"):
 		for wheel in wheels:
 			#wheel.angular_velocity = 30
