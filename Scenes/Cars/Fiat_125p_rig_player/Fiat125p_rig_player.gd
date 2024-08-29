@@ -55,12 +55,16 @@ var wheels:Array[RigidBody2D] = []
 
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 	
+var eyes_rnd_blink_timer:Timer
+
 func _ready() -> void:
 	gv.Player = self
 	self.input_pickable = true
 	self.connect("mouse_entered", _on_mouse_entered)
 	self.connect("mouse_exited", _on_mouse_exited)
 	$BigExplosion.visible = false
+	$Driver/Eye_l.visible = false
+	$Driver/Eye_r.visible = false
 	wheels.append($WheelHolder.get_node("Wheel"))
 	wheels.append($WheelHolder2.get_node("Wheel")) 
 	$smoke_particles.emitting = true
@@ -80,11 +84,46 @@ func _ready() -> void:
 	shock_vave_timer.one_shot = true
 	shock_vave_timer.connect("timeout", shock_vave_timer_timeout)
 
+	eyes_rnd_blink_timer = Timer.new()
+	add_child(eyes_rnd_blink_timer)
+	eyes_rnd_blink_timer.wait_time = 5
+	eyes_rnd_blink_timer.one_shot = true
+	eyes_rnd_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
+	eyes_rnd_blink_timer.start(randf_range(1.0,10.0))
+
 	print("Node ready:" + self.name)
 	print(self.name + " start x: " + str(global_position.x))
 
 	# turn_right()
 	# flip_v(true)
+
+func _on_eyes_blink_timer_timeout():
+	if $Driver/Eye_r.visible == true:
+		open_eyes()
+		eyes_rnd_blink_timer.start(randf_range(2,10))
+	else:
+		close_eyes()
+		eyes_rnd_blink_timer.start(randf_range(0.3,2))	
+
+func open_eyes():
+	open_left_eye()
+	open_right_eye()
+
+func close_eyes():
+	close_left_eye()
+	close_right_eye()	
+
+func close_left_eye():
+	$Driver/Eye_l.visible = true
+
+func close_right_eye():
+	$Driver/Eye_r.visible = true
+
+func open_left_eye():
+	$Driver/Eye_l.visible = false
+
+func open_right_eye():
+	$Driver/Eye_r.visible = false
 
 func shock_vave_timer_timeout():
 	shock_vave_impulse = false

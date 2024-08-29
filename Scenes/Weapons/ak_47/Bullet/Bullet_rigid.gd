@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @export var speed:float = 0.0003
 @export var max_distance: float = 3500 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b1n6twuv5ahxy"]
+[gd_scene load_steps=60 format=3 uid="uid://b1n6twuv5ahxy"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/Fiat_125p_rig_player/Fiat125p_rig_player.gd" id="1_f1xke"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="2_ieu6u"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cuck4e418m28k" path="res://Assets/Cars/fiat125/fiat_125_body_2.png" id="5_5je73"]
 [ext_resource type="Texture2D" uid="uid://43oi7qc4m4en" path="res://Assets/Player/BodyParts/Hand_R.png" id="5_jfu52"]
 [ext_resource type="Texture2D" uid="uid://bu4nb337r8wmh" path="res://Assets/Cars/fiat125/szyba_mala_lewa.png" id="6_beuan"]
+[ext_resource type="Texture2D" uid="uid://dx465bshwi4b4" path="res://Assets/Player/BodyParts/powieka_L.png" id="6_pjbhn"]
+[ext_resource type="Texture2D" uid="uid://cpctrh37v8b5q" path="res://Assets/Player/BodyParts/powieka_P.png" id="7_7c4yt"]
 [ext_resource type="Texture2D" uid="uid://ctydqdu0gmjnw" path="res://Assets/Cars/fiat125/szyba_mala_p1.png" id="7_h37jk"]
 [ext_resource type="Texture2D" uid="uid://dmkb0w4fpff74" path="res://Assets/Cars/fiat125/szyba_mala_p2.png" id="8_ggnxw"]
 [ext_resource type="Texture2D" uid="uid://bhxvqwilo8wa7" path="res://Assets/Cars/fiat125/szyba_front_2.png" id="9_sk4rg"]
@@ -456,6 +458,16 @@ offset = Vector2(-3.54091, -66.6797)
 libraries = {
 "": SubResource("AnimationLibrary_f71lj")
 }
+
+[node name="Eye_l" type="Sprite2D" parent="Driver"]
+position = Vector2(-25.6079, -83.3696)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_pjbhn")
+
+[node name="Eye_r" type="Sprite2D" parent="Driver"]
+position = Vector2(59.1321, -88.4076)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_7c4yt")
 
 [node name="Hand" type="Sprite2D" parent="."]
 position = Vector2(143, -39)

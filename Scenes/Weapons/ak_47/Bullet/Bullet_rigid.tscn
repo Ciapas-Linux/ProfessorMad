@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://k2uv2001m8v2"]
+[gd_scene load_steps=17 format=3 uid="uid://k2uv2001m8v2"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_rigid.gd" id="1_xidx0"]
 [ext_resource type="Texture2D" uid="uid://dofk3o4qwlc1b" path="res://Assets/Weapons/ak_47/missile.png" id="2_xf4hk"]
@@ -54,23 +54,28 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Bullet_rigid" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekfqm"]
+size = Vector2(120, 60)
+
+[node name="Bullet_rigid" type="RigidBody2D"]
+script = ExtResource("1_xidx0")
+
+[node name="Area2D" type="Area2D" parent="."]
 z_index = 2
 collision_layer = 16
 collision_mask = 47
 input_pickable = false
 priority = 1
-script = ExtResource("1_xidx0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7, 0)
+scale = Vector2(6, 2.5)
+shape = SubResource("RectangleShape2D_6tnex")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
 z_index = 2
 scale = Vector2(4.48792, 4.48792)
 texture = ExtResource("2_xf4hk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 0)
-scale = Vector2(6, 2.5)
-shape = SubResource("RectangleShape2D_6tnex")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(8, 4)
@@ -87,9 +92,12 @@ frame_progress = 0.058924
 [node name="snd_bullet_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_d588h")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="animation_finished" from="BulletCrash" to="." method="_on_bullet_crash_animation_finished"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ekfqm")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="Area2D" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="animation_finished" from="BulletCrash" to="Area2D" method="_on_bullet_crash_animation_finished"]

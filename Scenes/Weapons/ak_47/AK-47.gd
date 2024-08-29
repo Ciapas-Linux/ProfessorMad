@@ -8,7 +8,7 @@ extends Sprite2D
 @onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
 
 var can_fire:bool = true
-var bullet:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet.tscn")
+var bullet:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet_rigid.tscn")
 var bullet_shell:Resource = preload("res://Scenes/Weapons/ak_47/Bullet/Bullet_shell.tscn")
 var recoil:int = 60
 var shoots:int = 0
