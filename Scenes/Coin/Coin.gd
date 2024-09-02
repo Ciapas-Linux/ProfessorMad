@@ -1,14 +1,11 @@
+extends Area2D
 
 # #################
 # # COIN  .SCRIPT #
 # #################
 
-extends Area2D
-
-
 var hit:bool = false
 @export var amount:int = 0
-
 
 func _ready():
 	$coin_img.play("fadein")

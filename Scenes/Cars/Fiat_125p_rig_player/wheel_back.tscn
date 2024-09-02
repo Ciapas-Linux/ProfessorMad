@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://f2b73qaqrds3"]
+
+[ext_resource type="PackedScene" uid="uid://d3v4uvu2p8ji5" path="res://Scenes/Fx/Smoke_01.tscn" id="1_531q4"]
+[ext_resource type="Texture2D" uid="uid://d3w2mca1k0win" path="res://Assets/Cars/fiat125/fiat_125_kolo.png" id="2_gclwe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5divc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibjqr"]
+radius = 72.0
+
+[node name="Wheel" type="RigidBody2D" groups=["wheel"]]
+collision_layer = 32
+collision_mask = 3
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_5divc")
+gravity_scale = 5.0
+
+[node name="Smoke01" parent="." instance=ExtResource("1_531q4")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_gclwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ibjqr")

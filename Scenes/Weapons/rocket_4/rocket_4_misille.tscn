@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_misille.gd" id="1_i65hl"]
 [ext_resource type="Texture2D" uid="uid://dsm0i1fygesv0" path="res://Assets/Weapons/rocket_4/rocket_4_anim.png" id="2_aufsi"]
-[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="3_6onys"]
+[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/Weapons/ak47.wav" id="3_6onys"]
 [ext_resource type="Texture2D" uid="uid://di20genwh5553" path="res://Assets/Particles/flame1/0045.png" id="3_fhxxo"]
-[ext_resource type="AudioStream" uid="uid://cnkx1bw60qhbe" path="res://Assets/Sounds/weapons/rpg-7-3.wav" id="4_2vqw8"]
+[ext_resource type="AudioStream" uid="uid://cnkx1bw60qhbe" path="res://Assets/Sounds/Weapons/rpg-7-3.wav" id="4_2vqw8"]
 [ext_resource type="Texture2D" uid="uid://cf3bsccihvkqn" path="res://Assets/Particles/flame1/0047.png" id="4_ecifa"]
 [ext_resource type="Texture2D" uid="uid://bvcb31on8h8e1" path="res://Assets/Particles/flame1/0049.png" id="5_7f2pl"]
 [ext_resource type="Texture2D" uid="uid://8ikb0cs83xns" path="res://Assets/Particles/flame1/0051.png" id="6_q2eud"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cxs80j4m4dxj8" path="res://Assets/Particles/flame1/0061.png" id="11_aaocp"]
 [ext_resource type="Texture2D" uid="uid://2y2pr7or2i7g" path="res://Assets/Particles/flame1/0063.png" id="12_d1b5q"]
 [ext_resource type="Texture2D" uid="uid://ch4uhns5vjkao" path="res://Assets/Explosions/explosion2.png" id="13_iwjkc"]
-[ext_resource type="AudioStream" uid="uid://4sa4i7xi3oxu" path="res://Assets/Sounds/weapons/rpg_7.wav" id="14_3dygs"]
+[ext_resource type="AudioStream" uid="uid://4sa4i7xi3oxu" path="res://Assets/Sounds/Weapons/rpg_7.wav" id="14_3dygs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1avpn"]
 radius = 30.0

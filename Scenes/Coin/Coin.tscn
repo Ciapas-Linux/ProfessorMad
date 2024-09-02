@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bynp6a4pfqno2" path="res://Assets/Objects/5zloty128/fade-out/0005.png" id="28_5c08k"]
 [ext_resource type="Texture2D" uid="uid://e7tyinu3tbg2" path="res://Assets/Objects/5zloty128/fade-out/0006.png" id="29_v17hv"]
 [ext_resource type="Texture2D" uid="uid://cppuscua3hnjo" path="res://Assets/Objects/5zloty128/fade-out/0007.png" id="30_cvfxm"]
-[ext_resource type="AudioStream" uid="uid://c1igma36maexl" path="res://Assets/Sounds/coin.wav" id="31_pyq5d"]
+[ext_resource type="AudioStream" uid="uid://c1igma36maexl" path="res://Assets/Sounds/Coins/coin.wav" id="31_pyq5d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_enbma"]
 animations = [{
@@ -222,7 +222,7 @@ libraries = {
 z_index = 1
 shape = SubResource("CircleShape2D_k42ap")
 
-[node name="snd_coin" type="AudioStreamPlayer2D" parent="."]
+[node name="snd_coin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_pyq5d")
 volume_db = 2.713
 

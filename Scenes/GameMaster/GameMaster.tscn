@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c27y0ulcbj8uo" path="res://Assets/Avatars/AI-avatar1/Head_left/0001.png" id="4_18hd2"]
 [ext_resource type="Texture2D" uid="uid://btrjhoop13rxr" path="res://Assets/Avatars/AI-avatar1/Head_left/0002.png" id="5_ol262"]
 [ext_resource type="Shader" path="res://Shaders/GameMaster/Waveform.gdshader" id="5_v7roq"]
-[ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/tada.mp3" id="6_5rn5g"]
+[ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/Sfx/tada.mp3" id="6_5rn5g"]
 [ext_resource type="Texture2D" uid="uid://clgji6xrltie8" path="res://Assets/Avatars/AI-avatar1/Head_left/0003.png" id="6_7d5jt"]
 [ext_resource type="Texture2D" uid="uid://bmaphn4dtypt1" path="res://Assets/Avatars/AI-avatar1/Head_left/0004.png" id="7_uxfht"]
 [ext_resource type="Texture2D" uid="uid://0v718mbdji32" path="res://Assets/Avatars/AI-avatar1/Head_left/0005.png" id="8_r8lwo"]

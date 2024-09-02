@@ -94,7 +94,7 @@
 [ext_resource type="Texture2D" uid="uid://cwu7dttc1f02r" path="res://Assets/Explosions/explosion3/explosion00-frame091.png" id="92_07ufe"]
 [ext_resource type="Texture2D" uid="uid://bbyxest4ogf5" path="res://Assets/Objects/chest.png" id="92_koabs"]
 [ext_resource type="Texture2D" uid="uid://bdna068s2tmar" path="res://Assets/Explosions/explosion3/explosion00-frame092.png" id="93_4qjn0"]
-[ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="93_gy0v3"]
+[ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Weapons/bomb.wav" id="93_gy0v3"]
 [ext_resource type="Texture2D" uid="uid://yk7uc5adc2ft" path="res://Assets/Explosions/explosion3/explosion00-frame093.png" id="94_f818v"]
 [ext_resource type="PackedScene" uid="uid://flpc13k6p4us" path="res://Scenes/Weapons/ak_47/Bullet/Bullet_holes.tscn" id="94_jdki5"]
 [ext_resource type="Texture2D" uid="uid://cgxs2jp76tmgx" path="res://Assets/Explosions/explosion3/explosion00-frame094.png" id="95_v8hah"]

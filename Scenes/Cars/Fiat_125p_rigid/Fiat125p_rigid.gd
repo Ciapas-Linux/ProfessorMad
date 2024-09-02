@@ -28,9 +28,9 @@ const STOP: int = 2
 var mouse_enter:bool = false
 var current_state : int = STOP
 	
-@onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
-  	load("res://Assets/Sounds/pisk_opon2.wav"),
-  	load("res://Assets/Sounds/pisk_opon3.wav")]
+@onready var sounds:Array = [load("res://Assets/Sounds/Vehicles/pisk_opon1.wav"),
+  	load("res://Assets/Sounds/Vehicles/pisk_opon2.wav"),
+  	load("res://Assets/Sounds/Vehicles/pisk_opon3.wav")]
 	
 
 var wheels:Array[RigidBody2D] = []	

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="5_lk2sk"]
 [ext_resource type="Texture2D" uid="uid://bdy1ltp3wx83k" path="res://Assets/Cars/maluch_seledyn/cicias1/kot2_01.png" id="5_xd2qy"]
 [ext_resource type="Texture2D" uid="uid://cj8qj2cx3y0j1" path="res://Assets/Cars/maluch_seledyn/cicias1/kot2_02.png" id="6_5pvdd"]
-[ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="6_txscb"]
+[ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/Vehicles/engine_1.wav" id="6_txscb"]
 [ext_resource type="Texture2D" uid="uid://k7uep3dh00dm" path="res://Assets/Cars/maluch_seledyn/stary_ysol1.png" id="7_oj8qd"]
 [ext_resource type="Texture2D" uid="uid://c608lt4nvlyeh" path="res://Assets/Cars/maluch_seledyn/cicias1/kot2_03.png" id="7_v8bhq"]
 [ext_resource type="Texture2D" uid="uid://b1anr1u0mgf2v" path="res://Assets/Cars/maluch_seledyn/cicias1/kot2_04.png" id="8_thutg"]

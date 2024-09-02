@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cpwxucu8mg3t0" path="res://Assets/Objects/say.png" id="1_p3xby"]
 [ext_resource type="Script" path="res://Scenes/CloudChat/EnemyChat.gd" id="2_4gf5i"]
-[ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/tada.mp3" id="4_way1d"]
+[ext_resource type="AudioStream" uid="uid://d2dfqiji0l437" path="res://Assets/Sounds/Sfx/tada.mp3" id="4_way1d"]
 
 [sub_resource type="Animation" id="Animation_2i1ce"]
 length = 0.001

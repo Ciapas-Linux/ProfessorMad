@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://ka4do5pd7dl"]
+[gd_scene load_steps=13 format=3 uid="uid://ka4do5pd7dl"]
 
 [ext_resource type="Texture2D" uid="uid://d0l8xyo4imsat" path="res://Assets/Weapons/rocket_4/rocket_launcher.png" id="1_nowhg"]
 [ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gd" id="2_eseiu"]
-[ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/weapons/reload1.wav" id="3_dg3vb"]
+[ext_resource type="AudioStream" uid="uid://c1esysk5x1ksd" path="res://Assets/Sounds/Weapons/reload1.wav" id="3_dg3vb"]
 [ext_resource type="Shader" path="res://Scenes/Weapons/rocket_4/rocket_4_launcher.gdshader" id="4_e0vpj"]
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="5_cx56q"]
 [ext_resource type="Texture2D" uid="uid://k4mycie8tmu4" path="res://Assets/Particles/sparks/spark_1.png" id="6_nbug4"]
@@ -56,14 +56,15 @@ noise = SubResource("FastNoiseLite_ttcl1")
 shader = ExtResource("4_e0vpj")
 shader_parameter/flame_start_color = Color(0.8, 0.133333, 0, 1)
 shader_parameter/flame_end_color = Color(1, 0.929412, 0.301961, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_cj2xk")
 shader_parameter/speed = 12.0
 shader_parameter/flame_dir = 0.0
 shader_parameter/flame_size = 0.2
 shader_parameter/hardlight_treshold = 0.9
 shader_parameter/color_treshold = 0.6
-shader_parameter/noise = SubResource("NoiseTexture2D_cj2xk")
 
 [node name="Rocket_4" type="Sprite2D"]
+z_index = 1
 texture = ExtResource("1_nowhg")
 offset = Vector2(40, 0)
 script = ExtResource("2_eseiu")

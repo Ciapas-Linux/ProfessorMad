@@ -83,7 +83,7 @@ region_rect = Rect2(0, 0, 20000, 1500)
 
 [node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
 z_index = 1
-position = Vector2(1048, 0)
+position = Vector2(868, 0)
 
 [node name="Moon1" parent="." instance=ExtResource("15_x78c7")]
 

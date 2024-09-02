@@ -5,8 +5,6 @@ extends Node2D
 # ##################
 
 
-
-
 func _ready():
 	randomize()
 	#print(get_node("/root"))

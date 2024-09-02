@@ -102,8 +102,8 @@
 [ext_resource type="Texture2D" uid="uid://cbf37cn7io0pv" path="res://Assets/Explosions/explosion3/explosion00-frame098.png" id="98_7y2hb"]
 [ext_resource type="Texture2D" uid="uid://clbrb28cry2pq" path="res://Assets/Explosions/explosion3/explosion00-frame099.png" id="99_vmp1r"]
 [ext_resource type="Texture2D" uid="uid://dhexvsk2pnlja" path="res://Assets/Explosions/explosion3/explosion00-frame100.png" id="100_h2j0m"]
-[ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Explosion3.mp3" id="103_nk6ot"]
-[ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="104_6jpl7"]
+[ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Weapons/Explosion3.mp3" id="103_nk6ot"]
+[ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Weapons/bomb.wav" id="104_6jpl7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_le7ub"]
 atlas = ExtResource("2_0hwt6")

@@ -23,9 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://cxs80j4m4dxj8" path="res://Assets/Particles/flame1/0061.png" id="21_ly6re"]
 [ext_resource type="Texture2D" uid="uid://2y2pr7or2i7g" path="res://Assets/Particles/flame1/0063.png" id="22_bk4nn"]
 [ext_resource type="Texture2D" uid="uid://ch4uhns5vjkao" path="res://Assets/Explosions/explosion2.png" id="23_yl84q"]
-[ext_resource type="AudioStream" uid="uid://4sa4i7xi3oxu" path="res://Assets/Sounds/weapons/rpg_7.wav" id="24_0kuh7"]
-[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="25_n5we7"]
-[ext_resource type="AudioStream" uid="uid://cnkx1bw60qhbe" path="res://Assets/Sounds/weapons/rpg-7-3.wav" id="26_m7144"]
+[ext_resource type="AudioStream" uid="uid://4sa4i7xi3oxu" path="res://Assets/Sounds/Weapons/rpg_7.wav" id="24_0kuh7"]
+[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/Weapons/ak47.wav" id="25_n5we7"]
+[ext_resource type="AudioStream" uid="uid://cnkx1bw60qhbe" path="res://Assets/Sounds/Weapons/rpg-7-3.wav" id="26_m7144"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncq0f"]
 size = Vector2(100, 50)

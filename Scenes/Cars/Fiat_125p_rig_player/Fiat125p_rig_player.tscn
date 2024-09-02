@@ -1,6 +1,7 @@
-[gd_scene load_steps=60 format=3 uid="uid://b1n6twuv5ahxy"]
+[gd_scene load_steps=61 format=3 uid="uid://b1n6twuv5ahxy"]
 
 [ext_resource type="Script" path="res://Scenes/Cars/Fiat_125p_rig_player/Fiat125p_rig_player.gd" id="1_f1xke"]
+[ext_resource type="PackedScene" uid="uid://f2b73qaqrds3" path="res://Scenes/Cars/Fiat_125p_rig_player/wheel_back.tscn" id="2_i3i16"]
 [ext_resource type="PackedScene" uid="uid://bxdq7ic031hug" path="res://Scenes/Cars/fiat_125p/wheel.tscn" id="2_ieu6u"]
 [ext_resource type="Texture2D" uid="uid://cenxci6tto20a" path="res://Assets/Cars/fiat125/fiat_125_body.png" id="3_14mxo"]
 [ext_resource type="Texture2D" uid="uid://dekv2d3xxm5ah" path="res://Assets/Player/BodyParts/korpus2blur.png" id="4_kynl8"]
@@ -30,11 +31,11 @@
 [ext_resource type="PackedScene" uid="uid://c1iwbjr5wtcwv" path="res://Scenes/Explosives/Big_explosion/big_explosion.tscn" id="23_b7d51"]
 [ext_resource type="Texture2D" uid="uid://cpl4scn85w4k5" path="res://Assets/Player/BodyParts/ForeArm_R_2.png" id="24_awxm3"]
 [ext_resource type="PackedScene" uid="uid://csnc7omlt1dsf" path="res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn" id="24_oxv8s"]
-[ext_resource type="AudioStream" uid="uid://bqg07pm27pcgn" path="res://Assets/Sounds/engine_1.wav" id="25_du7cd"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="26_eeef0"]
-[ext_resource type="AudioStream" uid="uid://bd8rnsf4mod6d" path="res://Assets/Sounds/Hero/stukot1.wav" id="27_swoio"]
+[ext_resource type="AudioStream" uid="uid://bd8rnsf4mod6d" path="res://Assets/Sounds/Hit/stukot1.wav" id="27_swoio"]
 [ext_resource type="AudioStream" uid="uid://cxcfnuc3rojwe" path="res://Assets/Sounds/Impact/impact_1.wav" id="29_riqcd"]
 [ext_resource type="AudioStream" uid="uid://b5nco5e6h7kwq" path="res://Assets/Sounds/Impact/impact_2.wav" id="29_xi277"]
+[ext_resource type="AudioStream" uid="uid://ddtvxnyxh6cc4" path="res://Assets/Sounds/Vehicles/motor-loop-2-103532.wav" id="32_fke35"]
 [ext_resource type="AudioStream" uid="uid://bb0nnwrfynduf" path="res://Assets/Sounds/Sfx/object.wav" id="34_361nd"]
 [ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="35_taf4p"]
 [ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="36_nu1ln"]
@@ -415,25 +416,26 @@ _data = {
 "shoot": SubResource("Animation_rjinv")
 }
 
-[node name="Fiat125p_rigid" type="RigidBody2D" groups=["shock_wave_hit"]]
+[node name="Fiat125p_rigid" type="RigidBody2D" node_paths=PackedStringArray("drive_loop") groups=["shock_wave_hit"]]
 collision_layer = 32
 collision_mask = 63
 mass = 50.0
 script = ExtResource("1_f1xke")
+drive_loop = NodePath("snd_engine")
 
 [node name="WheelHolder" type="PinJoint2D" parent="."]
 position = Vector2(-248, 100)
 node_a = NodePath("..")
 node_b = NodePath("Wheel")
-softness = 0.05
+softness = 0.01
 
-[node name="Wheel" parent="WheelHolder" instance=ExtResource("2_ieu6u")]
+[node name="Wheel" parent="WheelHolder" instance=ExtResource("2_i3i16")]
 
 [node name="WheelHolder2" type="PinJoint2D" parent="."]
 position = Vector2(343, 100)
 node_a = NodePath("..")
 node_b = NodePath("Wheel")
-softness = 0.05
+softness = 0.01
 
 [node name="Wheel" parent="WheelHolder2" instance=ExtResource("2_ieu6u")]
 
@@ -670,7 +672,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="snd_engine" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_du7cd")
+stream = ExtResource("32_fke35")
 volume_db = 6.0
 pitch_scale = 0.7
 
@@ -734,13 +736,41 @@ position = Vector2(-405, 0)
 target_position = Vector2(0, 175)
 collision_mask = 34
 
-[node name="Power" type="TextureProgressBar" parent="."]
+[node name="Speed" type="TextureProgressBar" parent="."]
+offset_left = -208.0
+offset_top = -256.0
+offset_right = -8.0
+offset_bottom = -216.0
+max_value = 180.0
+texture_under = ExtResource("35_taf4p")
+texture_progress = ExtResource("36_nu1ln")
+
+[node name="kmh" type="Label" parent="Speed"]
+layout_mode = 0
+offset_left = -75.0
+offset_top = -5.0
+offset_right = -4.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 25
+text = "km/h:"
+
+[node name="Rpm_power" type="TextureProgressBar" parent="."]
 offset_left = -208.0
 offset_top = -217.0
 offset_right = -8.0
 offset_bottom = -177.0
+max_value = 5000.0
 texture_under = ExtResource("35_taf4p")
 texture_progress = ExtResource("36_nu1ln")
+
+[node name="rpm" type="Label" parent="Rpm_power"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -7.0
+offset_right = -3.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 25
+text = "RPM:"
 
 [connection signal="area_entered" from="front_contact" to="." method="_on_front_contact_area_entered"]
 [connection signal="body_entered" from="front_contact" to="." method="_on_front_contact_body_entered"]

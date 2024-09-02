@@ -111,7 +111,7 @@
 [ext_resource type="Texture2D" uid="uid://cbf37cn7io0pv" path="res://Assets/Explosions/explosion3/explosion00-frame098.png" id="107_4cxso"]
 [ext_resource type="Texture2D" uid="uid://clbrb28cry2pq" path="res://Assets/Explosions/explosion3/explosion00-frame099.png" id="108_ojy0b"]
 [ext_resource type="Texture2D" uid="uid://dhexvsk2pnlja" path="res://Assets/Explosions/explosion3/explosion00-frame100.png" id="109_elad2"]
-[ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Sfx/bomb.wav" id="110_njfkx"]
+[ext_resource type="AudioStream" uid="uid://cy6xdfjramdo" path="res://Assets/Sounds/Weapons/bomb.wav" id="110_njfkx"]
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="113_ftw57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8hlk"]

@@ -23,9 +23,9 @@ var Head_death_img:CompressedTexture2D = preload("res://Assets/Enemy/Rysiek/enem
 var texture_nr:int = 0
 
 # HUHRT SOUNDS:
-@onready var hurt_sounds = [load("res://Assets/Sounds/Enemy2/Hurt1.wav"),
-	load("res://Assets/Sounds/Enemy2/Hurt2.wav"),
-	load("res://Assets/Sounds/Enemy2/Hurt3.wav")]
+@onready var hurt_sounds = [load("res://Assets/Sounds/Pain/Hurt1.wav"),
+	load("res://Assets/Sounds/Pain/Hurt2.wav"),
+	load("res://Assets/Sounds/Pain/Hurt3.wav")]
 
 # DRONE:
 @onready var flying_drone:PackedScene = load("res://Scenes/Enemies/Drone/Drone.tscn")

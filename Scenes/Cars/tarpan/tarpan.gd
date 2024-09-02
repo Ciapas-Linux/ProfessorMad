@@ -22,9 +22,9 @@ var current_state : int = MOVE_LEFT
 
 #var particles_res:Resource = preload("res://Scenes/Cars/maluch_seledyn/smoke_particles.tscn")
 	
-@onready var sounds:Array = [load("res://Assets/Sounds/pisk_opon1.wav"),
-  	load("res://Assets/Sounds/pisk_opon2.wav"),
-  	load("res://Assets/Sounds/pisk_opon3.wav")]
+@onready var sounds:Array = [load("res://Assets/Sounds/Vehicles/pisk_opon1.wav"),
+  	load("res://Assets/Sounds/Vehicles/pisk_opon2.wav"),
+  	load("res://Assets/Sounds/Vehicles/pisk_opon3.wav")]
 	
 	
 func _ready() -> void:

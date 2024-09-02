@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3v4uvu2p8ji5"]
+
+[ext_resource type="Texture2D" uid="uid://bijjoad0gyr3q" path="res://Assets/Particles/Smoke/smoke_06.png" id="1_fqqw2"]
+
+[node name="Smoke01" type="CPUParticles2D"]
+emitting = false
+amount = 50
+randomness = 1.0
+lifetime_randomness = 0.8
+texture = ExtResource("1_fqqw2")
+emission_shape = 1
+emission_sphere_radius = 40.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 200.0
+angular_velocity_min = -150.0
+orbit_velocity_min = -1.0
+radial_accel_max = 15.27
+damping_max = 25.954
+angle_max = 98.9
+scale_amount_min = 0.05
+scale_amount_max = 0.5

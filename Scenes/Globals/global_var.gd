@@ -43,7 +43,7 @@ var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 var Player
 # Player global signals:
 signal player_bullet_ready
-signal s_mouse_enter_node(node :Node2D)
+#signal s_mouse_enter_node(node :Node2D)
 var mouse_enter_node:Node2D
 
 # GUI signals:

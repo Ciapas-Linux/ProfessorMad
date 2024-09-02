@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5qfp00rm2ib" path="res://Assets/Weapons/tt_pistol/tt_pistol.png" id="1_w1ami"]
 [ext_resource type="Script" path="res://Scenes/Weapons/tt_gun/tt_gun.gd" id="2_yp268"]
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="3_a07fx"]
-[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="4_dibnt"]
+[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/Weapons/ak47.wav" id="4_dibnt"]
 [ext_resource type="Texture2D" uid="uid://x2ibakeuf7v1" path="res://Assets/Explosions/gun_fire/gun_fire1.png" id="5_2lfhu"]
 [ext_resource type="Texture2D" uid="uid://b7ln2qljat8ku" path="res://Assets/Explosions/gun_fire/gun_fire2.png" id="6_xokqq"]
 [ext_resource type="Texture2D" uid="uid://c3vmigwrt1efy" path="res://Assets/Explosions/gun_fire/gun_fire3.png" id="7_ur11s"]
@@ -64,6 +64,7 @@ animations = [{
 }]
 
 [node name="tt_gun" type="Sprite2D"]
+z_index = 1
 position = Vector2(-40, 117)
 texture = ExtResource("1_w1ami")
 offset = Vector2(75, 30)

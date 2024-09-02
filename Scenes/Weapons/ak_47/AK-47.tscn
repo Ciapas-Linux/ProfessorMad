@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dixuean8o1l3w" path="res://Assets/Weapons/ak_47/ak47.png" id="1_7u0r0"]
 [ext_resource type="Script" path="res://Scenes/Weapons/ak_47/AK-47.gd" id="2_ryoe4"]
 [ext_resource type="Texture2D" uid="uid://gfy6x0i3n7sn" path="res://Assets/marker_green.png" id="4_vlyyy"]
-[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/ak47.wav" id="5_wdeef"]
+[ext_resource type="AudioStream" uid="uid://qivre3b0i65r" path="res://Assets/Sounds/Weapons/ak47.wav" id="5_wdeef"]
 [ext_resource type="Texture2D" uid="uid://x2ibakeuf7v1" path="res://Assets/Explosions/gun_fire/gun_fire1.png" id="6_clfd6"]
 [ext_resource type="Texture2D" uid="uid://b7ln2qljat8ku" path="res://Assets/Explosions/gun_fire/gun_fire2.png" id="7_jjjkj"]
 [ext_resource type="Texture2D" uid="uid://c3vmigwrt1efy" path="res://Assets/Explosions/gun_fire/gun_fire3.png" id="8_7remb"]
