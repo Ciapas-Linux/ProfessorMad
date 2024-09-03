@@ -63,13 +63,10 @@ func _on_area_2d_body_entered(body:Node2D) -> void:
 	hit()
 	print(name + ": body hit me " + body.name)
 
-@warning_ignore("unused_parameter")
-func _on_area_entered(area):
-	pass
-	
-@warning_ignore("unused_parameter")
 func _on_body_entered(body):
-	pass
+	if $snd_hit.playing == false:
+		$snd_hit.play()
+	print(name + ": body hit me " + body.name)
 
 func call_hit() -> void:
 	var nodes:Array[Node] = get_tree().get_nodes_in_group("shock_wave_hit")

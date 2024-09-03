@@ -71,7 +71,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(name + ": body hit me: " + body.name)
 	
 func _on_body_entered(body:Node) -> void:
-	$snd_hit.play()
+	if $snd_hit.playing == false:
+		$snd_hit.play()
 	print(name + ": body entered: " + body.name)
 
 func hit():
