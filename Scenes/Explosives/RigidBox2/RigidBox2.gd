@@ -7,7 +7,7 @@ extends RigidBody2D
 var hit_count: int
 signal explode
 @onready var tween: Tween
-var Barrel_hit_tex:CompressedTexture2D = preload("res://Assets/Objects/beczka_damaged.png")
+var Barrel_hit_tex:CompressedTexture2D = preload("res://Assets/Explosives/Barrel/beczka_damaged.png")
 
 var mouse_enter:bool = false
 

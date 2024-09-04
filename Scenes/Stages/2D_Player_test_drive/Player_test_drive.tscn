@@ -84,6 +84,13 @@ region_rect = Rect2(0, 0, 20000, 1500)
 [node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
 z_index = 1
 position = Vector2(868, 0)
+baseline_rpm = null
+pitch_scale = null
+rpm_limit = null
+idle_rpm = null
+hit_count = null
+torqe_impulse = null
+max_velocity = null
 
 [node name="Moon1" parent="." instance=ExtResource("15_x78c7")]
 

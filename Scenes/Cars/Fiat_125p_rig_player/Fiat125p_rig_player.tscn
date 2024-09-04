@@ -425,17 +425,17 @@ drive_loop = NodePath("snd_engine")
 
 [node name="WheelHolder" type="PinJoint2D" parent="."]
 position = Vector2(-248, 100)
-node_a = NodePath("..")
-node_b = NodePath("Wheel")
-softness = 0.01
+node_a = NodePath("Wheel")
+node_b = NodePath("..")
+softness = 0.1
 
 [node name="Wheel" parent="WheelHolder" instance=ExtResource("2_i3i16")]
 
 [node name="WheelHolder2" type="PinJoint2D" parent="."]
 position = Vector2(343, 100)
-node_a = NodePath("..")
-node_b = NodePath("Wheel")
-softness = 0.01
+node_a = NodePath("Wheel")
+node_b = NodePath("..")
+softness = 0.1
 
 [node name="Wheel" parent="WheelHolder2" instance=ExtResource("2_ieu6u")]
 
