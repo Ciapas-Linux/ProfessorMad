@@ -37,8 +37,8 @@
 [ext_resource type="AudioStream" uid="uid://b5nco5e6h7kwq" path="res://Assets/Sounds/Impact/impact_2.wav" id="29_xi277"]
 [ext_resource type="AudioStream" uid="uid://ddtvxnyxh6cc4" path="res://Assets/Sounds/Vehicles/motor-loop-2-103532.wav" id="32_fke35"]
 [ext_resource type="AudioStream" uid="uid://bb0nnwrfynduf" path="res://Assets/Sounds/Sfx/object.wav" id="34_361nd"]
-[ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/Objects/barHorizontal_red3.png" id="35_taf4p"]
-[ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/Objects/barHorizontal_red2.png" id="36_nu1ln"]
+[ext_resource type="Texture2D" uid="uid://yys078cup8yd" path="res://Assets/UI/ProgressBar/barHorizontal_red3.png" id="35_taf4p"]
+[ext_resource type="Texture2D" uid="uid://c1txs3rc7suh6" path="res://Assets/UI/ProgressBar/barHorizontal_red2.png" id="36_nu1ln"]
 
 [sub_resource type="Animation" id="Animation_e8m2p"]
 length = 0.001

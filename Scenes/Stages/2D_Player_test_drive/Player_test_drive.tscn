@@ -20,8 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://b8wk0fue6kcb2" path="res://Assets/Objects/Moon256.png" id="19_iiwhm"]
 [ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barrel_1.tscn" id="20_0i127"]
 [ext_resource type="PackedScene" uid="uid://bcr5pp44qvg4y" path="res://Scenes/Explosives/Barrel_2/barrel_2.tscn" id="20_xsrdu"]
-[ext_resource type="PackedScene" uid="uid://1xe0a6ee4e2n" path="res://Scenes/Explosives/RigidBarrel/RigidBarrel_2.tscn" id="21_lmb23"]
-[ext_resource type="PackedScene" uid="uid://sf1vqf43ddkf" path="res://Scenes/Explosives/RigidBox_1/RigidBox1.tscn" id="22_1mggi"]
+[ext_resource type="PackedScene" uid="uid://1xe0a6ee4e2n" path="res://Scenes/Explosives/RigidBarrel/RigidBarrel.tscn" id="21_lmb23"]
+[ext_resource type="PackedScene" uid="uid://sf1vqf43ddkf" path="res://Scenes/Explosives/RigidBox/RigidBox.tscn" id="22_1mggi"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ms7f"]
 _surfaces = [{

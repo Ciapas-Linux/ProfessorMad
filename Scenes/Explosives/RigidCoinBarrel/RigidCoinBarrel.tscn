@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Explosives/RigidCoinBarrel/RigidCoinBarrel.gd" id="1_abk71"]
 [ext_resource type="PackedScene" uid="uid://ch5v8j2pj2388" path="res://Scenes/Coin/Coin.tscn" id="2_rtfxp"]
 [ext_resource type="PackedScene" uid="uid://gfc7n4o55ryc" path="res://Scenes/Explosives/Barrel_1/barrel_1.tscn" id="3_nf6j0"]
-[ext_resource type="PackedScene" uid="uid://1xe0a6ee4e2n" path="res://Scenes/Explosives/RigidBarrel/RigidBarrel_2.tscn" id="4_lfthh"]
+[ext_resource type="PackedScene" uid="uid://1xe0a6ee4e2n" path="res://Scenes/Explosives/RigidBarrel/RigidBarrel.tscn" id="4_lfthh"]
 
 [node name="RigidCoinBarrel" type="Node2D"]
 script = ExtResource("1_abk71")
