@@ -56,7 +56,7 @@ var Player_on_screen: bool = true
 var Player_state: String = "Drive"
 var Player_up_down: int = 0 # 0:flat 1:up 2:down
 var Player_weapon: Sprite2D
-var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3, "tt_gun": 4}
+var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3, "tt_gun": 4,"f1_grenade": 5}
 var Player_current_weapon: int = Player_guns["ak_47"]
 
 var shock_vave_timer: Timer
@@ -245,7 +245,8 @@ func _physics_process(_delta) -> void:
 			#wheel.apply_torque_impulse(-torqe_impulse * delta * 60)	
 			
 	if Input.is_action_just_released("ui_left"):
-		rpm_reduction = true		
+		#rpm_reduction = true
+		pass		
 		
 	speed_kmh = abs(int(get_velocity().x * 0.04))
 
@@ -261,12 +262,10 @@ func _physics_process(_delta) -> void:
 		
 	$Rpm_power.value = rpm_power
 	$Rpm_power/rpm.set_text("RPM: " + str(rpm_power))
-	
-	
+		
 	$Speed.value = speed_kmh
 	$Speed/kmh.set_text("km/h: " + str(speed_kmh))
 	
-
 	check_raycasts()
 
 	if shock_vave_impulse == true:

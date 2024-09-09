@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://cvawxkpwsi4fq"]
+[gd_scene load_steps=106 format=3 uid="uid://cvawxkpwsi4fq"]
 
 [ext_resource type="Texture2D" uid="uid://bew1g8m6rbbn6" path="res://Assets/Weapons/grenades/F1-grenade.png" id="1_151hh"]
 [ext_resource type="Script" path="res://Scenes/Weapons/Grenades/F1.gd" id="1_rbekv"]

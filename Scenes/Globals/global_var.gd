@@ -147,6 +147,17 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 			Player.Player_weapon.transform = Player.get_node("weapon_spawn/tt_gun").transform
 			Player.Player_weapon.scale = Vector2(2,2)			
 
+		5: # F1 hand grenade:
+			Player.get_node("weapon_spawn/tt_gun").get_child(0).queue_free()
+			Player.Player_weapon = load("res://Scenes/Weapons/Grenades/f1_rig.tscn").instantiate()
+			if Player.get_node("weapon_spawn/f1_grenade").get_child_count() > 0:
+				Player.get_node("weapon_spawn/f1_grenade").get_child(0).queue_free()
+			Player.get_node("weapon_spawn/f1_grenade").add_child(Player.Player_weapon)
+			set_cursor_orange()
+			Player.Player_weapon.transform = Player.get_node("weapon_spawn/f1_grenade").transform
+			Player.Player_weapon.scale = Vector2(2,2)		
+	
+
 	print(Player.name + ": inventory loaded")
 
 
