@@ -80,15 +80,20 @@ var SHeight:int = 0
 # 	nodes.sort_custom(self, "_tree_order_descending")
 # 	return nodes
 
+#func load_next_weapon():
+	#if Player.Player_guns.size() > Player.Player_current_weapon:
+	#Player.Player_current_weapon += 1
+	#load_inventory()
+	#if Player.Player_guns.size() == Player.Player_current_weapon:
+	#	Player.Player_current_weapon = 0
+	#	load_inventory()
+
 func load_next_weapon():
-	# print("Weapons: " + str(Player_guns.size()))
-	if Player.Player_guns.size() > Player.Player_current_weapon:
-		Player.Player_current_weapon += 1
-		load_inventory()
-		# Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2 }
-	if Player.Player_guns.size() == Player.Player_current_weapon:
+	Player.Player_current_weapon += 1
+	if Player.Player_current_weapon > 5:
 		Player.Player_current_weapon = 0
-		load_inventory()
+
+	load_inventory()		
 
 func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 						# Torso/arm_r/weapon_spawn
@@ -96,7 +101,13 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 	
 	#var spawn_node_path:String = "Body_parts/weapon_spawn"
 	#var marker_node_path:String = "Body_parts/weapon_spawn"
+
+	# Player.Player_current_weapon += 1
+	# if Player.Player_current_weapon > 5:
+	# 	Player.Player_current_weapon = 0
+
 	
+
 	match Player.Player_current_weapon:
 		0: # Empty weapon = none
 			if Player.get_node("weapon_spawn/tt_gun").get_child_count() > 0:
@@ -149,16 +160,20 @@ func load_inventory():  # Body_parts/Arm_R/Hand_R/weapon_spawn
 
 		5: # F1 hand grenade:
 			Player.get_node("weapon_spawn/tt_gun").get_child(0).queue_free()
-			Player.Player_weapon = load("res://Scenes/Weapons/Grenades/f1_rig.tscn").instantiate()
+			Player.Player_weapon = load("res://Scenes/Weapons/Grenades/F1_rig.tscn").instantiate()
 			if Player.get_node("weapon_spawn/f1_grenade").get_child_count() > 0:
 				Player.get_node("weapon_spawn/f1_grenade").get_child(0).queue_free()
 			Player.get_node("weapon_spawn/f1_grenade").add_child(Player.Player_weapon)
 			set_cursor_orange()
 			Player.Player_weapon.transform = Player.get_node("weapon_spawn/f1_grenade").transform
-			Player.Player_weapon.scale = Vector2(2,2)		
+			Player.Player_weapon.scale = Vector2(2,2)
+
+	print(Player.name + ": inventory loaded: " + str(Player.Player_current_weapon))
+
+					
 	
 
-	print(Player.name + ": inventory loaded")
+	
 
 
 func select_top_node(target_node: Area2D) -> Area2D:

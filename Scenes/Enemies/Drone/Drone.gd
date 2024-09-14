@@ -63,7 +63,7 @@ func _ready():
 	print("Flying drone: ready ...") 
 
 func _unhandled_input(event):
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == 3:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self

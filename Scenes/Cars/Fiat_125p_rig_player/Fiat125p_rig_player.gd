@@ -56,8 +56,7 @@ var Player_on_screen: bool = true
 var Player_state: String = "Drive"
 var Player_up_down: int = 0 # 0:flat 1:up 2:down
 var Player_weapon: Sprite2D
-var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3, "tt_gun": 4,"f1_grenade": 5}
-var Player_current_weapon: int = Player_guns["ak_47"]
+var Player_current_weapon: int = 0
 
 var shock_vave_timer: Timer
 var shock_vave_impulse: bool = false
@@ -96,7 +95,7 @@ func _ready() -> void:
 	$Driver/AnimationPlayer.play("head_rotate")
 	
 	############################ !!!!!!!!!!!!!!!!	
-	Player_current_weapon = 0
+	# Player_current_weapon = 0
 	############################ !!!!!!!!!!!!!!!!
 
 
@@ -287,7 +286,7 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("snd_switch_weapon").play()
 			gv.load_next_weapon()
-			print(name + ": switch weapon")
+			#print(name + ": switch weapon")
 
 	# Show Help information	
 	if Input.is_action_just_pressed("Help"):
@@ -312,7 +311,7 @@ func _physics_process(_delta) -> void:
 	drive_loop.pitch_scale = maxf(0.001, 1.0 + (rpm_power - baseline_rpm) / pitch_scale)				
 
 func _unhandled_input(event):
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == 3:
 		if event.is_action_pressed("mouse_left_click") && mouse_enter:
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self

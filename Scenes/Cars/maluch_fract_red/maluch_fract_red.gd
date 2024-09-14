@@ -33,7 +33,7 @@ func _process(_delta) -> void:
 	pass
 
 func _unhandled_input(event):
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]: # only for rocket_4
+	if gv.Player.Player_current_weapon == 3: # only for rocket_4
 		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
@@ -168,97 +168,3 @@ func _on_explosion_spr_animation_finished() -> void:
 	
 
 
-################################################################
-
-#if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
-		#gv.set_cursor_orange()
-		#gv.mouse_enter_node = null
-	#$object_spr.visible = true
-
-#if gv.Player_current_weapon == gv.Player_guns["rocket_4"]:
-		#gv.set_cursor_green()
-		# gv.mouse_enter_node = self
-		# gv.emit_signal("s_mouse_enter_node",self)
-	#$object_spr.visible = false
-
-# extends Area2D
-
-# func _input_event(viewport, event, shape_idx):
-#     if event.type == InputEvent.MOUSE_BUTTON \
-#     and event.button_index == BUTTON_LEFT \
-#     and event.pressed:
-#         print("Clicked")
-#         return(self) # returns a reference to this node
-
-
-
-
-
-
-
-# var mouse_entered = false
-
-# func _unhandled_input(event):
-# 	if event.is_action_pressed("mouse_left_click") && \
-# 	mouse_entered:
-# 		# do here whatever should happen when you click on that node
-# 		self.get_tree().set_input_as_handled()
-
-# func _on_Area2D_mouse_entered():
-# 	mouse_entered = true
-
-# func _on_Area2D_mouse_exited():
-# 	mouse_entered = false
-
-
-
-	#if hit_count == 0 and $Sprite.is_playing() == false:
-		#self.queue_free()
-	#if Input.is_action_just_pressed("Fire"):
-		#local_cursor_position = get_local_mouse_position()	
-
-
-# Draw bullet holes
-		#$Sprite.sprite_frames.get_frame_texture ( "idle", 0 ).is_pixel_opaque()
-		#if $Sprite.sprite_frames.get_frame_texture( "default", 0 ).get_image.is_pixel_opaque(local_cursor_position) == true:
-		# var Bullet_sprite:Sprite2D = Sprite2D.new()
-		# Bullet_sprite.texture = gv.Bullet_hit1_texure
-		# var Sprite_scale:float = randf_range(0.3,1.1)
-		# Bullet_sprite.scale = Vector2(Sprite_scale,Sprite_scale)
-		# Bullet_sprite.position = local_cursor_position 
-		# add_child(Bullet_sprite)
-
-
-
-#print(area.name)
-	#  @Bullet@2
-	#var str_name:String = area.name
-	#str_name = str_name.lstrip()
-	#if area.name.find("@Bul") != -1:
-
-
-
-
-#if hit == true: return
-	#pass
-#	if area.name == "Bullet":
-#		if $Sprite.is_playing() == true:
-#			print("box1play: dostałam ! od: " + area.name + " hits: " + str(hit_count))
-#			hit_count -= 1
-#			return
-#		hit_count -= 1
-#		print("box1: dostałam ! od: " + area.name + " hits: " + str(hit_count))
-#		if hit_count == 0:
-#			$Sprite.play("explode")
-#			$snd_explode.play()
-	#self.queue_free()
-	
-#func _on_body_entered(body):
-#	if body.name == "Bullet":
-#		print("box1: dostałam od: " + body.name + " hits: " + str(hit_count))
-#		$BulletCrash.position = body.position
-#		$BulletCrash.play("hit_anim")
-#		hit_count -= 1
-#		$Sprite.play("explode")
-#		$snd_explode.play()
-	#pass # Replace with function body.

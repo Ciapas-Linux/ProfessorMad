@@ -35,8 +35,9 @@ func hit_anim_timer_timeout():
 	hit_anim_impulse = false
 
 func _unhandled_input(event):
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
-		if event.is_action_pressed("mouse_left_click") && mouse_enter: 
+	#if gv.Player.Player_current_weapon == 3:
+		if event.is_action_pressed("mouse_left_click") && mouse_enter:
+			print("gv.Player.Player_current_weapon: " + str(gv.Player.Player_current_weapon)) 
 			# do here whatever should happen when you click on that node:
 			gv.mouse_enter_node = self
 			print(self.name + ": left mouse click me!")

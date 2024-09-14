@@ -34,8 +34,7 @@ var Player_gold:int = 0
 var Player_direction:Vector2 = Vector2.RIGHT
 var Player_is_paused:bool = false
 var Player_on_screen:bool = true
-var Player_guns = {"no": 0, "ak_47": 1, "rpg_7": 2, "rocket_4": 3, "tt_gun": 4,"f1_grenade": 5}
-var Player_current_weapon:int = Player_guns["ak_47"]
+var Player_current_weapon:int = 0
 var Player_weapon:Sprite2D
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
 var Player_state:String

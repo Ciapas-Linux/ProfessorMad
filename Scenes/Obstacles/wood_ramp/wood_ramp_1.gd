@@ -18,13 +18,13 @@ func _process(_delta: float) -> void:
 
 func _on_mouse_entered() -> void:
 	mouse_enter = true
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == 3:
 		gv.set_cursor_green()
 
 
 func _on_mouse_exited() -> void:
 	mouse_enter = false
-	if gv.Player.Player_current_weapon == gv.Player.Player_guns["rocket_4"]:
+	if gv.Player.Player_current_weapon == 3:
 		gv.set_cursor_orange()
 	
 func hit():

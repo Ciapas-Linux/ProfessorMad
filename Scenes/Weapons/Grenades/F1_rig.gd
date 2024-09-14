@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 var velocity = Vector2(350, 0)
 
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	velocity.y += gravity * delta
+	#velocity.y += gravity * delta
 	position += velocity * delta
 	rotation = velocity.angle()
 
