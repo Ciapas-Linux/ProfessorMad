@@ -42,8 +42,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_npcpi"]
 _data = {
-"RESET": SubResource("Animation_mw7bc"),
-"shoot": SubResource("Animation_6uch2")
+&"RESET": SubResource("Animation_mw7bc"),
+&"shoot": SubResource("Animation_6uch2")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q0vnt"]
@@ -72,7 +72,7 @@ script = ExtResource("2_ryoe4")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
 libraries = {
-"": SubResource("AnimationLibrary_npcpi")
+&"": SubResource("AnimationLibrary_npcpi")
 }
 
 [node name="Timer" type="Timer" parent="."]

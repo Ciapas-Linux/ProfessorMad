@@ -66,12 +66,7 @@ func _ready():
 	else:
 		gv.load_player_data()	
 	
-	
-	############################ !!!!!!!!!!!!!!!!	
-	Player_current_weapon = 0	# Empty
-	############################ !!!!!!!!!!!!!!!!
-
-	gv.load_inventory()
+	gv.load_inventory(0)
 
 	eyes_rnd_blink_timer = Timer.new()
 	add_child(eyes_rnd_blink_timer)

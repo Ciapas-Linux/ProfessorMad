@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_466ls"]
 _data = {
-"RESET": SubResource("Animation_b0kxr"),
-"shoot": SubResource("Animation_y2xfh")
+&"RESET": SubResource("Animation_b0kxr"),
+&"shoot": SubResource("Animation_y2xfh")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ttcl1"]
@@ -71,7 +71,7 @@ script = ExtResource("2_eseiu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_466ls")
+&"": SubResource("AnimationLibrary_466ls")
 }
 
 [node name="BulletsSpawn" type="Marker2D" parent="."]

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://2g43jltekwlh" path="res://Assets/Ground/Grass_2.png" id="14_87qon"]
 [ext_resource type="PackedScene" uid="uid://fusvokqh37g3" path="res://Scenes/Nature/Moon/Moon_1.tscn" id="15_x78c7"]
 [ext_resource type="PackedScene" uid="uid://py3j2km3qk07" path="res://Scenes/Obstacles/wood_ramp/wood_ramp_1.tscn" id="15_ypdyl"]
-[ext_resource type="PackedScene" uid="uid://b1n6twuv5ahxy" path="res://Scenes/Cars/Fiat_125p_rig_player/Fiat125p_rig_player.tscn" id="16_7aedm"]
+[ext_resource type="PackedScene" uid="uid://b1n6twuv5ahxy" path="res://Scenes/Cars/Fiat_125p_rigid_player/Fiat125p_rigid_player.tscn" id="16_7aedm"]
 [ext_resource type="PackedScene" uid="uid://cvm5mwgabv6k0" path="res://Scenes/Obstacles/Kibel_1/Kibel_1.tscn" id="16_mxfbl"]
 [ext_resource type="PackedScene" uid="uid://dapdj53d8fslu" path="res://Scenes/Cars/fiat_125p/gorka.tscn" id="18_744sl"]
 [ext_resource type="PackedScene" uid="uid://8nlipuu0ceal" path="res://Scenes/Characters/Robot_3D/robot_3d.tscn" id="19_ebrlf"]
@@ -81,7 +81,7 @@ texture = ExtResource("9_by663")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 1500)
 
-[node name="Fiat125p_rigid" parent="." instance=ExtResource("16_7aedm")]
+[node name="Fiat125p_rigid_player" parent="." instance=ExtResource("16_7aedm")]
 z_index = 1
 position = Vector2(868, 0)
 

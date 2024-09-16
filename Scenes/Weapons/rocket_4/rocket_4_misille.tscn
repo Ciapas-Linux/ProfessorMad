@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://drjrhnpsp2cde"]
+[gd_scene load_steps=116 format=3 uid="uid://drjrhnpsp2cde"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/rocket_4/rocket_4_misille.gd" id="1_i65hl"]
 [ext_resource type="Texture2D" uid="uid://dsm0i1fygesv0" path="res://Assets/Weapons/rocket_4/rocket_4_anim.png" id="2_aufsi"]

@@ -107,11 +107,10 @@ func physics_update(delta: float) -> void:
 			#get_node("../../CollisionShape2D").shape.height = 600
 
 
-	# if gv.Player_current_weapon != 0:
-	# GO --> Switch weapon	
+	# Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("../../snd_switch_weapon").play()
-			gv.load_inventory()
+			gv.load_next_weapon()
 			select_animation()
 			print("Player: switch weapon")
 

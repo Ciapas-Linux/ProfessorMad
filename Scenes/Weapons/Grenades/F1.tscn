@@ -415,23 +415,29 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="F1" type="Area2D"]
+[node name="F1" type="Sprite2D"]
+z_index = 1
+position = Vector2(-28, 59)
+texture = ExtResource("1_151hh")
+offset = Vector2(28, -59)
 script = ExtResource("1_rbekv")
 
-[node name="sprite_obj" type="Sprite2D" parent="."]
-texture = ExtResource("1_151hh")
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(18, -49)
+collision_layer = 256
+collision_mask = 62
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_1hc1y")
 
-[node name="explosion_spr" type="AnimatedSprite2D" parent="."]
+[node name="explosion_spr" type="AnimatedSprite2D" parent="Area2D"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wukch")
 animation = &"explode"
 
-[node name="snd_explode" type="AudioStreamPlayer" parent="."]
+[node name="snd_explode" type="AudioStreamPlayer" parent="Area2D"]
 stream = ExtResource("103_vnlv4")
 volume_db = 5.0
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

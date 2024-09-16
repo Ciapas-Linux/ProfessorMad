@@ -74,7 +74,7 @@ func shoot():
 	all_shoots += 1
 	fire.emit()
 	if anim_player.is_playing() == false:
-				anim_player.play("shoot")
+		anim_player.play("shoot")
 	
 	if shoots == 4:
 		ready_to_fire = false

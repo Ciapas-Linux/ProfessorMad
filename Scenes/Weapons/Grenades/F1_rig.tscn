@@ -416,6 +416,8 @@ animations = [{
 }]
 
 [node name="F1_rig" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_e5wws")
 
 [node name="sprite_obj" type="Sprite2D" parent="."]

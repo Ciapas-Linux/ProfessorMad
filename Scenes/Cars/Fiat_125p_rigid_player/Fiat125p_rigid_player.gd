@@ -56,7 +56,7 @@ var Player_on_screen: bool = true
 var Player_state: String = "Drive"
 var Player_up_down: int = 0 # 0:flat 1:up 2:down
 var Player_weapon: Sprite2D
-var Player_current_weapon: int = 0
+var Player_current_weapon: int = 0 # 0 = no weapon, 1 = AK_47, 2 = rpg7, 3 = rocket launcher, 4 = tt hand gun
 
 var shock_vave_timer: Timer
 var shock_vave_impulse: bool = false
@@ -93,14 +93,7 @@ func _ready() -> void:
 	
 	
 	$Driver/AnimationPlayer.play("head_rotate")
-	
-	############################ !!!!!!!!!!!!!!!!	
-	# Player_current_weapon = 0
-	############################ !!!!!!!!!!!!!!!!
-
-
-
-	gv.load_inventory()
+	gv.load_inventory(Player_current_weapon) 
 
 
 	 
@@ -280,14 +273,11 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_pressed("ui_up"):
 		apply_impulse(Vector2(200, -3210), Vector2(300, 0))
 		
-
-	# if gv.Player_current_weapon != 0:
 	# GO --> Switch weapon	
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("snd_switch_weapon").play()
 			gv.load_next_weapon()
-			#print(name + ": switch weapon")
-
+			
 	# Show Help information	
 	if Input.is_action_just_pressed("Help"):
 			get_node("../HUD").show_help()

@@ -12,7 +12,7 @@ func _ready():
 	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	#get_tree().paused = true
 
-	$Camera2DPro.SetFollowNode($Fiat125p_rigid)
+	$Camera2DPro.SetFollowNode($Fiat125p_rigid_player)
 
 	# $Camera2DPro.SetFollowNode($Enemy)
 

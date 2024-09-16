@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://4b4ymiir7teu"]
+
+[ext_resource type="Script" path="res://Scenes/Weapons/Grenades/F1_handle.gd" id="2_ktkpm"]
+
+[node name="F1_Handle" type="Sprite2D"]
+visible = false
+script = ExtResource("2_ktkpm")
+
+[node name="GrenadeSpawn" type="Marker2D" parent="."]
