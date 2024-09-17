@@ -626,7 +626,6 @@ offset = Vector2(10, 68)
 z_index = 1
 position = Vector2(94, 216)
 rotation = 0.177128
-scale = Vector2(1.2, 1.2)
 texture = ExtResource("5_jfu52")
 offset = Vector2(51.1458, 34.396)
 
@@ -738,22 +737,27 @@ libraries = {
 }
 
 [node name="weapon_spawn" type="Marker2D" parent="."]
-position = Vector2(116.627, 39.5154)
+position = Vector2(112.722, 36.8962)
 rotation = 0.177128
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="ak-47" type="Marker2D" parent="weapon_spawn"]
+scale = Vector2(0.35, 0.35)
 
 [node name="rpg_7" type="Marker2D" parent="weapon_spawn"]
+scale = Vector2(0.3, 0.3)
 
 [node name="rocket_4" type="Marker2D" parent="weapon_spawn"]
+scale = Vector2(0.3, 0.3)
 
 [node name="empty" type="Marker2D" parent="weapon_spawn"]
 
 [node name="tt_gun" type="Marker2D" parent="weapon_spawn"]
+scale = Vector2(0.35, 0.35)
 
 [node name="f1_grenade" type="Marker2D" parent="weapon_spawn"]
-position = Vector2(35.5979, -35.2081)
+position = Vector2(1.33707, -22.4836)
+scale = Vector2(0.7, 0.7)
 
 [node name="Right_ground_RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(438, 0)

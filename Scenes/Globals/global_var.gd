@@ -152,9 +152,9 @@ func load_inventory(target_inventory: int):
 			if Player.get_node("weapon_spawn/f1_grenade").get_child_count() > 0:
 				Player.get_node("weapon_spawn/f1_grenade").get_child(0).queue_free()
 			Player.get_node("weapon_spawn/f1_grenade").add_child(Player.Player_weapon)
-			set_cursor_orange()
+			#set_cursor_green()
 			Player.Player_weapon.transform = Player.get_node("weapon_spawn/f1_grenade").transform
-			Player.Player_weapon.scale = Vector2(1,1)
+			#Player.Player_weapon.scale = Vector2(1,1)
 
 	print(Player.name + ": inventory loaded: " + str(Player.Player_current_weapon))
 	

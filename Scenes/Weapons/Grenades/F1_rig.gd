@@ -15,6 +15,8 @@ func _ready() -> void:
 	self.freeze = true
 	$explosion_spr.visible = false
 	print(self.name + ": ready!!")
+	#scale = Vector2(0.1,0.1)
+	
 
 func _process(_delta: float) -> void:
 	if stick == true:

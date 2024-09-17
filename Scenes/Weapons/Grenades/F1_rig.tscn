@@ -105,8 +105,8 @@
 [ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Weapons/Explosion3.mp3" id="103_f0yje"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pn6au"]
-radius = 65.2
-height = 173.33
+radius = 33.0
+height = 78.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wukch"]
 animations = [{
@@ -424,18 +424,20 @@ mass = 0.5
 gravity_scale = 2.0
 contact_monitor = true
 max_contacts_reported = 1
-angular_velocity = 3.49066
-angular_damp = 1.0
+angular_velocity = 1.74533
+angular_damp = 3.0
 script = ExtResource("1_e5wws")
 
 [node name="sprite_obj" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_keoks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, 6)
+position = Vector2(-6, 9)
 shape = SubResource("CapsuleShape2D_pn6au")
 
 [node name="explosion_spr" type="AnimatedSprite2D" parent="."]
+z_index = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wukch")
 animation = &"explode"
