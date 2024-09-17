@@ -91,6 +91,9 @@ func hit():
 func rpg_hit():
 	barrel_explode(1)
 
+func F1_hit():
+	barrel_explode(1)	
+
 func bomb_explode():
 	barrel_explode(2)			
 
@@ -109,6 +112,7 @@ func barrel_explode(_type:int) -> void:
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()
+	set_deferred("freeze",true)
 	$explosion_spr.visible = true
 	$explosion_spr.play("explode")
 	$snd_explode.play()
