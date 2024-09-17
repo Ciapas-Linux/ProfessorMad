@@ -14,8 +14,12 @@ signal explode
 func _ready() -> void:
 	self.freeze = true
 	$explosion_spr.visible = false
+	angular_velocity = randf_range(15,55)
+	#apply_torque_impulse(225)
+	#apply_torque(randf_range(-500,500))
 	print(self.name + ": ready!!")
-	#scale = Vector2(0.1,0.1)
+
+
 	
 
 func _process(_delta: float) -> void:
