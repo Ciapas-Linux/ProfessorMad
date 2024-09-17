@@ -447,8 +447,7 @@ _data = {
 }
 
 [node name="Fiat125p_rigid_player" type="RigidBody2D" node_paths=PackedStringArray("drive_loop") groups=["shock_wave_hit"]]
-collision_layer = 32
-collision_mask = 63
+collision_mask = 62
 mass = 50.0
 script = ExtResource("1_f1xke")
 drive_loop = NodePath("snd_engine")

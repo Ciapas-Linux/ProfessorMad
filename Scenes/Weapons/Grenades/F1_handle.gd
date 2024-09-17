@@ -11,7 +11,7 @@ var grenade:RigidBody2D
 func _ready():
 	gv.set_cursor_green()
 	create_grenade()
-	anim_player.play("throw_grenade")
+	
 		
 
 func _process(_delta: float) -> void:
@@ -30,15 +30,14 @@ func _exit_tree():
 
 
 func shoot():
-	if gv.mouse_enter_node == null:
-		return
-    	
+	    	
 	if ammo > 0:
 		ammo -= 1
 	else:
 		return	
 
-	grenade.throw_grenade()
+	anim_player.play("throw_grenade")
+	grenade.throw(Vector2(1000,-1000))
 	
 	
 func create_grenade():
@@ -52,4 +51,5 @@ func create_grenade():
 	grenade.scale = Vector2(0.5,0.5)
 
 func _on_f1_explode() -> void:
+	await get_tree().create_timer(0.1).timeout
 	create_grenade()

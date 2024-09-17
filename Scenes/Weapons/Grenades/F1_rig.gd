@@ -12,18 +12,16 @@ signal explode
 
 func _ready() -> void:
 	self.freeze = true
-	print(self.name + ": ready!")
+	print(self.name + ": ready!!")
 
 func _process(_delta: float) -> void:
 	if freeze == true:
 		global_position = F1_spawn_point.global_position
 		
-func throw_grenade(imp_vector):
+func throw(imp_vector):
 	self.freeze = false
-	strength = imp_vector
-	if direction:
-		strength.x *= -1
-	apply_impulse(Vector2.ZERO,strength)
+	apply_torque_impulse(20.0)
+	apply_impulse(imp_vector,Vector2.ZERO)
 	$Timer.start()
 
 func _on_area_entered(area:Area2D) -> void:

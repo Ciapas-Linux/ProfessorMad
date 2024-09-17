@@ -104,8 +104,9 @@
 [ext_resource type="Texture2D" uid="uid://dhexvsk2pnlja" path="res://Assets/Explosions/explosion3/explosion00-frame100.png" id="102_7i73h"]
 [ext_resource type="AudioStream" uid="uid://ci4caw11nel83" path="res://Assets/Sounds/Weapons/Explosion3.mp3" id="103_f0yje"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hc1y"]
-size = Vector2(80, 200)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pn6au"]
+radius = 52.93
+height = 207.82
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wukch"]
 animations = [{
@@ -419,13 +420,17 @@ animations = [{
 z_index = 1
 collision_layer = 256
 collision_mask = 62
+inertia = 6.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_e5wws")
 
 [node name="sprite_obj" type="Sprite2D" parent="."]
 texture = ExtResource("2_keoks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1hc1y")
+position = Vector2(-11, 6)
+shape = SubResource("CapsuleShape2D_pn6au")
 
 [node name="explosion_spr" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
