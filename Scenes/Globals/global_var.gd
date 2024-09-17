@@ -36,6 +36,14 @@ var cursor_green_2 = preload("res://Assets/Weapons/crosshair/crosshair2.png")
 var cursor_orange = preload("res://Assets/Weapons/crosshair/reticle.png")
 var cursor_red = preload("res://Assets/Weapons/crosshair/reticle_red.png")
 
+# @onready var Weapons:Array[Resource] = [load("res://Scenes/Weapons/Empty/Empty_gun.tscn"),
+# 	load("res://Scenes/Weapons/ak_47/AK-47.tscn"),
+# 	load("res://Scenes/Weapons/rpg_7/rpg_7.tscn"),
+# 	load("res://Scenes/Weapons/rocket_4/rocket_4_launcher.tscn"),
+# 	load("res://Scenes/Weapons/tt_gun/tt_gun.tscn"),
+# 	load("res://Scenes/Weapons/Grenades/F1_handle.tscn")]
+
+
 # var snd_sfx1:Resource = preload("res://Assets/Sounds/Sfx/object.wav")
 
 
@@ -80,13 +88,6 @@ var SHeight:int = 0
 # 	nodes.sort_custom(self, "_tree_order_descending")
 # 	return nodes
 
-#func load_next_weapon():
-	#if Player.Player_guns.size() > Player.Player_current_weapon:
-	#Player.Player_current_weapon += 1
-	#load_inventory()
-	#if Player.Player_guns.size() == Player.Player_current_weapon:
-	#	Player.Player_current_weapon = 0
-	#	load_inventory()
 
 func load_next_weapon():
 	Player.Player_current_weapon += 1

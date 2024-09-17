@@ -5,12 +5,13 @@ var velocity = Vector2(1350, 0)
 const ammo_max:int = 15
 var ammo:int = ammo_max
 
-# Called when the node enters the scene tree for the first time.
+signal explode
+
+
 func _ready() -> void:
-	print(self.name + ": F1 grenade ready!")
+	print(self.name + ": ready!")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# velocity.y += 700 * delta
 	# position += velocity * delta
@@ -29,6 +30,7 @@ func _on_area_entered(area:Area2D) -> void:
 
 func _on_body_entered(body:Node2D) -> void:
 	print(self.name + " hit: " + body.name)
+	emit_signal("explode")
 	# if body.has_method("hit"):
 	# 	body.hit()
 	# queue_free()		 

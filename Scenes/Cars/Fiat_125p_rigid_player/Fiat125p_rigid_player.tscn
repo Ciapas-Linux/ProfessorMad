@@ -128,8 +128,8 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f71lj"]
 _data = {
 &"RESET": SubResource("Animation_e8m2p"),
-&"head_rotate": SubResource("Animation_7agyo"),
-&"shoot": SubResource("Animation_nkixf")
+&"shoot": SubResource("Animation_nkixf"),
+&"head_rotate": SubResource("Animation_7agyo")
 }
 
 [sub_resource type="Animation" id="Animation_s7yq2"]
@@ -724,6 +724,7 @@ scale = Vector2(0.3, 0.3)
 [node name="tt_gun" type="Marker2D" parent="weapon_spawn"]
 
 [node name="f1_grenade" type="Marker2D" parent="weapon_spawn"]
+position = Vector2(35.5979, -35.2081)
 
 [node name="Right_ground_RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(438, 0)
