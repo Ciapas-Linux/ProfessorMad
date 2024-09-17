@@ -5,7 +5,8 @@ extends RigidBody2D
 var velocity = Vector2(350, 0)
 const ammo_max:int = 15
 var ammo:int = ammo_max
-
+var strength:Vector2
+var direction = false
 signal explode
 
 
@@ -13,17 +14,17 @@ func _ready() -> void:
 	self.freeze = true
 	print(self.name + ": ready!")
 
-
 func _process(_delta: float) -> void:
 	if freeze == true:
 		global_position = F1_spawn_point.global_position
-	#velocity.y += gravity * delta
-	#position += velocity * delta
-	#rotation = velocity.angle()
-	
-
-func throw_grenade():
-	pass
+		
+func throw_grenade(imp_vector):
+	self.freeze = false
+	strength = imp_vector
+	if direction:
+		strength.x *= -1
+	apply_impulse(Vector2.ZERO,strength)
+	$Timer.start()
 
 func _on_area_entered(area:Area2D) -> void:
 	print(self.name + " hit: " + area.name)
@@ -31,10 +32,15 @@ func _on_area_entered(area:Area2D) -> void:
 	# 	area.hit()
 	# queue_free()
 
-
 func _on_body_entered(body:Node2D) -> void:
 	print(self.name + " hit: " + body.name)
 	# if body.has_method("hit"):
 	# 	body.hit()
-	
 	# queue_free()		 
+
+func _on_timer_timeout() -> void:
+	explode_grenade()
+
+func explode_grenade():
+	emit_signal("explode")
+	queue_free()

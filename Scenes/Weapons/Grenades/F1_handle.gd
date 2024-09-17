@@ -3,12 +3,15 @@ extends Sprite2D
 const ammo_max:int = 15
 var ammo:int = ammo_max
 
+@onready var anim_player : AnimationPlayer = gv.Player.get_node("AnimationPlayer")
+
 var f1_grenade:Resource = preload("res://Scenes/Weapons/Grenades/F1_rig.tscn")
 var grenade:RigidBody2D
 
 func _ready():
 	gv.set_cursor_green()
 	create_grenade()
+	anim_player.play("throw_grenade")
 		
 
 func _process(_delta: float) -> void:
