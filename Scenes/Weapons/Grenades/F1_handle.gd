@@ -11,6 +11,7 @@ var can_shoot:bool = true
 func _ready():
 	gv.set_cursor_green()
 	anim_player.connect("animation_finished",_on_animation_finished)
+	$AnimationPlayer.play("rotate")
 	
 func _on_animation_finished(anim_name:StringName) -> void:
 	if anim_name == "throw_grenade":
