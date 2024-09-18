@@ -90,6 +90,9 @@ func hit():
 func rpg_hit():
 	barrel_explode(1)
 
+func F1_hit():
+	barrel_explode(1)	
+
 func bomb_explode():
 	barrel_explode(2)			
 

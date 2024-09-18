@@ -129,6 +129,9 @@ func hit():
 			gv.Cam1.ScreenShake(30,0.5)	
 			print(name + ": enemies kill me by bullets!") 
 
+func F1_hit():
+	bomb_explode()	
+
 func bomb_explode():
 	$CollisionShape2D.set_deferred("disabled", true)
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)

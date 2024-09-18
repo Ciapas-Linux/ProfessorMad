@@ -114,6 +114,9 @@ func rpg_hit():
 	gv.Cam1.ScreenShake(30, 0.5)
 	print(name + ":  enemies hit me by rpg!")
 
+func F1_hit():
+	bomb_explode()	
+
 func bomb_explode():
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Bullet_holes.vanish()

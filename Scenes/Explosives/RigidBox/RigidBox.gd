@@ -121,6 +121,9 @@ func hit():
 			tween.tween_property($object_spr, "self_modulate", Color(1, 1, 1, 0), 1.5)
 			print(name + ": enemies kill me by bullets!") 
 
+func F1_hit():
+	bomb_explode()	
+
 func bomb_explode():
 	call_hit()
 	$Hitpoints.visible = false
