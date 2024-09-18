@@ -20,17 +20,24 @@ func _on_animation_finished(anim_name:StringName) -> void:
 		can_shoot = false
 		shoot()
 		
-
 func _process(_delta: float) -> void:
+	
+	throw_vec = get_global_mouse_position() - global_position
+	throw_vec.x *= 0.5
+	
 	if Input.is_action_just_pressed("Fire"):
 		if can_shoot ==  true:
+			if throw_vec.x > 1600 or throw_vec.y < -1500:
+				return
 			anim_player.play("throw_grenade")
+
+	$PowerBar.value = (throw_vec.x + abs(throw_vec.y))*0.5		
 		
 func shoot():
 	if ammo > 0:
 		ammo -= 1
 	else:
-		return	
+		return		
 
 	var grenade:RigidBody2D = f1_grenade.instantiate()
 	grenade.name = "Grenade-F1-" + str(ammo)
@@ -38,16 +45,13 @@ func shoot():
 	get_tree().root.add_child(grenade)
 	grenade.position = $GrenadeSpawn.global_position
 	grenade.rotation = $GrenadeSpawn.global_rotation
-	#anim_player.play("throw_grenade")
 	throw_vec = get_global_mouse_position() - global_position
-	#print(str(tmp) + ": vec")
-	throw_vec.x *= 0.5  
+	throw_vec.x *= 0.5
+	#print(str(throw_vec) + ": throw_vec XXXXXXXXX")  
 	grenade.throw(throw_vec)
 
-
-# 	await get_tree().create_timer(0.1).timeout
-
-
+	if gv.Player.has_method("on_F1_fire"):
+		gv.Player.on_F1_fire()
 
 func _on_timer_timeout() -> void:
 	visible = true

@@ -66,7 +66,26 @@ func shoot():
 	ready_to_fire = false
 
 	if anim_player.is_playing() == false:
-				anim_player.play("shoot")
+		anim_player.play("shoot")
+
+	if gv.Player.has_method("on_rpg7_fire"):
+		gv.Player.on_rpg7_fire()	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	# if gv.fsm.state.name == "Idle":
 	# 	position.y = position.y + recoil

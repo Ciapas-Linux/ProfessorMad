@@ -81,6 +81,9 @@ func shoot():
 		shoots = 0 
 	
 	$Timer.start(0.5)
+
+	if gv.Player.has_method("on_rocket4_fire"):
+		gv.Player.on_rocket4_fire()
 	
 
 func _on_timer_timeout() -> void:

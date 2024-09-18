@@ -273,10 +273,15 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_pressed("ui_up"):
 		apply_impulse(Vector2(200, -3210), Vector2(300, 0))
 		
-	# GO --> Switch weapon	
+	# Switch weapon: W
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("snd_switch_weapon").play()
 			gv.load_next_weapon()
+
+	# Reload weapon: X
+	if Input.is_action_just_pressed("Reload"):
+		Player_weapon.reload()
+		print(name + ": reload weapon")	
 			
 	# Show Help information	
 	if Input.is_action_just_pressed("Help"):
@@ -447,6 +452,21 @@ func on_gun_fire() -> void:
 	anim_player.play("shoot")
 	$Driver/AnimationPlayer.play("shoot")
 	apply_impulse(Vector2(-2120, 0), Vector2(0, 0))
+
+func on_F1_fire() -> void:
+	anim_player.play("shoot")
+	$Driver/AnimationPlayer.play("shoot")
+	apply_impulse(Vector2(-2120, 0), Vector2(0, 0))	
+
+func on_rpg7_fire() -> void:
+	anim_player.play("shoot")
+	$Driver/AnimationPlayer.play("shoot")
+	apply_impulse(Vector2(-40000, -22000), Vector2(300, 0))
+
+func on_rocket4_fire() -> void:
+	anim_player.play("shoot")
+	$Driver/AnimationPlayer.play("shoot")
+	apply_impulse(Vector2(-20000, -18000), Vector2(300, 0))
 
 func flip_h(flip: bool):
 	var x_axis = global_transform.x
