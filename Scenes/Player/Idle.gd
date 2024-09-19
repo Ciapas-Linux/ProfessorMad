@@ -28,7 +28,7 @@ func enter(_msg := {}) -> void:
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
 	print("Player " + self.name + " : anim_name: " + anim_name)
 	if player.Player_fsm.state.name == "Idle":
-		if anim_name == "touch_down": #  or anim_name == "throw_grenade"
+		if anim_name == "touch_down" or anim_name == "throw_grenade":
 			select_idle_animation()
 
 # Exit state:	
@@ -163,7 +163,7 @@ func physics_update(delta: float) -> void:
 	
 func select_idle_animation() -> void:
 	#if anim_Player.current_animation != "throw_grenade":
-	print(self.name + ": $$$$$$$$$$$$$$$$" + str(player.Player_current_weapon))		
+	#print(self.name + ": $$$$$$$$$$$$$$$$" + str(player.Player_current_weapon))		
 	if player.Player_current_weapon == 4:
 		anim_Player.play("idle_tt_gun")
 		anim_Player.seek(0.1)

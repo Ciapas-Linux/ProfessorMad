@@ -29,6 +29,7 @@ func _process(_delta: float) -> void:
 			if throw_vec.x > 1600 or throw_vec.y < -1500:
 				return
 			anim_Player.play("throw_grenade")
+			#anim_Player.seek(0)
 
 	$PowerBar.value = (throw_vec.x + abs(throw_vec.y))*0.5		
 		
