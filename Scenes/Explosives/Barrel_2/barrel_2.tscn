@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://rgmxrdp4qur5" path="res://Assets/Sounds/Sfx/FX030.mp3" id="6_o7uui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ls4e1"]
-radius = 112.0
-height = 307.0
+radius = 154.93
+height = 417.37
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwv6t"]
 atlas = ExtResource("2_8vkr2")
@@ -223,7 +223,6 @@ animation = &"explode"
 offset = Vector2(3, -8)
 
 [node name="object_spr" type="Sprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_xvy3g")
 
 [node name="snd_explode" type="AudioStreamPlayer" parent="."]

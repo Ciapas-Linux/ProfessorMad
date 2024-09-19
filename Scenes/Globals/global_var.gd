@@ -95,7 +95,7 @@ func load_next_weapon():
 		Player.Player_current_weapon = 0
 	load_inventory(Player.Player_current_weapon)		
 
-func load_inventory(target_inventory: int):  
+func load_inventory(target_inventory: int):
 	match target_inventory:
 		0: # Empty weapon = none
 			if Player.get_node("weapon_spawn/f1_grenade").get_child_count() > 0:

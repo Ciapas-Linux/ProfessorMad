@@ -34,10 +34,11 @@ var Player_gold:int = 0
 var Player_direction:Vector2 = Vector2.RIGHT
 var Player_is_paused:bool = false
 var Player_on_screen:bool = true
-var Player_current_weapon:int = 0
 var Player_weapon:Sprite2D
 var Player_up_down:int = 0 # 0:flat 1:up 2:down
 var Player_state:String
+var Player_current_weapon:int = 0
+
 
 signal bomb_hit_me
 
@@ -66,14 +67,16 @@ func _ready():
 	else:
 		gv.load_player_data()	
 	
-	gv.load_inventory(0)
-
 	eyes_rnd_blink_timer = Timer.new()
 	add_child(eyes_rnd_blink_timer)
 	eyes_rnd_blink_timer.wait_time = 5
 	eyes_rnd_blink_timer.one_shot = true
 	eyes_rnd_blink_timer.connect("timeout", _on_eyes_blink_timer_timeout)
 	eyes_rnd_blink_timer.start(randf_range(1.0,10.0))
+
+
+	Player_current_weapon = 0
+	gv.load_inventory(Player_current_weapon)  
 
 	print("")
 	print("Node ready:" + self.name)  
@@ -83,7 +86,9 @@ func _ready():
 	print("Player state: " + Player_fsm.state.name)  
 	print("Player start x: " + str(global_position.x))	
 	print("Player ready: Yes ...") 
-	print("")  	
+	print("")
+
+	 	
 
 func fade_in():
 	$Body_parts/Arm_L.self_modulate = Color(1, 1, 1, 1)

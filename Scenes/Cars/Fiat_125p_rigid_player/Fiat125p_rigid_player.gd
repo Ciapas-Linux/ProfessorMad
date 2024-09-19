@@ -65,7 +65,7 @@ var shock_vave_power: Vector2 = Vector2(0, 0)
 
 var wheels: Array[RigidBody2D] = []
 
-@onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
+@onready var anim_Player: AnimationPlayer = get_node("AnimationPlayer")
 	
 var eyes_rnd_blink_timer: Timer
 
@@ -93,10 +93,9 @@ func _ready() -> void:
 	
 	
 	$Driver/AnimationPlayer.play("head_rotate")
+	
 	gv.load_inventory(Player_current_weapon) 
-
-
-	 
+ 
 
 	# rpm_reduction_timer = Timer.new()
 	# add_child(rpm_reduction_timer)
@@ -449,22 +448,22 @@ func hit() -> void:
 			#queue_free()	
 
 func on_gun_fire() -> void:
-	anim_player.play("shoot")
+	anim_Player.play("shoot")
 	$Driver/AnimationPlayer.play("shoot")
 	apply_impulse(Vector2(-2120, 0), Vector2(0, 0))
 
 func on_F1_fire() -> void:
-	anim_player.play("shoot")
+	anim_Player.play("shoot")
 	$Driver/AnimationPlayer.play("shoot")
 	apply_impulse(Vector2(-2120, 0), Vector2(0, 0))	
 
 func on_rpg7_fire() -> void:
-	anim_player.play("shoot")
+	anim_Player.play("shoot")
 	$Driver/AnimationPlayer.play("shoot")
 	apply_impulse(Vector2(-40000, -22000), Vector2(300, 0))
 
 func on_rocket4_fire() -> void:
-	anim_player.play("shoot")
+	anim_Player.play("shoot")
 	$Driver/AnimationPlayer.play("shoot")
 	apply_impulse(Vector2(-20000, -18000), Vector2(300, 0))
 

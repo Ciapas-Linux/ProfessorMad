@@ -6,7 +6,7 @@ extends PlayerState
 #.######################>
 
 
-@onready var anim_player : AnimationPlayer = get_node("../../AnimationPlayer")
+@onready var anim_Player : AnimationPlayer = get_node("../../AnimationPlayer")
 
 var ray_normal:Vector2
 var offset: float
@@ -18,24 +18,18 @@ func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 	get_node("../../snd_walk").stop()
 		
-	if anim_player.current_animation != "touch_down":
-		select_animation()
-
-	# if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
-	# 	print("Player: XXXXXXXXXXXXXXXXXXXXXX")
-	# 	player.Player_weapon.connect("fire", _on_gun_2_fire)
-	# 	if player.Player_weapon.is_connected("fire", _on_gun_2_fire) == false:
-	# 		print("Player: XXXXXXXXXXXXXXXXXXXXXX")
+	if anim_Player.current_animation != "touch_down":
+		select_idle_animation()
 
 	print("Player: previous state " + player.Player_fsm.previous_state)
 	print("Player state: " + self.name)
-	#node_enter+=1
-	#print("Player: Idle enter nr: " + str(node_enter))
+	
 
 func _on_animation_player_animation_finished(anim_name:StringName) -> void:
+	print("Player " + self.name + " : anim_name: " + anim_name)
 	if player.Player_fsm.state.name == "Idle":
-		if anim_name == "touch_down":
-			select_animation()
+		if anim_name == "touch_down": #  or anim_name == "throw_grenade"
+			select_idle_animation()
 
 # Exit state:	
 func exit() -> void:
@@ -65,8 +59,8 @@ func physics_update(delta: float) -> void:
 		
 		# No slope:
 		if player.Player_tilt < 10 and player.Player_tilt > -10:
-			if anim_player.get_current_animation() != "idle":
-				select_animation()
+			#if anim_Player.get_current_animation() != "idle" or anim_Player.get_current_animation() != "idle_tt_gun":
+				#select_idle_animation()
 			player.Foot_R.rotation = ray_normal.angle() + deg_to_rad(90)
 			player.Foot_L.rotation = ray_normal.angle() + deg_to_rad(90)
 			player.Player_up_down = 0	# flat = 0
@@ -74,8 +68,8 @@ func physics_update(delta: float) -> void:
 		
 		# Slope:
 		elif player.Player_tilt > 10 or player.Player_tilt < -10:
-			if anim_player.get_current_animation() != "idle_tilt":
-				anim_player.play("idle_tilt")
+			if anim_Player.get_current_animation() != "idle_tilt":
+				anim_Player.play("idle_tilt")
 
 			if player.Player_tilt < 0:
 				if player.Player_direction == Vector2.RIGHT: # going DOWN: 2
@@ -111,23 +105,23 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("Weapon"):
 			get_node("../../snd_switch_weapon").play()
 			gv.load_next_weapon()
-			select_animation()
-			print("Player: switch weapon")
+			select_idle_animation()
+			print(self.name + ": switch weapon")
 
 	# Show Help information	
 	if Input.is_action_just_pressed("Help"):
 			get_node("../../../HUD").show_help()
-			print("Player: press Help key")
+			print(self.name + ": press Help key")
 
 	# Hide Help information	
 	if Input.is_action_just_released("Help"):
 			get_node("../../../HUD").hide_help()
-			print("Player: release Help key")				
+			print(self.name + ": release Help key")				
 
 	# GO --> Reload weapon
 	if Input.is_action_just_pressed("Reload"):
 		player.Player_weapon.reload()
-		print("Player: reload weapon")
+		print(self.name + ": reload weapon")
 
 	# GO --> AIR
 	if Input.is_action_just_pressed("ui_up"):
@@ -167,13 +161,15 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("target_down")
 		
 	
-func select_animation() -> void:
+func select_idle_animation() -> void:
+	#if anim_Player.current_animation != "throw_grenade":
+	print(self.name + ": $$$$$$$$$$$$$$$$" + str(player.Player_current_weapon))		
 	if player.Player_current_weapon == 4:
-		anim_player.play("idle_tt_gun")
-		anim_player.seek(0.1)
+		anim_Player.play("idle_tt_gun")
+		anim_Player.seek(0.1)
 	else:
-		anim_player.play("idle")	
-		anim_player.seek(0.1)
+		anim_Player.play("idle")	
+		anim_Player.seek(0.1)
 
 
 
