@@ -44,15 +44,13 @@ signal bomb_hit_me
 
 var eyes_rnd_blink_timer:Timer
 
-
-
 # Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D
 @onready var Foot_R:RemoteTransform2D = get_node("Skeleton2D/Base/Leg_R/Calf_R/Foot_R/RemoteTransform2D")
 @onready var Foot_L:RemoteTransform2D = get_node("Skeleton2D/Base/Leg_L/Calf_L/Foot_L/RemoteTransform2D")
 
 @onready var SlopeRayCast:RayCast2D = get_node("RayCast2D")
 
-@onready var anim_player : AnimationPlayer = get_node("AnimationPlayer")
+@onready var anim_Player : AnimationPlayer = get_node("AnimationPlayer")
 
 func _ready():
 	Player_fsm = get_node("StateMachine")
