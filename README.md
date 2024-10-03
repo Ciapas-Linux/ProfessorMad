@@ -11,6 +11,10 @@ During his exciting adventures, the professor will perform missions, bravely fac
 
 <BR><BR>
 $\color{red}{WARNING !!!}$
+**This repository is moved to gitlab:  https://gitlab.com/Ciapas-linux/professor-ysolek**
+
+<BR><BR>
+$\color{red}{WARNING !!!}$
 The main branch is a development version and is constantly changing, so it may be unstable, maybe we will make a stable release in some time. For now project is converted to godot development version 4.4.dev from master branch, for testing new godot features.
 <BR><BR><BR>
 
@@ -44,8 +48,9 @@ The main branch is a development version and is constantly changing, so it may b
 <BR>
 <BR><BR>
 To test different scenes you need to go to the ProfessorMad/Scenes/Stages folder and load then run the scene.
-
 <BR><BR>
+
+
 :floppy_disk: DOWNLOAD PROJECT:
 <BR>
 Use command line git application:  ```git clone https://github.com/Ciapas-Linux/ProfessorMad.git```
